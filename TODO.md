@@ -1,4 +1,6 @@
-setup new frontend project
+# home
+
+setup homepage
 
 # fidb-manager
 
