@@ -1,8 +1,7 @@
-change project name
-
 # home
 
-setup homepage
+`Homepage` -- setup
+`Homepage` -- design
 
 # fidb-manager
 
