@@ -1,7 +1,5 @@
 # manager
 
-`manager/Manager`
+[manager] list all directories in a database
 
-[backend] list all directories in a database
-
-[backend] list all files in a directory -- page by page
+[manager] list all data in a directory -- page by page
