@@ -1,5 +1,9 @@
 # manager
 
-[manager] list all directories in a database
+`ManagerFrom` a page for inputing `url` -- jump to `Manager`
 
-[manager] list all data in a directory -- page by page
+`Manager` take `url`
+
+`Manager` list all directories in a database
+
+`Manager` list all data in a `currentdirectory` -- page by page
