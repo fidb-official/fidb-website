@@ -1,7 +1,7 @@
 {
-  "name": "Cicada",
-  "short_name": "cic",
-  "description": "Cicada Language",
+  "name": "FiDB",
+  "short_name": "Fi",
+  "description": "File system as database.",
   "display": "standalone",
   "start_url": "/",
   "theme_color": "#ffffff",
