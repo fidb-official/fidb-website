@@ -1,5 +1,3 @@
-fix README.md
-
 change project name
 
 # home

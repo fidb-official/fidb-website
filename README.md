@@ -1,8 +1,7 @@
-# Mo Website
+# FiDB Website
 
-[ [VISIT](https://mo.cicada-lang.org) ]
-
-An online code playground for [**mo**](https://github.com/cicada-lang/mo).
+[ [VISIT](https://fidb.dev)
+| [MAIN REPO](github.com/xieyuheng/fidb) ]
 
 ## Development
 
