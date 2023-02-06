@@ -1,6 +1,5 @@
 # home
 
-`Homepage` -- setup
 `Homepage` -- design
 
 # fidb-manager
