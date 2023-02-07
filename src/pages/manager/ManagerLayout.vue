@@ -5,6 +5,7 @@ import ManagerDirectories from './ManagerDirectories.vue'
 import ManagerFiles from './ManagerFiles.vue'
 import ManagerHead from './ManagerHead.vue'
 import { ManagerState as State } from './ManagerState'
+import ManagerStatusBar from './ManagerStatusBar.vue'
 
 const router = useRouter()
 const route = useRoute()
@@ -20,9 +21,11 @@ const state = reactive(
   <div class="flex h-full flex-col px-3">
     <ManagerHead :state="state" />
 
-    <div class="flex h-full border-t border-black">
+    <div class="flex h-full border-y border-black">
       <ManagerDirectories :state="state" class="w-64 border-r border-black" />
       <ManagerFiles :state="state" class="px-3" />
     </div>
+
+    <ManagerStatusBar :state="state" />
   </div>
 </template>
