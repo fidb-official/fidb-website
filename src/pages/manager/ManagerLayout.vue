@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { loadState } from './loadState'
 import ManagerDirectories from './ManagerDirectories.vue'
 import ManagerFiles from './ManagerFiles.vue'
 import ManagerFoot from './ManagerFoot.vue'
 import ManagerHead from './ManagerHead.vue'
-import { State } from './State'
 
 const router = useRouter()
 const route = useRoute()
 
 const state = reactive(
-  await State.load({
+  await loadState({
     url: route.params.url as string,
   }),
 )
