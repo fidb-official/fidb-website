@@ -17,7 +17,7 @@ const state = stateReactive(props.state)
 
     <div class="flex h-full border-y border-black">
       <ManagerDirectories :state="state" class="w-80 border-r border-black" />
-      <ManagerFiles :state="state" class="px-3" />
+      <ManagerFiles :state="state" class="pl-2" />
     </div>
 
     <ManagerFoot :state="state" />

@@ -18,6 +18,17 @@ const route = useRoute()
       </Lang>
     </div>
 
-    <div v-else>[TODO] ManagerFiles</div>
+    <div v-else-if="state.dataset.length === 0">
+      <Lang>
+        <template #zh> 还没有数据。 </template>
+        <template #en> No data yet. </template>
+      </Lang>
+    </div>
+
+    <div v-else>
+      <div v-for="data of state.dataset" :key="data['@id']">
+        {{ data }}
+      </div>
+    </div>
   </div>
 </template>
