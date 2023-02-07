@@ -9,5 +9,9 @@ const route = useRoute()
 </script>
 
 <template>
-  <div class="flex h-full flex-col">ManagerDirectories</div>
+  <div class="flex h-full flex-col">
+    <div v-for="directory of state.root.directories" :key="directory">
+      {{ directory }}
+    </div>
+  </div>
 </template>

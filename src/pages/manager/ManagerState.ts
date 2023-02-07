@@ -1,7 +1,12 @@
 export class ManagerState {
-  constructor(public options: { url: string }) {}
+  constructor(
+    public url: string,
+    public root: { directories: Array<string> },
+  ) {}
 
   static async load(options: { url: string }): Promise<ManagerState> {
-    return new ManagerState(options)
+    const { url } = options
+    const root = await (await fetch(`${url}`)).json()
+    return new ManagerState(url, root)
   }
 }
