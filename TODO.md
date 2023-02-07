@@ -1,5 +1,3 @@
-`ManagerLayout` -- use `ManagerHead`
-
 `ManagerHead` -- show `state.root`
 
 `ManagerDirectories` -- click `directory` select `currentdirectory`
