@@ -9,7 +9,8 @@ const route = useRoute()
 <template>
   <PageLayout>
     <div class="flex h-full flex-col items-center justify-center">
-      ManagerFrom
+      <div>Manager</div>
+      <form></form>
     </div>
   </PageLayout>
 </template>
