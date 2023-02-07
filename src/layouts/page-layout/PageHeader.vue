@@ -2,6 +2,7 @@
 import IconGithub from '../../components/icons/IconGithub.vue'
 import Lang from '../../components/Lang.vue'
 import Link from '../../components/Link.vue'
+import PageLayoutLang from './PageLayoutLang.vue'
 import PageLogo from './PageLogo.vue'
 </script>
 
@@ -12,12 +13,14 @@ import PageLogo from './PageLogo.vue'
     </Link>
 
     <div class="flex items-center space-x-2">
-      <Link href="/manager" class="font-bold hover:underline">
+      <Link href="/manager" class="hover:underline">
         <Lang>
           <template #zh> 管理器 </template>
           <template #en> Manager </template>
         </Lang>
       </Link>
+
+      <PageLayoutLang class="hover:underline" />
 
       <a href="https://github.com/xieyuheng/fidb" target="_blank">
         <IconGithub class="h-5 w-5" />
