@@ -1,6 +1,8 @@
-`ManagerState` -- `root` & `directories`
+rename `ManagerLoaded` to `ManagerLayout`
 
-`ManagerLoaded` -- show `root`
+`ManagerLayout` -- use `ManagerHead`
+
+`ManagerHead` -- show `state.root`
 
 `ManagerDirectories` -- click `directory` select `currentdirectory`
 

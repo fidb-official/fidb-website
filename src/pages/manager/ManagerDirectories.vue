@@ -10,7 +10,7 @@ const route = useRoute()
 
 <template>
   <div class="flex h-full flex-col">
-    <div v-for="directory of state.root.directories" :key="directory">
+    <div v-for="directory of state.directories" :key="directory">
       {{ directory }}
     </div>
   </div>
