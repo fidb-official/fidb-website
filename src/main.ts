@@ -9,6 +9,14 @@ import router from './router'
 
 const root = createApp(App)
 
+root.config.globalProperties.$app = app
+
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $app: typeof app
+  }
+}
+
 root.use(router)
 root.use(createHead())
 root.use(FloatingVue)
