@@ -2,7 +2,7 @@
 import IconGithub from '../../components/icons/IconGithub.vue'
 import Lang from '../../components/Lang.vue'
 import Link from '../../components/Link.vue'
-import PageLayoutLang from './PageLayoutLang.vue'
+import PageLang from './PageLang.vue'
 import PageLogo from './PageLogo.vue'
 </script>
 
@@ -20,7 +20,7 @@ import PageLogo from './PageLogo.vue'
         </Lang>
       </Link>
 
-      <PageLayoutLang class="hover:underline" />
+      <PageLang class="hover:underline" />
 
       <a href="https://github.com/xieyuheng/fidb" target="_blank">
         <IconGithub class="h-5 w-5" />
