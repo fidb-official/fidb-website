@@ -28,7 +28,7 @@ function submit(event: Event) {
     </Head>
 
     <div class="flex h-full flex-col items-center justify-center">
-      <form class="flex flex-col" @submit.prevent="submit">
+      <form class="flex w-full flex-col px-3 md:w-96" @submit.prevent="submit">
         <div class="flex flex-col">
           <div class="flex items-baseline justify-between">
             <div class="text-2xl font-bold">
