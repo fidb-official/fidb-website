@@ -1,8 +1,10 @@
 function initialTag(): string {
-  const local = localStorage.getItem('lang')
-  if (local) return local
-  if (navigator.language.startsWith('zh')) return 'zh'
   return 'en'
+
+  // const local = localStorage.getItem('lang')
+  // if (local) return local
+  // if (navigator.language.startsWith('zh')) return 'zh'
+  // return 'en'
 }
 
 export class Lang {

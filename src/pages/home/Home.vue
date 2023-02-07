@@ -13,7 +13,7 @@ const state = reactive(new State())
 <template>
   <PageLayout>
     <div class="flex h-full flex-col items-center justify-center">
-      <div class="flex flex-col px-3">
+      <div class="flex flex-col space-y-1 px-3">
         <div class="text-6xl font-bold">FiDB</div>
         <div>What if we use file system as database?</div>
         <div>

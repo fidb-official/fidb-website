@@ -1,11 +1,7 @@
-# manager
+`PageLayout` link to `/manager`
 
-`ManagerStart` a page for inputing `url` -- jump to `Manager`
+`PageLayout` support select lang
 
 `Manager` list all directories in a database
 
 `Manager` list all data in a `currentdirectory` -- page by page
-
-# home
-
-link to `/manager`
