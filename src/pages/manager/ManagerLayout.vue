@@ -20,8 +20,8 @@ const state = reactive(
   <div class="flex h-full flex-col px-3">
     <ManagerHead :state="state" />
 
-    <div class="flex h-full">
-      <ManagerDirectories :state="state" class="w-64 border-r" />
+    <div class="flex h-full border-t border-black">
+      <ManagerDirectories :state="state" class="w-64 border-r border-black" />
       <ManagerFiles :state="state" class="px-3" />
     </div>
   </div>

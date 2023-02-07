@@ -5,7 +5,7 @@ defineProps<{ state: State }>()
 </script>
 
 <template>
-  <div class="flex overflow-x-auto whitespace-pre border-b">
+  <div class="flex overflow-x-auto whitespace-pre py-1">
     {{ state.root }}
   </div>
 </template>

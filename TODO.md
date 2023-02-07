@@ -1,4 +1,4 @@
-`ManagerStatusBar`
+`ManagerStatusBar` -- show `state.url`
 
 `ManagerDirectories` -- click `directory` select `currentdirectory`
 
