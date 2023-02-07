@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
 import ManagerDirectories from './ManagerDirectories.vue'
 import ManagerFiles from './ManagerFiles.vue'
 import ManagerFoot from './ManagerFoot.vue'
@@ -8,9 +7,6 @@ import { State } from './State'
 import { stateReactive } from './stateReactive'
 
 const props = defineProps<{ state: State }>()
-
-const router = useRouter()
-const route = useRoute()
 
 const state = stateReactive(props.state)
 </script>

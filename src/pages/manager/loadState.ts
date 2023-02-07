@@ -1,4 +1,3 @@
-import { Json } from '../../utils/Json'
 import { State } from './State'
 
 export async function loadState(options: { url: string }): Promise<State> {
@@ -8,7 +7,7 @@ export async function loadState(options: { url: string }): Promise<State> {
 
   const currentDirectory = directories[0]
 
-  const dataset: Array<Json> = []
+  const dataset: Array<any> = []
 
   return {
     url,
