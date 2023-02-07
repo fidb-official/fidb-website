@@ -5,7 +5,7 @@ import ManagerDirectories from './ManagerDirectories.vue'
 import ManagerFiles from './ManagerFiles.vue'
 import ManagerFoot from './ManagerFoot.vue'
 import ManagerHead from './ManagerHead.vue'
-import { ManagerState as State } from './ManagerState'
+import { State } from './State'
 
 const router = useRouter()
 const route = useRoute()

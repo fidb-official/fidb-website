@@ -1,6 +1,6 @@
 import { Json } from '../../utils/Json'
 
-export class ManagerState {
+export class State {
   constructor(
     public url: string,
     public root: string,
@@ -9,10 +9,10 @@ export class ManagerState {
     public dataset: Array<Json> = [],
   ) {}
 
-  static async load(options: { url: string }): Promise<ManagerState> {
+  static async load(options: { url: string }): Promise<State> {
     const { url } = options
     const { root, directories } = await (await fetch(`${url}`)).json()
     const currentDirectory = directories[0]
-    return new ManagerState(url, root, directories, currentDirectory)
+    return new State(url, root, directories, currentDirectory)
   }
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
-import { ManagerState as State } from './ManagerState'
+import { State } from './State'
 
 defineProps<{ state: State }>()
 

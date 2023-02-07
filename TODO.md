@@ -1,7 +1,10 @@
-`ManagerState` -- `dataset` use backend type
+[manage] `createState`
+[manage] `reactiveState`
 
-`ManagerFiles` -- list all data in a `currentDirectory` -- page by page
+[manage] `State` -- `dataset` use backend type
 
-`Troll`
+[manage] `ManagerFiles` -- list all data in a `currentDirectory` -- page by page
+
+[home] `Troll`
 
 [component] `Socrates`
