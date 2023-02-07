@@ -12,6 +12,9 @@ const state = reactive(new State())
 
 <template>
   <PageLayout>
-    <div class="flex h-full flex-col items-center justify-center">Manager</div>
+    <div class="flex h-full flex-col items-center justify-center">
+      Manager
+      <div>{{ route.params.url }}</div>
+    </div>
   </PageLayout>
 </template>
