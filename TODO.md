@@ -1,6 +1,6 @@
-`ManagerState` -- `root` has `path`
+`ManagerState` -- `root` & `directories`
 
-`ManagerLoaded` -- show `root.path`
+`ManagerLoaded` -- show `root`
 
 `ManagerDirectories` -- click `directory` select `currentdirectory`
 
