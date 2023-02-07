@@ -5,7 +5,10 @@ import { State } from './State'
 export function stateUpdateDataset(state: State): void {
   watch(
     () => state.currentDirectory,
+
     async (to, from) => {
+      state.dataset = []
+
       if (to === undefined) {
         return
       }
@@ -22,6 +25,7 @@ export function stateUpdateDataset(state: State): void {
 
       state.dataset = results
     },
+
     { immediate: true },
   )
 }
