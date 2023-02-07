@@ -1,6 +1,6 @@
 # manager
 
-`ManagerFrom` a page for inputing `url` -- jump to `Manager`
+`ManagerStart` a page for inputing `url` -- jump to `Manager`
 
 `Manager` list all directories in a database
 
