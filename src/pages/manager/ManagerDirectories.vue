@@ -9,7 +9,5 @@ const route = useRoute()
 </script>
 
 <template>
-  <PageLayout>
-    <div class="flex h-full flex-col">ManagerDirectories</div>
-  </PageLayout>
+  <div class="flex h-full flex-col">ManagerDirectories</div>
 </template>

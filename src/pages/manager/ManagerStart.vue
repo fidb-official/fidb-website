@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head } from '@vueuse/head'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import FormButton from '../../components/FormButton.vue'
 import FormDivider from '../../components/FormDivider.vue'
 import FormInput from '../../components/FormInput.vue'
@@ -9,8 +9,6 @@ import { useForm } from '../../hooks/useForm'
 import PageLayout from '../../layouts/page-layout/PageLayout.vue'
 
 const router = useRouter()
-const route = useRoute()
-
 const form = useForm({ url: '' })
 
 function submit(event: Event) {
