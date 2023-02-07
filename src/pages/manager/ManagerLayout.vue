@@ -3,9 +3,9 @@ import { reactive } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import ManagerDirectories from './ManagerDirectories.vue'
 import ManagerFiles from './ManagerFiles.vue'
+import ManagerFoot from './ManagerFoot.vue'
 import ManagerHead from './ManagerHead.vue'
 import { ManagerState as State } from './ManagerState'
-import ManagerStatusBar from './ManagerStatusBar.vue'
 
 const router = useRouter()
 const route = useRoute()
@@ -26,6 +26,6 @@ const state = reactive(
       <ManagerFiles :state="state" class="px-3" />
     </div>
 
-    <ManagerStatusBar :state="state" />
+    <ManagerFoot :state="state" />
   </div>
 </template>
