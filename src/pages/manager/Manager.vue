@@ -1,20 +1,30 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 import Lang from '../../components/Lang.vue'
 import PageLayout from '../../layouts/page-layout/PageLayout.vue'
+import { loadState } from './loadState'
 import ManagerLayout from './ManagerLayout.vue'
+import { State } from './State'
+
+const state = ref<State | null>(null)
+
+const route = useRoute()
+
+onMounted(async () => {
+  state.value = await loadState({
+    url: route.params.url as string,
+  })
+})
 </script>
 
 <template>
   <PageLayout>
-    <Suspense>
-      <ManagerLayout />
+    <ManagerLayout v-if="state" :state="state" />
 
-      <template #fallback>
-        <Lang class="px-3">
-          <template #zh> 加载中。。。 </template>
-          <template #en> Loading... </template>
-        </Lang>
-      </template>
-    </Suspense>
+    <Lang v-else class="px-3">
+      <template #zh> 加载中。。。 </template>
+      <template #en> Loading... </template>
+    </Lang>
   </PageLayout>
 </template>
