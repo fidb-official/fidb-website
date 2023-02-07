@@ -1,5 +1,3 @@
-rename Homepage to Home
-
 # manager
 
 `ManagerFrom` a page for inputing `url` -- jump to `Manager`

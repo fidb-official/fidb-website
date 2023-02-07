@@ -2,7 +2,7 @@
 import { reactive } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import PageLayout from '../../layouts/page-layout/PageLayout.vue'
-import { HomepageState as State } from './HomepageState'
+import { HomeState as State } from './HomeState'
 
 const router = useRouter()
 const route = useRoute()
