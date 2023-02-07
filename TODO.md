@@ -1,5 +1,3 @@
-rename `ManagerLoaded` to `ManagerLayout`
-
 `ManagerLayout` -- use `ManagerHead`
 
 `ManagerHead` -- show `state.root`

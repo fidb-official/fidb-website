@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import PageLayout from '../../layouts/page-layout/PageLayout.vue'
-import ManagerLoaded from './ManagerLoaded.vue'
+import ManagerLayout from './ManagerLayout.vue'
 </script>
 
 <template>
   <PageLayout>
     <Suspense>
-      <ManagerLoaded />
+      <ManagerLayout />
 
       <template #fallback>
         <div class="px-3">Loading...</div>
