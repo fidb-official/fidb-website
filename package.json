@@ -23,7 +23,7 @@
     "@types/lodash": "^4.14.191",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vueuse/core": "^9.12.0",
-    "@vueuse/head": "^1.0.24",
+    "@vueuse/head": "^1.0.25",
     "autoprefixer": "^10.4.13",
     "husky": "^8.0.3",
     "postcss": "^8.4.21",

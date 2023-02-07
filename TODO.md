@@ -1,5 +1,3 @@
-`PageLayout` link to `/manager`
-
 `PageLayout` support select lang
 
 `Manager` list all directories in a database

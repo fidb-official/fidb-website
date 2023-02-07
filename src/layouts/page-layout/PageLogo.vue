@@ -1,3 +1,3 @@
 <template>
-  <div class="pr-2 text-3xl font-bold">FiDB</div>
+  <div class="pr-2 text-2xl font-bold">FiDB</div>
 </template>
