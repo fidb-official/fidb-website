@@ -1,5 +1,3 @@
-`Manager` -- use `ManagerDirectories` and `ManagerFiles`
+`ManagerDirectories` -- list all directories in a database
 
-`ManagerDirectories` list all directories in a database
-
-`ManagerFiles` list all data in a `currentdirectory` -- page by page
+`ManagerFiles` -- list all data in a `currentdirectory` -- page by page
