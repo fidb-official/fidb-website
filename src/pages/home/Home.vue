@@ -33,6 +33,8 @@ const state = reactive(new State())
             </Lang>
           </a>
         </div>
+
+        <div class="py-16"></div>
       </div>
     </div>
   </PageLayout>

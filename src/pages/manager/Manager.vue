@@ -20,7 +20,6 @@ const state = reactive(
   <PageLayout>
     <div class="flex h-full px-3">
       <ManagerDirectories :state="state" class="w-64 border-r" />
-
       <ManagerFiles :state="state" class="px-3" />
     </div>
   </PageLayout>
