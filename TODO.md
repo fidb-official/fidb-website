@@ -7,3 +7,7 @@
 `ManagerFiles` -- list all data in a `currentdirectory` -- page by page
 
 `ManagerStatusBar`
+
+`Troll`
+
+[component] `Socrates`
