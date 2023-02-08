@@ -8,13 +8,22 @@ type Kind =
   | 'Object'
 
 export type Cell = {
+  '@id': string
+  '@revision': string
   columnName: string
   kind: Kind
   value: any
 }
 
-export function createCell(columnName: string, value: any): Cell {
+export function createCell(
+  id: string,
+  revision: string,
+  columnName: string,
+  value: any,
+): Cell {
   return {
+    '@id': id,
+    '@revision': revision,
     columnName,
     kind: valueKind(value),
     value,

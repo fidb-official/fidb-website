@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { Cell } from './Cell'
-import { Row } from './Row'
 import { State } from './State'
 import { tableColumnNames } from './Table'
 
-const { state, row, cell } = defineProps<{
+const { state, cell } = defineProps<{
   state: State
-  row: Row
   cell: Cell
 }>()
 
@@ -23,11 +21,11 @@ async function save(): Promise<void> {
     return
   }
 
-  const response = await fetch(`${state.url}/${row.data['@id']}`, {
+  const response = await fetch(`${state.url}/${cell['@id']}`, {
     method: 'PATCH',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({
-      '@revision': row.data['@revision'],
+      '@revision': cell['@revision'],
       [cell.columnName]: cell.value,
     }),
   })
