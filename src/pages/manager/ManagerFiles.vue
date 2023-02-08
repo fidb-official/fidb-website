@@ -46,11 +46,11 @@ const route = useRoute()
           class="overflow-auto"
         >
           <td
-            v-for="data of row"
-            :key="data['@id']"
+            v-for="(cell, index) of row.cells"
+            :key="index"
             class="overflow-auto whitespace-nowrap border border-black px-1"
           >
-            <TableCell :state="state" :data="data" />
+            <TableCell :state="state" :cell="cell" />
           </td>
         </tr>
       </tbody>

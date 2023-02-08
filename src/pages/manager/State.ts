@@ -1,5 +1,4 @@
-import { Table } from './Table'
-import { tableFromDataset } from './tableFromDataset'
+import { Table, tableFromDataset } from './Table'
 
 export type StateOptions = {
   url: string

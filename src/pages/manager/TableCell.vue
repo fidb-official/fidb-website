@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { State } from './State'
+import { Cell } from './Table'
 
-defineProps<{ state: State; data: any }>()
+defineProps<{
+  state: State
+  cell: Cell
+}>()
 </script>
 
 <template>
-  <div>{{ data.toString() }}</div>
+  <div>{{ cell.value.toString() }}</div>
 </template>
