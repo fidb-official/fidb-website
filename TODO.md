@@ -1,6 +1,10 @@
 # manager
 
-[manager] `ManagerTableCell` -- dispatch to all kind of cells
+[manager] `ManagerStatusBar`
+
+[manager] `ManagerMessageBar`
+
+[manager] `ManagerTableCellNumber` -- click to edit
 
 [manager] `ManagerTableCellNumber` -- click to edit
 [manager] `ManagerTableCellNull` -- click to edit

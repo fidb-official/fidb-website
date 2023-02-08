@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Cell } from './Cell'
 import { State } from './State'
-import { tableColumnNames } from './Table'
 
 defineProps<{
   state: State
@@ -11,11 +10,9 @@ defineProps<{
 
 <template>
   <div class="flex space-x-0.5 px-1">
-    <span class="text-blue-600">Table</span>
+    <span class="text-blue-600">Unknown</span>
     <span>(</span>
-    <span>{{ cell.value.length }}</span>
-    <span>,</span>
-    <span>{{ tableColumnNames(cell.value) }}</span>
+    <span>{{ cell.value }}</span>
     <span>)</span>
   </div>
 </template>

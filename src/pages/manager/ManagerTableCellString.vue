@@ -12,8 +12,8 @@ defineProps<{
 <template>
   <input
     v-if="state.currentCell === cell"
+    type="text"
     class="w-full bg-stone-200 px-1 ring-4 ring-stone-500 focus:outline-none"
-    :length="cell.value.length"
     v-model="cell.value"
     @keyup.enter="stateSaveCell(state, cell)"
     @blur="stateSaveCell(state, cell)"
