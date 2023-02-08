@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Cell } from './Cell'
 import { State } from './State'
+import { stateSaveCurrentCell } from './stateSaveCurrentCell'
 import { tableColumnNames } from './Table'
 
 const { state, cell } = defineProps<{
@@ -14,25 +15,6 @@ function active(): void {
 
 function isActive(): boolean {
   return state.currentCell === cell
-}
-
-async function save(): Promise<void> {
-  if (state.currentDirectory === undefined) {
-    return
-  }
-
-  const response = await fetch(`${state.url}/${cell['@id']}`, {
-    method: 'PATCH',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({
-      '@revision': cell['@revision'],
-      [cell.columnName]: cell.value,
-    }),
-  })
-
-  if (!response.ok) {
-    console.error(response)
-  }
 }
 </script>
 
@@ -67,14 +49,14 @@ async function save(): Promise<void> {
       </div>
     </div>
 
-    <div v-else-if="cell.kind === 'String'" class="">
+    <div v-else-if="cell.kind === 'String'">
       <input
         v-if="isActive()"
         class="w-full bg-stone-200 px-1 ring-4 ring-stone-500 focus:outline-none"
         :length="cell.value.length"
         v-model="cell.value"
-        @keyup.enter="save()"
-        @blur="save()"
+        @keyup.enter="stateSaveCurrentCell(state)"
+        @blur="stateSaveCurrentCell(state)"
       />
 
       <div v-else class="flex space-x-0.5 px-1">

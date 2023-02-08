@@ -11,7 +11,7 @@ export function tableColumnNames(dataset: Array<any>): Array<string> {
 
 export function createTable(dataset: Array<any>): Table {
   const columnNames = tableColumnNames(dataset)
-  const rows = dataset.map((data) => createRow(columnNames, data))
+  const rows = dataset.map((data, index) => createRow(index, columnNames, data))
 
   return {
     columnNames,

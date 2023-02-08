@@ -8,22 +8,19 @@ type Kind =
   | 'Object'
 
 export type Cell = {
-  '@id': string
-  '@revision': string
+  index: number
   columnName: string
   kind: Kind
   value: any
 }
 
 export function createCell(
-  id: string,
-  revision: string,
+  index: number,
   columnName: string,
   value: any,
 ): Cell {
   return {
-    '@id': id,
-    '@revision': revision,
+    index,
     columnName,
     kind: valueKind(value),
     value,
