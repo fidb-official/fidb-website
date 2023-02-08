@@ -2,7 +2,7 @@ import qs from 'qs'
 import { watch } from 'vue'
 import { State } from './State'
 
-export function stateReactUpdateDataset(state: State): void {
+export function stateReactivelyUpdateDataset(state: State): void {
   watch(
     () => state.currentDirectory,
 
