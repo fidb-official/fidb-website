@@ -8,11 +8,11 @@ import Lang from '../../components/Lang.vue'
 import { useForm } from '../../hooks/useForm'
 import PageLayout from '../../layouts/page-layout/PageLayout.vue'
 
+const router = useRouter()
 const form = useForm({ url: '' })
 
 function submit(event: Event) {
   form.submit(event, (values) => {
-    const router = useRouter()
     router.push(`/manager/${values.url}`)
   })
 }

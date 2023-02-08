@@ -1,10 +1,6 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
 import Lang from '../../components/Lang.vue'
 import PageLayout from '../../layouts/page-layout/PageLayout.vue'
-
-const router = useRouter()
-const route = useRoute()
 </script>
 
 <template>
