@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
 import Lang from '../../components/Lang.vue'
-import ManagerTableCell from './ManagerTableCell.vue'
+import ManagerTable from './ManagerTable.vue'
 import { State } from './State'
 
 defineProps<{ state: State }>()
@@ -26,34 +26,6 @@ const route = useRoute()
       </Lang>
     </div>
 
-    <table v-else class="w-full overflow-auto">
-      <thead class="overflow-auto">
-        <tr class="overflow-auto">
-          <th
-            v-for="name of state.table.columnNames"
-            :key="name"
-            class="overflow-auto whitespace-nowrap border border-black px-1 text-left"
-          >
-            {{ name.toString() }}
-          </th>
-        </tr>
-      </thead>
-
-      <tbody class="overflow-auto">
-        <tr
-          v-for="(row, index) of state.table.rows"
-          :key="index"
-          class="overflow-auto"
-        >
-          <td
-            v-for="(cell, index) of row.cells"
-            :key="index"
-            class="overflow-auto whitespace-nowrap border border-black px-1"
-          >
-            <ManagerTableCell :state="state" :cell="cell" />
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <ManagerTable v-else :state="state" />
   </div>
 </template>
