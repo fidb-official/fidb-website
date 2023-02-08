@@ -11,8 +11,7 @@ const { state, row, cell } = defineProps<{
 }>()
 
 function active(): void {
-  console.log(cell.value)
-  return (state.currentCell = cell)
+  state.currentCell = cell
 }
 
 function isActive(): boolean {
