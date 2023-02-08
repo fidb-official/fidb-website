@@ -4,22 +4,14 @@ import ManagerTableCellString from './ManagerTableCellString.vue'
 import { State } from './State'
 import { tableColumnNames } from './Table'
 
-const { state, cell } = defineProps<{
+defineProps<{
   state: State
   cell: Cell
 }>()
-
-function active(): void {
-  state.currentCell = cell
-}
-
-function isActive(): boolean {
-  return state.currentCell === cell
-}
 </script>
 
 <template>
-  <div class="hover:bg-stone-200" @click="active()">
+  <div class="hover:bg-stone-200" @click="state.currentCell = cell">
     <div v-if="cell.kind === 'Array'">
       <div class="flex space-x-0.5 px-1">
         <span class="text-blue-600">Array</span>

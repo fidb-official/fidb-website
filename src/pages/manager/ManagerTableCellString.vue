@@ -3,19 +3,15 @@ import { Cell } from './Cell'
 import { State } from './State'
 import { stateSaveCell } from './stateSaveCell'
 
-const { state, cell } = defineProps<{
+defineProps<{
   state: State
   cell: Cell
 }>()
-
-function isActive(): boolean {
-  return state.currentCell === cell
-}
 </script>
 
 <template>
   <input
-    v-if="isActive()"
+    v-if="state.currentCell === cell"
     class="w-full bg-stone-200 px-1 ring-4 ring-stone-500 focus:outline-none"
     :length="cell.value.length"
     v-model="cell.value"
