@@ -5,8 +5,12 @@ export type Table = {
   rows: Array<Row>
 }
 
+export function tableColumnNames(dataset: Array<any>): Array<string> {
+  return Array.from(new Set(dataset.flatMap(Object.keys)))
+}
+
 export function createTable(dataset: Array<any>): Table {
-  const columnNames = Array.from(new Set(dataset.flatMap(Object.keys)))
+  const columnNames = tableColumnNames(dataset)
   const rows = dataset.map((data) => createRow(columnNames, data))
 
   return {

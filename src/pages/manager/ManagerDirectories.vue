@@ -9,7 +9,7 @@ defineProps<{ state: State }>()
     <div v-for="directory of state.directories" :key="directory">
       <button
         v-if="directory === state.currentDirectory"
-        class="w-full bg-stone-200 px-2 text-left"
+        class="w-full bg-stone-300 px-2 text-left"
         @click="state.currentDirectory = directory"
       >
         {{ directory }}

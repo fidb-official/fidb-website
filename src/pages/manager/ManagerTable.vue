@@ -12,9 +12,9 @@ defineProps<{ state: State }>()
         <th
           v-for="name of state.table.columnNames"
           :key="name"
-          class="overflow-auto whitespace-nowrap border border-black px-1 text-left"
+          class="overflow-auto whitespace-nowrap border border-black text-left"
         >
-          {{ name.toString() }}
+          <span class="px-1">{{ name.toString() }}</span>
         </th>
       </tr>
     </thead>
@@ -28,7 +28,7 @@ defineProps<{ state: State }>()
         <td
           v-for="(cell, index) of row.cells"
           :key="index"
-          class="overflow-auto whitespace-nowrap border border-black px-1"
+          class="overflow-auto whitespace-nowrap border border-black"
         >
           <ManagerTableCell :state="state" :cell="cell" />
         </td>
