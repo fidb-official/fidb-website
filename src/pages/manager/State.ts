@@ -13,6 +13,7 @@ export type State = StateOptions & {
   table: Table
   currentCell?: Cell
   message: string
+  status: 'ok' | 'running' | 'error'
 }
 
 export function createState(options: StateOptions): State {
@@ -29,5 +30,6 @@ export function createState(options: StateOptions): State {
       return createTable(this.dataset)
     },
     message: '',
+    status: 'ok',
   }
 }

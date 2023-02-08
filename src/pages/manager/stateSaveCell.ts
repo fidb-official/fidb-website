@@ -1,3 +1,4 @@
+import { wait } from '../../utils/wait'
 import { Cell } from './Cell'
 import { State } from './State'
 
@@ -6,6 +7,11 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
   if (data[cell.columnName] === cell.value) {
     return
   }
+
+  state.message = '[stateSaveCell] saving...'
+  state.status = 'running'
+
+  await wait(3000)
 
   const response = await fetch(`${state.url}/${data['@id']}`, {
     method: 'PATCH',
@@ -18,7 +24,8 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
 
   if (!response.ok) {
     state.message = `[stateSaveCell] ${response.statusText}`
-    console.error(response)
+    state.status = 'error'
+    console.error({ response })
     return
   }
 
@@ -33,5 +40,6 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
     state.dataset[index] = result
   }
 
-  state.message = `[stateSaveCell] cell saved, @id: ${data['@id']}, column: ${cell.columnName}`
+  state.message = `[stateSaveCell] saved @id: ${data['@id']}, column: ${cell.columnName}`
+  state.status = 'ok'
 }

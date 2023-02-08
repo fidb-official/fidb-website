@@ -1,7 +1,5 @@
 # manager
 
-[manager] `ManagerStatusBar` -- show progress and error background-color
-
 [manager] `ManagerTableCellNumber` -- click to edit
 
 [manager] `ManagerTableCellNumber` -- click to edit
