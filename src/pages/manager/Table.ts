@@ -1,4 +1,4 @@
 export type Table = {
   columnNames: Array<string>
-  rows: Array<any>
+  rows: Array<Array<any>>
 }

@@ -1,5 +1,3 @@
-[manager] `tableFromDataset`
-
 [manager] `ManagerFiles` -- basic table view
 
 [manager] `ManagerFiles` -- table cell is array

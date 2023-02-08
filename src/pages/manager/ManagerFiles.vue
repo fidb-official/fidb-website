@@ -26,9 +26,11 @@ const route = useRoute()
     </div>
 
     <div v-else>
-      <div v-for="data of state.dataset" :key="data['@id']">
-        {{ data }}
-      </div>
+      {{ state.table }}
+
+      <!-- <div v-for="data of state.dataset" :key="data['@id']">
+           {{ data }}
+           </div> -->
     </div>
   </div>
 </template>
