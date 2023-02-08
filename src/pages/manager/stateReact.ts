@@ -1,11 +1,11 @@
 import { reactive } from 'vue'
 import { State } from './State'
-import { stateUpdateDataset } from './stateUpdateDataset'
+import { stateReactUpdateDataset } from './stateReactUpdateDataset'
 
 export function stateReact(inputState: State): State {
   const state = reactive<State>(inputState)
 
-  stateUpdateDataset(state)
+  stateReactUpdateDataset(state)
 
   return state
 }

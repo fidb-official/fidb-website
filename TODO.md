@@ -1,7 +1,5 @@
 # manager
 
-[manager] rename `stateUpdateDataset` to `stateReactUpdateDataset`
-
 [manager] `ManagerTableCell` -- `save` should update `state.dataset`
 
 [manager] `ManagerTableCell` -- dispatch to all kind of cells
