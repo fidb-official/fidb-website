@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Cell } from './Cell'
+import ManagerTableCellString from './ManagerTableCellString.vue'
 import { State } from './State'
-import { stateSaveCurrentCell } from './stateSaveCurrentCell'
 import { tableColumnNames } from './Table'
 
 const { state, cell } = defineProps<{
@@ -49,20 +49,11 @@ function isActive(): boolean {
       </div>
     </div>
 
-    <div v-else-if="cell.kind === 'String'">
-      <input
-        v-if="isActive()"
-        class="w-full bg-stone-200 px-1 ring-4 ring-stone-500 focus:outline-none"
-        :length="cell.value.length"
-        v-model="cell.value"
-        @keyup.enter="stateSaveCurrentCell(state)"
-        @blur="stateSaveCurrentCell(state)"
-      />
-
-      <div v-else class="flex space-x-0.5 px-1">
-        <span class="whitespace-pre">{{ cell.value }}</span>
-      </div>
-    </div>
+    <ManagerTableCellString
+      v-else-if="cell.kind === 'String'"
+      :state="state"
+      :cell="cell"
+    />
 
     <div v-else>
       <div class="flex space-x-0.5 px-1">

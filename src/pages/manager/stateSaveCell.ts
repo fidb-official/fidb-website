@@ -1,11 +1,7 @@
+import { Cell } from './Cell'
 import { State } from './State'
 
-export async function stateSaveCurrentCell(state: State): Promise<void> {
-  const cell = state.currentCell
-  if (cell === undefined) {
-    return
-  }
-
+export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
   const data = state.dataset[cell.index]
   if (data[cell.columnName] === cell.value) {
     return

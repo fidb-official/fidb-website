@@ -1,24 +1,13 @@
 # manager
 
-[manager] `ManagerTableCell` -- `save` should update `state.dataset`
-
 [manager] `ManagerTableCell` -- dispatch to all kind of cells
 
-- ManagerTableCellString
-- ManagerTableCellNumber
-- ManagerTableCellNull
-- ManagerTableCellBoolean
-- ManagerTableCellArray
-- ManagerTableCellTable
-- ManagerTableCellObject
-
-[manage] `ManagerTableCellString` -- click to edit
-[manage] `ManagerTableCellNumber` -- click to edit
-[manage] `ManagerTableCellNull` -- click to edit
-[manage] `ManagerTableCellBoolean` -- click to edit
-[manage] `ManagerTableCellArray` -- click to edit
-[manage] `ManagerTableCellTable` -- click to edit
-[manage] `ManagerTableCellObject` -- click to edit
+[manager] `ManagerTableCellNumber` -- click to edit
+[manager] `ManagerTableCellNull` -- click to edit
+[manager] `ManagerTableCellBoolean` -- click to edit
+[manager] `ManagerTableCellArray` -- click to edit
+[manager] `ManagerTableCellTable` -- click to edit
+[manager] `ManagerTableCellObject` -- click to edit
 
 [manager] `ManagerTableCell` -- `Array` -- hover show array
 
