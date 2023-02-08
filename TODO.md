@@ -1,6 +1,8 @@
 # manager
 
-[manager] `Cell` has `kind`
+[manager] `Value` in `Cell`
+
+[manager] `Value` has `kind`
 
 [manager] `ManagerTableCell` -- handle array of objects -- show all `propertyNames` and `length`
 
