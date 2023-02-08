@@ -2,6 +2,7 @@
 import { useRoute, useRouter } from 'vue-router'
 import Lang from '../../components/Lang.vue'
 import { State } from './State'
+import TableCell from './TableCell.vue'
 
 defineProps<{ state: State }>()
 
@@ -33,7 +34,7 @@ const route = useRoute()
             :key="name"
             class="overflow-auto whitespace-nowrap border border-black px-1 text-left"
           >
-            {{ name }}
+            {{ name.toString() }}
           </th>
         </tr>
       </thead>
@@ -49,7 +50,7 @@ const route = useRoute()
             :key="data['@id']"
             class="overflow-auto whitespace-nowrap border border-black px-1"
           >
-            {{ data }}
+            <TableCell :state="state" :data="data" />
           </td>
         </tr>
       </tbody>
