@@ -1,3 +1,4 @@
+import { Cell } from './Cell'
 import { createTable, Table } from './Table'
 
 export type StateOptions = {
@@ -10,6 +11,7 @@ export type State = StateOptions & {
   currentDirectory?: string
   dataset: Array<any>
   table: Table
+  currentCell?: Cell
 }
 
 export function createState(options: StateOptions): State {
