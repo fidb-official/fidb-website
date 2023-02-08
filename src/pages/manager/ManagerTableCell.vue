@@ -10,7 +10,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex space-x-0.5 px-1">
+  <div class="flex space-x-0.5 px-1 hover:bg-stone-200">
     <template v-if="cell.kind === 'Array'">
       <span class="text-blue-600">Array</span>
       <span>(</span>

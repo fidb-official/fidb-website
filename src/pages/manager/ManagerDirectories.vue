@@ -16,7 +16,7 @@ defineProps<{ state: State }>()
       </button>
       <button
         v-else
-        class="w-full px-2 text-left hover:bg-stone-100"
+        class="w-full px-2 text-left hover:bg-stone-200"
         @click="state.currentDirectory = directory"
       >
         {{ directory }}
