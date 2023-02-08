@@ -1,5 +1,9 @@
 # manager
 
+[manager] `Row` -- should not have `data`
+
+[manager] `ManagerTableCell` -- `save` should update `state.dataset`
+
 [manager] `ManagerTableCell` -- dispatch to all kind of cells
 
 - ManagerTableCellString
