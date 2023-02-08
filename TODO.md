@@ -1,4 +1,4 @@
-[manager] `datasetToTable`
+[manager] `tableFromDataset`
 
 [manager] `ManagerFiles` -- basic table view
 
