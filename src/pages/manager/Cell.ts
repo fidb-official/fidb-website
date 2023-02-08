@@ -32,6 +32,10 @@ export function valueKind(value: any): Kind {
     return 'Null'
   }
 
+  if (value === undefined) {
+    return 'Null'
+  }
+
   if (typeof value === 'boolean') {
     return 'Boolean'
   }
@@ -55,6 +59,11 @@ export function valueKind(value: any): Kind {
   if (typeof value === 'object') {
     return 'Object'
   }
+
+  console.error({
+    message: `[valueKind] unknown value`,
+    value,
+  })
 
   throw new Error(`[valueKind] unknown value: ${JSON.stringify(value)}`)
 }
