@@ -1,12 +1,8 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
 import ManagerTableCell from './ManagerTableCell.vue'
 import { State } from './State'
 
 defineProps<{ state: State }>()
-
-const router = useRouter()
-const route = useRoute()
 </script>
 
 <template>

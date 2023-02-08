@@ -9,9 +9,8 @@ import { State } from './State'
 
 const state = ref<State | null>(null)
 
-const route = useRoute()
-
 onMounted(async () => {
+  const route = useRoute()
   state.value = await loadState({
     url: route.params.url as string,
   })
