@@ -10,6 +10,7 @@ export type StateOptions = {
 export type State = StateOptions & {
   currentDirectory?: string
   page: number
+  size: number
   dataset: Array<any>
   table: Table
   currentCell?: Cell
@@ -26,6 +27,7 @@ export function createState(options: StateOptions): State {
     directories,
     currentDirectory: directories[0],
     page: 1,
+    size: 50,
     dataset: [],
     get table() {
       return createTable(this.dataset)

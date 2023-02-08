@@ -6,17 +6,19 @@ export async function stateUpdateDataset(state: State, directory: string) {
   state.message = `[stateUpdateDataset] running...`
   state.status = 'running'
 
+  const query = {
+    page: state.page,
+    size: state.size,
+    properties: {},
+  }
+
   const response = await fetch(
-    `${state.url}/${directory}?${qs.stringify({
-      page: state.page,
-      size: 50,
-      properties: {},
-    })}`,
+    `${state.url}/${directory}?${qs.stringify(query)}`,
   )
 
   const { results } = await response.json()
 
   state.dataset = results
-  state.message = `[stateUpdateDataset] directory: ${directory}, page: ${state.page}`
+  state.message = `[stateUpdateDataset] directory: ${directory}, page: ${state.page}, size: ${state.size}`
   state.status = 'ok'
 }

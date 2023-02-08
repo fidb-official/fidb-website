@@ -22,7 +22,12 @@ defineProps<{ state: State }>()
         {{ '<' }}
       </button>
       <div :title="`Page: ${state.page}`">{{ state.page }}</div>
-      <button @click="state.page++">{{ '>' }}</button>
+      <button
+        @click="state.page++"
+        :disabled="state.dataset.length < state.size"
+      >
+        {{ '>' }}
+      </button>
     </div>
     <div></div>
   </div>
