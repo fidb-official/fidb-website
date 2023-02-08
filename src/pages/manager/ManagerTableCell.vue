@@ -19,13 +19,13 @@ defineProps<{
 <template>
   <!-- prettier-ignore -->
   <div class="hover:bg-stone-200" @click="state.currentCell = cell">
-    <ManagerTableCellString v-if="cell.kind === 'String'" :state="state" :cell="cell" />
-    <ManagerTableCellNumber v-else-if="cell.kind === 'Number'" :state="state" :cell="cell" />
-    <ManagerTableCellNull v-else-if="cell.kind === 'Null'" :state="state" :cell="cell" />
-    <ManagerTableCellBoolean v-else-if="cell.kind === 'Boolean'" :state="state" :cell="cell" />
-    <ManagerTableCellArray v-else-if="cell.kind === 'Array'" :state="state" :cell="cell" />
-    <ManagerTableCellObject v-else-if="cell.kind === 'Object'" :state="state" :cell="cell" />
-    <ManagerTableCellTable v-else-if="cell.kind === 'Table'" :state="state" :cell="cell" />
-    <ManagerTableCellUnknown v-else :state="state" :cell="cell" />
+    <ManagerTableCellString v-if="cell.kind === 'String'" v-bind="$props" />
+    <ManagerTableCellNumber v-else-if="cell.kind === 'Number'" v-bind="$props" />
+    <ManagerTableCellNull v-else-if="cell.kind === 'Null'" v-bind="$props" />
+    <ManagerTableCellBoolean v-else-if="cell.kind === 'Boolean'" v-bind="$props" />
+    <ManagerTableCellArray v-else-if="cell.kind === 'Array'" v-bind="$props" />
+    <ManagerTableCellObject v-else-if="cell.kind === 'Object'" v-bind="$props" />
+    <ManagerTableCellTable v-else-if="cell.kind === 'Table'" v-bind="$props" />
+    <ManagerTableCellUnknown v-else v-bind="$props" />
   </div>
 </template>
