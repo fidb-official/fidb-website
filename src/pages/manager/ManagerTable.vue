@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import ManagerTableCell from './ManagerTableCell.vue'
+import ManagerTableRow from './ManagerTableRow.vue'
+
 import { State } from './State'
 
 defineProps<{ state: State }>()
@@ -25,13 +26,7 @@ defineProps<{ state: State }>()
         :key="index"
         class="overflow-auto"
       >
-        <td
-          v-for="(cell, index) of row.cells"
-          :key="index"
-          class="overflow-auto whitespace-nowrap border border-black"
-        >
-          <ManagerTableCell :state="state" :cell="cell" />
-        </td>
+        <ManagerTableRow :state="state" :row="row" />
       </tr>
     </tbody>
   </table>
