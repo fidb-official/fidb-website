@@ -15,6 +15,6 @@ defineProps<{
     :key="index"
     class="overflow-auto whitespace-nowrap border border-black"
   >
-    <ManagerTableCell :state="state" :cell="cell" />
+    <ManagerTableCell :state="state" :row="row" :cell="cell" />
   </td>
 </template>

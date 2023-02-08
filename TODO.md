@@ -1,6 +1,22 @@
 # manager
 
-[manager] `ManagerTableCell` -- click to edit
+[manager] `ManagerTableCell` -- dispatch to all kind of cells
+
+- ManagerTableCellString
+- ManagerTableCellNumber
+- ManagerTableCellNull
+- ManagerTableCellBoolean
+- ManagerTableCellArray
+- ManagerTableCellTable
+- ManagerTableCellObject
+
+[manage] `ManagerTableCellString` -- click to edit
+[manage] `ManagerTableCellNumber` -- click to edit
+[manage] `ManagerTableCellNull` -- click to edit
+[manage] `ManagerTableCellBoolean` -- click to edit
+[manage] `ManagerTableCellArray` -- click to edit
+[manage] `ManagerTableCellTable` -- click to edit
+[manage] `ManagerTableCellObject` -- click to edit
 
 [manager] `ManagerTableCell` -- `Array` -- hover show array
 
