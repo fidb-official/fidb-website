@@ -6,8 +6,8 @@ defineProps<{ state: State }>()
 
 <template>
   <div
-    class="flex items-center justify-between overflow-auto px-1 text-sm"
-    :class="true && 'bg-red-200 text-red-800'"
+    class="flex items-center justify-between overflow-auto px-1 text-sm font-bold"
+    :class="true && 'border-x border-black bg-black text-white'"
   >
     <div></div>
     <div>{{ state.url }}</div>

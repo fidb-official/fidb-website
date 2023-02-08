@@ -23,8 +23,8 @@ const state = stateReactive(props.state)
         <ManagerDataset class="overflow-auto" :state="state" />
       </div>
 
-      <ManagerStatusBar class="border-x border-black" :state="state" />
-      <ManagerMessageBar class="border-x border-black" :state="state" />
+      <ManagerStatusBar :state="state" />
+      <ManagerMessageBar :state="state" />
     </div>
 
     <ManagerFoot :state="state" />

@@ -12,6 +12,7 @@ export type State = StateOptions & {
   dataset: Array<any>
   table: Table
   currentCell?: Cell
+  message: string
 }
 
 export function createState(options: StateOptions): State {
@@ -27,5 +28,6 @@ export function createState(options: StateOptions): State {
     get table() {
       return createTable(this.dataset)
     },
+    message: '',
   }
 }

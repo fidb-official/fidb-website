@@ -17,6 +17,7 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
   })
 
   if (!response.ok) {
+    state.message = `[stateSaveCell] ${response.statusText}`
     console.error(response)
     return
   }
@@ -31,4 +32,6 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
   } else {
     state.dataset[index] = result
   }
+
+  state.message = `[stateSaveCell] cell saved, @id: ${data['@id']}, column: ${cell.columnName}`
 }
