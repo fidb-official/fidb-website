@@ -12,7 +12,7 @@ defineProps<{
 <template>
   <div
     class="flex space-x-0.5 px-1 hover:bg-stone-200"
-    :class="state.currentCell === cell && 'bg-stone-300 hover:bg-stone-300'"
+    :class="state.currentCell === cell && 'bg-stone-200 ring-4 ring-stone-400'"
     @click="state.currentCell = cell"
   >
     <template v-if="cell.kind === 'Array'">
