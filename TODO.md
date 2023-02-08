@@ -1,7 +1,5 @@
 # manager
 
-[manager] rename `stateReactive` to `stateReact`
-
 [manager] rename `stateUpdateDataset` to `stateReactUpdateDataset`
 
 [manager] `ManagerTableCell` -- `save` should update `state.dataset`

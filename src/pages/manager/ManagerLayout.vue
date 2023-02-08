@@ -4,11 +4,11 @@ import ManagerDirectories from './ManagerDirectories.vue'
 import ManagerFoot from './ManagerFoot.vue'
 import ManagerHead from './ManagerHead.vue'
 import { State } from './State'
-import { stateReactive } from './stateReactive'
+import { stateReact } from './stateReact'
 
 const props = defineProps<{ state: State }>()
 
-const state = stateReactive(props.state)
+const state = stateReact(props.state)
 </script>
 
 <template>
