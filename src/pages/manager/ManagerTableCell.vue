@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Cell } from './Cell'
 import { State } from './State'
-import { Cell } from './Table'
 
 defineProps<{
   state: State

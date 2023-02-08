@@ -1,3 +1,5 @@
+import { Cell } from './Cell'
+
 export type Table = {
   columnNames: Array<string>
   rows: Array<{
@@ -6,12 +8,7 @@ export type Table = {
   }>
 }
 
-export type Cell = {
-  columnName: string
-  value: any
-}
-
-export function tableFromDataset(dataset: Array<any>): Table {
+export function createTable(dataset: Array<any>): Table {
   const columnNames = Array.from(new Set(dataset.flatMap(Object.keys)))
   const rows = dataset.map((data) => ({
     data,

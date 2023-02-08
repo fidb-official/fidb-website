@@ -1,4 +1,4 @@
-import { Table, tableFromDataset } from './Table'
+import { createTable, Table } from './Table'
 
 export type StateOptions = {
   url: string
@@ -23,7 +23,7 @@ export function createState(options: StateOptions): State {
     currentDirectory,
     dataset,
     get table() {
-      return tableFromDataset(this.dataset)
+      return createTable(this.dataset)
     },
   }
 }
