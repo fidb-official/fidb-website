@@ -12,9 +12,9 @@
 
 [manager] `TableCell` -- handle array of objects -- hover show nested table
 
-[manager] `ManagerFiles` -- info about page
+[manager] `ManagerDataset` -- info about page
 
-[manager] `ManagerFiles` -- control about page
+[manager] `ManagerDataset` -- control about page
 
 # home
 

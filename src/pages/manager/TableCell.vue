@@ -9,5 +9,7 @@ defineProps<{
 </script>
 
 <template>
-  <div>{{ cell.value.toString() }}</div>
+  <div>
+    <div>{{ cell.value.toString() }}</div>
+  </div>
 </template>
