@@ -5,5 +5,7 @@ defineProps<{ state: State }>()
 </script>
 
 <template>
-  <div class="pb-3"></div>
+  <div class="flex items-center overflow-auto px-1 text-sm">
+    ManagerMessageBar
+  </div>
 </template>
