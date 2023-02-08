@@ -7,10 +7,10 @@ import { loadState } from './loadState'
 import ManagerLayout from './ManagerLayout.vue'
 import { State } from './State'
 
+const route = useRoute()
 const state = ref<State | null>(null)
 
 onMounted(async () => {
-  const route = useRoute()
   state.value = await loadState({
     url: route.params.url as string,
   })
