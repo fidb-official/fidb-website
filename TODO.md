@@ -1,5 +1,13 @@
 # manager
 
+[manager] create directory
+
+[manager] delete directory
+
+[manager] create row
+
+[manager] delete row
+
 [manager] `ManagerTableCellNull` -- click to edit -- be able to change type
 
 [manager] `ManagerTableCellBoolean` -- click to edit
