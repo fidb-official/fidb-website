@@ -1,29 +1,32 @@
-import qs from 'qs'
 import { watch } from 'vue'
 import { State } from './State'
+import { stateUpdateDataset } from './stateUpdateDataset'
 
 export function stateReactivelyUpdateDataset(state: State): void {
   watch(
     () => state.currentDirectory,
 
-    async (to, from) => {
-      state.dataset = []
-
-      if (to === undefined) {
+    async (directory) => {
+      if (directory === undefined) {
         return
       }
 
-      const response = await fetch(
-        `${state.url}/${to}?${qs.stringify({
-          page: 1,
-          size: 50,
-          properties: {},
-        })}`,
-      )
+      await stateUpdateDataset(state, directory)
+    },
 
-      const { results } = await response.json()
+    { immediate: true },
+  )
 
-      state.dataset = results
+  watch(
+    () => state.page,
+
+    async () => {
+      const directory = state.currentDirectory
+      if (directory === undefined) {
+        return
+      }
+
+      await stateUpdateDataset(state, directory)
     },
 
     { immediate: true },

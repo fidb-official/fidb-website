@@ -1,4 +1,3 @@
-import { wait } from '../../utils/wait'
 import { Cell } from './Cell'
 import { State } from './State'
 
@@ -10,8 +9,6 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
 
   state.message = '[stateSaveCell] saving...'
   state.status = 'running'
-
-  await wait(3000)
 
   const response = await fetch(`${state.url}/${data['@id']}`, {
     method: 'PATCH',

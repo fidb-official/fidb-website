@@ -16,6 +16,13 @@ defineProps<{ state: State }>()
     ]"
   >
     <div></div>
-    <div>{{ state.url }}</div>
+    <div class="flex space-x-3">
+      <button @click="state.page--" :disabled="state.page === 1">
+        {{ '<' }}
+      </button>
+      <div :title="`Page: ${state.page}`">{{ state.page }}</div>
+      <button @click="state.page++">{{ '>' }}</button>
+    </div>
+    <div></div>
   </div>
 </template>

@@ -9,6 +9,7 @@ export type StateOptions = {
 
 export type State = StateOptions & {
   currentDirectory?: string
+  page: number
   dataset: Array<any>
   table: Table
   currentCell?: Cell
@@ -18,14 +19,14 @@ export type State = StateOptions & {
 
 export function createState(options: StateOptions): State {
   const { url, root, directories } = options
-  const currentDirectory = directories[0]
-  const dataset: Array<any> = []
+
   return {
     url,
     root,
     directories,
-    currentDirectory,
-    dataset,
+    currentDirectory: directories[0],
+    page: 1,
+    dataset: [],
     get table() {
       return createTable(this.dataset)
     },
