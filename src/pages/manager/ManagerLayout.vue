@@ -12,12 +12,12 @@ const state = stateReactive(props.state)
 </script>
 
 <template>
-  <div class="flex h-full flex-col px-3">
+  <div class="flex h-full flex-col overflow-auto px-3">
     <ManagerHead :state="state" />
 
-    <div class="flex h-full border-y border-black">
+    <div class="flex h-full overflow-auto border-y border-black">
       <ManagerDirectories :state="state" class="w-80 border-r border-black" />
-      <ManagerFiles :state="state" class="pl-2" />
+      <ManagerFiles :state="state" class="overflow-auto" />
     </div>
 
     <ManagerFoot :state="state" />

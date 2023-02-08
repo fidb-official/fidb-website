@@ -1,5 +1,3 @@
-[manager] `ManagerFiles` -- basic table view
-
 [manager] `ManagerFiles` -- table cell is array
 
 [manager] `ManagerFiles` -- table cell is array of objects (nested table)
