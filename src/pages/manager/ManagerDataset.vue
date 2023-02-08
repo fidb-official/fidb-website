@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
 import Lang from '../../components/Lang.vue'
+import ManagerTableCell from './ManagerTableCell.vue'
 import { State } from './State'
-import TableCell from './TableCell.vue'
 
 defineProps<{ state: State }>()
 
@@ -50,7 +50,7 @@ const route = useRoute()
             :key="index"
             class="overflow-auto whitespace-nowrap border border-black px-1"
           >
-            <TableCell :state="state" :cell="cell" />
+            <ManagerTableCell :state="state" :cell="cell" />
           </td>
         </tr>
       </tbody>
