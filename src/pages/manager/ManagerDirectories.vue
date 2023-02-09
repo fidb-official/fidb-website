@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Lang from '../../components/Lang.vue'
 import { State } from './State'
 
 defineProps<{ state: State }>()
@@ -6,6 +7,22 @@ defineProps<{ state: State }>()
 
 <template>
   <div class="flex h-full flex-col border-l border-black">
+    <div class="flex w-full justify-between border-b border-black font-bold">
+      <div class="px-2">
+        <Lang>
+          <template #zh> 文件夹： </template>
+          <template #en> Directories: </template>
+        </Lang>
+      </div>
+
+      <button class="px-2 hover:ring-2 hover:ring-inset hover:ring-black">
+        <Lang>
+          <template #zh> + </template>
+          <template #en> + </template>
+        </Lang>
+      </button>
+    </div>
+
     <div v-for="directory of state.directories" :key="directory">
       <button
         v-if="directory === state.currentDirectory"
