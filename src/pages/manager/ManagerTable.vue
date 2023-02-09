@@ -13,7 +13,7 @@ defineProps<{ state: State }>()
       <ManagerTableHead class="ring-1 ring-black" :state="state" />
     </thead>
 
-    <tbody class="border border-black">
+    <tbody>
       <ManagerTableRow
         v-for="(row, index) of state.table.rows"
         :key="index"
