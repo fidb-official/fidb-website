@@ -1,12 +1,16 @@
 # manager
 
-[manager] create row
-[manager] delete row
+[manager] extract `ManagerTableHead`
+[manager] `ManagerTableHead` -- show corner column
+[manager] `ManagerTableRow` -- show index column
 
-[manager] special view for `@id` & `@revision`
-[manager] special view for `@createdAt` & `@updatedAt`
+[manager] `ManagerTableHead` -- create row
+[manager] `ManagerTableRow` -- delete row
 
-[manager] refresh data on revision mismatch
+[manager] `ManagerTableCell` -- special view for `@id` & `@revision`
+[manager] `ManagerTableCell` -- special view for `@createdAt` & `@updatedAt`
+
+[manager] `stateSaveCell` -- refresh data on revision mismatch
 
 [manager] `ManagerTableCellNull` -- click to edit -- be able to change type
 [manager] `ManagerTableCellBoolean` -- click to edit
