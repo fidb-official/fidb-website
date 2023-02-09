@@ -16,10 +16,7 @@ defineProps<{ state: State }>()
       </div>
 
       <button class="px-2 hover:ring-2 hover:ring-inset hover:ring-black">
-        <Lang>
-          <template #zh> + </template>
-          <template #en> + </template>
-        </Lang>
+        +
       </button>
     </div>
 
