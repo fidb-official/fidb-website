@@ -5,19 +5,22 @@ defineProps<{ state: State }>()
 </script>
 
 <template>
-  <tr class="overflow-auto">
+  <tr>
     <th
-      class="sticky left-0 overflow-auto whitespace-nowrap border border-black bg-white text-right"
+      class="sticky left-0 border border-black bg-white text-right ring-1 ring-black"
     >
-      <span class="px-1"> # </span>
+      <!-- negative margin for chrome -->
+      <div class="-m-0.5 border-r border-black px-1">#</div>
     </th>
 
+    <!-- ring for firefox -->
+    <!-- border for chrome -->
     <th
       v-for="name of state.table.columnNames"
       :key="name"
-      class="overflow-auto whitespace-nowrap border border-black text-left"
+      class="overflow-auto whitespace-nowrap border border-black text-left ring-1 ring-black"
     >
-      <span class="px-1">{{ name.toString() }}</span>
+      <div class="px-1">{{ name.toString() }}</div>
     </th>
   </tr>
 </template>

@@ -9,12 +9,17 @@ defineProps<{ state: State }>()
 
 <template>
   <table>
-    <ManagerTableHead class="sticky top-0 z-10 bg-white" :state="state" />
-    <ManagerTableRow
-      v-for="(row, index) of state.table.rows"
-      :key="index"
-      :state="state"
-      :row="row"
-    />
+    <thead class="sticky top-0 z-10 bg-white">
+      <ManagerTableHead class="ring-1 ring-black" :state="state" />
+    </thead>
+
+    <tbody class="border border-black">
+      <ManagerTableRow
+        v-for="(row, index) of state.table.rows"
+        :key="index"
+        :state="state"
+        :row="row"
+      />
+    </tbody>
   </table>
 </template>
