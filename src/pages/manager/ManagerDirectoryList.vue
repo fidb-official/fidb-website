@@ -7,12 +7,21 @@ import { stateDeleteDirectory } from './stateDeleteDirectory'
 defineProps<{ state: State }>()
 
 async function createDirectory(state: State) {
-  const directory = prompt('Directory:')
+  const directory = window.prompt('Directory:')
   if (!directory) {
     return
   }
 
   await stateCreateDirectory(state, directory)
+}
+
+async function deleteDirectory(state: State, directory: string) {
+  const message = `[deleteDirectory] directory: ${directory}`
+  if (!window.confirm(message)) {
+    return
+  }
+
+  await stateDeleteDirectory(state, directory)
 }
 </script>
 
@@ -48,7 +57,7 @@ async function createDirectory(state: State) {
 
         <button
           class="bg-black px-2 font-bold text-white hover:ring-2 hover:ring-inset hover:ring-white"
-          @click="stateDeleteDirectory(state, directory)"
+          @click="deleteDirectory(state, directory)"
         >
           <span class="px-0.5"> - </span>
         </button>
@@ -64,7 +73,7 @@ async function createDirectory(state: State) {
 
         <button
           class="px-2 font-bold hover:ring-2 hover:ring-inset hover:ring-black"
-          @click="stateDeleteDirectory(state, directory)"
+          @click="deleteDirectory(state, directory)"
         >
           <span class="px-0.5"> - </span>
         </button>

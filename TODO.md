@@ -1,7 +1,5 @@
 # manager
 
-[manager] delete directory
-
 [manager] create row
 [manager] delete row
 
