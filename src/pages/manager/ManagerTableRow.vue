@@ -20,7 +20,7 @@ defineProps<{
       <button
         tabindex="0"
         class="w-full border-black px-1 text-right"
-        @click="state.currentRowIndex = row.index"
+        @mouseover="state.currentRowIndex = row.index"
       >
         {{ row.index }}
       </button>
