@@ -1,8 +1,19 @@
 <script setup lang="ts">
 import Lang from '../../components/Lang.vue'
 import { State } from './State'
+import { stateCreateDirectory } from './stateCreateDirectory'
 
 defineProps<{ state: State }>()
+
+async function createDirectory(state: State) {
+  const directory = prompt('Directory:')
+  if (!directory) {
+    return
+  }
+
+  await stateCreateDirectory(state, directory)
+  state.currentDirectory = directory
+}
 </script>
 
 <template>
@@ -15,7 +26,10 @@ defineProps<{ state: State }>()
         </Lang>
       </div>
 
-      <button class="px-2 hover:ring-2 hover:ring-inset hover:ring-black">
+      <button
+        class="px-2 hover:ring-2 hover:ring-inset hover:ring-black"
+        @click="createDirectory(state)"
+      >
         <Lang>
           <template #zh> + </template>
           <template #en> + </template>

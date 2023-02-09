@@ -22,7 +22,6 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
   if (!response.ok) {
     state.message = `[stateSaveCell] ${response.statusText}`
     state.status = 'error'
-    console.error({ response })
     return
   }
 
