@@ -15,12 +15,7 @@ defineProps<{ state: State }>()
       </Lang>
     </div>
 
-    <div v-else-if="state.dataset.length === 0" class="px-1">
-      <Lang>
-        <template #zh> 还没有数据。 </template>
-        <template #en> No data yet. </template>
-      </Lang>
-    </div>
+    <div v-else-if="state.dataset.length === 0"></div>
 
     <ManagerTable v-else :state="state" />
   </div>
