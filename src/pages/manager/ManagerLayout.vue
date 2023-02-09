@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ManagerDataset from './ManagerDataset.vue'
-import ManagerDirectories from './ManagerDirectories.vue'
+import ManagerDirectoryList from './ManagerDirectoryList.vue'
 import ManagerFoot from './ManagerFoot.vue'
 import ManagerHead from './ManagerHead.vue'
 import ManagerMessageBar from './ManagerMessageBar.vue'
@@ -19,7 +19,10 @@ const state = stateReactive(props.state)
 
     <div class="flex h-full flex-col overflow-auto border-y border-black">
       <div class="flex h-full overflow-auto">
-        <ManagerDirectories class="w-80 border-r border-black" :state="state" />
+        <ManagerDirectoryList
+          class="w-80 border-r border-black"
+          :state="state"
+        />
         <ManagerDataset class="overflow-auto" :state="state" />
       </div>
 
