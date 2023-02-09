@@ -12,7 +12,7 @@ defineProps<{
 <template>
   <input
     v-if="state.currentCell === cell"
-    class="w-full bg-stone-200 px-1 ring-4 ring-stone-500 focus:outline-none"
+    class="w-full bg-stone-200 px-1 ring-2 ring-stone-500 focus:outline-none"
     v-model="cell.value"
     @keyup.enter="stateSaveCell(state, cell)"
     @blur="stateSaveCell(state, cell)"

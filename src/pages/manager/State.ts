@@ -13,6 +13,7 @@ export type State = StateOptions & {
   size: number
   dataset: Array<any>
   table: Table
+  currentRowIndex?: number
   currentCell?: Cell
   message: string
   status: 'ok' | 'running' | 'error'

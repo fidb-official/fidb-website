@@ -10,11 +10,20 @@ defineProps<{
 </script>
 
 <template>
-  <tr>
+  <tr :class="[state.currentRowIndex === row.index && 'bg-stone-200']">
     <td
-      class="sticky left-0 border border-black bg-white text-right ring-1 ring-black"
+      class="sticky left-0 border border-black ring-1 ring-black"
+      :class="[
+        state.currentRowIndex === row.index ? 'bg-stone-200' : 'bg-white',
+      ]"
     >
-      <div class="-m-0.5 border-r border-black px-1">{{ row.index }}</div>
+      <button
+        tabindex="0"
+        class="w-full border-black px-1 text-right"
+        @click="state.currentRowIndex = row.index"
+      >
+        {{ row.index }}
+      </button>
     </td>
 
     <td
