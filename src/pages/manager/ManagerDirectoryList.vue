@@ -2,7 +2,7 @@
 import Lang from '../../components/Lang.vue'
 import { State } from './State'
 import { stateCreateDirectory } from './stateCreateDirectory'
-// import { stateDeleteDirectory } from './stateDeleteDirectory'
+import { stateDeleteDirectory } from './stateDeleteDirectory'
 
 defineProps<{ state: State }>()
 
@@ -13,11 +13,6 @@ async function createDirectory(state: State) {
   }
 
   await stateCreateDirectory(state, directory)
-  state.currentDirectory = directory
-}
-
-async function deleteDirectory(state: State) {
-  //
 }
 </script>
 
@@ -53,7 +48,7 @@ async function deleteDirectory(state: State) {
 
         <button
           class="bg-black px-2 font-bold text-white hover:ring-2 hover:ring-inset hover:ring-white"
-          @click="deleteDirectory(state)"
+          @click="stateDeleteDirectory(state, directory)"
         >
           <span class="px-0.5"> - </span>
         </button>
@@ -69,7 +64,7 @@ async function deleteDirectory(state: State) {
 
         <button
           class="px-2 font-bold hover:ring-2 hover:ring-inset hover:ring-black"
-          @click="deleteDirectory(state)"
+          @click="stateDeleteDirectory(state, directory)"
         >
           <span class="px-0.5"> - </span>
         </button>
