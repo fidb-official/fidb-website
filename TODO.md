@@ -1,9 +1,5 @@
 # manager
 
-[manager] `stateReactivelyUnsetCurrentCell`
-
-[manager] `stateReactivelyUnsetCurrentRowIndex`
-
 [manager] `ManagerTableHead` -- create row
 [manager] `ManagerTableRow` -- delete row
 
