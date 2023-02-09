@@ -1,8 +1,5 @@
 # manager
 
-[manager] `ManagerTableHead` -- show corner column
-[manager] `ManagerTableRow` -- show index column
-
 [manager] `ManagerTableHead` -- create row
 [manager] `ManagerTableRow` -- delete row
 

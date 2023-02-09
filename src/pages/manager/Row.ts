@@ -1,6 +1,7 @@
 import { Cell, createCell } from './Cell'
 
 export type Row = {
+  index: number
   cells: Array<Cell>
 }
 
@@ -10,6 +11,7 @@ export function createRow(
   data: any,
 ): Row {
   return {
+    index,
     cells: columnNames.map((columnName) =>
       createCell(index, columnName, data[columnName]),
     ),

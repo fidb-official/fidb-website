@@ -11,6 +11,10 @@ defineProps<{
 
 <template>
   <tr>
+    <td class="overflow-auto whitespace-nowrap border border-black text-right">
+      <span class="px-1"> {{ row.index }}</span>
+    </td>
+
     <td
       v-for="(cell, index) of row.cells"
       :key="index"

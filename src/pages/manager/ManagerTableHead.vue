@@ -6,6 +6,10 @@ defineProps<{ state: State }>()
 
 <template>
   <tr class="overflow-auto">
+    <th class="overflow-auto whitespace-nowrap border border-black text-right">
+      <span class="px-1"> # </span>
+    </th>
+
     <th
       v-for="name of state.table.columnNames"
       :key="name"
