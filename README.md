@@ -1,7 +1,8 @@
 # FiDB Website
 
-[ [WEBSITE](https://fidb.dev)
-| [MAIN REPO](https://github.com/fidb-official/fidb) ]
+Website of [FiDB](https://github.com/fidb-official/fidb).
+
+[ [WEBSITE](https://fidb.dev) ]
 
 ## Development
 
