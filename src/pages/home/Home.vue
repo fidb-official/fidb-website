@@ -16,7 +16,7 @@ import PageLayout from '../../layouts/page-layout/PageLayout.vue'
         <div>
           <a
             class="underline decoration-2"
-            href="https://github.com/xieyuheng/fidb"
+            href="https://github.com/fidb-official/fidb"
             target="_blank"
           >
             <Lang>

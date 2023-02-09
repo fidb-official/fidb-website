@@ -22,7 +22,7 @@ import PageLogo from './PageLogo.vue'
 
       <PageLang class="hover:underline" />
 
-      <a href="https://github.com/xieyuheng/fidb" target="_blank">
+      <a href="https://github.com/fidb-official/fidb" target="_blank">
         <IconGithub class="h-5 w-5" />
       </a>
     </div>

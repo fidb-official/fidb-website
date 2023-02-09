@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@headlessui/vue": "^1.7.9",
-    "@heroicons/vue": "^2.0.14",
+    "@heroicons/vue": "^2.0.15",
     "@types/lodash": "^4.14.191",
     "@types/qs": "^6.9.7",
     "@vitejs/plugin-vue": "^4.0.0",
