@@ -1,6 +1,5 @@
 # manager
 
-[manager] extract `ManagerTableHead`
 [manager] `ManagerTableHead` -- show corner column
 [manager] `ManagerTableRow` -- show index column
 
