@@ -8,12 +8,14 @@ defineProps<{ state: State }>()
 </script>
 
 <template>
-  <table class="w-full overflow-auto">
-    <ManagerTableHead :state="state" />
+  <table>
+    <ManagerTableHead
+      class="sticky top-0 z-10 bg-white opacity-90"
+      :state="state"
+    />
     <ManagerTableRow
       v-for="(row, index) of state.table.rows"
       :key="index"
-      class="overflow-auto"
       :state="state"
       :row="row"
     />

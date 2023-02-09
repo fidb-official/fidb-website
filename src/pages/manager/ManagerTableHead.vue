@@ -6,7 +6,9 @@ defineProps<{ state: State }>()
 
 <template>
   <tr class="overflow-auto">
-    <th class="overflow-auto whitespace-nowrap border border-black text-right">
+    <th
+      class="sticky left-0 overflow-auto whitespace-nowrap border border-black bg-white text-right opacity-90"
+    >
       <span class="px-1"> # </span>
     </th>
 

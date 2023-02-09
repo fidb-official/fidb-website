@@ -11,7 +11,9 @@ defineProps<{
 
 <template>
   <tr>
-    <td class="overflow-auto whitespace-nowrap border border-black text-right">
+    <td
+      class="sticky left-0 overflow-auto whitespace-nowrap border border-black bg-white text-right opacity-90"
+    >
       <span class="px-1"> {{ row.index }}</span>
     </td>
 
