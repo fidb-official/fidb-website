@@ -9,14 +9,13 @@ export async function stateCreateDirectory(
   state: State,
   directory: string,
 ): Promise<void> {
-  stateStatusRunning(state, {
-    who: 'stateCreateDirectory',
-    message: 'creating',
-  })
+  const who = 'stateCreateDirectory'
+
+  stateStatusRunning(state, { who, message: 'creating' })
 
   if (state.directories.includes(directory)) {
     stateStatusOk(state, {
-      who: 'stateCreateDirectory',
+      who,
       message: 'directory already exists',
       data: { directory },
     })
@@ -33,13 +32,13 @@ export async function stateCreateDirectory(
     state.directories.push(directory)
     state.currentDirectory = directory
     stateStatusOk(state, {
-      who: 'stateCreateDirectory',
+      who,
       message: 'created directory',
       data: { directory },
     })
   } else {
     stateStatusError(state, {
-      who: 'stateCreateDirectory',
+      who,
       message: response.statusText,
     })
   }

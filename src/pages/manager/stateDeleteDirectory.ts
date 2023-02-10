@@ -1,16 +1,24 @@
 import { State } from './State'
+import {
+  stateStatusError,
+  stateStatusOk,
+  stateStatusRunning,
+} from './stateStatus'
 
 export async function stateDeleteDirectory(
   state: State,
   directory: string,
 ): Promise<void> {
-  state.message = '[stateDeleteDirectory] deleting...'
-  state.status = 'running'
+  const who = 'stateDeleteDirectory'
+
+  stateStatusRunning(state, { who, message: 'deleting' })
 
   if (!state.directories.includes(directory)) {
-    state.message =
-      '[stateDeleteDirectory] directory does not exist: ${directory}'
-    state.status = 'ok'
+    stateStatusOk(state, {
+      who,
+      message: 'directory does not exist',
+      data: { directory },
+    })
     return
   }
 
@@ -28,10 +36,15 @@ export async function stateDeleteDirectory(
       state.currentDirectory = state.directories[0]
     }
 
-    state.message = `[stateDeleteDirectory] deleted directory: ${directory}`
-    state.status = 'ok'
+    stateStatusOk(state, {
+      who,
+      message: 'deleted directory',
+      data: { directory },
+    })
   } else {
-    state.message = `[stateDeleteDirectory] ${response.statusText}`
-    state.status = 'error'
+    stateStatusError(state, {
+      who,
+      message: response.statusText,
+    })
   }
 }

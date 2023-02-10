@@ -1,7 +1,5 @@
 # manager
 
-[manager] use `stateStatusOk` and friends
-
 [manager] `ManagerTableCellNull` -- click to edit -- be able to change type
 [manager] `ManagerTableCellBoolean` -- click to edit
 [manager] `ManagerTableCellArray` -- click to edit

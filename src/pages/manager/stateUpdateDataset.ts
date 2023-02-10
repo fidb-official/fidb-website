@@ -7,9 +7,11 @@ import {
 } from './stateStatus'
 
 export async function stateUpdateDataset(state: State, directory: string) {
+  const who = 'stateUpdateDataset'
+
   state.dataset = []
   stateStatusRunning(state, {
-    who: 'stateUpdateDataset',
+    who,
     message: 'running',
   })
 
@@ -28,7 +30,7 @@ export async function stateUpdateDataset(state: State, directory: string) {
 
     state.dataset = results
     stateStatusOk(state, {
-      who: 'stateUpdateDataset',
+      who,
       data: {
         directory,
         page: state.page,
@@ -37,7 +39,7 @@ export async function stateUpdateDataset(state: State, directory: string) {
     })
   } else {
     stateStatusError(state, {
-      who: 'stateUpdateDataset',
+      who,
       message: response.statusText,
     })
   }

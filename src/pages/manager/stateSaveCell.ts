@@ -1,14 +1,20 @@
 import { Cell } from './Cell'
 import { State } from './State'
+import {
+  stateStatusError,
+  stateStatusOk,
+  stateStatusRunning,
+} from './stateStatus'
 
 export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
+  const who = 'stateSaveCell'
+
   const data = state.dataset[cell.index]
   if (data[cell.columnName] === cell.value) {
     return
   }
 
-  state.message = '[stateSaveCell] saving...'
-  state.status = 'running'
+  stateStatusRunning(state, { who, message: 'saving' })
 
   const response = await fetch(`${state.url}/${data['@id']}`, {
     method: 'PATCH',
@@ -21,20 +27,34 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
 
   if (response.ok) {
     stateReplaceData(state, await response.json())
-    state.message = `[stateSaveCell] saved @id: ${data['@id']}, column: ${cell.columnName}`
-    state.status = 'ok'
+    stateStatusOk(state, {
+      who,
+      message: 'saved',
+      data: {
+        '@id': data['@id'],
+        column: cell.columnName,
+      },
+    })
   } else {
-    state.message = `[stateSaveCell] ${response.statusText}, fetching new data `
-    state.status = 'running'
+    stateStatusRunning(state, {
+      who,
+      message: `${response.statusText}, fetching new data`,
+      data: {
+        '@id': data['@id'],
+        column: cell.columnName,
+      },
+    })
 
     if (response.status === 409) {
       const response = await fetch(`${state.url}/${data['@id']}`)
-      state.status = 'error'
+      stateStatusError(state)
       if (response.ok) {
         stateReplaceData(state, await response.json())
       } else {
-        state.message = `[stateSaveCell] ${response.statusText}, fail to fetch new data`
-        state.status = 'error'
+        stateStatusError(state, {
+          who,
+          message: `${response.statusText}, fail to fetch new data`,
+        })
       }
     }
   }

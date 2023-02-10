@@ -1,16 +1,25 @@
 import { State } from './State'
+import {
+  stateStatusError,
+  stateStatusOk,
+  stateStatusRunning,
+} from './stateStatus'
 
 export async function stateDeleteRow(
   state: State,
   index: number,
 ): Promise<void> {
-  state.message = '[stateDeleteRow] deleting...'
-  state.status = 'running'
+  const who = 'stateDeleteRow'
+
+  stateStatusRunning(state, { who, message: 'deleting' })
 
   const data = state.dataset[index]
   if (data === undefined) {
-    state.message = '[stateDeleteRow] row does not exist: ${index}'
-    state.status = 'ok'
+    stateStatusOk(state, {
+      who,
+      message: 'row does not exist',
+      data: { index },
+    })
     return
   }
 
@@ -24,10 +33,15 @@ export async function stateDeleteRow(
 
   if (response.ok) {
     state.dataset.splice(index, 1)
-    state.message = `[stateDeleteRow] deleted row: ${index}`
-    state.status = 'ok'
+    stateStatusOk(state, {
+      who,
+      message: 'row deleted',
+      data: { index },
+    })
   } else {
-    state.message = `[stateDeleteRow] ${response.statusText}`
-    state.status = 'error'
+    stateStatusError(state, {
+      who,
+      message: response.statusText,
+    })
   }
 }
