@@ -1,10 +1,17 @@
 import qs from 'qs'
 import { State } from './State'
+import {
+  stateStatusError,
+  stateStatusOk,
+  stateStatusRunning,
+} from './stateStatus'
 
 export async function stateUpdateDataset(state: State, directory: string) {
   state.dataset = []
-  state.message = `[stateUpdateDataset] running...`
-  state.status = 'running'
+  stateStatusRunning(state, {
+    who: 'stateUpdateDataset',
+    message: 'running',
+  })
 
   const query = {
     page: state.page,
@@ -20,10 +27,18 @@ export async function stateUpdateDataset(state: State, directory: string) {
     const { results } = await response.json()
 
     state.dataset = results
-    state.message = `[stateUpdateDataset] directory: ${directory}, page: ${state.page}, size: ${state.size}`
-    state.status = 'ok'
+    stateStatusOk(state, {
+      who: 'stateUpdateDataset',
+      data: {
+        directory,
+        page: state.page,
+        size: state.size,
+      },
+    })
   } else {
-    state.message = `[stateUpdateDataset] ${response.statusText}`
-    state.status = 'error'
+    stateStatusError(state, {
+      who: 'stateUpdateDataset',
+      message: response.statusText,
+    })
   }
 }
