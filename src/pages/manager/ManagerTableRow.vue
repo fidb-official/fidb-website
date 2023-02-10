@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import ManagerTableCell from './ManagerTableCell.vue'
+import ManagerTableRowDialog from './ManagerTableRowDialog.vue'
 import { Row } from './Row'
 import { State } from './State'
 
@@ -7,6 +9,12 @@ defineProps<{
   state: State
   row: Row
 }>()
+
+const isOpen = ref(false)
+
+function close() {
+  isOpen.value = false
+}
 </script>
 
 <template>
@@ -21,6 +29,7 @@ defineProps<{
       <div
         class="-m-0.5 border-r border-black px-1 text-right"
         @mouseover="state.currentRowIndex = row.index"
+        @click="isOpen = true"
       >
         {{ row.index }}
       </div>
@@ -33,5 +42,7 @@ defineProps<{
     >
       <ManagerTableCell :state="state" :row="row" :cell="cell" />
     </td>
+
+    <ManagerTableRowDialog :state="state" :isOpen="isOpen" :close="close" />
   </tr>
 </template>

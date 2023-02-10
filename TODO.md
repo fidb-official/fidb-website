@@ -1,8 +1,10 @@
 # manager
 
-[manager] `ManagerTableLastRow` -- create row
+[manager] `ManagerTableRowDialog` -- show json of `currentRowIndex`
+[manager] `ManagerTableRowDialog` -- delete row
 
-[manager] `ManagerTableRow` -- delete row
+[manager] `ManagerTableLastRow`
+[manager] `ManagerTableLastRowDialog` -- create row
 
 [manager] `ManagerTableCell` -- special view for `@id` & `@revision`
 [manager] `ManagerTableCell` -- special view for `@createdAt` & `@updatedAt`
