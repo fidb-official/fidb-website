@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel } from '@headlessui/vue'
+import { Row } from './Row'
 import { State } from './State'
 
 defineProps<{
   state: State
+  row: Row
   isOpen: boolean
   close: () => void
 }>()
