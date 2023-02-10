@@ -1,7 +1,5 @@
 # manager
 
-[manager] `ManagerTableCellBoolean` -- color red and green
-[manager] `ManagerTableCellBoolean` -- click to edit
 [manager] `ManagerTableCellNull` -- click to edit -- be able to change type
 [manager] `ManagerTableCellArray` -- click to edit
 [manager] `ManagerTableCellTable` -- click to edit

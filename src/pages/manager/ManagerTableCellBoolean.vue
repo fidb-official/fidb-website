@@ -10,15 +10,20 @@ defineProps<{
 </script>
 
 <template>
-  <input
-    v-if="state.currentCell === cell"
-    class="w-full bg-stone-200 px-1 ring-2 ring-stone-500 focus:outline-none"
-    v-model="cell.value"
-    @keyup.enter="stateSaveCell(state, cell)"
-    @blur="stateSaveCell(state, cell)"
-  />
-
-  <div v-else class="flex space-x-0.5 px-1">
-    <span class="whitespace-nowrap">{{ cell.value }}</span>
+  <div :class="[cell.value ? 'text-green-600' : 'text-red-600']">
+    <div
+      class="flex justify-end space-x-0.5 px-1"
+      :class="[
+        state.currentCell === cell && 'bg-stone-200 ring-2 ring-stone-500',
+      ]"
+      @click="
+        () => {
+          cell.value = !cell.value
+          stateSaveCell(state, cell)
+        }
+      "
+    >
+      <span class="whitespace-nowrap">{{ cell.value }}</span>
+    </div>
   </div>
 </template>
