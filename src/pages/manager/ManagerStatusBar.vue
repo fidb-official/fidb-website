@@ -17,21 +17,22 @@ defineProps<{ state: State }>()
     ]"
   >
     <div></div>
-    <div class="flex space-x-3">
+    <div class="flex">
       <button
         @click="state.page--"
         :disabled="state.page === 1"
-        :class="[state.page !== 1 && 'px-1 hover:ring-1 hover:ring-white']"
+        class="px-1"
+        :class="[state.page !== 1 && 'hover:ring-1 hover:ring-white']"
       >
         {{ '<' }}
       </button>
-      <div :title="`Page: ${state.page}`">{{ state.page }}</div>
+      <div class="px-2" :title="`Page: ${state.page}`">{{ state.page }}</div>
       <button
         @click="state.page++"
         :disabled="state.dataset.length < state.size"
+        class="px-1"
         :class="[
-          state.dataset.length >= state.size &&
-            'px-1 hover:ring-1 hover:ring-white',
+          state.dataset.length >= state.size && 'hover:ring-1 hover:ring-white',
         ]"
       >
         {{ '>' }}
