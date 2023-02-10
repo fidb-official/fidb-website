@@ -31,6 +31,11 @@ defineProps<{
 
         <div class="h-full overflow-auto p-6">
           <div class="flex flex-col space-y-3">
+            <div class="flex space-x-0.5">
+              <div class="font-bold">#</div>
+              <div>{{ row.index }}</div>
+            </div>
+
             <div v-for="cell of row.cells" :key="cell.columnName">
               <div class="font-bold">{{ cell.columnName }}</div>
               <div>{{ cell.value }}</div>
