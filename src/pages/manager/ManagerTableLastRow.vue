@@ -3,9 +3,7 @@ import { ref } from 'vue'
 import ManagerTableLastRowDialog from './ManagerTableLastRowDialog.vue'
 import { State } from './State'
 
-defineProps<{
-  state: State
-}>()
+defineProps<{ state: State }>()
 
 const isOpen = ref(false)
 
