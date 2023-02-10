@@ -1,6 +1,7 @@
 # manager
 
 [manager] `ManagerTableRowDialog` -- delete row
+[manager] `ManagerTableRowDialog` -- X button
 
 [manager] `ManagerTableLastRow`
 [manager] `ManagerTableLastRowDialog` -- create row

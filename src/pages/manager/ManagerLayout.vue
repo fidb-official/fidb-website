@@ -20,7 +20,7 @@ const state = stateReactive(props.state)
     <div class="flex h-full flex-col overflow-auto border-y border-black">
       <div class="flex h-full overflow-auto">
         <ManagerDirectoryList
-          class="w-80 border-r border-black"
+          class="w-24 border-r border-black sm:w-32 md:w-80"
           :state="state"
         />
         <ManagerDataset class="overflow-auto" :state="state" />
