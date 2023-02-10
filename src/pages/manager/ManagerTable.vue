@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ManagerTableHead from './ManagerTableHead.vue'
+import ManagerTableLastRow from './ManagerTableLastRow.vue'
 import ManagerTableRow from './ManagerTableRow.vue'
 
 import { State } from './State'
@@ -20,6 +21,7 @@ defineProps<{ state: State }>()
         :state="state"
         :row="row"
       />
+      <ManagerTableLastRow :state="state" />
     </tbody>
   </table>
 </template>

@@ -1,6 +1,9 @@
 # manager
 
-[manager] `ManagerTableLastRow`
+[manager] `ManagerTableLastRowDialog`
+
+[manager] `ManagerTableRowDialogCell` -- edit each cell
+
 [manager] `ManagerTableLastRowDialog` -- create row
 
 [manager] `ManagerTableCell` -- special view for `@id` & `@revision`
