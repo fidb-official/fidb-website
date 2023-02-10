@@ -1,6 +1,5 @@
 # manager
 
-[manager] `ManagerTableRowDialog` -- show json of `currentRowIndex`
 [manager] `ManagerTableRowDialog` -- delete row
 
 [manager] `ManagerTableLastRow`

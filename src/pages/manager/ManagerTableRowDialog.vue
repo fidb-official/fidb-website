@@ -13,32 +13,21 @@ defineProps<{
 
 <template>
   <Dialog as="div" :open="isOpen" @close="close()" class="relative z-10">
-    <div class="fixed inset-0 bg-black bg-opacity-10" />
+    <div class="fixed inset-0 h-screen w-screen bg-black bg-opacity-10" />
 
-    <div class="fixed inset-0">
-      <div class="flex min-h-full items-center justify-center">
-        <DialogPanel
-          class="max-w-md border border-black bg-white p-6 text-left"
-        >
-          <div class="text-lg font-bold">Payment successful</div>
-
-          <div class="pt-2">
-            <p>
-              Your payment has been successfully submitted. We’ve sent you an
-              email with all of the details of your order.
-            </p>
+    <div
+      class="fixed inset-0 flex h-screen w-screen items-center justify-center"
+    >
+      <DialogPanel
+        class="h-4/5 w-3/5 overflow-auto border border-black bg-white p-6 text-left"
+      >
+        <div class="flex flex-col space-y-3">
+          <div v-for="cell of row.cells" :key="cell.columnName">
+            <div class="font-bold">{{ cell.columnName }}</div>
+            <div>{{ cell.value }}</div>
           </div>
-
-          <div class="pt-4">
-            <button
-              class="justify-center border border-black p-3"
-              @click="close()"
-            >
-              Got it, thanks!
-            </button>
-          </div>
-        </DialogPanel>
-      </div>
+        </div>
+      </DialogPanel>
     </div>
   </Dialog>
 </template>
