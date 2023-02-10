@@ -1,15 +1,5 @@
 # manager
 
-[manager] `ManagerTableRowDialogCell` -- dispatch to each cell type
-
-[manager] `ManagerTableRowDialogCellString` -- edit
-[manager] `ManagerTableRowDialogCellNumber` -- edit
-[manager] `ManagerTableRowDialogCellArray` -- edit
-[manager] `ManagerTableRowDialogCellObject` -- edit
-[manager] `ManagerTableRowDialogCellTable` -- edit
-[manager] `ManagerTableRowDialogCellBoolean` -- edit
-[manager] `ManagerTableRowDialogCellNull` -- edit
-
 [manager] `ManagerTableLastRowDialog` -- create row
 
 [manager] `ManagerTableCell` -- special view for `@id` & `@revision`
@@ -22,6 +12,14 @@
 [manager] `ManagerTableCellArray` -- click to edit
 [manager] `ManagerTableCellTable` -- click to edit
 [manager] `ManagerTableCellObject` -- click to edit
+
+[manager] `ManagerTableRowDialogCellString` -- edit
+[manager] `ManagerTableRowDialogCellNumber` -- edit
+[manager] `ManagerTableRowDialogCellArray` -- edit
+[manager] `ManagerTableRowDialogCellObject` -- edit
+[manager] `ManagerTableRowDialogCellTable` -- edit
+[manager] `ManagerTableRowDialogCellBoolean` -- edit
+[manager] `ManagerTableRowDialogCellNull` -- edit
 
 [manager] `ManagerTableCellArray` -- hover show array
 [manager] `ManagerTableCellTable` -- hover show nested table
