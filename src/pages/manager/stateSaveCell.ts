@@ -19,23 +19,34 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
     }),
   })
 
-  if (!response.ok) {
+  if (response.ok) {
+    stateReplaceData(state, await response.json())
+
+    state.message = `[stateSaveCell] saved @id: ${data['@id']}, column: ${cell.columnName}`
+    state.status = 'ok'
+  } else {
     state.message = `[stateSaveCell] ${response.statusText}`
     state.status = 'error'
-    return
-  }
 
-  const result = await response.json()
+    if (response.status === 409) {
+      const response = await fetch(`${state.url}/${data['@id']}`)
+
+      if (response.ok) {
+        stateReplaceData(state, await response.json())
+      } else {
+        state.message = `[stateSaveCell / fetch new data] ${response.statusText}`
+        state.status = 'error'
+      }
+    }
+  }
+}
+
+function stateReplaceData(state: State, input: any) {
   const index = state.dataset.findIndex(
-    (data: any) => data['@id'] === result['@id'],
+    (data: any) => data['@id'] === input['@id'],
   )
 
-  if (index === -1) {
-    state.dataset.push(result)
-  } else {
-    state.dataset[index] = result
+  if (index !== -1) {
+    state.dataset[index] = input
   }
-
-  state.message = `[stateSaveCell] saved @id: ${data['@id']}, column: ${cell.columnName}`
-  state.status = 'ok'
 }

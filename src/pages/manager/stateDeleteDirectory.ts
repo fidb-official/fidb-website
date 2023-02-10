@@ -18,21 +18,20 @@ export async function stateDeleteDirectory(
     method: 'DELETE',
   })
 
-  if (!response.ok) {
+  if (response.ok) {
+    const index = state.directories.indexOf(directory)
+    if (index !== -1) {
+      state.directories.splice(index, 1)
+    }
+
+    if (state.currentDirectory == directory) {
+      state.currentDirectory = state.directories[0]
+    }
+
+    state.message = `[stateDeleteDirectory] deleted directory: ${directory}`
+    state.status = 'ok'
+  } else {
     state.message = `[stateDeleteDirectory] ${response.statusText}`
     state.status = 'error'
-    return
   }
-
-  const index = state.directories.indexOf(directory)
-  if (index !== -1) {
-    state.directories.splice(index, 1)
-  }
-
-  if (state.currentDirectory == directory) {
-    state.currentDirectory = state.directories[0]
-  }
-
-  state.message = `[stateDeleteDirectory] deleted directory: ${directory}`
-  state.status = 'ok'
 }

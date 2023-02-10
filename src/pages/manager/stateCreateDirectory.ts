@@ -20,15 +20,14 @@ export async function stateCreateDirectory(
     body: JSON.stringify({ directory }),
   })
 
-  if (!response.ok) {
+  if (response.ok) {
+    state.directories.push(directory)
+    state.currentDirectory = directory
+
+    state.message = `[stateCreateDirectory] created directory: ${directory}`
+    state.status = 'ok'
+  } else {
     state.message = `[stateCreateDirectory] ${response.statusText}`
     state.status = 'error'
-    return
   }
-
-  state.directories.push(directory)
-  state.currentDirectory = directory
-
-  state.message = `[stateCreateDirectory] created directory: ${directory}`
-  state.status = 'ok'
 }

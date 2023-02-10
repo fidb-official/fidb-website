@@ -11,6 +11,7 @@ export async function stateDeleteRow(
   if (data === undefined) {
     state.message = '[stateDeleteRow] row does not exist: ${index}'
     state.status = 'ok'
+    return
   }
 
   const response = await fetch(`${state.url}/${data['@id']}`, {
@@ -21,14 +22,13 @@ export async function stateDeleteRow(
     }),
   })
 
-  if (!response.ok) {
+  if (response.ok) {
+    state.dataset.splice(index, 1)
+
+    state.message = `[stateDeleteRow] deleted row: ${index}`
+    state.status = 'ok'
+  } else {
     state.message = `[stateDeleteRow] ${response.statusText}`
     state.status = 'error'
-    return
   }
-
-  state.dataset.splice(index, 1)
-
-  state.message = `[stateDeleteRow] deleted row: ${index}`
-  state.status = 'ok'
 }
