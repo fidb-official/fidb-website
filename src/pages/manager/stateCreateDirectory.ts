@@ -1,16 +1,25 @@
 import { State } from './State'
+import {
+  stateStatusError,
+  stateStatusOk,
+  stateStatusRunning,
+} from './stateStatus'
 
 export async function stateCreateDirectory(
   state: State,
   directory: string,
 ): Promise<void> {
-  state.message = '[stateCreateDirectory] creating...'
-  state.status = 'running'
+  stateStatusRunning(state, {
+    who: 'stateCreateDirectory',
+    message: 'creating',
+  })
 
   if (state.directories.includes(directory)) {
-    state.message =
-      '[stateCreateDirectory] directory already exists: ${directory}'
-    state.status = 'ok'
+    stateStatusOk(state, {
+      who: 'stateCreateDirectory',
+      message: 'directory already exists',
+      data: { directory },
+    })
     return
   }
 
@@ -23,10 +32,15 @@ export async function stateCreateDirectory(
   if (response.ok) {
     state.directories.push(directory)
     state.currentDirectory = directory
-    state.message = `[stateCreateDirectory] created directory: ${directory}`
-    state.status = 'ok'
+    stateStatusOk(state, {
+      who: 'stateCreateDirectory',
+      message: 'created directory',
+      data: { directory },
+    })
   } else {
-    state.message = `[stateCreateDirectory] ${response.statusText}`
-    state.status = 'error'
+    stateStatusError(state, {
+      who: 'stateCreateDirectory',
+      message: response.statusText,
+    })
   }
 }
