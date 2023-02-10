@@ -1,6 +1,14 @@
 # manager
 
-[manager] `ManagerTableRowDialogCell` -- edit each cell
+[manager] `ManagerTableRowDialogCell` -- dispatch to each cell type
+
+[manager] `ManagerTableRowDialogCellString` -- edit
+[manager] `ManagerTableRowDialogCellNumber` -- edit
+[manager] `ManagerTableRowDialogCellArray` -- edit
+[manager] `ManagerTableRowDialogCellObject` -- edit
+[manager] `ManagerTableRowDialogCellTable` -- edit
+[manager] `ManagerTableRowDialogCellBoolean` -- edit
+[manager] `ManagerTableRowDialogCellNull` -- edit
 
 [manager] `ManagerTableLastRowDialog` -- create row
 

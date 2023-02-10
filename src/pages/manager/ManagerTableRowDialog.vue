@@ -2,6 +2,7 @@
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import Lang from '../../components/Lang.vue'
+import ManagerTableRowDialogCell from './ManagerTableRowDialogCell.vue'
 import { Row } from './Row'
 import { State } from './State'
 import { stateDeleteRow } from './stateDeleteRow'
@@ -38,10 +39,12 @@ defineProps<{
               <div>{{ row.index }}</div>
             </div>
 
-            <div v-for="cell of row.cells" :key="cell.columnName">
-              <div class="font-bold">{{ cell.columnName }}</div>
-              <div>{{ cell.value }}</div>
-            </div>
+            <ManagerTableRowDialogCell
+              v-for="cell of row.cells"
+              :key="cell.columnName"
+              :state="state"
+              :cell="cell"
+            />
 
             <div class="flex justify-end">
               <button
