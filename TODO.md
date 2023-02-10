@@ -1,7 +1,5 @@
 # manager
 
-[manager] `ManagerTableLastRowDialog`
-
 [manager] `ManagerTableRowDialogCell` -- edit each cell
 
 [manager] `ManagerTableLastRowDialog` -- create row
