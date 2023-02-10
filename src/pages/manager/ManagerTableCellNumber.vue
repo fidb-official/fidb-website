@@ -10,16 +10,18 @@ defineProps<{
 </script>
 
 <template>
-  <input
-    v-if="state.currentCell === cell"
-    type="number"
-    class="w-full bg-stone-200 px-1 ring-2 ring-stone-500 focus:outline-none"
-    v-model="cell.value"
-    @keyup.enter="stateSaveCell(state, cell)"
-    @blur="stateSaveCell(state, cell)"
-  />
+  <div class="text-yellow-600">
+    <input
+      v-if="state.currentCell === cell"
+      type="number"
+      class="w-full bg-stone-200 px-1 ring-2 ring-stone-500 focus:outline-none"
+      v-model="cell.value"
+      @keyup.enter="stateSaveCell(state, cell)"
+      @blur="stateSaveCell(state, cell)"
+    />
 
-  <div v-else class="flex space-x-0.5 px-1">
-    <span class="whitespace-pre">{{ cell.value }}&nbsp;</span>
+    <div v-else class="flex justify-end space-x-0.5 px-1">
+      <span class="whitespace-nowrap">{{ cell.value }}&nbsp;</span>
+    </div>
   </div>
 </template>

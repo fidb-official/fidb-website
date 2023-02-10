@@ -20,6 +20,6 @@ defineProps<{
   />
 
   <div v-else class="flex space-x-0.5 px-1">
-    <span class="whitespace-pre">{{ cell.value }}&nbsp;</span>
+    <span class="whitespace-nowrap">{{ cell.value }}&nbsp;</span>
   </div>
 </template>
