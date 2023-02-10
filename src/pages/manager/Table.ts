@@ -5,8 +5,18 @@ export type Table = {
   rows: Array<Row>
 }
 
+function arrayDedup<A>(array: Array<A>): Array<A> {
+  return Array.from(new Set(array))
+}
+
 export function tableColumnNames(dataset: Array<any>): Array<string> {
-  return Array.from(new Set(dataset.flatMap(Object.keys)))
+  let columnNames = dataset.flatMap(Object.keys)
+
+  if (columnNames.includes('@id')) {
+    columnNames.unshift('@id')
+  }
+
+  return arrayDedup(columnNames)
 }
 
 export function createTable(dataset: Array<any>): Table {
