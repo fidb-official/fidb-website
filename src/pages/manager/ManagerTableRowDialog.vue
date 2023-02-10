@@ -19,7 +19,7 @@ defineProps<{
       class="fixed inset-0 flex h-screen w-screen items-center justify-center"
     >
       <DialogPanel
-        class="h-4/5 w-3/5 overflow-auto border border-black bg-white p-6"
+        class="h-4/5 w-5/6 overflow-auto border border-black bg-white p-6 md:w-3/5"
       >
         <div class="flex flex-col space-y-3">
           <div v-for="cell of row.cells" :key="cell.columnName">
