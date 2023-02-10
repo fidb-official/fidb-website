@@ -3,12 +3,15 @@
 [manager] `ManagerTableCellId`
 [manager] `ManagerTableCellRevision`
 
+[manager] `ManagerTableCell` -- special view for `@createdAt` & `@updatedAt`
+
+[manager] `ManagerTableCellString` -- max length
+
 [manager] `ManagerTableCellNull` -- click to edit -- be able to change type
+
 [manager] `ManagerTableCellArray` -- click to edit
 [manager] `ManagerTableCellTable` -- click to edit
 [manager] `ManagerTableCellObject` -- click to edit
-
-[manager] `ManagerTableCell` -- special view for `@createdAt` & `@updatedAt`
 
 [manager] `ManagerTableCellArray` -- hover show array
 [manager] `ManagerTableCellTable` -- hover show nested table
