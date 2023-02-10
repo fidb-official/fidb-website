@@ -27,7 +27,7 @@ function close() {
     >
       <!-- negative margin for chrome (must use div) -->
       <div
-        class="-m-0.5 border-r border-black px-1 text-right"
+        class="-m-0.5 border-r border-black px-3 text-right"
         @mouseover="state.currentRowIndex = row.index"
         @click="isOpen = true"
       >

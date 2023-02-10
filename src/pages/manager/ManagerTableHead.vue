@@ -10,7 +10,7 @@ defineProps<{ state: State }>()
       class="sticky left-0 border border-black bg-white text-right ring-1 ring-black"
     >
       <!-- negative margin for chrome (must use div) -->
-      <div class="-m-0.5 border-r border-black px-1">#</div>
+      <div class="-m-0.5 border-r border-black px-3">#</div>
     </th>
 
     <!-- ring for firefox -->
