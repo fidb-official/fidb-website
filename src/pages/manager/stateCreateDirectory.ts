@@ -23,7 +23,6 @@ export async function stateCreateDirectory(
   if (response.ok) {
     state.directories.push(directory)
     state.currentDirectory = directory
-
     state.message = `[stateCreateDirectory] created directory: ${directory}`
     state.status = 'ok'
   } else {

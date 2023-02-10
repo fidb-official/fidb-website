@@ -21,20 +21,19 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
 
   if (response.ok) {
     stateReplaceData(state, await response.json())
-
     state.message = `[stateSaveCell] saved @id: ${data['@id']}, column: ${cell.columnName}`
     state.status = 'ok'
   } else {
-    state.message = `[stateSaveCell] ${response.statusText}`
-    state.status = 'error'
+    state.message = `[stateSaveCell] ${response.statusText}, fetching new data `
+    state.status = 'running'
 
     if (response.status === 409) {
       const response = await fetch(`${state.url}/${data['@id']}`)
-
+      state.status = 'error'
       if (response.ok) {
         stateReplaceData(state, await response.json())
       } else {
-        state.message = `[stateSaveCell / fetch new data] ${response.statusText}`
+        state.message = `[stateSaveCell] ${response.statusText}, fail to fetch new data`
         state.status = 'error'
       }
     }

@@ -24,7 +24,6 @@ export async function stateDeleteRow(
 
   if (response.ok) {
     state.dataset.splice(index, 1)
-
     state.message = `[stateDeleteRow] deleted row: ${index}`
     state.status = 'ok'
   } else {
