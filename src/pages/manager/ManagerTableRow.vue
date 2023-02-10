@@ -17,13 +17,13 @@ defineProps<{
         state.currentRowIndex === row.index ? 'bg-stone-200' : 'bg-white',
       ]"
     >
-      <button
-        tabindex="0"
-        class="w-full border-black px-1 text-right"
+      <!-- negative margin for chrome (must use div) -->
+      <div
+        class="-m-0.5 border-r border-black px-1 text-right"
         @mouseover="state.currentRowIndex = row.index"
       >
         {{ row.index }}
-      </button>
+      </div>
     </td>
 
     <td
