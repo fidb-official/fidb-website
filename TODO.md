@@ -1,11 +1,13 @@
 # manager
 
+[manager] `ManagerTableCellId`
+[manager] `ManagerTableCellRevision`
+
 [manager] `ManagerTableCellNull` -- click to edit -- be able to change type
 [manager] `ManagerTableCellArray` -- click to edit
 [manager] `ManagerTableCellTable` -- click to edit
 [manager] `ManagerTableCellObject` -- click to edit
 
-[manager] `ManagerTableCell` -- special view for `@id` & `@revision`
 [manager] `ManagerTableCell` -- special view for `@createdAt` & `@updatedAt`
 
 [manager] `ManagerTableCellArray` -- hover show array
