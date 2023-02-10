@@ -1,6 +1,7 @@
 # manager
 
-[manager] `ManagerTableHead` -- create row
+[manager] `ManagerTableLastRow` -- create row
+
 [manager] `ManagerTableRow` -- delete row
 
 [manager] `ManagerTableCell` -- special view for `@id` & `@revision`
