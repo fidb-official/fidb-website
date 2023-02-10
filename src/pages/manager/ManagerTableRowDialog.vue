@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
+import Lang from '../../components/Lang.vue'
 import { Row } from './Row'
 import { State } from './State'
+import { stateDeleteRow } from './stateDeleteRow'
 
 defineProps<{
   state: State
@@ -39,6 +41,23 @@ defineProps<{
             <div v-for="cell of row.cells" :key="cell.columnName">
               <div class="font-bold">{{ cell.columnName }}</div>
               <div>{{ cell.value }}</div>
+            </div>
+
+            <div class="flex justify-end">
+              <button
+                class="rounded-sm border border-black p-3 font-bold hover:bg-stone-100"
+                @click="
+                  () => {
+                    stateDeleteRow(state, row.index)
+                    close()
+                  }
+                "
+              >
+                <Lang>
+                  <template #zh> 删除 </template>
+                  <template #en> Delete </template>
+                </Lang>
+              </button>
             </div>
           </div>
         </div>
