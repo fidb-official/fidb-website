@@ -20,7 +20,7 @@ defineProps<{
       class="fixed inset-0 flex h-screen w-screen items-center justify-center"
     >
       <DialogPanel
-        class="relative h-4/5 w-5/6 overflow-auto border border-black bg-white p-6 md:w-3/5"
+        class="relative h-4/5 w-5/6 overflow-auto border border-black bg-white md:w-3/5"
       >
         <button
           class="absolute top-4 right-4 hover:ring-2 hover:ring-black"
@@ -29,10 +29,12 @@ defineProps<{
           <XMarkIcon class="h-8 w-8 stroke-1" />
         </button>
 
-        <div class="flex flex-col space-y-3">
-          <div v-for="cell of row.cells" :key="cell.columnName">
-            <div class="font-bold">{{ cell.columnName }}</div>
-            <div>{{ cell.value }}</div>
+        <div class="h-full overflow-auto p-6">
+          <div class="flex flex-col space-y-3">
+            <div v-for="cell of row.cells" :key="cell.columnName">
+              <div class="font-bold">{{ cell.columnName }}</div>
+              <div>{{ cell.value }}</div>
+            </div>
           </div>
         </div>
       </DialogPanel>
