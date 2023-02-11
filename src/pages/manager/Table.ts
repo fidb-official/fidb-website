@@ -13,8 +13,11 @@ function arrayDedup<A>(array: Array<A>): Array<A> {
 export function tableColumnNames(dataset: Array<any>): Array<string> {
   let columnNames = dataset.flatMap(Object.keys)
 
+  columnNames = arrayDedup(columnNames)
+
   // '@id' as the first column
   if (columnNames.includes('@id')) {
+    columnNames.splice(columnNames.indexOf('@id'), 1)
     columnNames.unshift('@id')
   }
 
@@ -24,7 +27,7 @@ export function tableColumnNames(dataset: Array<any>): Array<string> {
     columnNames.push('@revision')
   }
 
-  return arrayDedup(columnNames)
+  return columnNames
 }
 
 export function createTable(dataset: Array<any>): Table {
