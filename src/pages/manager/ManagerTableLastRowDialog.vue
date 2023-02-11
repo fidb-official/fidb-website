@@ -19,22 +19,22 @@ defineProps<{
       class="fixed inset-0 flex h-screen w-screen items-center justify-center"
     >
       <DialogPanel
-        class="relative h-4/5 w-5/6 overflow-auto border border-black bg-white md:w-3/5"
+        class="h-4/5 w-5/6 overflow-auto border border-black bg-white md:w-3/5"
       >
-        <button
-          class="absolute top-4 right-4 hover:ring-1 hover:ring-black"
-          @click="close()"
-        >
-          <XMarkIcon class="h-6 w-6 stroke-1" />
-        </button>
-
         <div class="h-full overflow-auto p-6">
           <div class="flex flex-col space-y-3">
-            <div class="flex">
+            <div class="flex justify-between">
               <Lang class="font-bold">
                 <template #zh> 新行 </template>
                 <template #en> New row </template>
               </Lang>
+
+              <button
+                class="border border-black hover:bg-stone-100"
+                @click="close()"
+              >
+                <XMarkIcon class="h-6 w-6 stroke-1 p-0.5" />
+              </button>
             </div>
 
             <div class="border-t border-black"></div>
@@ -43,6 +43,8 @@ defineProps<{
               <div class="font-bold">{{ name }}</div>
               <div>TODO</div>
             </div>
+
+            <div class="border-t border-black"></div>
           </div>
         </div>
       </DialogPanel>

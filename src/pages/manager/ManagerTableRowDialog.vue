@@ -31,8 +31,11 @@ defineProps<{
                 <span>{{ row.index }}</span>
               </div>
 
-              <button class="hover:ring-1 hover:ring-black" @click="close()">
-                <XMarkIcon class="h-6 w-6 stroke-1" />
+              <button
+                class="border border-black hover:bg-stone-100"
+                @click="close()"
+              >
+                <XMarkIcon class="h-6 w-6 stroke-1 p-0.5" />
               </button>
             </div>
 
@@ -45,9 +48,11 @@ defineProps<{
               :cell="cell"
             />
 
+            <div class="border-t border-black"></div>
+
             <div class="flex justify-end">
               <button
-                class="rounded-sm border border-black p-3 font-bold hover:bg-stone-100"
+                class="rounded-sm border border-black p-3 hover:bg-stone-100"
                 @click="
                   () => {
                     stateDeleteRow(state, row.index)

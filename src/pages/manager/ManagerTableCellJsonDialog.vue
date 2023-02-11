@@ -33,11 +33,12 @@ const text = ref(JSON.stringify(props.cell.value || null, null, 2))
                 <span class="font-bold">{{ cell.columnName }}</span>
               </div>
 
-              <div class="flex">
-                <button class="hover:ring-2 hover:ring-black" @click="close()">
-                  <XMarkIcon class="h-6 w-6 stroke-1" />
-                </button>
-              </div>
+              <button
+                class="border border-black hover:bg-stone-100"
+                @click="close()"
+              >
+                <XMarkIcon class="h-6 w-6 stroke-1 p-0.5" />
+              </button>
             </div>
 
             <div class="border-t border-black"></div>
@@ -49,9 +50,11 @@ const text = ref(JSON.stringify(props.cell.value || null, null, 2))
               v-model="text"
             ></textarea>
 
+            <div class="border-t border-black"></div>
+
             <div class="flex justify-start">
               <button
-                class="rounded-sm border border-black p-3 font-bold hover:bg-stone-100"
+                class="rounded-sm border border-black p-3 hover:bg-stone-100"
                 @click="
                   () => {
                     //
