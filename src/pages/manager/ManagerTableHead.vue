@@ -19,7 +19,9 @@ defineProps<{ state: State }>()
       v-for="{ name, kind } of state.table.columns"
       :key="name"
       class="overflow-auto whitespace-nowrap border border-black ring-1 ring-black"
-      :class="[kind === 'Number' ? 'text-right' : 'text-left']"
+      :class="[
+        kind === 'Number' || kind === 'Boolean' ? 'text-right' : 'text-left',
+      ]"
     >
       <div class="px-1">{{ name.toString() }}</div>
     </th>

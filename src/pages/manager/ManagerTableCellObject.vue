@@ -9,10 +9,11 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex space-x-0.5 px-1">
-    <span class="text-blue-600">Object</span>
-    <span>(</span>
-    <span>{{ cell.value.length }}</span>
-    <span>)</span>
+  <div
+    disabled
+    class="w-full min-w-max px-1 focus:outline-none"
+    :class="[state.currentCell === cell && 'bg-stone-100']"
+  >
+    {{ cell.value }}
   </div>
 </template>

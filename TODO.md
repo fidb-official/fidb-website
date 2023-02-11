@@ -1,8 +1,8 @@
 # manager
 
-[manager] `ManagerTableCellArray`
-[manager] `ManagerTableCellTable`
-[manager] `ManagerTableCellObject`
+[manager] `ManagerTableCellArray` -- edit
+[manager] `ManagerTableCellTable` -- edit
+[manager] `ManagerTableCellObject` -- edit
 
 [manager] `ManagerTableCellDate` -- editing
 
