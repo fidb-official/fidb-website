@@ -45,7 +45,7 @@ function isReadonly(cell: Cell): boolean {
 
     <textarea
       :disabled="isReadonly(cell)"
-      class="w-full overflow-auto border border-black p-2 font-mono focus:outline-none"
+      class="w-full overflow-auto border border-black p-2 font-mono focus:outline-none disabled:bg-stone-100"
       :rows="text.split('\n').length"
       v-model="text"
     ></textarea>

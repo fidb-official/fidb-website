@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import ManagerTableLastRowDialog from './ManagerTableLastRowDialog.vue'
+import ManagerTableRowNewDialog from './ManagerTableRowNewDialog.vue'
 import { State } from './State'
 
 defineProps<{ state: State }>()
@@ -36,6 +36,6 @@ function close() {
       class="border border-black"
     ></td>
 
-    <ManagerTableLastRowDialog :state="state" :isOpen="isOpen" :close="close" />
+    <ManagerTableRowNewDialog :state="state" :isOpen="isOpen" :close="close" />
   </tr>
 </template>

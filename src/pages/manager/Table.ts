@@ -3,6 +3,7 @@ import { createRow, Row } from './Row'
 
 export type Table = {
   columns: Array<Column>
+  columnNames: Array<string>
   rows: Array<Row>
 }
 
@@ -44,6 +45,9 @@ export function createTable(dataset: Array<any>): Table {
 
   return {
     columns,
+    get columnNames() {
+      return columns.map(({ name }) => name)
+    },
     rows,
   }
 }

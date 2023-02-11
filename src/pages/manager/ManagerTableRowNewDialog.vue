@@ -1,14 +1,22 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
+import { reactive } from 'vue'
 import Lang from '../../components/Lang.vue'
+import ManagerTableRowDialogCell from './ManagerTableRowDialogCell.vue'
+import ManagerTableRowDialogCellNew from './ManagerTableRowDialogCellNew.vue'
+import { createRow } from './Row'
 import { State } from './State'
 
-defineProps<{
+const props = defineProps<{
   state: State
   isOpen: boolean
   close: () => void
 }>()
+
+const row = reactive(
+  createRow(props.state.dataset.length, props.state.table.columnNames, {}),
+)
 </script>
 
 <template>
@@ -40,10 +48,14 @@ defineProps<{
 
           <button v-focus class="h-0 focus:outline-none"></button>
 
-          <div v-for="{ name } of state.table.columns" :key="name">
-            <div class="font-bold">{{ name }}</div>
-            <div>TODO</div>
-          </div>
+          <ManagerTableRowDialogCell
+            v-for="cell of row.cells"
+            :key="cell.columnName"
+            :state="state"
+            :cell="cell"
+          />
+
+          <ManagerTableRowDialogCellNew :state="state" :row="row" />
         </div>
       </DialogPanel>
     </div>
