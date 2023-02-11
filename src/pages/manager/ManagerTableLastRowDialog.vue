@@ -21,31 +21,29 @@ defineProps<{
       <DialogPanel
         class="h-4/5 w-5/6 overflow-auto border border-black bg-white md:w-3/5"
       >
-        <div class="h-full overflow-auto p-6">
-          <div class="flex flex-col space-y-3">
-            <div class="flex justify-between">
-              <Lang class="font-bold">
-                <template #zh> 新行 </template>
-                <template #en> New row </template>
-              </Lang>
+        <div class="flex h-full flex-col space-y-3 overflow-auto p-6">
+          <div class="flex justify-between">
+            <Lang class="font-bold">
+              <template #zh> 新行 </template>
+              <template #en> New row </template>
+            </Lang>
 
-              <button
-                class="border border-black hover:bg-stone-100"
-                @click="close()"
-              >
-                <XMarkIcon class="h-6 w-6 stroke-1 p-0.5" />
-              </button>
-            </div>
-
-            <div class="border-t border-black"></div>
-
-            <div v-for="{ name } of state.table.columns" :key="name">
-              <div class="font-bold">{{ name }}</div>
-              <div>TODO</div>
-            </div>
-
-            <div class="border-t border-black"></div>
+            <button
+              class="border border-black hover:bg-stone-100"
+              @click="close()"
+            >
+              <XMarkIcon class="h-6 w-6 stroke-1 p-0.5" />
+            </button>
           </div>
+
+          <div class="border-t border-black"></div>
+
+          <div v-for="{ name } of state.table.columns" :key="name">
+            <div class="font-bold">{{ name }}</div>
+            <div>TODO</div>
+          </div>
+
+          <div class="border-t border-black"></div>
         </div>
       </DialogPanel>
     </div>

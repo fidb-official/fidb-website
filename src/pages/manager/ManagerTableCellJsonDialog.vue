@@ -39,45 +39,43 @@ async function saveJson(state: State, cell: Cell) {
       <DialogPanel
         class="h-4/5 w-5/6 overflow-auto border border-black bg-white md:w-3/5"
       >
-        <div class="h-full overflow-auto p-6">
-          <div class="flex flex-col space-y-3">
-            <div class="flex justify-between">
-              <div class="flex space-x-1">
-                <span class="font-bold"> # </span>
-                <span>{{ cell.index }}</span>
-                <span class="font-bold">{{ cell.columnName }}</span>
-              </div>
-
-              <button
-                class="border border-black hover:bg-stone-100"
-                @click="close()"
-              >
-                <XMarkIcon class="h-6 w-6 stroke-1 p-0.5" />
-              </button>
+        <div class="flex h-full flex-col space-y-3 overflow-auto p-6">
+          <div class="flex justify-between">
+            <div class="flex space-x-1">
+              <span class="font-bold"> # </span>
+              <span>{{ cell.index }}</span>
+              <span class="font-bold">{{ cell.columnName }}</span>
             </div>
 
-            <div class="border-t border-black"></div>
+            <button
+              class="border border-black hover:bg-stone-100"
+              @click="close()"
+            >
+              <XMarkIcon class="h-6 w-6 stroke-1 p-0.5" />
+            </button>
+          </div>
 
-            <textarea
-              class="overflow-auto border border-black p-2 font-mono focus:outline-none"
-              v-focus
-              :rows="text.split('\n').length"
-              v-model="text"
-            ></textarea>
+          <div class="border-t border-black"></div>
 
-            <div class="border-t border-black"></div>
+          <textarea
+            class="overflow-auto border border-black p-2 font-mono focus:outline-none"
+            v-focus
+            :rows="text.split('\n').length"
+            v-model="text"
+          ></textarea>
 
-            <div class="flex justify-start">
-              <button
-                class="rounded-sm border border-black p-3 hover:bg-stone-100"
-                @click="saveJson(state, cell)"
-              >
-                <Lang>
-                  <template #zh> 保存 </template>
-                  <template #en> Save </template>
-                </Lang>
-              </button>
-            </div>
+          <div class="border-t border-black"></div>
+
+          <div class="flex justify-start">
+            <button
+              class="rounded-sm border border-black p-3 hover:bg-stone-100"
+              @click="saveJson(state, cell)"
+            >
+              <Lang>
+                <template #zh> 保存 </template>
+                <template #en> Save </template>
+              </Lang>
+            </button>
           </div>
         </div>
       </DialogPanel>
