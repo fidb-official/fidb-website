@@ -17,13 +17,11 @@ defineProps<{
 
 <template>
   <Dialog as="div" :open="isOpen" @close="close()" class="relative z-10">
-    <div class="fixed inset-0 h-screen w-screen bg-black bg-opacity-10" />
-
     <div
       class="fixed inset-0 flex h-screen w-screen items-center justify-center"
     >
       <DialogPanel
-        class="relative h-4/5 w-5/6 overflow-auto border border-black bg-white md:w-3/5"
+        class="relative h-4/5 w-5/6 overflow-auto border border-black bg-white shadow shadow-stone-500 md:w-3/5"
       >
         <button
           class="absolute top-4 right-4 hover:ring-2 hover:ring-black"
