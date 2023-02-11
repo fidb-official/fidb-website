@@ -1,6 +1,5 @@
 # manager
 
-[manager] `ManagerTableCellId` -- disable edit
 [manager] `ManagerTableCellRevision` -- disable edit
 
 [manager] `ManagerTableCell` -- special view for `@createdAt` & `@updatedAt` -- `formatDate`

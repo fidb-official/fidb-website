@@ -2,6 +2,7 @@
 import { Cell } from './Cell'
 import ManagerTableCellArray from './ManagerTableCellArray.vue'
 import ManagerTableCellBoolean from './ManagerTableCellBoolean.vue'
+import ManagerTableCellId from './ManagerTableCellId.vue'
 import ManagerTableCellNull from './ManagerTableCellNull.vue'
 import ManagerTableCellNumber from './ManagerTableCellNumber.vue'
 import ManagerTableCellObject from './ManagerTableCellObject.vue'
@@ -23,7 +24,8 @@ defineProps<{
     :class="[state.currentCell === cell && 'ring-2 ring-stone-500']"
     @mouseover="state.currentCell = cell"
   >
-    <ManagerTableCellString v-if="cell.kind === 'String'" v-bind="$props" />
+    <ManagerTableCellId v-if="cell.columnName === '@id'" v-bind="$props" />
+    <ManagerTableCellString v-else-if="cell.kind === 'String'" v-bind="$props" />
     <ManagerTableCellNumber v-else-if="cell.kind === 'Number'" v-bind="$props" />
     <ManagerTableCellNull v-else-if="cell.kind === 'Null'" v-bind="$props" />
     <ManagerTableCellBoolean v-else-if="cell.kind === 'Boolean'" v-bind="$props" />
