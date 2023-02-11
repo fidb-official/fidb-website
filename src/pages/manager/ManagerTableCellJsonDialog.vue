@@ -2,6 +2,7 @@
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { ref } from 'vue'
+import Lang from '../../components/Lang.vue'
 import { Cell } from './Cell'
 import { State } from './State'
 
@@ -21,30 +22,48 @@ const text = ref(JSON.stringify(props.cell.value || null, null, 2))
       class="fixed inset-0 flex h-screen w-screen items-center justify-center"
     >
       <DialogPanel
-        class="relative h-4/5 w-5/6 overflow-auto border border-black bg-white md:w-3/5"
+        class="h-4/5 w-5/6 overflow-auto border border-black bg-white md:w-3/5"
       >
-        <button
-          class="absolute top-4 right-4 hover:ring-2 hover:ring-black"
-          @click="close()"
-        >
-          <XMarkIcon class="h-8 w-8 stroke-1" />
-        </button>
-
         <div class="h-full overflow-auto p-6">
           <div class="flex flex-col space-y-3">
-            <div class="flex space-x-1">
-              <span class="font-bold"> # </span>
-              <span>{{ cell.index }}</span>
-              <span class="font-bold"> {{ cell.columnName }}</span>
+            <div class="flex justify-between">
+              <div class="flex space-x-1">
+                <span class="font-bold"> # </span>
+                <span>{{ cell.index }}</span>
+                <span class="font-bold">{{ cell.columnName }}</span>
+              </div>
+
+              <div class="flex">
+                <button class="hover:ring-2 hover:ring-black" @click="close()">
+                  <XMarkIcon class="h-6 w-6 stroke-1" />
+                </button>
+              </div>
             </div>
 
             <div class="border-t border-black"></div>
 
             <textarea
-              class="h-full"
+              class="overflow-auto border border-black p-2 font-mono focus:outline-none"
+              v-focus
               :rows="text.split('\n').length"
               v-model="text"
             ></textarea>
+
+            <div class="flex justify-start">
+              <button
+                class="rounded-sm border border-black p-3 font-bold hover:bg-stone-100"
+                @click="
+                  () => {
+                    //
+                  }
+                "
+              >
+                <Lang>
+                  <template #zh> 保存 </template>
+                  <template #en> Save </template>
+                </Lang>
+              </button>
+            </div>
           </div>
         </div>
       </DialogPanel>

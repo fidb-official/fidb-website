@@ -22,4 +22,12 @@ root.use(router)
 root.use(createHead())
 root.use(FloatingVue)
 
+root.directive('focus', {
+  mounted: (el) => el.focus(),
+})
+
+root.directive('blur', {
+  mounted: (el) => el.blur(),
+})
+
 root.mount('#app')

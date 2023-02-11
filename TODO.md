@@ -1,13 +1,12 @@
 # manager
 
 [manager] `ManagerTableCellJsonDialog` -- edit json
-[manager] `ManagerTableCellJsonDialog` -- url addressable
-
-[manager] `ManagerTableRowDialog` -- url addressable
-
-[manager] `page` and `size` in url
 
 [manager] `ManagerTableRowDialogCell` -- just edit json
+
+[manager] `ManagerTableCellJsonDialog` -- url addressable
+[manager] `ManagerTableRowDialog` -- url addressable
+[manager] `page` and `size` in url
 
 [manager] `ManagerTableLastRowDialog` -- create row
 

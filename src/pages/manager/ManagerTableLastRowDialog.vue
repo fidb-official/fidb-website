@@ -22,10 +22,10 @@ defineProps<{
         class="relative h-4/5 w-5/6 overflow-auto border border-black bg-white md:w-3/5"
       >
         <button
-          class="absolute top-4 right-4 hover:ring-2 hover:ring-black"
+          class="absolute top-4 right-4 hover:ring-1 hover:ring-black"
           @click="close()"
         >
-          <XMarkIcon class="h-8 w-8 stroke-1" />
+          <XMarkIcon class="h-6 w-6 stroke-1" />
         </button>
 
         <div class="h-full overflow-auto p-6">
