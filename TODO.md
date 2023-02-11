@@ -1,9 +1,5 @@
 # manager
 
-[manager] `ManagerTableRowDialogCellNew` -- keep input
-
-- `stateSaveCellJson` return `boolean`
-
 [manager] `ManagerTableRowDialog` -- create new column
 [manager] `ManagerTableLastRowDialog` -- create new column
 [manager] `ManagerTableLastRowDialog` -- create row

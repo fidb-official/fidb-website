@@ -32,10 +32,13 @@ async function create() {
     return
   }
 
-  await stateSaveCellJson(state, cell, text.value)
-  cell.columnName = ''
-  cell.value = null
-  text.value = ''
+  const ok = await stateSaveCellJson(state, cell, text.value)
+
+  if (ok) {
+    cell.columnName = ''
+    cell.value = null
+    text.value = ''
+  }
 }
 </script>
 
