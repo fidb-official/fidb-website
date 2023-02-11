@@ -32,7 +32,7 @@ function saveNumber(state: State, cell: Cell) {
   <input
     :disabled="state.currentCell !== cell"
     class="w-full min-w-max px-1 text-right text-yellow-600 focus:outline-none"
-    :class="[state.currentCell === cell && 'bg-stone-200']"
+    :class="[state.currentCell === cell && 'bg-yellow-50']"
     v-model="cell.value"
     :size="cell.value.toString().length * 0.9"
     @keyup.enter="saveNumber(state, cell)"
