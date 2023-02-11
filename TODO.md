@@ -1,11 +1,6 @@
 # manager
 
-[manager] `ManagerTableCellJsonDialog` -- show json
-
-- used by `ManagerTableCellArray`
-- used by `ManagerTableCellTable`
-- used by `ManagerTableCellObject`
-- used by `ManagerTableCellNull`
+[manager] remove cell kind -- `Table`
 
 [manager] `ManagerTableCellJsonDialog` -- edit json
 [manager] `ManagerTableCellJsonDialog` -- url addressable

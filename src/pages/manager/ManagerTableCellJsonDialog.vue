@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
-import Lang from '../../components/Lang.vue'
-import ManagerTableRowDialogCell from './ManagerTableRowDialogCell.vue'
-import { Row } from './Row'
+import { ref } from 'vue'
+import { Cell } from './Cell'
 import { State } from './State'
-import { stateDeleteRow } from './stateDeleteRow'
 
-defineProps<{
+const props = defineProps<{
   state: State
   isOpen: boolean
   close: () => void
-  row: Row
+  cell: Cell
 }>()
+
+const text = ref(JSON.stringify(props.cell.value || null, null, 2))
 </script>
 
 <template>
@@ -34,34 +34,17 @@ defineProps<{
           <div class="flex flex-col space-y-3">
             <div class="flex space-x-1">
               <span class="font-bold"> # </span>
-              <span>{{ row.index }}</span>
+              <span>{{ cell.index }}</span>
+              <span class="font-bold"> {{ cell.columnName }}</span>
             </div>
 
             <div class="border-t border-black"></div>
 
-            <ManagerTableRowDialogCell
-              v-for="cell of row.cells"
-              :key="cell.columnName"
-              :state="state"
-              :cell="cell"
-            />
-
-            <div class="flex justify-end">
-              <button
-                class="rounded-sm border border-black p-3 font-bold hover:bg-stone-100"
-                @click="
-                  () => {
-                    stateDeleteRow(state, row.index)
-                    close()
-                  }
-                "
-              >
-                <Lang>
-                  <template #zh> 删除 </template>
-                  <template #en> Delete </template>
-                </Lang>
-              </button>
-            </div>
+            <textarea
+              class="h-full"
+              :rows="text.split('\n').length"
+              v-model="text"
+            ></textarea>
           </div>
         </div>
       </DialogPanel>

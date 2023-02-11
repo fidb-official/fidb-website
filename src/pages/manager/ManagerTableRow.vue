@@ -45,9 +45,9 @@ function close() {
 
     <ManagerTableRowDialog
       :state="state"
-      :row="row"
       :isOpen="isOpen"
       :close="close"
+      :row="row"
     />
   </tr>
 </template>
