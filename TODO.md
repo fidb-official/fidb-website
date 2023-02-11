@@ -1,7 +1,5 @@
 # manager
 
-[manager] remove cell kind -- `Table`
-
 [manager] `ManagerTableCellJsonDialog` -- edit json
 [manager] `ManagerTableCellJsonDialog` -- url addressable
 

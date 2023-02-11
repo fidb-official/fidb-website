@@ -9,7 +9,6 @@ import ManagerTableCellNumber from './ManagerTableCellNumber.vue'
 import ManagerTableCellObject from './ManagerTableCellObject.vue'
 import ManagerTableCellRevision from './ManagerTableCellRevision.vue'
 import ManagerTableCellString from './ManagerTableCellString.vue'
-import ManagerTableCellTable from './ManagerTableCellTable.vue'
 import ManagerTableCellUnknown from './ManagerTableCellUnknown.vue'
 import { State } from './State'
 
@@ -36,7 +35,6 @@ defineProps<{
     <ManagerTableCellBoolean v-else-if="cell.kind === 'Boolean'" v-bind="$props" />
     <ManagerTableCellArray v-else-if="cell.kind === 'Array'" v-bind="$props" />
     <ManagerTableCellObject v-else-if="cell.kind === 'Object'" v-bind="$props" />
-    <ManagerTableCellTable v-else-if="cell.kind === 'Table'" v-bind="$props" />
     <ManagerTableCellUnknown v-else v-bind="$props" />
   </div>
 </template>

@@ -4,7 +4,6 @@ export type CellKind =
   | 'Null'
   | 'Boolean'
   | 'Array'
-  | 'Table'
   | 'Object'
 
 export type Cell = {
@@ -49,10 +48,6 @@ export function valueKind(value: any): CellKind {
   }
 
   if (value instanceof Array) {
-    if (value.every((value) => valueKind(value) === 'Object')) {
-      return 'Table'
-    }
-
     return 'Array'
   }
 
