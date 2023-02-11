@@ -1,6 +1,6 @@
 # manager
 
-[manager] `ManagerTableRowDialogCell` -- just edit json
+[manager] `ManagerTableRowDialogCell` -- save json
 
 [manager] `ManagerTableRowDialog` -- create new column
 [manager] `ManagerTableLastRowDialog` -- create new column
