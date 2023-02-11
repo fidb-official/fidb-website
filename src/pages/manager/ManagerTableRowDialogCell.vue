@@ -19,6 +19,12 @@ watch(
   },
   { immediate: true, deep: true },
 )
+
+const readonlyColumnNames = ['@id', '@revision', '@createdAt', '@updatedAt']
+
+function isReadonly(cell: Cell): boolean {
+  return readonlyColumnNames.includes(cell.columnName)
+}
 </script>
 
 <template>
@@ -38,6 +44,7 @@ watch(
     </div>
 
     <textarea
+      :disabled="isReadonly(cell)"
       class="w-full overflow-auto border border-black p-2 font-mono focus:outline-none"
       :rows="text.split('\n').length"
       v-model="text"
