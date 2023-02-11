@@ -1,18 +1,20 @@
 # manager
 
-[manager] `ManagerTableCellArrayDialog` -- edit
-[manager] `ManagerTableCellTableDialog` -- edit
-[manager] `ManagerTableCellObjectDialog` -- edit
+[manager] `ManagerTableCellJsonDialog` -- show json
 
-[manager] `ManagerTableCellNull` -- click to edit -- be able to change type
+- used by `ManagerTableCellArray`
+- used by `ManagerTableCellTable`
+- used by `ManagerTableCellObject`
+- used by `ManagerTableCellNull`
 
-[manager] `ManagerTableRowDialogCellString`
-[manager] `ManagerTableRowDialogCellNumber`
-[manager] `ManagerTableRowDialogCellArray`
-[manager] `ManagerTableRowDialogCellObject`
-[manager] `ManagerTableRowDialogCellTable`
-[manager] `ManagerTableRowDialogCellBoolean`
-[manager] `ManagerTableRowDialogCellNull`
+[manager] `ManagerTableCellJsonDialog` -- edit json
+[manager] `ManagerTableCellJsonDialog` -- url addressable
+
+[manager] `ManagerTableRowDialog` -- url addressable
+
+[manager] `page` and `size` in url
+
+[manager] `ManagerTableRowDialogCell` -- just edit json
 
 [manager] `ManagerTableLastRowDialog` -- create row
 
