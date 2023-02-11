@@ -1,19 +1,41 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import Lang from '../../components/Lang.vue'
 import { Cell } from './Cell'
 import { State } from './State'
+import { stateSaveJson } from './stateSaveJson'
 
 const props = defineProps<{
   state: State
   cell: Cell
 }>()
 
-const text = ref(JSON.stringify(props.cell.value || null, null, 2))
+const text = ref('')
+
+watch(
+  () => props.cell.value,
+  (value) => {
+    text.value = JSON.stringify(value || null, null, 2)
+  },
+  { immediate: true, deep: true },
+)
 </script>
 
 <template>
   <div>
-    <div class="py-1 font-bold">{{ cell.columnName }}</div>
+    <div class="flex items-center justify-between pb-1">
+      <div class="font-bold">{{ cell.columnName }}</div>
+
+      <button
+        class="rounded-sm border border-black px-2 py-0.5 hover:bg-stone-100"
+        @click="stateSaveJson(state, cell, text)"
+      >
+        <Lang>
+          <template #zh> 保存 </template>
+          <template #en> Save </template>
+        </Lang>
+      </button>
+    </div>
 
     <textarea
       class="w-full overflow-auto border border-black p-2 font-mono focus:outline-none"

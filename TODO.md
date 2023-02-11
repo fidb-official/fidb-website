@@ -1,6 +1,5 @@
 # manager
 
-[manager] `ManagerTableRowDialogCell` -- save json
 [manager] `ManagerTableRowDialog` -- create new column
 [manager] `ManagerTableLastRowDialog` -- create new column
 [manager] `ManagerTableLastRowDialog` -- create row
