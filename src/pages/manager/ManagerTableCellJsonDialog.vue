@@ -5,8 +5,7 @@ import { ref } from 'vue'
 import Lang from '../../components/Lang.vue'
 import { Cell } from './Cell'
 import { State } from './State'
-import { stateSaveCell } from './stateSaveCell'
-import { stateStatusError } from './stateStatus'
+import { stateSaveJson } from './stateSaveJson'
 
 const props = defineProps<{
   state: State
@@ -16,19 +15,6 @@ const props = defineProps<{
 }>()
 
 const text = ref(JSON.stringify(props.cell.value || null, null, 2))
-
-async function saveJson(state: State, cell: Cell) {
-  try {
-    const json = text.value.trim() === '' ? null : JSON.parse(text.value)
-    cell.value = json
-    await stateSaveCell(state, cell)
-  } catch (error) {
-    stateStatusError(state, {
-      who: 'saveJson',
-      message: error instanceof Error ? error.message : 'Unknown Error',
-    })
-  }
-}
 </script>
 
 <template>
@@ -69,7 +55,7 @@ async function saveJson(state: State, cell: Cell) {
           <div class="flex justify-start">
             <button
               class="rounded-sm border border-black p-3 hover:bg-stone-100"
-              @click="saveJson(state, cell)"
+              @click="stateSaveJson(state, cell, text)"
             >
               <Lang>
                 <template #zh> 保存 </template>
