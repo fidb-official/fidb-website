@@ -4,21 +4,25 @@ import { State } from './State'
 import { stateSaveCell } from './stateSaveCell'
 import { stateStatusError } from './stateStatus'
 
-defineProps<{
+const props = defineProps<{
   state: State
   cell: Cell
 }>()
+
+let originalValue = props.cell.value
 
 function saveNumber(state: State, cell: Cell) {
   const n = Number.parseFloat(cell.value)
   if (Number.isNaN(n)) {
     stateStatusError(state, {
       who: 'saveNumber',
-      message: 'value is not a number',
-      data: { value: cell.value },
+      message: 'value is not a number, revert to the original value',
+      data: { badValue: cell.value },
     })
+    cell.value = originalValue
   } else {
     cell.value = n
+    originalValue = n
     stateSaveCell(state, cell)
   }
 }
