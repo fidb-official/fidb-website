@@ -38,7 +38,7 @@ defineProps<{
 
           <div class="border-t border-black"></div>
 
-          <button v-focus class="h-0"></button>
+          <button v-focus class="h-0 focus:outline-none"></button>
 
           <div v-for="{ name } of state.table.columns" :key="name">
             <div class="font-bold">{{ name }}</div>

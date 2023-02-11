@@ -43,7 +43,7 @@ const text = ref(JSON.stringify(props.cell.value || null, null, 2))
 
           <div class="border-t border-black"></div>
 
-          <button v-focus class="h-0"></button>
+          <button v-focus class="h-0 focus:outline-none"></button>
 
           <textarea
             class="overflow-auto border border-black p-2 font-mono focus:outline-none"

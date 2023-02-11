@@ -49,7 +49,7 @@ async function deleteRow(state: State, row: Row) {
 
           <div class="border-t border-black"></div>
 
-          <button v-focus class="h-0"></button>
+          <button v-focus class="h-0 focus:outline-none"></button>
 
           <ManagerTableRowDialogCell
             v-for="cell of row.cells"
