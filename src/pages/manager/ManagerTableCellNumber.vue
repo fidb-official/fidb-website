@@ -27,7 +27,7 @@ function saveNumber(state: State, cell: Cell) {
 <template>
   <input
     v-if="state.currentCell === cell"
-    class="scrollbar-hide w-full max-w-prose overflow-x-auto bg-stone-200 px-1 text-right text-yellow-600 ring-2 ring-stone-500 focus:outline-none"
+    class="w-full px-1 text-right text-yellow-600 focus:outline-none"
     v-model="cell.value"
     @keyup.enter="saveNumber(state, cell)"
     @blur="saveNumber(state, cell)"
@@ -35,7 +35,7 @@ function saveNumber(state: State, cell: Cell) {
 
   <div
     v-else
-    class="scrollbar-hide flex max-w-prose justify-end overflow-x-auto whitespace-nowrap px-1 text-yellow-600"
+    class="flex w-full justify-end whitespace-nowrap px-1 text-yellow-600"
   >
     <span>{{ cell.value }}</span>
     <!-- for clickable -->

@@ -18,7 +18,11 @@ defineProps<{
 
 <template>
   <!-- prettier-ignore -->
-  <div class="hover:bg-stone-200" @mouseover="state.currentCell = cell">
+  <div
+    class="hover:bg-stone-200 scrollbar-hide w-full max-w-prose overflow-x-auto"
+    :class="[state.currentCell === cell && 'ring-2 ring-stone-500']"
+    @mouseover="state.currentCell = cell"
+  >
     <ManagerTableCellString v-if="cell.kind === 'String'" v-bind="$props" />
     <ManagerTableCellNumber v-else-if="cell.kind === 'Number'" v-bind="$props" />
     <ManagerTableCellNull v-else-if="cell.kind === 'Null'" v-bind="$props" />
