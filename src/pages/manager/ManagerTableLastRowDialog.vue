@@ -44,8 +44,6 @@ defineProps<{
             <div class="font-bold">{{ name }}</div>
             <div>TODO</div>
           </div>
-
-          <div class="border-t border-black"></div>
         </div>
       </DialogPanel>
     </div>
