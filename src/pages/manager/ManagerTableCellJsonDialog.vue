@@ -43,9 +43,10 @@ const text = ref(JSON.stringify(props.cell.value || null, null, 2))
 
           <div class="border-t border-black"></div>
 
+          <button v-focus class="h-0"></button>
+
           <textarea
             class="overflow-auto border border-black p-2 font-mono focus:outline-none"
-            v-focus
             :rows="text.split('\n').length"
             v-model="text"
           ></textarea>
