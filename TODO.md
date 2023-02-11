@@ -3,7 +3,9 @@
 [manager] `ManagerTableCellId` -- disable edit
 [manager] `ManagerTableCellRevision` -- disable edit
 
-[manager] `ManagerTableCell` -- special view for `@createdAt` & `@updatedAt`
+[manager] `ManagerTableCell` -- special view for `@createdAt` & `@updatedAt` -- `formatDate`
+
+[manager] `ManagerTableHead` -- if all cells are number, set `text-right`
 
 [manager] `ManagerTableCellArray`
 [manager] `ManagerTableCellTable`

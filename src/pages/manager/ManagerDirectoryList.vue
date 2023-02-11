@@ -28,7 +28,7 @@ async function deleteDirectory(state: State, directory: string) {
 <template>
   <div class="flex h-full flex-col border-l border-black">
     <div class="flex w-full justify-between border-b border-black">
-      <div class="overflow-x-auto px-2 font-bold">
+      <div class="scrollbar-hide overflow-x-auto px-2 font-bold">
         <Lang>
           <template #zh> 文件夹： </template>
           <template #en> Directories: </template>
@@ -49,7 +49,7 @@ async function deleteDirectory(state: State, directory: string) {
         class="flex justify-between"
       >
         <button
-          class="w-full overflow-x-auto whitespace-nowrap bg-black px-2 text-left text-white"
+          class="scrollbar-hide w-full overflow-x-auto whitespace-nowrap bg-black px-2 text-left text-white"
           @click="state.currentDirectory = directory"
         >
           {{ directory }}
@@ -65,7 +65,7 @@ async function deleteDirectory(state: State, directory: string) {
 
       <div v-else class="flex justify-between hover:bg-stone-200">
         <button
-          class="w-full overflow-x-auto whitespace-nowrap px-2 text-left"
+          class="scrollbar-hide w-full overflow-x-auto whitespace-nowrap px-2 text-left"
           @click="state.currentDirectory = directory"
         >
           {{ directory }}
