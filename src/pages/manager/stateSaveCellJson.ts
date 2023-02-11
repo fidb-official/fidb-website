@@ -3,7 +3,7 @@ import { State } from './State'
 import { stateSaveCell } from './stateSaveCell'
 import { stateStatusError } from './stateStatus'
 
-export async function stateSaveJson(
+export async function stateSaveCellJson(
   state: State,
   cell: Cell,
   text: string,
@@ -14,7 +14,7 @@ export async function stateSaveJson(
     await stateSaveCell(state, cell)
   } catch (error) {
     stateStatusError(state, {
-      who: 'stateSaveJson',
+      who: 'stateSaveCellJson',
       message: error instanceof Error ? error.message : 'Unknown Error',
     })
   }

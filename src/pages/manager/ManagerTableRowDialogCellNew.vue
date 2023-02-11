@@ -4,7 +4,7 @@ import Lang from '../../components/Lang.vue'
 import { createCell } from './Cell'
 import { Row } from './Row'
 import { State } from './State'
-import { stateSaveJson } from './stateSaveJson'
+import { stateSaveCellJson } from './stateSaveCellJson'
 import { stateStatusError } from './stateStatus'
 
 const props = defineProps<{
@@ -32,7 +32,7 @@ async function create() {
     return
   }
 
-  await stateSaveJson(state, cell, text.value)
+  await stateSaveCellJson(state, cell, text.value)
   cell.columnName = ''
   cell.value = null
   text.value = ''

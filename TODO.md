@@ -1,7 +1,5 @@
 # manager
 
-[manager] rename `stateSaveJson` to `stateSaveCellJson`
-
 [manager] `ManagerTableRowDialogCellNew` -- keep input
 
 - `stateSaveCellJson` return `boolean`

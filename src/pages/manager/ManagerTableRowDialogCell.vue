@@ -3,7 +3,7 @@ import { ref, watch } from 'vue'
 import Lang from '../../components/Lang.vue'
 import { Cell } from './Cell'
 import { State } from './State'
-import { stateSaveJson } from './stateSaveJson'
+import { stateSaveCellJson } from './stateSaveCellJson'
 
 const props = defineProps<{
   state: State
@@ -28,7 +28,7 @@ watch(
 
       <button
         class="rounded-sm border border-black px-2 py-0.5 hover:bg-stone-100"
-        @click="stateSaveJson(state, cell, text)"
+        @click="stateSaveCellJson(state, cell, text)"
       >
         <Lang>
           <template #zh> 保存 </template>

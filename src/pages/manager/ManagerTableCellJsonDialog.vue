@@ -5,7 +5,7 @@ import { ref } from 'vue'
 import Lang from '../../components/Lang.vue'
 import { Cell } from './Cell'
 import { State } from './State'
-import { stateSaveJson } from './stateSaveJson'
+import { stateSaveCellJson } from './stateSaveCellJson'
 
 const props = defineProps<{
   state: State
@@ -55,7 +55,7 @@ const text = ref(JSON.stringify(props.cell.value || null, null, 2))
           <div class="flex justify-start">
             <button
               class="rounded-sm border border-black p-3 hover:bg-stone-100"
-              @click="stateSaveJson(state, cell, text)"
+              @click="stateSaveCellJson(state, cell, text)"
             >
               <Lang>
                 <template #zh> 保存 </template>
