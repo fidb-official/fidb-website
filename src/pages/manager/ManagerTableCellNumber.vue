@@ -34,7 +34,7 @@ function saveNumber(state: State, cell: Cell) {
     class="w-full min-w-max px-1 text-right text-yellow-600 focus:outline-none"
     :class="[state.currentCell === cell && 'bg-yellow-50']"
     v-model="cell.value"
-    :size="cell.value.toString().length * 0.9"
+    :size="Math.ceil(cell.value.toString().length * 0.9)"
     @keyup.enter="saveNumber(state, cell)"
     @blur="saveNumber(state, cell)"
   />

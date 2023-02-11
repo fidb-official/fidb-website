@@ -15,7 +15,7 @@ defineProps<{
     class="w-full min-w-max px-1 focus:outline-none"
     :class="[state.currentCell === cell && 'bg-stone-100']"
     v-model="cell.value"
-    :size="cell.value.length * 0.9"
+    :size="Math.ceil(cell.value.length * 0.9)"
     @keyup.enter="stateSaveCell(state, cell)"
     @blur="stateSaveCell(state, cell)"
   />
