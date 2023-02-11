@@ -27,7 +27,7 @@ export function createCell(
   }
 }
 
-function valueKind(value: any): CellKind {
+export function valueKind(value: any): CellKind {
   if (value === null) {
     return 'Null'
   }

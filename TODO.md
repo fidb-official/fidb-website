@@ -1,7 +1,5 @@
 # manager
 
-[manager] `ManagerTableHead` -- if all cells are number, set `text-right`
-
 [manager] `ManagerTableCellArray`
 [manager] `ManagerTableCellTable`
 [manager] `ManagerTableCellObject`

@@ -1,4 +1,4 @@
-import { Column } from './Column'
+import { Column, createColumn } from './Column'
 import { createRow, Row } from './Row'
 
 export type Table = {
@@ -29,7 +29,7 @@ export function tableColumnNames(dataset: Array<any>): Array<string> {
 
 export function createTable(dataset: Array<any>): Table {
   const columnNames = tableColumnNames(dataset)
-  const columns = columnNames.map((name) => ({ name }))
+  const columns = columnNames.map((name) => createColumn(dataset, name))
   const rows = dataset.map((data, index) => createRow(index, columnNames, data))
 
   return {

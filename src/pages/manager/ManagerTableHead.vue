@@ -16,9 +16,10 @@ defineProps<{ state: State }>()
     <!-- ring for firefox -->
     <!-- border for chrome -->
     <th
-      v-for="{ name } of state.table.columns"
+      v-for="{ name, kind } of state.table.columns"
       :key="name"
-      class="overflow-auto whitespace-nowrap border border-black text-left ring-1 ring-black"
+      class="overflow-auto whitespace-nowrap border border-black ring-1 ring-black"
+      :class="[kind === 'Number' ? 'text-right' : 'text-left']"
     >
       <div class="px-1">{{ name.toString() }}</div>
     </th>
