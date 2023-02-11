@@ -1,26 +1,23 @@
 # manager
 
-[manager] `ManagerTableCellId`
-[manager] `ManagerTableCellRevision`
+[manager] `ManagerTableCellId` -- disable edit
+[manager] `ManagerTableCellRevision` -- disable edit
 
 [manager] `ManagerTableCell` -- special view for `@createdAt` & `@updatedAt`
 
+[manager] `ManagerTableCellArray`
+[manager] `ManagerTableCellTable`
+[manager] `ManagerTableCellObject`
+
 [manager] `ManagerTableCellNull` -- click to edit -- be able to change type
 
-[manager] `ManagerTableCellArray` -- click to edit
-[manager] `ManagerTableCellTable` -- click to edit
-[manager] `ManagerTableCellObject` -- click to edit
-
-[manager] `ManagerTableCellArray` -- hover show array
-[manager] `ManagerTableCellTable` -- hover show nested table
-
-[manager] `ManagerTableRowDialogCellString` -- edit
-[manager] `ManagerTableRowDialogCellNumber` -- edit
-[manager] `ManagerTableRowDialogCellArray` -- edit
-[manager] `ManagerTableRowDialogCellObject` -- edit
-[manager] `ManagerTableRowDialogCellTable` -- edit
-[manager] `ManagerTableRowDialogCellBoolean` -- edit
-[manager] `ManagerTableRowDialogCellNull` -- edit
+[manager] `ManagerTableRowDialogCellString`
+[manager] `ManagerTableRowDialogCellNumber`
+[manager] `ManagerTableRowDialogCellArray`
+[manager] `ManagerTableRowDialogCellObject`
+[manager] `ManagerTableRowDialogCellTable`
+[manager] `ManagerTableRowDialogCellBoolean`
+[manager] `ManagerTableRowDialogCellNull`
 
 [manager] `ManagerTableLastRowDialog` -- create row
 
