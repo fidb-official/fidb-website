@@ -6,7 +6,7 @@ defineProps<{ state: State }>()
 
 <template>
   <div
-    class="flex items-center overflow-x-auto overflow-y-hidden whitespace-nowrap border-x border-stone-900 px-1 text-sm"
+    class="scrollbar-hide flex items-center overflow-x-auto overflow-y-hidden whitespace-nowrap border-x border-stone-900 px-1 text-sm"
   >
     {{ state.message }}
     &nbsp;

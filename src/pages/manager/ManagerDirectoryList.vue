@@ -28,7 +28,9 @@ async function deleteDirectory(state: State, directory: string) {
 <template>
   <div class="flex h-full flex-col border-l border-black">
     <div class="flex w-full justify-between border-b border-black">
-      <div class="scrollbar-hide overflow-x-auto px-2 font-bold">
+      <div
+        class="scrollbar-hide overflow-x-auto whitespace-nowrap px-2 font-bold"
+      >
         <Lang>
           <template #zh> 文件夹： </template>
           <template #en> Directories: </template>
