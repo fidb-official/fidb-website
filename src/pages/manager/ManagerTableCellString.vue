@@ -12,14 +12,18 @@ defineProps<{
 <template>
   <input
     v-if="state.currentCell === cell"
-    type="text"
-    class="w-full bg-stone-200 px-1 ring-2 ring-stone-500 focus:outline-none"
+    class="scrollbar-hide w-full max-w-prose overflow-x-auto bg-stone-200 px-1 ring-2 ring-stone-500 focus:outline-none"
     v-model="cell.value"
     @keyup.enter="stateSaveCell(state, cell)"
     @blur="stateSaveCell(state, cell)"
   />
 
-  <div v-else class="flex space-x-0.5 px-1">
-    <span class="whitespace-nowrap">{{ cell.value }}&nbsp;</span>
+  <div
+    v-else
+    class="scrollbar-hide flex w-full max-w-prose overflow-x-auto overflow-x-auto whitespace-nowrap px-1"
+  >
+    <span>{{ cell.value }}</span>
+    <!-- for clickable -->
+    <span>&nbsp;</span>
   </div>
 </template>

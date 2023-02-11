@@ -5,8 +5,6 @@
 
 [manager] `ManagerTableCell` -- special view for `@createdAt` & `@updatedAt`
 
-[manager] `ManagerTableCellString` -- max length
-
 [manager] `ManagerTableCellNull` -- click to edit -- be able to change type
 
 [manager] `ManagerTableCellArray` -- click to edit
