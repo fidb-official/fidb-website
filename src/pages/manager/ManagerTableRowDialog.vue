@@ -3,6 +3,7 @@ import { Dialog, DialogPanel } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import Lang from '../../components/Lang.vue'
 import ManagerTableRowDialogCell from './ManagerTableRowDialogCell.vue'
+import ManagerTableRowDialogCellNew from './ManagerTableRowDialogCellNew.vue'
 import { Row } from './Row'
 import { State } from './State'
 import { stateDeleteRow } from './stateDeleteRow'
@@ -48,12 +49,16 @@ async function deleteRow(state: State, row: Row) {
 
           <div class="border-t border-black"></div>
 
+          <input v-focus class="h-0" />
+
           <ManagerTableRowDialogCell
             v-for="cell of row.cells"
             :key="cell.columnName"
             :state="state"
             :cell="cell"
           />
+
+          <ManagerTableRowDialogCellNew :state="state" :row="row" />
 
           <div class="border-t border-black"></div>
 

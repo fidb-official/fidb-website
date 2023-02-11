@@ -14,7 +14,7 @@ export async function stateSaveJson(
     await stateSaveCell(state, cell)
   } catch (error) {
     stateStatusError(state, {
-      who: 'saveJson',
+      who: 'stateSaveJson',
       message: error instanceof Error ? error.message : 'Unknown Error',
     })
   }

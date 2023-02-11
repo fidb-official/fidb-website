@@ -39,7 +39,6 @@ watch(
 
     <textarea
       class="w-full overflow-auto border border-black p-2 font-mono focus:outline-none"
-      v-focus
       :rows="text.split('\n').length"
       v-model="text"
     ></textarea>

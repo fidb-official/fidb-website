@@ -38,6 +38,8 @@ defineProps<{
 
           <div class="border-t border-black"></div>
 
+          <input v-focus class="h-0" />
+
           <div v-for="{ name } of state.table.columns" :key="name">
             <div class="font-bold">{{ name }}</div>
             <div>TODO</div>
