@@ -29,11 +29,8 @@ defineProps<{
 
         <div class="h-full overflow-auto p-6">
           <div class="flex flex-col space-y-3">
-            <div
-              v-for="columnName of state.table.columnNames"
-              :key="columnName"
-            >
-              <div class="font-bold">{{ columnName }}</div>
+            <div v-for="{ name } of state.table.columns" :key="name">
+              <div class="font-bold">{{ name }}</div>
               <div>TODO</div>
             </div>
           </div>

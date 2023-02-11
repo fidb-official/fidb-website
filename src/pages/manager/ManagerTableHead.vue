@@ -16,7 +16,7 @@ defineProps<{ state: State }>()
     <!-- ring for firefox -->
     <!-- border for chrome -->
     <th
-      v-for="name of state.table.columnNames"
+      v-for="{ name } of state.table.columns"
       :key="name"
       class="overflow-auto whitespace-nowrap border border-black text-left ring-1 ring-black"
     >

@@ -31,8 +31,8 @@ function close() {
     </td>
 
     <td
-      v-for="columnName of state.table.columnNames"
-      :key="columnName"
+      v-for="{ name } of state.table.columns"
+      :key="name"
       class="border border-black"
     ></td>
 
