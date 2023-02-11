@@ -1,10 +1,8 @@
 # manager
 
-[manager] `ManagerTableCellArray` -- edit
-[manager] `ManagerTableCellTable` -- edit
-[manager] `ManagerTableCellObject` -- edit
-
-[manager] `ManagerTableCellDate` -- editing
+[manager] `ManagerTableCellArrayDialog` -- edit
+[manager] `ManagerTableCellTableDialog` -- edit
+[manager] `ManagerTableCellObjectDialog` -- edit
 
 [manager] `ManagerTableCellNull` -- click to edit -- be able to change type
 

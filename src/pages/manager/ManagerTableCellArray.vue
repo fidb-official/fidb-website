@@ -10,7 +10,6 @@ defineProps<{
 
 <template>
   <div
-    disabled
     class="w-full min-w-max px-1 focus:outline-none"
     :class="[state.currentCell === cell && 'bg-stone-100']"
   >

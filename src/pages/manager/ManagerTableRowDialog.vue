@@ -21,7 +21,7 @@ defineProps<{
       class="fixed inset-0 flex h-screen w-screen items-center justify-center"
     >
       <DialogPanel
-        class="relative h-4/5 w-5/6 overflow-auto border border-black bg-white shadow shadow-stone-500 md:w-3/5"
+        class="relative h-4/5 w-5/6 overflow-auto border border-black bg-white md:w-3/5"
       >
         <button
           class="absolute top-4 right-4 hover:ring-2 hover:ring-black"
@@ -32,10 +32,19 @@ defineProps<{
 
         <div class="h-full overflow-auto p-6">
           <div class="flex flex-col space-y-3">
-            <div class="flex space-x-0.5">
-              <div class="font-bold">#</div>
-              <div>{{ row.index }}</div>
+            <div class="flex">
+              <Lang class="font-bold">
+                <template #zh> 行 </template>
+                <template #en> Row </template>
+              </Lang>
+
+              <div class="pl-1">
+                <span class="font-bold"> # </span>
+                <span>{{ row.index }}</span>
+              </div>
             </div>
+
+            <div class="border-t border-black"></div>
 
             <ManagerTableRowDialogCell
               v-for="cell of row.cells"

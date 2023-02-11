@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
+import Lang from '../../components/Lang.vue'
 import { State } from './State'
 
 defineProps<{
@@ -29,6 +30,15 @@ defineProps<{
 
         <div class="h-full overflow-auto p-6">
           <div class="flex flex-col space-y-3">
+            <div class="flex">
+              <Lang class="font-bold">
+                <template #zh> 新行 </template>
+                <template #en> New row </template>
+              </Lang>
+            </div>
+
+            <div class="border-t border-black"></div>
+
             <div v-for="{ name } of state.table.columns" :key="name">
               <div class="font-bold">{{ name }}</div>
               <div>TODO</div>
