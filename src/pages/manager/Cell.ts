@@ -1,4 +1,4 @@
-type Kind =
+export type CellKind =
   | 'String'
   | 'Number'
   | 'Null'
@@ -10,7 +10,7 @@ type Kind =
 export type Cell = {
   index: number
   columnName: string
-  kind: Kind
+  kind: CellKind
   value: any
 }
 
@@ -27,7 +27,7 @@ export function createCell(
   }
 }
 
-function valueKind(value: any): Kind {
+function valueKind(value: any): CellKind {
   if (value === null) {
     return 'Null'
   }

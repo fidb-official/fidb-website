@@ -1,5 +1,7 @@
 # manager
 
+[manager] `table.columns: Array<Column>`
+
 [manager] `ManagerTableHead` -- if all cells are number, set `text-right`
 
 [manager] `ManagerTableCellArray`
