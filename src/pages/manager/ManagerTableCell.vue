@@ -6,6 +6,7 @@ import ManagerTableCellId from './ManagerTableCellId.vue'
 import ManagerTableCellNull from './ManagerTableCellNull.vue'
 import ManagerTableCellNumber from './ManagerTableCellNumber.vue'
 import ManagerTableCellObject from './ManagerTableCellObject.vue'
+import ManagerTableCellRevision from './ManagerTableCellRevision.vue'
 import ManagerTableCellString from './ManagerTableCellString.vue'
 import ManagerTableCellTable from './ManagerTableCellTable.vue'
 import ManagerTableCellUnknown from './ManagerTableCellUnknown.vue'
@@ -25,6 +26,7 @@ defineProps<{
     @mouseover="state.currentCell = cell"
   >
     <ManagerTableCellId v-if="cell.columnName === '@id'" v-bind="$props" />
+    <ManagerTableCellRevision v-else-if="cell.columnName === '@revision'" v-bind="$props" />
     <ManagerTableCellString v-else-if="cell.kind === 'String'" v-bind="$props" />
     <ManagerTableCellNumber v-else-if="cell.kind === 'Number'" v-bind="$props" />
     <ManagerTableCellNull v-else-if="cell.kind === 'Null'" v-bind="$props" />
