@@ -1,5 +1,7 @@
 # manager
 
+[manager] `ManagerTableCellDate` -- use `formatDate`
+
 [manager] `ManagerTableCell` -- special view for `@createdAt` & `@updatedAt` -- `formatDate`
 
 [manager] `ManagerTableHead` -- if all cells are number, set `text-right`

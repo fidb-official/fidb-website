@@ -2,6 +2,7 @@
 import { Cell } from './Cell'
 import ManagerTableCellArray from './ManagerTableCellArray.vue'
 import ManagerTableCellBoolean from './ManagerTableCellBoolean.vue'
+import ManagerTableCellDate from './ManagerTableCellDate.vue'
 import ManagerTableCellId from './ManagerTableCellId.vue'
 import ManagerTableCellNull from './ManagerTableCellNull.vue'
 import ManagerTableCellNumber from './ManagerTableCellNumber.vue'
@@ -27,6 +28,8 @@ defineProps<{
   >
     <ManagerTableCellId v-if="cell.columnName === '@id'" v-bind="$props" />
     <ManagerTableCellRevision v-else-if="cell.columnName === '@revision'" v-bind="$props" />
+    <ManagerTableCellDate v-else-if="cell.columnName === '@createdAt'" v-bind="$props" disabled />
+    <ManagerTableCellDate v-else-if="cell.columnName === '@updatedAt'" v-bind="$props" disabled />
     <ManagerTableCellString v-else-if="cell.kind === 'String'" v-bind="$props" />
     <ManagerTableCellNumber v-else-if="cell.kind === 'Number'" v-bind="$props" />
     <ManagerTableCellNull v-else-if="cell.kind === 'Null'" v-bind="$props" />
