@@ -26,19 +26,12 @@ function saveNumber(state: State, cell: Cell) {
 
 <template>
   <input
-    v-if="state.currentCell === cell"
-    class="w-full px-1 text-right text-yellow-600 focus:outline-none"
+    :disabled="state.currentCell !== cell"
+    class="w-full min-w-max px-1 text-right text-yellow-600 focus:outline-none"
+    :class="[state.currentCell === cell && 'bg-stone-200']"
     v-model="cell.value"
+    :size="cell.value.toString().length * 0.9"
     @keyup.enter="saveNumber(state, cell)"
     @blur="saveNumber(state, cell)"
   />
-
-  <div
-    v-else
-    class="flex w-full justify-end whitespace-nowrap px-1 text-yellow-600"
-  >
-    <span>{{ cell.value }}</span>
-    <!-- for clickable -->
-    <span>&nbsp;</span>
-  </div>
 </template>

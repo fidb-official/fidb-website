@@ -19,7 +19,7 @@ defineProps<{
 <template>
   <!-- prettier-ignore -->
   <div
-    class="hover:bg-stone-200 scrollbar-hide w-full max-w-prose overflow-x-auto"
+    class="scrollbar-hide w-full max-w-prose overflow-x-auto whitespace-nowrap"
     :class="[state.currentCell === cell && 'ring-2 ring-stone-500']"
     @mouseover="state.currentCell = cell"
   >
