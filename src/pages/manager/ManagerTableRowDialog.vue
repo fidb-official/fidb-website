@@ -7,12 +7,20 @@ import { Row } from './Row'
 import { State } from './State'
 import { stateDeleteRow } from './stateDeleteRow'
 
-defineProps<{
+const props = defineProps<{
   state: State
   isOpen: boolean
   close: () => void
   row: Row
 }>()
+
+async function deleteRow(state: State, row: Row) {
+  const message = `Delete row: ${row.index}`
+  if (window.confirm(message)) {
+    await stateDeleteRow(state, row.index)
+    props.close()
+  }
+}
 </script>
 
 <template>
@@ -52,12 +60,7 @@ defineProps<{
           <div class="flex justify-end">
             <button
               class="rounded-sm border border-black p-3 hover:bg-stone-100"
-              @click="
-                () => {
-                  stateDeleteRow(state, row.index)
-                  close()
-                }
-              "
+              @click="deleteRow(state, row)"
             >
               <Lang>
                 <template #zh> 删除 </template>
