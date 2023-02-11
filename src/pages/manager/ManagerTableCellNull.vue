@@ -1,24 +1,31 @@
 <script setup lang="ts">
 import { Cell } from './Cell'
 import { State } from './State'
-import { stateSaveCell } from './stateSaveCell'
 
-defineProps<{
+const props = defineProps<{
   state: State
   cell: Cell
 }>()
+
+function columnKind(): string | undefined {
+  const column = props.state.table.columns.find(
+    (column) => column.name === props.cell.columnName,
+  )
+
+  return column?.kind
+}
 </script>
 
 <template>
-  <input
-    v-if="state.currentCell === cell"
-    class="w-full bg-stone-200 px-1 ring-2 ring-stone-500 focus:outline-none"
-    v-model="cell.value"
-    @keyup.enter="stateSaveCell(state, cell)"
-    @blur="stateSaveCell(state, cell)"
-  />
-
-  <div v-else class="flex space-x-0.5 px-1">
-    <span class="whitespace-nowrap">{{ cell.value }}</span>
+  <div
+    disabled
+    class="w-full min-w-max px-1 text-stone-600 focus:outline-none"
+    :class="[
+      state.currentCell === cell && 'bg-stone-100',
+      columnKind() === 'Number' && 'text-right',
+      columnKind() === 'Boolean' && 'text-right',
+    ]"
+  >
+    null
   </div>
 </template>
