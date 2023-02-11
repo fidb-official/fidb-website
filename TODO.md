@@ -1,7 +1,5 @@
 # manager
 
-[manager] `ManagerTableCellJsonDialog` -- edit json
-
 [manager] `ManagerTableRowDialogCell` -- just edit json
 
 [manager] `ManagerTableCellJsonDialog` -- url addressable
