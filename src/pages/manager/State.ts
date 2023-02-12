@@ -13,7 +13,6 @@ export type StateOptions = {
 
 export type State = StateOptions & {
   size: number
-  currentDirectory?: string
   dataset: Array<any>
   table: Table
   currentCell?: Cell

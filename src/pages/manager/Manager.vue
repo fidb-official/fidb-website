@@ -17,28 +17,40 @@ onMounted(async () => {
 })
 
 async function loadState(options: { url: string }): Promise<State> {
-  const { url } = options
-
-  const response = await fetch(`${url}`)
+  const response = await fetch(`${options.url}`)
   const { root, directories } = await response.json()
 
   const query = qs.parse(new URL(window.location.href).search, {
     ignoreQueryPrefix: true,
   })
 
-  const page = Number(query.page)
+  const currentCellIndex = Number.isNaN(
+    Number.parseInt(String(query.currentCellIndex)),
+  )
+    ? undefined
+    : Number.parseInt(String(query.currentCellIndex))
+
+  const currentCellColumnName = query.currentCellIndex
+    ? String(query.currentCellIndex)
+    : undefined
 
   return createState({
-    url,
+    url: options.url,
     root,
     directories,
     currentDirectory:
-      query.currentDirectory !== undefined
-        ? String(query.currentDirectory)
-        : undefined,
-    page: Number.isNaN(page) ? 1 : page,
-    currentRowIndex: query.currentRowIndex ? Number(query.currentRowIndex) : 1,
-    currentRowIsOpen: query.currentRowIsOpen !== undefined ? true : undefined,
+      query.currentDirectory === undefined
+        ? undefined
+        : String(query.currentDirectory),
+    page: Number.isNaN(Number.parseInt(String(query.page)))
+      ? 1
+      : Number.parseInt(String(query.page)),
+    currentRowIndex: Number.isNaN(
+      Number.parseInt(String(query.currentRowIndex)),
+    )
+      ? 1
+      : Number.parseInt(String(query.currentRowIndex)),
+    currentRowIsOpen: query.currentRowIsOpen === undefined ? undefined : true,
   })
 }
 </script>
