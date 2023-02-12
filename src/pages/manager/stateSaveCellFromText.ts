@@ -8,6 +8,8 @@ export async function stateSaveCellFromText(
   cell: Cell,
   text: string,
 ): Promise<boolean> {
+  const who = 'stateSaveCellFromText'
+
   try {
     const json = text.trim() === '' ? null : JSON.parse(text)
     cell.value = json
@@ -15,7 +17,7 @@ export async function stateSaveCellFromText(
     return true
   } catch (error) {
     stateStatusError(state, {
-      who: 'stateSaveCellFromText',
+      who,
       message: error instanceof Error ? error.message : 'Unknown Error',
     })
     return false

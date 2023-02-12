@@ -1,9 +1,5 @@
 # manager
 
-[manager] `stateCreateRow`
-[manager] `stateCreateRowFromTexts`
-
-[manager] `ManagerTableRowNewDialog` -- create row
 [manager] `ManagerTableRowNewDialog` -- create new column
 
 [manager] `page` and `size` in url

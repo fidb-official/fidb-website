@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
-import { reactive } from 'vue'
+import { ref } from 'vue'
 import Lang from '../../components/Lang.vue'
 import { State } from './State'
 import { stateCreateRowFromTexts } from './stateCreateRowFromTexts'
+import { stateStatusError } from './stateStatus'
 
 const props = defineProps<{
   state: State
@@ -12,26 +13,49 @@ const props = defineProps<{
   close: () => void
 }>()
 
-const generatedNames = ['@revision', '@createdAt', '@updatedAt']
+const generatedNames = ['@id', '@revision', '@createdAt', '@updatedAt']
 
 const keys = props.state.table.columnNames.filter(
   (name) => !generatedNames.includes(name),
 )
 
-const texts = reactive(Object.fromEntries(keys.map((name) => [name, ''])))
+const texts = ref(Object.fromEntries(keys.map((name) => [name, ''])))
 
-async function create() {
-  const ok = await stateCreateRowFromTexts(props.state, texts.value)
+const id = ref('')
+
+async function create(state: State) {
+  if (!state.currentDirectory) {
+    stateStatusError(state, {
+      message: 'no current directory',
+    })
+    return
+  }
+
+  if (id.value.includes('/')) {
+    stateStatusError(state, {
+      message: 'id should not includes /',
+      data: {
+        id: id.value,
+      },
+    })
+    return
+  }
+
+  const ok = await stateCreateRowFromTexts(state, {
+    '@id': `"${state.currentDirectory}/${id.value}"`,
+    ...texts.value,
+  })
+
   if (ok) {
     props.close()
+    id.value = ''
+    texts.value = Object.fromEntries(keys.map((name) => [name, '']))
   }
 }
 </script>
 
 <template>
   <Dialog as="div" :open="isOpen" @close="close()" class="relative z-10">
-    <div class="fixed inset-0 h-screen w-screen bg-black bg-opacity-10" />
-
     <div
       class="fixed inset-0 flex h-screen w-screen items-center justify-center"
     >
@@ -57,6 +81,23 @@ async function create() {
 
           <button v-focus class="h-0 focus:outline-none"></button>
 
+          <div>
+            <div class="flex items-center justify-between pb-1">
+              <div class="font-bold">@id</div>
+            </div>
+
+            <div class="flex items-baseline space-x-1">
+              <span class="text-lg font-bold">"</span>
+              <div class="font-bold">{{ state.currentDirectory }}/</div>
+              <textarea
+                class="w-full resize-none overflow-auto border border-black p-2 font-mono focus:outline-none disabled:bg-stone-100"
+                rows="1"
+                v-model="id"
+              ></textarea>
+              <span class="text-xl font-bold">"</span>
+            </div>
+          </div>
+
           <div v-for="(text, key) of texts" :key="key">
             <div class="flex items-center justify-between pb-1">
               <div class="font-bold">{{ key }}</div>
@@ -79,7 +120,7 @@ async function create() {
           <div class="flex justify-start">
             <button
               class="rounded-sm border border-black p-3 hover:bg-stone-100"
-              @click="create()"
+              @click="create(state)"
             >
               <Lang>
                 <template #zh> 创建 </template>
