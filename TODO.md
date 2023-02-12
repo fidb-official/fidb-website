@@ -1,5 +1,6 @@
 # manager
 
+[manager] `stateCreateRowFromTexts`
 [manager] `stateCreateRow`
 
 [manager] `ManagerTableRowNewDialog` -- create row

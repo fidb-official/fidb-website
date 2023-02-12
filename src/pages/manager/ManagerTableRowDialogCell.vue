@@ -3,7 +3,7 @@ import { ref, watch } from 'vue'
 import Lang from '../../components/Lang.vue'
 import { Cell } from './Cell'
 import { State } from './State'
-import { stateSaveCellJson } from './stateSaveCellJson'
+import { stateSaveCellFromText } from './stateSaveCellFromText'
 
 const props = defineProps<{
   state: State
@@ -34,7 +34,7 @@ function isReadonly(cell: Cell): boolean {
 
       <button
         class="rounded-sm border border-black px-2 py-0.5 hover:bg-stone-100"
-        @click="stateSaveCellJson(state, cell, text)"
+        @click="stateSaveCellFromText(state, cell, text)"
       >
         <Lang>
           <template #zh> 保存 </template>

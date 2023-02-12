@@ -11,9 +11,19 @@ const props = defineProps<{
   close: () => void
 }>()
 
-const texts = reactive(
-  Object.fromEntries(props.state.table.columnNames.map((name) => [name, ''])),
+const generatedNames = ['@revision', '@createdAt', '@updatedAt']
+
+const keys = props.state.table.columnNames.filter(
+  (name) => !generatedNames.includes(name),
 )
+
+const texts = reactive(Object.fromEntries(keys.map((name) => [name, ''])))
+
+async function createRow(state: State, texts: Record<string, string>) {
+  const data = {}
+
+  //
+}
 </script>
 
 <template>
@@ -54,7 +64,26 @@ const texts = reactive(
               class="w-full overflow-auto border border-black p-2 font-mono focus:outline-none disabled:bg-stone-100"
               :rows="text.split('\n').length"
               :value="text"
+              @input="
+                (event: any) => {
+                  texts[key] = event.target.value
+                }
+              "
             ></textarea>
+          </div>
+
+          <div class="border-t border-black"></div>
+
+          <div class="flex justify-start">
+            <button
+              class="rounded-sm border border-black p-3 hover:bg-stone-100"
+              @click="createRow(state, texts)"
+            >
+              <Lang>
+                <template #zh> 创建 </template>
+                <template #en> Create </template>
+              </Lang>
+            </button>
           </div>
         </div>
       </DialogPanel>
