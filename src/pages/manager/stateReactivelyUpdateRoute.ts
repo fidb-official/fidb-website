@@ -22,7 +22,6 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
       router.replace({
         path: currentPathname(),
         query: {
-          ...currentQuery(),
           currentDirectory: value,
         },
       })
