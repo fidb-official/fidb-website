@@ -12,7 +12,7 @@ export function stateReactivelyUnsetCurrentCell(state: State): void {
 
       state.currentCellIndex = undefined
       state.currentCellColumnName = undefined
-      // state.currentCellIsOpen = undefined
+      state.currentCellIsOpen = undefined
     },
   )
 }

@@ -5,12 +5,13 @@ export type StateOptions = {
   url: string
   root: string
   page: number
+  directories: Array<string>
   currentDirectory?: string
   currentRowIndex?: number
   currentRowIsOpen?: boolean
   currentCellIndex?: number
   currentCellColumnName?: string
-  directories: Array<string>
+  currentCellIsOpen?: boolean
 }
 
 export type State = StateOptions & {
@@ -34,6 +35,7 @@ export function createState(options: StateOptions): State {
     currentRowIndex,
     currentCellIndex,
     currentCellColumnName,
+    currentCellIsOpen,
   } = options
 
   return {
@@ -51,6 +53,7 @@ export function createState(options: StateOptions): State {
     currentRowIsOpen,
     currentCellIndex,
     currentCellColumnName,
+    currentCellIsOpen,
     isCurrentCell(cell: Cell): boolean {
       return (
         cell.index === this.currentCellIndex &&

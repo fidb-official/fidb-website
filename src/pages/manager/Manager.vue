@@ -49,6 +49,7 @@ async function loadState(options: { url: string }): Promise<State> {
     currentCellColumnName: query.currentCellIndex
       ? String(query.currentCellIndex)
       : undefined,
+    currentCellIsOpen: query.currentCellIsOpen === undefined ? undefined : true,
   })
 }
 </script>
