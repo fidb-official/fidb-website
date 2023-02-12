@@ -23,7 +23,17 @@ const texts = ref(Object.fromEntries(keys.map((name) => [name, ''])))
 
 const id = ref('')
 
+const newPropertyName = ref('')
+const newPropertyText = ref('')
+
 async function create(state: State) {
+  if (id.value.trim() === '') {
+    stateStatusError(state, {
+      message: 'id can not be empty',
+    })
+    return
+  }
+
   if (!state.currentDirectory) {
     stateStatusError(state, {
       message: 'no current directory',
@@ -41,15 +51,34 @@ async function create(state: State) {
     return
   }
 
-  const ok = await stateCreateRowFromTexts(state, {
+  await stateCreateRowFromTexts(state, {
     '@id': `"${state.currentDirectory}/${id.value}"`,
     ...texts.value,
   })
 
-  if (ok) {
+  if (state.status === 'ok') {
     props.close()
     id.value = ''
+    newPropertyName.value = ''
+    newPropertyText.value = ''
     texts.value = Object.fromEntries(keys.map((name) => [name, '']))
+  }
+}
+
+function createProperty(state: State) {
+  if (newPropertyName.value) {
+    if (!texts.value[newPropertyName.value] === undefined) {
+      stateStatusError(state, {
+        who: 'createProperty',
+        message: 'property already exists',
+        data: { name: newPropertyName.value },
+      })
+      return
+    }
+
+    texts.value[newPropertyName.value] = newPropertyText.value
+    newPropertyName.value = ''
+    newPropertyText.value = ''
   }
 }
 </script>
@@ -112,6 +141,38 @@ async function create(state: State) {
                   texts[key] = event.target.value
                 }
               "
+            ></textarea>
+          </div>
+
+          <div>
+            <div class="pb-1 font-bold">
+              <Lang>
+                <template #zh> 新属性 </template>
+                <template #en> New property </template>
+              </Lang>
+            </div>
+
+            <div class="flex items-center justify-between pb-1">
+              <input
+                class="border border-black px-1 font-bold focus:outline-none"
+                v-model="newPropertyName"
+              />
+
+              <button
+                class="rounded-sm border border-black px-2 py-0.5 hover:bg-stone-100"
+                @click="createProperty(state)"
+              >
+                <Lang>
+                  <template #zh> 创建 </template>
+                  <template #en> Create </template>
+                </Lang>
+              </button>
+            </div>
+
+            <textarea
+              class="w-full overflow-auto border border-black p-2 font-mono focus:outline-none disabled:bg-stone-100"
+              :rows="newPropertyText.split('\n').length"
+              v-model="newPropertyText"
             ></textarea>
           </div>
 

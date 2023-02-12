@@ -32,9 +32,9 @@ async function create() {
     return
   }
 
-  const ok = await stateSaveCellFromText(state, cell, text.value)
+  await stateSaveCellFromText(state, cell, text.value)
 
-  if (ok) {
+  if (state.status === 'ok') {
     cell.columnName = ''
     cell.value = null
     text.value = ''

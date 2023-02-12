@@ -5,7 +5,7 @@ import { stateStatusError } from './stateStatus'
 export async function stateCreateRowFromTexts(
   state: State,
   texts: Record<string, string>,
-): Promise<boolean> {
+): Promise<void> {
   const who = 'stateCreateRowFromTexts'
 
   try {
@@ -16,12 +16,10 @@ export async function stateCreateRowFromTexts(
     }
 
     await stateCreateRow(state, data)
-    return true
   } catch (error) {
     stateStatusError(state, {
       who,
       message: error instanceof Error ? error.message : 'Unknown Error',
     })
-    return false
   }
 }
