@@ -21,13 +21,13 @@ async function loadState(options: { url: string }): Promise<State> {
   const response = await fetch(`${url}`)
   const { root, directories } = await response.json()
 
-  const page = undefined // route.query.page
+  const page = Number.parseInt(route.query.page as string)
 
   return createState({
     url,
     root,
     directories,
-    page,
+    page: Number.isNaN(page) ? undefined : page,
   })
 }
 </script>
