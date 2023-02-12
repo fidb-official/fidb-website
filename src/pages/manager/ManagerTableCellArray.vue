@@ -19,7 +19,7 @@ function close() {
 <template>
   <div
     class="w-full min-w-max px-1 focus:outline-none"
-    :class="[state.currentCell === cell && 'bg-stone-100']"
+    :class="[state.isCurrentCell(cell) && 'bg-stone-100']"
     @click="isOpen = true"
   >
     {{ cell.value }}

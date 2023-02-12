@@ -28,7 +28,7 @@ function columnKind(): string | undefined {
   <div
     class="w-full min-w-max px-1 text-stone-600 focus:outline-none"
     :class="[
-      state.currentCell === cell && 'bg-stone-100',
+      state.isCurrentCell(cell) && 'bg-stone-100',
       columnKind() === 'Number' && 'text-right',
       columnKind() === 'Boolean' && 'text-right',
     ]"

@@ -15,6 +15,18 @@ const isOpen = computed(
     props.state.currentRowIndex === props.row.index &&
     Boolean(props.state.currentRowIsOpen),
 )
+
+function select() {
+  props.state.currentRowIndex = props.row.index
+}
+
+function open() {
+  props.state.currentRowIsOpen = true
+}
+
+function close() {
+  props.state.currentRowIsOpen = false
+}
 </script>
 
 <template>
@@ -28,8 +40,8 @@ const isOpen = computed(
       <!-- negative margin for chrome (must use div) -->
       <div
         class="-m-0.5 border-r border-black px-3 text-right"
-        @mouseover="state.currentRowIndex = row.index"
-        @click="state.currentRowIsOpen = true"
+        @mouseover="select()"
+        @click="open()"
       >
         {{ row.index }}
       </div>
@@ -46,11 +58,7 @@ const isOpen = computed(
     <ManagerTableRowDialog
       :state="state"
       :isOpen="isOpen"
-      :close="
-        () => {
-          state.currentRowIsOpen = false
-        }
-      "
+      :close="close"
       :row="row"
     />
   </tr>

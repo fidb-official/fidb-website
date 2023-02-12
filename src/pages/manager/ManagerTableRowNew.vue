@@ -19,7 +19,8 @@ function close() {
     @mouseover="
       () => {
         state.currentRowIndex = undefined
-        state.currentCell = undefined
+        state.currentCellIndex = undefined
+        state.currentCellColumnName = undefined
       }
     "
   >

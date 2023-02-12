@@ -1,4 +1,4 @@
-import { Cell, createCell } from './Cell'
+import { Cell } from './Cell'
 import { createTable, Table } from './Table'
 
 export type StateOptions = {
@@ -20,6 +20,7 @@ export type State = StateOptions & {
   currentCell?: Cell
   message: string
   status: 'ok' | 'running' | 'error'
+  isCurrentCell(cell: Cell): boolean
 }
 
 export function createState(options: StateOptions): State {
@@ -50,32 +51,10 @@ export function createState(options: StateOptions): State {
     currentRowIsOpen,
     currentCellIndex,
     currentCellColumnName,
-    set currentCell(cell: Cell | undefined) {
-      if (cell === undefined) {
-        return
-      }
-
-      this.currentCellIndex = cell.index
-      this.currentCellColumnName = cell.columnName
-    },
-    get currentCell(): Cell | undefined {
-      if (this.currentCellIndex === undefined) {
-        return
-      }
-      if (this.currentCellColumnName === undefined) {
-        return
-      }
-
-      const data = this.dataset[this.currentCellIndex]
-      const value = data[this.currentCellColumnName]
-      if (value === undefined) {
-        return
-      }
-
-      return createCell(
-        this.currentCellIndex,
-        this.currentCellColumnName,
-        value,
+    isCurrentCell(cell: Cell): boolean {
+      return (
+        cell.index === this.currentCellIndex &&
+        cell.columnName === this.currentCellColumnName
       )
     },
     message: '',

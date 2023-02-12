@@ -30,9 +30,9 @@ function saveNumber(state: State, cell: Cell) {
 
 <template>
   <input
-    :disabled="state.currentCell !== cell"
+    :disabled="!state.isCurrentCell(cell)"
     class="w-full min-w-max px-1 text-right text-yellow-600 focus:outline-none"
-    :class="[state.currentCell === cell && 'bg-yellow-50']"
+    :class="[state.isCurrentCell(cell) && 'bg-yellow-50']"
     v-model="cell.value"
     :size="Math.ceil(String(cell.value).length * 0.9) || 1"
     @keyup.enter="saveNumber(state, cell)"

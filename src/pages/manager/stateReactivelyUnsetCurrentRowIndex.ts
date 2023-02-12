@@ -3,14 +3,28 @@ import { State } from './State'
 
 export function stateReactivelyUnsetCurrentRowIndex(state: State): void {
   watch(
-    () => state.currentCell,
+    () => state.currentCellIndex,
 
-    (currentCell) => {
-      if (currentCell === undefined) {
+    (value) => {
+      if (value === undefined) {
         return
       }
 
       state.currentRowIndex = undefined
+      state.currentRowIsOpen = undefined
+    },
+  )
+
+  watch(
+    () => state.currentCellColumnName,
+
+    (value) => {
+      if (value === undefined) {
+        return
+      }
+
+      state.currentRowIndex = undefined
+      state.currentRowIsOpen = undefined
     },
   )
 }

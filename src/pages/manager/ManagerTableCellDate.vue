@@ -11,9 +11,9 @@ const props = defineProps<{
 
 <template>
   <div
-    :disabled="state.currentCell !== cell"
+    :disabled="!state.isCurrentCell(cell)"
     class="w-full min-w-max px-1 text-right text-yellow-600 focus:outline-none"
-    :class="[state.currentCell === cell && 'bg-yellow-50']"
+    :class="[state.isCurrentCell(cell) && 'bg-yellow-50']"
   >
     {{ formatDateTime(cell.value) }}
   </div>

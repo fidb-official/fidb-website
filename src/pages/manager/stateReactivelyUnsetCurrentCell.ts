@@ -5,12 +5,14 @@ export function stateReactivelyUnsetCurrentCell(state: State): void {
   watch(
     () => state.currentRowIndex,
 
-    (currentRowIndex) => {
-      if (currentRowIndex === undefined) {
+    (value) => {
+      if (value === undefined) {
         return
       }
 
-      state.currentCell = undefined
+      state.currentCellIndex = undefined
+      state.currentCellColumnName = undefined
+      // state.currentCellIsOpen = undefined
     },
   )
 }
