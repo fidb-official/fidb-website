@@ -28,26 +28,13 @@ async function loadState(options: { url: string }): Promise<State> {
 
   const page = Number(query.page)
 
-  console.log({
-    url,
-    root,
-    directories,
-    page: Number.isNaN(page) ? undefined : page,
-    currentRowIndex: query.currentRowIndex ? Number(query.currentRowIndex) : 1,
-    currentRowIsOpen: query.currentRowIsOpen
-      ? Boolean(query.currentRowIsOpen)
-      : undefined,
-  })
-
   return createState({
     url,
     root,
     directories,
-    page: Number.isNaN(page) ? undefined : page,
+    page: Number.isNaN(page) ? 1 : page,
     currentRowIndex: query.currentRowIndex ? Number(query.currentRowIndex) : 1,
-    currentRowIsOpen: query.currentRowIsOpen
-      ? Boolean(query.currentRowIsOpen)
-      : undefined,
+    currentRowIsOpen: query.currentRowIsOpen !== undefined ? true : undefined,
   })
 }
 </script>

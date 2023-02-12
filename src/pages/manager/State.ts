@@ -4,7 +4,7 @@ import { createTable, Table } from './Table'
 export type StateOptions = {
   url: string
   root: string
-  page?: number
+  page: number
   currentRowIndex?: number
   currentRowIsOpen?: boolean
   directories: Array<string>
@@ -12,7 +12,6 @@ export type StateOptions = {
 
 export type State = StateOptions & {
   currentDirectory?: string
-  page: number
   size: number
   dataset: Array<any>
   table: Table
@@ -30,7 +29,7 @@ export function createState(options: StateOptions): State {
     root,
     directories,
     currentDirectory: directories[0],
-    page: page || 1,
+    page,
     size: 50,
     dataset: [],
     get table() {

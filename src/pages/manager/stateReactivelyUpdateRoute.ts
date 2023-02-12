@@ -45,7 +45,7 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
         path: currentPathname(),
         query: {
           ...currentQuery(),
-          currentRowIsOpen: value ? 'true' : undefined,
+          currentRowIsOpen: value ? null : undefined,
         },
       })
     },
