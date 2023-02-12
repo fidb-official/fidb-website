@@ -1,7 +1,8 @@
 # manager
 
-[manager] `currentDirectory` -- url addressable
 [manager] `currentCell` -- url addressable
+
+[manager] add row to empty table
 
 # home
 

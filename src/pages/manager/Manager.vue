@@ -32,6 +32,10 @@ async function loadState(options: { url: string }): Promise<State> {
     url,
     root,
     directories,
+    currentDirectory:
+      query.currentDirectory !== undefined
+        ? String(query.currentDirectory)
+        : undefined,
     page: Number.isNaN(page) ? 1 : page,
     currentRowIndex: query.currentRowIndex ? Number(query.currentRowIndex) : 1,
     currentRowIsOpen: query.currentRowIsOpen !== undefined ? true : undefined,

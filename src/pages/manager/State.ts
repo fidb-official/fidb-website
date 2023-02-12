@@ -5,14 +5,15 @@ export type StateOptions = {
   url: string
   root: string
   page: number
+  currentDirectory?: string
   currentRowIndex?: number
   currentRowIsOpen?: boolean
   directories: Array<string>
 }
 
 export type State = StateOptions & {
-  currentDirectory?: string
   size: number
+  currentDirectory?: string
   dataset: Array<any>
   table: Table
   currentCell?: Cell
@@ -21,14 +22,21 @@ export type State = StateOptions & {
 }
 
 export function createState(options: StateOptions): State {
-  const { url, root, directories, page, currentRowIsOpen, currentRowIndex } =
-    options
+  const {
+    url,
+    root,
+    currentDirectory,
+    directories,
+    page,
+    currentRowIsOpen,
+    currentRowIndex,
+  } = options
 
   return {
     url,
     root,
     directories,
-    currentDirectory: directories[0],
+    currentDirectory: currentDirectory || directories[0],
     page,
     size: 50,
     dataset: [],
