@@ -1,5 +1,7 @@
-# home
+# troll
 
-[home] `Troll`
+[home] link to `/troll`
+
+[troll] `Troll` -- design
 
 [component] `Socrates`
