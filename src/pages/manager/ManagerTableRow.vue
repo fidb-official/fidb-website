@@ -13,7 +13,7 @@ const props = defineProps<{
 const isOpen = computed(
   () =>
     props.state.currentRowIndex === props.row.index &&
-    props.state.currentRowIsOpen,
+    Boolean(props.state.currentRowIsOpen),
 )
 </script>
 

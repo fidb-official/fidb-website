@@ -5,6 +5,8 @@ export type StateOptions = {
   url: string
   root: string
   page?: number
+  currentRowIndex?: number
+  currentRowIsOpen?: boolean
   directories: Array<string>
 }
 
@@ -14,15 +16,14 @@ export type State = StateOptions & {
   size: number
   dataset: Array<any>
   table: Table
-  currentRowIsOpen: boolean
-  currentRowIndex?: number
   currentCell?: Cell
   message: string
   status: 'ok' | 'running' | 'error'
 }
 
 export function createState(options: StateOptions): State {
-  const { url, root, directories, page } = options
+  const { url, root, directories, page, currentRowIsOpen, currentRowIndex } =
+    options
 
   return {
     url,
@@ -35,7 +36,8 @@ export function createState(options: StateOptions): State {
     get table() {
       return createTable(this.dataset)
     },
-    currentRowIsOpen: false,
+    currentRowIndex,
+    currentRowIsOpen,
     message: '',
     status: 'ok',
   }

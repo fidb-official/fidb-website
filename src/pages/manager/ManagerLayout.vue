@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import ManagerDataset from './ManagerDataset.vue'
 import ManagerDirectoryList from './ManagerDirectoryList.vue'
 import ManagerFoot from './ManagerFoot.vue'
@@ -9,26 +8,15 @@ import ManagerMessageBar from './ManagerMessageBar.vue'
 import ManagerStatusBar from './ManagerStatusBar.vue'
 import { State } from './State'
 import { stateReactive } from './stateReactive'
+import { stateReactivelyUpdateRoute } from './stateReactivelyUpdateRoute'
 
 const props = defineProps<{ state: State }>()
 
 const state = stateReactive(props.state)
 
-const route = useRoute()
 const router = useRouter()
 
-watch(
-  () => state.page,
-  (page) => {
-    if (page !== undefined) {
-      router.replace({
-        path: route.path,
-        query: { ...route.query, page },
-      })
-    }
-  },
-  { immediate: true },
-)
+stateReactivelyUpdateRoute(state, router, new URL(window.location.href))
 </script>
 
 <template>
