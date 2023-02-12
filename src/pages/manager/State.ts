@@ -4,6 +4,7 @@ import { createTable, Table } from './Table'
 export type StateOptions = {
   url: string
   root: string
+  page?: number
   directories: Array<string>
 }
 
@@ -20,14 +21,14 @@ export type State = StateOptions & {
 }
 
 export function createState(options: StateOptions): State {
-  const { url, root, directories } = options
+  const { url, root, directories, page } = options
 
   return {
     url,
     root,
     directories,
     currentDirectory: directories[0],
-    page: 1,
+    page: page || 1,
     size: 50,
     dataset: [],
     get table() {

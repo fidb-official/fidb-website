@@ -3,9 +3,8 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import Lang from '../../components/Lang.vue'
 import PageLayout from '../../layouts/page-layout/PageLayout.vue'
-import { loadState } from './loadState'
 import ManagerLayout from './ManagerLayout.vue'
-import { State } from './State'
+import { createState, State } from './State'
 
 const route = useRoute()
 const state = ref<State | null>(null)
@@ -15,6 +14,22 @@ onMounted(async () => {
     url: route.params.url as string,
   })
 })
+
+async function loadState(options: { url: string }): Promise<State> {
+  const { url } = options
+
+  const response = await fetch(`${url}`)
+  const { root, directories } = await response.json()
+
+  const page = undefined // route.query.page
+
+  return createState({
+    url,
+    root,
+    directories,
+    page,
+  })
+}
 </script>
 
 <template>

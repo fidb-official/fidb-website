@@ -1,6 +1,6 @@
 # manager
 
-[manager] `page` and `size` in url
+[manager] `page` -- url addressable
 [manager] `ManagerTableRowDialog` -- url addressable
 [manager] `ManagerTableCellJsonDialog` -- url addressable
 
