@@ -4,6 +4,7 @@ import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { reactive } from 'vue'
 import Lang from '../../components/Lang.vue'
 import { State } from './State'
+import { stateCreateRowFromTexts } from './stateCreateRowFromTexts'
 
 const props = defineProps<{
   state: State
@@ -19,10 +20,11 @@ const keys = props.state.table.columnNames.filter(
 
 const texts = reactive(Object.fromEntries(keys.map((name) => [name, ''])))
 
-async function createRow(state: State, texts: Record<string, string>) {
-  const data = {}
-
-  //
+async function create() {
+  const ok = await stateCreateRowFromTexts(props.state, texts.value)
+  if (ok) {
+    props.close()
+  }
 }
 </script>
 
@@ -77,7 +79,7 @@ async function createRow(state: State, texts: Record<string, string>) {
           <div class="flex justify-start">
             <button
               class="rounded-sm border border-black p-3 hover:bg-stone-100"
-              @click="createRow(state, texts)"
+              @click="create()"
             >
               <Lang>
                 <template #zh> 创建 </template>
