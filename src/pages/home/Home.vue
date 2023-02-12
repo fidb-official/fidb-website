@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Lang from '../../components/Lang.vue'
+import Link from '../../components/Link.vue'
 import PageLayout from '../../layouts/page-layout/PageLayout.vue'
 </script>
 
@@ -14,16 +15,12 @@ import PageLayout from '../../layouts/page-layout/PageLayout.vue'
         </Lang>
 
         <div>
-          <a
-            class="underline decoration-2"
-            href="https://github.com/fidb-official/fidb"
-            target="_blank"
-          >
+          <Link class="underline decoration-2" href="/troll">
             <Lang>
               <template #zh> 来试试看！ </template>
               <template #en> Let's find out! </template>
             </Lang>
-          </a>
+          </Link>
         </div>
 
         <div class="py-16"></div>
