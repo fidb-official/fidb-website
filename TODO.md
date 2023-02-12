@@ -1,6 +1,5 @@
 # manager
 
-[manager] `ManagerTableRowDialog` -- url addressable
 [manager] `ManagerTableCellJsonDialog` -- url addressable
 
 # home

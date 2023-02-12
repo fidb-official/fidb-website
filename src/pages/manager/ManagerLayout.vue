@@ -16,7 +16,7 @@ const state = stateReactive(props.state)
 
 const router = useRouter()
 
-stateReactivelyUpdateRoute(state, router, new URL(window.location.href))
+stateReactivelyUpdateRoute(state, router)
 </script>
 
 <template>
