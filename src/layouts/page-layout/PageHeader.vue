@@ -20,6 +20,13 @@ import PageLogo from './PageLogo.vue'
         </Lang>
       </Link>
 
+      <Link href="/docs" class="hover:underline">
+        <Lang>
+          <template #zh> 文档 </template>
+          <template #en> Docs </template>
+        </Lang>
+      </Link>
+
       <PageLang class="z-30 hover:underline" />
 
       <a href="https://github.com/fidb-official/fidb" target="_blank">
