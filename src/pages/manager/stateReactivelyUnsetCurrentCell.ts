@@ -14,5 +14,9 @@ export function stateReactivelyUnsetCurrentCell(state: State): void {
       state.currentCellColumnName = undefined
       state.currentCellIsOpen = undefined
     },
+
+    {
+      immediate: true,
+    },
   )
 }

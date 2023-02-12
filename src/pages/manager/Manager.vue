@@ -38,7 +38,7 @@ async function loadState(options: { url: string }): Promise<State> {
     currentRowIndex: Number.isNaN(
       Number.parseInt(String(query.currentRowIndex)),
     )
-      ? 1
+      ? undefined
       : Number.parseInt(String(query.currentRowIndex)),
     currentRowIsOpen: query.currentRowIsOpen === undefined ? undefined : true,
     currentCellIndex: Number.isNaN(

@@ -13,6 +13,10 @@ export function stateReactivelyUnsetCurrentRowIndex(state: State): void {
       state.currentRowIndex = undefined
       state.currentRowIsOpen = undefined
     },
+
+    {
+      immediate: true,
+    },
   )
 
   watch(
@@ -25,6 +29,10 @@ export function stateReactivelyUnsetCurrentRowIndex(state: State): void {
 
       state.currentRowIndex = undefined
       state.currentRowIsOpen = undefined
+    },
+
+    {
+      immediate: true,
     },
   )
 }
