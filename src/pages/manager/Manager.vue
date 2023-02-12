@@ -2,7 +2,6 @@
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import PageLayout from '../../layouts/page-layout/PageLayout.vue'
-import { wait } from '../../utils/wait'
 import { loadState, LoadStateOptions } from './loadState'
 import ManagerLayout from './ManagerLayout.vue'
 import ManagerLoading from './ManagerLoading.vue'
@@ -19,7 +18,6 @@ const options: LoadStateOptions = {
 
 onMounted(async () => {
   try {
-    await wait(30000)
     state.value = await loadState(options)
   } catch (errorValue) {
     if (errorValue instanceof Error) {
