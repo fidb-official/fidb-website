@@ -1,8 +1,7 @@
 # troll
 
-[troll] `Troll` -- design
-
-[component] `Socrates`
+[troll] `Troll` -- chinese
+[troll] `Troll` -- english
 
 # docs
 

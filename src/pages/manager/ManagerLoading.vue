@@ -12,7 +12,7 @@ defineProps<{
     class="m-3 flex flex-col space-y-3 border border-yellow-600 p-3 text-yellow-600"
   >
     <Lang>
-      <template #zh> 加载中。。。 </template>
+      <template #zh> 加载中…… </template>
       <template #en> Loading... </template>
     </Lang>
 
