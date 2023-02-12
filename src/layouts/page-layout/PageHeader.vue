@@ -12,7 +12,7 @@ import PageLogo from './PageLogo.vue'
       <PageLogo />
     </Link>
 
-    <div class="flex items-center space-x-2">
+    <div class="flex items-center space-x-3">
       <Link href="/manager" class="hover:underline">
         <Lang>
           <template #zh> 管理器 </template>
