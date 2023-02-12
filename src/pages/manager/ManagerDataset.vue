@@ -1,9 +1,17 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import Lang from '../../components/Lang.vue'
+import ManagerEmptyTable from './ManagerEmptyTable.vue'
 import ManagerTable from './ManagerTable.vue'
 import { State } from './State'
 
 defineProps<{ state: State }>()
+
+const isOpen = ref(false)
+
+function close() {
+  isOpen.value = false
+}
 </script>
 
 <template>
@@ -15,7 +23,7 @@ defineProps<{ state: State }>()
       </Lang>
     </div>
 
-    <div v-else-if="state.dataset.length === 0"></div>
+    <ManagerEmptyTable v-else-if="state.dataset.length === 0" :state="state" />
 
     <ManagerTable v-else :state="state" />
   </div>

@@ -122,11 +122,10 @@ function createProperty(state: State) {
             <div class="flex items-baseline space-x-1">
               <span class="text-lg font-bold">"</span>
 
-              <textarea
+              <input
                 class="w-full resize-none overflow-auto border border-black p-2 font-mono focus:outline-none disabled:bg-stone-100"
-                rows="1"
                 v-model="id"
-              ></textarea>
+              />
               <span class="text-xl font-bold">"</span>
             </div>
           </div>
@@ -167,8 +166,8 @@ function createProperty(state: State) {
                 @click="createProperty(state)"
               >
                 <Lang>
-                  <template #zh> 创建 </template>
-                  <template #en> Create </template>
+                  <template #zh> 增加属性 </template>
+                  <template #en> Add property </template>
                 </Lang>
               </button>
             </div>
