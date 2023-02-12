@@ -115,9 +115,13 @@ function createProperty(state: State) {
               <div class="font-bold">@id</div>
             </div>
 
+            <div class="overflow-auto whitespace-nowrap pb-1 font-bold">
+              <span>{{ state.currentDirectory }}/</span>
+            </div>
+
             <div class="flex items-baseline space-x-1">
               <span class="text-lg font-bold">"</span>
-              <div class="font-bold">{{ state.currentDirectory }}/</div>
+
               <textarea
                 class="w-full resize-none overflow-auto border border-black p-2 font-mono focus:outline-none disabled:bg-stone-100"
                 rows="1"
