@@ -1,4 +1,4 @@
-import { Cell } from './Cell'
+import { Cell, createCell } from './Cell'
 import { createTable, Table } from './Table'
 
 export type StateOptions = {
@@ -8,6 +8,8 @@ export type StateOptions = {
   currentDirectory?: string
   currentRowIndex?: number
   currentRowIsOpen?: boolean
+  currentCellIndex?: number
+  currentCellColumnName?: string
   directories: Array<string>
 }
 
@@ -29,6 +31,8 @@ export function createState(options: StateOptions): State {
     page,
     currentRowIsOpen,
     currentRowIndex,
+    currentCellIndex,
+    currentCellColumnName,
   } = options
 
   return {
@@ -44,6 +48,36 @@ export function createState(options: StateOptions): State {
     },
     currentRowIndex,
     currentRowIsOpen,
+    currentCellIndex,
+    currentCellColumnName,
+    set currentCell(cell: Cell | undefined) {
+      if (cell === undefined) {
+        return
+      }
+
+      this.currentCellIndex = cell.index
+      this.currentCellColumnName = cell.columnName
+    },
+    get currentCell(): Cell | undefined {
+      if (this.currentCellIndex === undefined) {
+        return
+      }
+      if (this.currentCellColumnName === undefined) {
+        return
+      }
+
+      const data = this.dataset[this.currentCellIndex]
+      const value = data[this.currentCellColumnName]
+      if (value === undefined) {
+        return
+      }
+
+      return createCell(
+        this.currentCellIndex,
+        this.currentCellColumnName,
+        value,
+      )
+    },
     message: '',
     status: 'ok',
   }

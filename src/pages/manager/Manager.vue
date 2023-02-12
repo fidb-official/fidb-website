@@ -24,16 +24,6 @@ async function loadState(options: { url: string }): Promise<State> {
     ignoreQueryPrefix: true,
   })
 
-  const currentCellIndex = Number.isNaN(
-    Number.parseInt(String(query.currentCellIndex)),
-  )
-    ? undefined
-    : Number.parseInt(String(query.currentCellIndex))
-
-  const currentCellColumnName = query.currentCellIndex
-    ? String(query.currentCellIndex)
-    : undefined
-
   return createState({
     url: options.url,
     root,
@@ -51,6 +41,14 @@ async function loadState(options: { url: string }): Promise<State> {
       ? 1
       : Number.parseInt(String(query.currentRowIndex)),
     currentRowIsOpen: query.currentRowIsOpen === undefined ? undefined : true,
+    currentCellIndex: Number.isNaN(
+      Number.parseInt(String(query.currentCellIndex)),
+    )
+      ? undefined
+      : Number.parseInt(String(query.currentCellIndex)),
+    currentCellColumnName: query.currentCellIndex
+      ? String(query.currentCellIndex)
+      : undefined,
   })
 }
 </script>
