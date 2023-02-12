@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import Lang from '../../components/Lang.vue'
 import { Cell } from './Cell'
 import { State } from './State'
@@ -14,7 +14,15 @@ const props = defineProps<{
   cell: Cell
 }>()
 
-const text = ref(JSON.stringify(props.cell.value || null, null, 2))
+const text = ref('')
+
+watch(
+  () => props.cell.value,
+  (value) => {
+    text.value = JSON.stringify(value || null, null, 2)
+  },
+  { immediate: true, deep: true },
+)
 </script>
 
 <template>

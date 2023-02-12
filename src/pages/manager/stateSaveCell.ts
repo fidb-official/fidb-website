@@ -11,6 +11,15 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
 
   const data = state.dataset[cell.index]
   if (data[cell.columnName] === cell.value) {
+    stateStatusOk(state, {
+      who,
+      message: 'same value, no need to save',
+      data: {
+        '@id': data['@id'],
+        column: cell.columnName,
+        value: cell.value,
+      },
+    })
     return
   }
 

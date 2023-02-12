@@ -23,7 +23,7 @@ defineProps<{ state: State }>()
         kind === 'Number' || kind === 'Boolean' ? 'text-right' : 'text-left',
       ]"
     >
-      <div class="px-1">{{ name.toString() }}</div>
+      <div class="px-1">{{ name }}</div>
     </th>
   </tr>
 </template>

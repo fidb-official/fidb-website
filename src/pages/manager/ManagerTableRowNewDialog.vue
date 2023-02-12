@@ -3,9 +3,6 @@ import { Dialog, DialogPanel } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { reactive } from 'vue'
 import Lang from '../../components/Lang.vue'
-import ManagerTableRowDialogCell from './ManagerTableRowDialogCell.vue'
-import ManagerTableRowDialogCellNew from './ManagerTableRowDialogCellNew.vue'
-import { createRow } from './Row'
 import { State } from './State'
 
 const props = defineProps<{
@@ -14,8 +11,8 @@ const props = defineProps<{
   close: () => void
 }>()
 
-const row = reactive(
-  createRow(props.state.dataset.length, props.state.table.columnNames, {}),
+const texts = reactive(
+  Object.fromEntries(props.state.table.columnNames.map((name) => [name, ''])),
 )
 </script>
 
@@ -48,14 +45,17 @@ const row = reactive(
 
           <button v-focus class="h-0 focus:outline-none"></button>
 
-          <ManagerTableRowDialogCell
-            v-for="cell of row.cells"
-            :key="cell.columnName"
-            :state="state"
-            :cell="cell"
-          />
+          <div v-for="(text, key) of texts" :key="key">
+            <div class="flex items-center justify-between pb-1">
+              <div class="font-bold">{{ key }}</div>
+            </div>
 
-          <ManagerTableRowDialogCellNew :state="state" :row="row" />
+            <textarea
+              class="w-full overflow-auto border border-black p-2 font-mono focus:outline-none disabled:bg-stone-100"
+              :rows="text.split('\n').length"
+              :value="text"
+            ></textarea>
+          </div>
         </div>
       </DialogPanel>
     </div>

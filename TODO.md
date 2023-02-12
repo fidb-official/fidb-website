@@ -1,7 +1,9 @@
 # manager
 
-[manager] `ManagerTableRowNewDialog` -- create new column
+[manager] `stateCreateRow`
+
 [manager] `ManagerTableRowNewDialog` -- create row
+[manager] `ManagerTableRowNewDialog` -- create new column
 
 [manager] `page` and `size` in url
 [manager] `ManagerTableRowDialog` -- url addressable
