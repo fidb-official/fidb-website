@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import qs from 'qs'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import Lang from '../../components/Lang.vue'
@@ -21,7 +22,11 @@ async function loadState(options: { url: string }): Promise<State> {
   const response = await fetch(`${url}`)
   const { root, directories } = await response.json()
 
-  const page = Number.parseInt(route.query.page as string)
+  const query = qs.parse(new URL(window.location.href).search, {
+    ignoreQueryPrefix: true,
+  })
+
+  const page = Number(query.page)
 
   return createState({
     url,

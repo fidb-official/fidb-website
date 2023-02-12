@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
 import ManagerTableCell from './ManagerTableCell.vue'
 import ManagerTableRowDialog from './ManagerTableRowDialog.vue'
 import { Row } from './Row'
 import { State } from './State'
 
-defineProps<{
+const props = defineProps<{
   state: State
   row: Row
 }>()
 
-const isOpen = ref(false)
-
-function close() {
-  isOpen.value = false
-}
+const isOpen = computed(
+  () =>
+    props.state.currentRowIndex === props.row.index &&
+    props.state.currentRowIsOpen,
+)
 </script>
 
 <template>
@@ -29,7 +29,7 @@ function close() {
       <div
         class="-m-0.5 border-r border-black px-3 text-right"
         @mouseover="state.currentRowIndex = row.index"
-        @click="isOpen = true"
+        @click="state.currentRowIsOpen = true"
       >
         {{ row.index }}
       </div>
@@ -46,7 +46,11 @@ function close() {
     <ManagerTableRowDialog
       :state="state"
       :isOpen="isOpen"
-      :close="close"
+      :close="
+        () => {
+          state.currentRowIsOpen = false
+        }
+      "
       :row="row"
     />
   </tr>
