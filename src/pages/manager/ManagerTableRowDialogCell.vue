@@ -33,6 +33,7 @@ function isReadonly(cell: Cell): boolean {
       <div class="font-bold">{{ cell.columnName }}</div>
 
       <button
+        v-if="!isReadonly(cell)"
         class="rounded-sm border border-black px-2 py-0.5 hover:bg-stone-100"
         @click="stateSaveCellFromText(state, cell, text)"
       >
