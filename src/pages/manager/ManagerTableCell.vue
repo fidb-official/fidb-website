@@ -24,10 +24,9 @@ defineProps<{
     class="scrollbar-hide w-full max-w-prose overflow-x-auto whitespace-nowrap"
     :class="[state.isCurrentCell(cell) && 'ring-2 ring-stone-500']"
     @mouseover="() => {
-state.currentCellIndex = cell.index
-state.currentCellColumnName = cell.columnName
-}"
-
+      state.currentCellIndex = cell.index
+      state.currentCellColumnName = cell.columnName
+    }"
   >
     <ManagerTableCellId v-if="cell.columnName === '@id'" v-bind="$props" />
     <ManagerTableCellRevision v-else-if="cell.columnName === '@revision'" v-bind="$props" />
