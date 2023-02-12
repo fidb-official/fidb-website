@@ -14,6 +14,7 @@ export type State = StateOptions & {
   size: number
   dataset: Array<any>
   table: Table
+  currentRowIsOpen: boolean
   currentRowIndex?: number
   currentCell?: Cell
   message: string
@@ -34,6 +35,7 @@ export function createState(options: StateOptions): State {
     get table() {
       return createTable(this.dataset)
     },
+    currentRowIsOpen: false,
     message: '',
     status: 'ok',
   }
