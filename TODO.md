@@ -1,5 +1,3 @@
-ManagerTableLoading
-
 # troll
 
 [troll] `Troll` -- design
