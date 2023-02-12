@@ -17,6 +17,7 @@ export type StateOptions = {
 export type State = StateOptions & {
   size: number
   dataset: Array<any>
+  datasetIsLoading?: boolean
   table: Table
   currentCell?: Cell
   message: string

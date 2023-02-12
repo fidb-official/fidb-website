@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Lang from '../../components/Lang.vue'
-import ManagerEmptyTable from './ManagerEmptyTable.vue'
 import ManagerTable from './ManagerTable.vue'
+import ManagerTableEmpty from './ManagerTableEmpty.vue'
 import { State } from './State'
 
 defineProps<{ state: State }>()
@@ -23,7 +23,9 @@ function close() {
       </Lang>
     </div>
 
-    <ManagerEmptyTable v-else-if="state.dataset.length === 0" :state="state" />
+    <div v-else-if="state.datasetIsLoading">Loading</div>
+
+    <ManagerTableEmpty v-else-if="state.dataset.length === 0" :state="state" />
 
     <ManagerTable v-else :state="state" />
   </div>

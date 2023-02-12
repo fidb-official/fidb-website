@@ -6,13 +6,20 @@ import {
   stateStatusRunning,
 } from './stateStatus'
 
-export async function stateUpdateDataset(state: State, directory: string) {
+export async function stateUpdateDataset(state: State) {
+  const directory = state.currentDirectory
+  if (directory === undefined) {
+    return
+  }
+
   const who = 'stateUpdateDataset'
 
+  state.datasetIsLoading = true
   state.dataset = []
+
   stateStatusRunning(state, {
     who,
-    message: 'running',
+    message: 'loading',
   })
 
   const query = {
@@ -29,6 +36,7 @@ export async function stateUpdateDataset(state: State, directory: string) {
     const { results } = await response.json()
 
     state.dataset = results
+    state.datasetIsLoading = false
     stateStatusOk(state, {
       who,
       data: {

@@ -6,29 +6,16 @@ export function stateReactivelyUpdateDataset(state: State): void {
   watch(
     () => state.currentDirectory,
 
-    async (directory) => {
-      if (directory === undefined) {
-        return
-      }
-
-      await stateUpdateDataset(state, directory)
+    async () => {
+      await stateUpdateDataset(state)
     },
-
-    { immediate: true },
   )
 
   watch(
     () => state.page,
 
     async () => {
-      const directory = state.currentDirectory
-      if (directory === undefined) {
-        return
-      }
-
-      await stateUpdateDataset(state, directory)
+      await stateUpdateDataset(state)
     },
-
-    { immediate: true },
   )
 }

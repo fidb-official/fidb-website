@@ -1,5 +1,6 @@
 import qs from 'qs'
 import { createState, State } from './State'
+import { stateUpdateDataset } from './stateUpdateDataset'
 
 export type LoadStateOptions = {
   url: string
@@ -26,7 +27,7 @@ export async function loadState(options: LoadStateOptions): Promise<State> {
       ignoreQueryPrefix: true,
     })
 
-    return createState({
+    const state = createState({
       url: options.url,
       root,
       directories,
@@ -54,6 +55,10 @@ export async function loadState(options: LoadStateOptions): Promise<State> {
       currentCellIsOpen:
         query.currentCellIsOpen === undefined ? undefined : true,
     })
+
+    await stateUpdateDataset(state)
+
+    return state
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(
