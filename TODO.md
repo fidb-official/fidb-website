@@ -1,7 +1,7 @@
 # manager
 
-[manager] `stateCreateRowFromTexts`
 [manager] `stateCreateRow`
+[manager] `stateCreateRowFromTexts`
 
 [manager] `ManagerTableRowNewDialog` -- create row
 [manager] `ManagerTableRowNewDialog` -- create new column
