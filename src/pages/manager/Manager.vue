@@ -1,29 +1,40 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import Lang from '../../components/Lang.vue'
 import PageLayout from '../../layouts/page-layout/PageLayout.vue'
-import { loadState } from './loadState'
+import { wait } from '../../utils/wait'
+import { loadState, LoadStateOptions } from './loadState'
 import ManagerLayout from './ManagerLayout.vue'
+import ManagerLoading from './ManagerLoading.vue'
+import ManagerLoadingError from './ManagerLoadingError.vue'
 import { State } from './State'
 
 const route = useRoute()
 const state = ref<State | null>(null)
+const error = ref<Error | null>(null)
+
+const options: LoadStateOptions = {
+  url: route.params.url as string,
+}
 
 onMounted(async () => {
-  state.value = await loadState({
-    url: route.params.url as string,
-  })
+  try {
+    await wait(30000)
+    state.value = await loadState(options)
+  } catch (errorValue) {
+    if (errorValue instanceof Error) {
+      error.value = errorValue
+    }
+
+    throw errorValue
+  }
 })
 </script>
 
 <template>
   <PageLayout>
     <ManagerLayout v-if="state" :state="state" />
-
-    <Lang v-else class="px-3">
-      <template #zh> 加载中。。。 </template>
-      <template #en> Loading... </template>
-    </Lang>
+    <ManagerLoadingError v-else-if="error" :error="error" />
+    <ManagerLoading v-else :options="options" />
   </PageLayout>
 </template>
