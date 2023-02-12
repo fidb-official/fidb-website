@@ -25,6 +25,15 @@ const isOpen = computed(
     Boolean(props.state.currentCellIsOpen),
 )
 
+function select() {
+  props.state.currentCellIndex = props.cell.index
+  props.state.currentCellColumnName = props.cell.columnName
+}
+
+function open() {
+  props.state.currentCellIsOpen = true
+}
+
 function close() {
   props.state.currentCellIsOpen = false
 }
@@ -32,6 +41,7 @@ function close() {
 const args = reactive({
   ...props,
   isOpen,
+  open,
   close,
 })
 </script>
@@ -41,10 +51,7 @@ const args = reactive({
   <div
     class="scrollbar-hide w-full max-w-prose overflow-x-auto whitespace-nowrap"
     :class="[state.isCurrentCell(cell) && 'ring-2 ring-stone-500']"
-    @mouseover="() => {
-      state.currentCellIndex = cell.index
-      state.currentCellColumnName = cell.columnName
-    }"
+    @mouseover="select()   "
   >
     <ManagerTableCellId v-if="cell.columnName === '@id'" v-bind="args" />
     <ManagerTableCellRevision v-else-if="cell.columnName === '@revision'" v-bind="args" />

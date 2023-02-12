@@ -7,6 +7,7 @@ const props = defineProps<{
   state: State
   cell: Cell
   isOpen: boolean
+  open: () => void
   close: () => void
 }>()
 
@@ -27,7 +28,7 @@ function columnKind(): string | undefined {
       columnKind() === 'Number' && 'text-right',
       columnKind() === 'Boolean' && 'text-right',
     ]"
-    @click="state.currentCellIsOpen = true"
+    @click="open()"
   >
     null
 

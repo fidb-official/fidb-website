@@ -7,6 +7,7 @@ defineProps<{
   state: State
   cell: Cell
   isOpen: boolean
+  open: () => void
   close: () => void
 }>()
 </script>
@@ -15,7 +16,7 @@ defineProps<{
   <div
     class="w-full min-w-max px-1 focus:outline-none"
     :class="[state.isCurrentCell(cell) && 'bg-stone-100']"
-    @click="state.currentCellIsOpen = true"
+    @click="open()"
   >
     {{ cell.value }}
 
