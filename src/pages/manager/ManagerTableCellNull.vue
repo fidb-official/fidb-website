@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Cell } from './Cell'
 import ManagerTableCellJsonDialog from './ManagerTableCellJsonDialog.vue'
 import { State } from './State'
@@ -7,13 +6,9 @@ import { State } from './State'
 const props = defineProps<{
   state: State
   cell: Cell
+  isOpen: boolean
+  close: () => void
 }>()
-
-const isOpen = ref(false)
-
-function close() {
-  isOpen.value = false
-}
 
 function columnKind(): string | undefined {
   const column = props.state.table.columns.find(
@@ -32,7 +27,7 @@ function columnKind(): string | undefined {
       columnKind() === 'Number' && 'text-right',
       columnKind() === 'Boolean' && 'text-right',
     ]"
-    @click="isOpen = true"
+    @click="state.currentCellIsOpen = true"
   >
     null
 

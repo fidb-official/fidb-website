@@ -46,8 +46,8 @@ async function loadState(options: { url: string }): Promise<State> {
     )
       ? undefined
       : Number.parseInt(String(query.currentCellIndex)),
-    currentCellColumnName: query.currentCellIndex
-      ? String(query.currentCellIndex)
+    currentCellColumnName: query.currentCellColumnName
+      ? String(query.currentCellColumnName)
       : undefined,
     currentCellIsOpen: query.currentCellIsOpen === undefined ? undefined : true,
   })

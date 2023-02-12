@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed, reactive } from 'vue'
 import { Cell } from './Cell'
 import ManagerTableCellArray from './ManagerTableCellArray.vue'
 import ManagerTableCellBoolean from './ManagerTableCellBoolean.vue'
@@ -12,10 +13,27 @@ import ManagerTableCellString from './ManagerTableCellString.vue'
 import ManagerTableCellUnknown from './ManagerTableCellUnknown.vue'
 import { State } from './State'
 
-defineProps<{
+const props = defineProps<{
   state: State
   cell: Cell
 }>()
+
+const isOpen = computed(
+  () =>
+    props.state.currentCellIndex === props.cell.index &&
+    props.state.currentCellColumnName === props.cell.columnName &&
+    Boolean(props.state.currentCellIsOpen),
+)
+
+function close() {
+  props.state.currentCellIsOpen = false
+}
+
+const args = reactive({
+  ...props,
+  isOpen,
+  close,
+})
 </script>
 
 <template>
@@ -28,16 +46,16 @@ defineProps<{
       state.currentCellColumnName = cell.columnName
     }"
   >
-    <ManagerTableCellId v-if="cell.columnName === '@id'" v-bind="$props" />
-    <ManagerTableCellRevision v-else-if="cell.columnName === '@revision'" v-bind="$props" />
-    <ManagerTableCellDate v-else-if="cell.columnName === '@createdAt'" v-bind="$props" disabled />
-    <ManagerTableCellDate v-else-if="cell.columnName === '@updatedAt'" v-bind="$props" disabled />
-    <ManagerTableCellString v-else-if="cell.kind === 'String'" v-bind="$props" />
-    <ManagerTableCellNumber v-else-if="cell.kind === 'Number'" v-bind="$props" />
-    <ManagerTableCellNull v-else-if="cell.kind === 'Null'" v-bind="$props" />
-    <ManagerTableCellBoolean v-else-if="cell.kind === 'Boolean'" v-bind="$props" />
-    <ManagerTableCellArray v-else-if="cell.kind === 'Array'" v-bind="$props" />
-    <ManagerTableCellObject v-else-if="cell.kind === 'Object'" v-bind="$props" />
-    <ManagerTableCellUnknown v-else v-bind="$props" />
+    <ManagerTableCellId v-if="cell.columnName === '@id'" v-bind="args" />
+    <ManagerTableCellRevision v-else-if="cell.columnName === '@revision'" v-bind="args" />
+    <ManagerTableCellDate v-else-if="cell.columnName === '@createdAt'" v-bind="args" disabled />
+    <ManagerTableCellDate v-else-if="cell.columnName === '@updatedAt'" v-bind="args" disabled />
+    <ManagerTableCellString v-else-if="cell.kind === 'String'" v-bind="args" />
+    <ManagerTableCellNumber v-else-if="cell.kind === 'Number'" v-bind="args" />
+    <ManagerTableCellNull v-else-if="cell.kind === 'Null'" v-bind="args" />
+    <ManagerTableCellBoolean v-else-if="cell.kind === 'Boolean'" v-bind="args" />
+    <ManagerTableCellArray v-else-if="cell.kind === 'Array'" v-bind="args" />
+    <ManagerTableCellObject v-else-if="cell.kind === 'Object'" v-bind="args" />
+    <ManagerTableCellUnknown v-else v-bind="args" />
   </div>
 </template>
