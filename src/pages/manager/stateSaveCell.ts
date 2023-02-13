@@ -15,7 +15,7 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
       who,
       message: 'same value, no need to save',
       data: {
-        '@patha': data['@patha'],
+        '@path': data['@path'],
         column: cell.columnName,
         value: cell.value,
       },
@@ -25,7 +25,7 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
 
   stateStatusRunning(state, { who, message: 'saving' })
 
-  const response = await fetch(`${state.url}/${data['@patha']}`, {
+  const response = await fetch(`${state.url}/${data['@path']}`, {
     method: 'PATCH',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({
@@ -40,7 +40,7 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
       who,
       message: 'saved',
       data: {
-        '@patha': data['@patha'],
+        '@path': data['@path'],
         column: cell.columnName,
       },
     })
@@ -49,13 +49,13 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
       who,
       message: `${response.statusText}, fetching new data`,
       data: {
-        '@patha': data['@patha'],
+        '@path': data['@path'],
         column: cell.columnName,
       },
     })
 
     if (response.status === 409) {
-      const response = await fetch(`${state.url}/${data['@patha']}`)
+      const response = await fetch(`${state.url}/${data['@path']}`)
       stateStatusError(state)
       if (response.ok) {
         stateReplaceData(state, await response.json())
@@ -71,7 +71,7 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
 
 function stateReplaceData(state: State, input: any) {
   const index = state.dataset.findIndex(
-    (data: any) => data['@patha'] === input['@patha'],
+    (data: any) => data['@path'] === input['@path'],
   )
 
   if (index !== -1) {

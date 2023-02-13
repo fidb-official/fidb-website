@@ -20,7 +20,7 @@ watch(
   { immediate: true, deep: true },
 )
 
-const readonlyColumnNames = ['@patha', '@revision', '@createdAt', '@updatedAt']
+const readonlyColumnNames = ['@path', '@revision', '@createdAt', '@updatedAt']
 
 function isReadonly(cell: Cell): boolean {
   return readonlyColumnNames.includes(cell.columnName)

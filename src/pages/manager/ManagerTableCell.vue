@@ -53,7 +53,7 @@ const args = reactive({
     :class="[state.isCurrentCell(cell) && 'ring-2 ring-stone-500']"
     @mouseover="select()   "
   >
-    <ManagerTableCellId v-if="cell.columnName === '@patha'" v-bind="args" />
+    <ManagerTableCellId v-if="cell.columnName === '@path'" v-bind="args" />
     <ManagerTableCellRevision v-else-if="cell.columnName === '@revision'" v-bind="args" />
     <ManagerTableCellDate v-else-if="cell.columnName === '@createdAt'" v-bind="args" disabled />
     <ManagerTableCellDate v-else-if="cell.columnName === '@updatedAt'" v-bind="args" disabled />

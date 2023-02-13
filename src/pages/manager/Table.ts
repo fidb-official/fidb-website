@@ -16,7 +16,7 @@ export function tableColumnNames(dataset: Array<any>): Array<string> {
 
   columnNames = arrayDedup(columnNames)
 
-  startColumnName(columnNames, '@patha')
+  startColumnName(columnNames, '@path')
   endColumnName(columnNames, '@createdAt')
   endColumnName(columnNames, '@updatedAt')
   endColumnName(columnNames, '@revision')

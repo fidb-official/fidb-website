@@ -23,7 +23,7 @@ export async function stateDeleteRow(
     return
   }
 
-  const response = await fetch(`${state.url}/${data['@patha']}`, {
+  const response = await fetch(`${state.url}/${data['@path']}`, {
     method: 'DELETE',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({
