@@ -13,7 +13,7 @@ const props = defineProps<{
   close: () => void
 }>()
 
-const generatedNames = ['@id', '@revision', '@createdAt', '@updatedAt']
+const generatedNames = ['@patha', '@revision', '@createdAt', '@updatedAt']
 
 const keys = props.state.table.columnNames.filter(
   (name) => !generatedNames.includes(name),
@@ -52,7 +52,7 @@ async function create(state: State) {
   }
 
   await stateCreateRowFromTexts(state, {
-    '@id': `"${state.currentDirectory}/${id.value}"`,
+    '@patha': `"${state.currentDirectory}/${id.value}"`,
     ...texts.value,
   })
 
@@ -112,7 +112,7 @@ function createProperty(state: State) {
 
           <div>
             <div class="flex items-center justify-between pb-1">
-              <div class="font-bold">@id</div>
+              <div class="font-bold">@patha</div>
             </div>
 
             <div class="overflow-auto whitespace-nowrap pb-1 font-bold">
