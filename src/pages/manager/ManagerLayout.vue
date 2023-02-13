@@ -3,7 +3,6 @@ import { useRouter } from 'vue-router'
 import ManagerDataset from './ManagerDataset.vue'
 import ManagerDirectoryList from './ManagerDirectoryList.vue'
 import ManagerFoot from './ManagerFoot.vue'
-import ManagerHead from './ManagerHead.vue'
 import ManagerMessageBar from './ManagerMessageBar.vue'
 import ManagerStatusBar from './ManagerStatusBar.vue'
 import { State } from './State'
@@ -21,8 +20,6 @@ stateReactivelyUpdateRoute(state, router)
 
 <template>
   <div class="flex h-full flex-col overflow-auto px-3">
-    <ManagerHead :state="state" />
-
     <div class="flex h-full flex-col overflow-auto border-y border-black">
       <div class="flex h-full overflow-auto">
         <ManagerDirectoryList

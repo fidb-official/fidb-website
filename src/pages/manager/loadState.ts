@@ -20,7 +20,7 @@ export async function loadState(options: LoadStateOptions): Promise<State> {
       )
     }
 
-    const { root, directories } = await response.json()
+    const { directories } = await response.json()
 
     const query = qs.parse(new URL(window.location.href).search, {
       ignoreQueryPrefix: true,
@@ -28,7 +28,6 @@ export async function loadState(options: LoadStateOptions): Promise<State> {
 
     return createState({
       url: options.url,
-      root,
       directories,
       currentDirectory:
         query.currentDirectory === undefined

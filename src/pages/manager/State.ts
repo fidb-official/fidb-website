@@ -3,7 +3,6 @@ import { createTable, Table } from './Table'
 
 export type StateOptions = {
   url: string
-  root: string
   page: number
   directories: Array<string>
   currentDirectory?: string
@@ -28,7 +27,6 @@ export type State = StateOptions & {
 export function createState(options: StateOptions): State {
   const {
     url,
-    root,
     currentDirectory,
     directories,
     page,
@@ -41,7 +39,6 @@ export function createState(options: StateOptions): State {
 
   return {
     url,
-    root,
     directories,
     currentDirectory: currentDirectory || directories[0],
     page,
