@@ -53,16 +53,16 @@ const args = reactive({
     :class="[state.isCurrentCell(cell) && 'ring-2 ring-stone-500']"
     @mouseover="select()   "
   >
-    <ManagerTableCellId v-if="cell.columnName === '@path'" v-bind="args" />
-    <ManagerTableCellRevision v-else-if="cell.columnName === '@revision'" v-bind="args" />
-    <ManagerTableCellDate v-else-if="cell.columnName === '@createdAt'" v-bind="args" disabled />
-    <ManagerTableCellDate v-else-if="cell.columnName === '@updatedAt'" v-bind="args" disabled />
-    <ManagerTableCellString v-else-if="cell.kind === 'String'" v-bind="args" />
-    <ManagerTableCellNumber v-else-if="cell.kind === 'Number'" v-bind="args" />
-    <ManagerTableCellNull v-else-if="cell.kind === 'Null'" v-bind="args" />
-    <ManagerTableCellBoolean v-else-if="cell.kind === 'Boolean'" v-bind="args" />
-    <ManagerTableCellArray v-else-if="cell.kind === 'Array'" v-bind="args" />
-    <ManagerTableCellObject v-else-if="cell.kind === 'Object'" v-bind="args" />
-    <ManagerTableCellUnknown v-else v-bind="args" />
+    <ManagerTableCellId v-if="cell.columnName === '@path'" v-bind="$props" :isOpen="isOpen" :open="open" :close="close" />
+    <ManagerTableCellRevision v-else-if="cell.columnName === '@revision'" v-bind="$props" :isOpen="isOpen" :open="open" :close="close" />
+    <ManagerTableCellDate v-else-if="cell.columnName === '@createdAt'" v-bind="$props" :isOpen="isOpen" :open="open" :close="close" disabled />
+    <ManagerTableCellDate v-else-if="cell.columnName === '@updatedAt'" v-bind="$props" :isOpen="isOpen" :open="open" :close="close" disabled />
+    <ManagerTableCellString v-else-if="cell.kind === 'String'" v-bind="$props" :isOpen="isOpen" :open="open" :close="close" />
+    <ManagerTableCellNumber v-else-if="cell.kind === 'Number'" v-bind="$props" :isOpen="isOpen" :open="open" :close="close" />
+    <ManagerTableCellNull v-else-if="cell.kind === 'Null'" v-bind="$props" :isOpen="isOpen" :open="open" :close="close" />
+    <ManagerTableCellBoolean v-else-if="cell.kind === 'Boolean'" v-bind="$props" :isOpen="isOpen" :open="open" :close="close" />
+    <ManagerTableCellArray v-else-if="cell.kind === 'Array'" v-bind="$props" :isOpen="isOpen" :open="open" :close="close" />
+    <ManagerTableCellObject v-else-if="cell.kind === 'Object'" v-bind="$props" :isOpen="isOpen" :open="open" :close="close" />
+    <ManagerTableCellUnknown v-else v-bind="$props" :isOpen="isOpen" :open="open" :close="close" />
   </div>
 </template>
