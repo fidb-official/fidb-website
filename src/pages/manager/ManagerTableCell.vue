@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive } from 'vue'
+import { computed } from 'vue'
 import { Cell } from './Cell'
 import ManagerTableCellArray from './ManagerTableCellArray.vue'
 import ManagerTableCellBoolean from './ManagerTableCellBoolean.vue'
@@ -37,13 +37,6 @@ function open() {
 function close() {
   props.state.currentCellIsOpen = false
 }
-
-const args = reactive({
-  ...props,
-  isOpen,
-  open,
-  close,
-})
 </script>
 
 <template>
