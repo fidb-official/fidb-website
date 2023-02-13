@@ -22,7 +22,7 @@ export async function stateDeleteDirectory(
     return
   }
 
-  const response = await fetch(`${state.url}/${directory}`, {
+  const response = await fetch(`${state.url}/${directory}?kind=directory`, {
     method: 'DELETE',
   })
 

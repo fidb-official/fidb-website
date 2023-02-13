@@ -7,7 +7,7 @@ export type LoadStateOptions = {
 
 export async function loadState(options: LoadStateOptions): Promise<State> {
   try {
-    const response = await fetch(`${options.url}`)
+    const response = await fetch(`${options.url}?kind=list`)
 
     if (!response.ok) {
       throw new Error(

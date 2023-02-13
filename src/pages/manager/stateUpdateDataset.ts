@@ -29,7 +29,7 @@ export async function stateUpdateDataset(state: State) {
   }
 
   const response = await fetch(
-    `${state.url}/${directory}?${qs.stringify(query)}`,
+    `${state.url}/${directory}?kind=find&${qs.stringify(query)}`,
   )
 
   if (response.ok) {
