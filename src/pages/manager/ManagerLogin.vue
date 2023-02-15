@@ -7,9 +7,11 @@ import FormInput from '../../components/FormInput.vue'
 import Lang from '../../components/Lang.vue'
 import { useForm } from '../../hooks/useForm'
 import PageLayout from '../../layouts/page-layout/PageLayout.vue'
+import { useGlobalLang } from '../../reactives/useGlobalLang'
 
 const router = useRouter()
 const form = useForm({ url: '' })
+const lang = useGlobalLang()
 
 function submit(event: Event) {
   form.submit(event, (values) => {
@@ -21,7 +23,7 @@ function submit(event: Event) {
 <template>
   <PageLayout>
     <Head>
-      <title v-if="$app.lang.zh">管理器 | FiDB</title>
+      <title v-if="lang.isZh()">管理器 | FiDB</title>
       <title v-else>Manager | FiDB</title>
     </Head>
 

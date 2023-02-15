@@ -7,10 +7,13 @@ import {
 } from '@headlessui/vue'
 import { ArrowsUpDownIcon, CheckIcon } from '@heroicons/vue/24/outline'
 import Lang from '../../components/Lang.vue'
+import { langTagName, useGlobalLang } from '../../reactives/useGlobalLang'
+
+const lang = useGlobalLang()
 </script>
 
 <template>
-  <Listbox as="div" class="relative flex" v-model="$app.lang.tag">
+  <Listbox as="div" class="relative flex" v-model="lang.tag">
     <ListboxButton class="flex items-center">
       <Lang>
         <template #zh>语言</template>
@@ -31,7 +34,7 @@ import Lang from '../../components/Lang.vue'
       <ListboxOptions class="absolute right-0 top-9 min-w-max border bg-white">
         <ListboxOption
           v-slot="{ active, selected }"
-          v-for="tag of $app.lang.tags"
+          v-for="tag of lang.knownTags"
           :key="tag"
           :value="tag"
         >
@@ -39,7 +42,7 @@ import Lang from '../../components/Lang.vue'
             class="flex min-w-max items-center px-2 py-1"
             :class="[active && `bg-stone-100`]"
           >
-            {{ $app.lang.findTagName(tag) }}
+            {{ langTagName(tag) }}
             <CheckIcon v-if="selected" class="ml-2 h-5 w-5" />
           </div>
         </ListboxOption>

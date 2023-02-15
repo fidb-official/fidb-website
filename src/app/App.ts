@@ -1,9 +1,9 @@
-import { Lang } from './Lang'
+import { useGlobalLang } from '../reactives/useGlobalLang'
 
 export class App {
-  lang = new Lang()
-
   get name(): string {
-    return this.lang.zh ? 'FiDB' : 'FiDB'
+    const lang = useGlobalLang()
+
+    return lang.isZh() ? 'FiDB' : 'FiDB'
   }
 }

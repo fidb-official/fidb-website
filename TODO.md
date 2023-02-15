@@ -1,4 +1,7 @@
-`reactives/useGlobalLang`
+`reactives/useGlobalApp`
+
+- remove `app/`
+
 `reactives/useGlobalToken`
 
 remove `models/Form`
