@@ -1,6 +1,9 @@
-extract fidb client -- and use hard coded authorization token
+`reactives/useGlobalLang`
+`reactives/useGlobalToken`
 
-manager login with token
+remove `models/Form`
+
+`ManagerLogin` -- take `token`
 
 # troll
 
