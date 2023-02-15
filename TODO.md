@@ -1,10 +1,8 @@
-`reactives/useGlobalApp`
-
-- remove `app/`
-
 `reactives/useGlobalToken`
 
 remove `models/Form`
+
+`directives/`
 
 `ManagerLogin` -- take `token`
 
