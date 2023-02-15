@@ -19,7 +19,7 @@ export function useGlobalToken(): Token {
     return globalToken
   }
 
-  globalToken.token = window.localStorage.getItem('token') || ''
+  globalToken.name = window.localStorage.getItem('token') || ''
 
   initialized = true
 
@@ -27,7 +27,7 @@ export function useGlobalToken(): Token {
 }
 
 watch(
-  () => globalLang.token,
+  () => globalToken.name,
   (value) => {
     window.localStorage.setItem('token', value)
   },

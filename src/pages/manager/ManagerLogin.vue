@@ -8,13 +8,21 @@ import FormInput from '../../components/form/FormInput.vue'
 import Lang from '../../components/Lang.vue'
 import PageLayout from '../../layouts/page-layout/PageLayout.vue'
 import { useGlobalLang } from '../../reactives/useGlobalLang'
+import { useGlobalToken } from '../../reactives/useGlobalToken'
 
 const router = useRouter()
+
 const lang = useGlobalLang()
-const form = useForm({ url: '' })
+const token = useGlobalToken()
+
+const form = useForm({
+  url: '',
+  token: '',
+})
 
 function submit(event: Event) {
   formSubmit(form, event, async (values) => {
+    token.name = values.token
     router.push(`/manager/${values.url}`)
   })
 }
@@ -45,6 +53,15 @@ function submit(event: Event) {
             <Lang>
               <template #zh>数据库网址</template>
               <template #en>Database URL</template>
+            </Lang>
+          </template>
+        </FormInput>
+
+        <FormInput :form="form" name="token" type="text" required>
+          <template #label>
+            <Lang>
+              <template #zh>令牌</template>
+              <template #en>Token</template>
             </Lang>
           </template>
         </FormInput>

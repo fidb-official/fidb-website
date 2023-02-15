@@ -2,7 +2,7 @@
 import { Form } from './Form'
 
 defineProps<{
-  form: Form
+  form: Form<any>
   name: string
   options: Record<string, string>
 }>()

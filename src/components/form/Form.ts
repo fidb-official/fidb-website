@@ -6,8 +6,8 @@ export type Unprocessable = {
   errors: Record<string, string>
 }
 
-export type Form = {
-  values: FormValues
+export type Form<T extends FormValues> = {
+  values: T
   processing: boolean
   unprocessable?: Unprocessable
 }

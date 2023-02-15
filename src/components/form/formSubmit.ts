@@ -1,13 +1,13 @@
 import { Form, FormValues, Unprocessable } from './Form'
 
-type Action = (values: FormValues) => Promise<{
+type Action<T extends FormValues> = (values: T) => Promise<{
   unprocessable?: Unprocessable
 } | void>
 
-export async function formSubmit(
-  form: Form,
+export async function formSubmit<T extends FormValues>(
+  form: Form<T>,
   event: Event,
-  action: Action,
+  action: Action<T>,
 ): Promise<void> {
   form.processing = true
   form.unprocessable = undefined
