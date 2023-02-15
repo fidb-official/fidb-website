@@ -1,5 +1,3 @@
-setup `components/form/index.ts`
-
 `reactives/useGlobalToken`
 
 `ManagerLogin` -- take `token`
