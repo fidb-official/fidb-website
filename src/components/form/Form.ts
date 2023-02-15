@@ -2,13 +2,13 @@ import { HttpError } from './HttpError'
 
 export type Values = Record<string, string | boolean>
 
-type Unprocessable<T> = {
+type Unprocessable = {
   errors: Record<string, string>
 }
 
 export class Form<T extends Values> {
   processing = false
-  unprocessable?: Unprocessable<T>
+  unprocessable?: Unprocessable
 
   constructor(public values: T) {}
 
