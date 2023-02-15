@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Form } from '../models/Form'
+import { Form } from '../../models/Form'
 
 defineProps<{
   form: Form<any>
@@ -9,17 +9,20 @@ defineProps<{
 
 <template>
   <div class="flex flex-col">
-    <label :for="name" class="py-2 font-sans">
-      <slot name="label"></slot>
-    </label>
+    <div class="flex w-full items-center pt-3 pb-2">
+      <label :for="name" class="shrink-0 font-sans">
+        <slot name="label" />
+      </label>
 
-    <textarea
-      class="w-full rounded-sm border border-stone-500 p-3 disabled:bg-stone-100"
-      :id="name"
-      :name="name"
-      :value="form.values[name]"
-      v-bind="$attrs"
-    ></textarea>
+      <input
+        class="ml-1 h-5 w-5 font-bold disabled:bg-stone-100"
+        :id="name"
+        :name="name"
+        type="checkbox"
+        :checked="form.values[name]"
+        v-bind="$attrs"
+      />
+    </div>
 
     <ol
       v-if="form.unprocessable?.errors[name]"

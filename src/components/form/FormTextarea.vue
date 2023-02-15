@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Form } from '../models/Form'
+import { Form } from '../../models/Form'
 
 defineProps<{
   form: Form<any>
@@ -10,20 +10,16 @@ defineProps<{
 <template>
   <div class="flex flex-col">
     <label :for="name" class="py-2 font-sans">
-      <slot name="label" />
+      <slot name="label"></slot>
     </label>
 
-    <div class="flex w-full items-center rounded-sm border border-stone-500">
-      <input
-        class="w-full p-3 font-bold disabled:bg-stone-100"
-        :id="name"
-        :name="name"
-        :value="form.values[name]"
-        v-bind="$attrs"
-      />
-
-      <slot name="input-end" />
-    </div>
+    <textarea
+      class="w-full rounded-sm border border-stone-500 p-3 disabled:bg-stone-100"
+      :id="name"
+      :name="name"
+      :value="form.values[name]"
+      v-bind="$attrs"
+    ></textarea>
 
     <ol
       v-if="form.unprocessable?.errors[name]"
