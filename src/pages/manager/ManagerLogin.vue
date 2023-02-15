@@ -5,8 +5,8 @@ import FormButton from '../../components/FormButton.vue'
 import FormDivider from '../../components/FormDivider.vue'
 import FormInput from '../../components/FormInput.vue'
 import Lang from '../../components/Lang.vue'
-import { useForm } from '../../hooks/useForm'
 import PageLayout from '../../layouts/page-layout/PageLayout.vue'
+import { useForm } from '../../reactives/useForm'
 import { useGlobalLang } from '../../reactives/useGlobalLang'
 
 const router = useRouter()
