@@ -1,7 +1,3 @@
-`ManagerLogin` -- take `token`
-
-[manager] `fetch` use token
-
 # troll
 
 [troll] `Troll` -- chinese

@@ -1,3 +1,4 @@
+import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { State } from './State'
 import {
   stateStatusError,
@@ -24,6 +25,9 @@ export async function stateCreateDirectory(
 
   const response = await fetch(`${state.url}/${directory}?kind=directory`, {
     method: 'POST',
+    headers: {
+      authorization: useGlobalToken().authorization,
+    },
   })
 
   if (response.ok) {

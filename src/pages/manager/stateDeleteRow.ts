@@ -1,3 +1,4 @@
+import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { State } from './State'
 import {
   stateStatusError,
@@ -25,7 +26,10 @@ export async function stateDeleteRow(
 
   const response = await fetch(`${state.url}/${data['@path']}`, {
     method: 'DELETE',
-    headers: { 'content-type': 'application/json' },
+    headers: {
+      'content-type': 'application/json',
+      authorization: useGlobalToken().authorization,
+    },
     body: JSON.stringify({
       '@revision': data['@revision'],
     }),

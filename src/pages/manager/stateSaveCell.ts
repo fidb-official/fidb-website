@@ -1,3 +1,4 @@
+import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { Cell } from './Cell'
 import { State } from './State'
 import {
@@ -27,7 +28,10 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
 
   const response = await fetch(`${state.url}/${data['@path']}`, {
     method: 'PATCH',
-    headers: { 'content-type': 'application/json' },
+    headers: {
+      'content-type': 'application/json',
+      authorization: useGlobalToken().authorization,
+    },
     body: JSON.stringify({
       '@revision': data['@revision'],
       [cell.columnName]: cell.value,
@@ -55,7 +59,13 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
     })
 
     if (response.status === 409) {
-      const response = await fetch(`${state.url}/${data['@path']}`)
+      const response = await fetch(`${state.url}/${data['@path']}`, {
+        method: 'GET',
+        headers: {
+          authorization: useGlobalToken().authorization,
+        },
+      })
+
       stateStatusError(state)
       if (response.ok) {
         stateReplaceData(state, await response.json())

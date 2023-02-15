@@ -1,3 +1,4 @@
+import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { State } from './State'
 import { stateStatusError, stateStatusOk } from './stateStatus'
 
@@ -6,7 +7,10 @@ export async function stateCreateRow(state: State, data: any): Promise<void> {
 
   const response = await fetch(`${state.url}/${data['@path']}`, {
     method: 'POST',
-    headers: { 'content-type': 'application/json' },
+    headers: {
+      'content-type': 'application/json',
+      authorization: useGlobalToken().authorization,
+    },
     body: JSON.stringify(data),
   })
 

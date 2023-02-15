@@ -1,4 +1,5 @@
 import qs from 'qs'
+import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { State } from './State'
 import {
   stateStatusError,
@@ -30,6 +31,12 @@ export async function stateUpdateDataset(state: State) {
 
   const response = await fetch(
     `${state.url}/${directory}?kind=find&${qs.stringify(query)}`,
+    {
+      method: 'GET',
+      headers: {
+        authorization: useGlobalToken().authorization,
+      },
+    },
   )
 
   if (response.ok) {

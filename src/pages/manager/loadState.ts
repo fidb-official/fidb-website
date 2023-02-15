@@ -1,4 +1,5 @@
 import qs from 'qs'
+import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { createState, State } from './State'
 
 export type LoadStateOptions = {
@@ -7,7 +8,12 @@ export type LoadStateOptions = {
 
 export async function loadState(options: LoadStateOptions): Promise<State> {
   try {
-    const response = await fetch(`${options.url}?kind=list`)
+    const response = await fetch(`${options.url}?kind=list`, {
+      method: 'GET',
+      headers: {
+        authorization: useGlobalToken().authorization,
+      },
+    })
 
     if (!response.ok) {
       throw new Error(
