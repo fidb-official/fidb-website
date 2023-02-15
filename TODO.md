@@ -1,3 +1,7 @@
+# manager
+
+[manager] suppurt subdirectory
+
 # troll
 
 [troll] `Troll` -- chinese
