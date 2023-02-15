@@ -2,7 +2,7 @@
 import { Form } from './Form'
 
 defineProps<{
-  form: Form<any>
+  form: Form
   name: string
 }>()
 </script>
@@ -19,7 +19,7 @@ defineProps<{
         :id="name"
         :name="name"
         type="checkbox"
-        :checked="form.values[name]"
+        :checked="Boolean(form.values[name])"
         v-bind="$attrs"
       />
     </div>

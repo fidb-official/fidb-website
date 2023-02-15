@@ -1,4 +1,4 @@
-refactor `components/form/Form` -- use reactive object instead of class
+setup `components/form/index.ts`
 
 `reactives/useGlobalToken`
 

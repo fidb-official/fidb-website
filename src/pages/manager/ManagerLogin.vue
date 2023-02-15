@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { Head } from '@vueuse/head'
 import { useRouter } from 'vue-router'
+import { formSubmit, useForm } from '../../components/form'
 import FormButton from '../../components/form/FormButton.vue'
 import FormDivider from '../../components/form/FormDivider.vue'
 import FormInput from '../../components/form/FormInput.vue'
 import Lang from '../../components/Lang.vue'
 import PageLayout from '../../layouts/page-layout/PageLayout.vue'
-import { useForm } from '../../reactives/useForm'
 import { useGlobalLang } from '../../reactives/useGlobalLang'
 
 const router = useRouter()
-const form = useForm({ url: '' })
 const lang = useGlobalLang()
+const form = useForm({ url: '' })
 
 function submit(event: Event) {
-  form.submit(event, (values) => {
+  formSubmit(form, event, async (values) => {
     router.push(`/manager/${values.url}`)
   })
 }

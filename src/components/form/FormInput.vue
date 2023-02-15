@@ -2,7 +2,7 @@
 import { Form } from './Form'
 
 defineProps<{
-  form: Form<any>
+  form: Form
   name: string
 }>()
 </script>
