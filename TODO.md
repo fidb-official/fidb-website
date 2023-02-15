@@ -1,6 +1,6 @@
-`reactives/useGlobalToken`
-
 `ManagerLogin` -- take `token`
+
+[manager] `fetch` use token
 
 # troll
 

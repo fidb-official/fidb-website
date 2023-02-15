@@ -7,7 +7,7 @@ type Lang = {
   isEn(): boolean
 }
 
-export const globalLang: Lang = reactive({
+const globalLang: Lang = reactive({
   knownTags: ['zh', 'en'],
   tag: 'en',
 
@@ -28,6 +28,9 @@ export function useGlobalLang(): Lang {
   }
 
   globalLang.tag = initialTag()
+
+  initialized = true
+
   return globalLang
 }
 
@@ -46,8 +49,8 @@ function initialTag(): string {
 
 watch(
   () => globalLang.tag,
-  (tag) => {
-    window.localStorage.setItem('lang', tag)
+  (value) => {
+    window.localStorage.setItem('lang', value)
   },
 )
 
