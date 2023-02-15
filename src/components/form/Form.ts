@@ -3,14 +3,11 @@ import { HttpError } from './HttpError'
 export type Values = Record<string, string | boolean>
 
 type Unprocessable<T> = {
-  message: string
   errors: Record<string, string>
 }
 
 export class Form<T extends Values> {
   processing = false
-  response: Response | undefined = undefined
-  error?: Error
   unprocessable?: Unprocessable<T>
 
   constructor(public values: T) {}
@@ -41,9 +38,6 @@ export class Form<T extends Values> {
     this.loadValuesFromEvent(event)
 
     this.processing = true
-
-    this.response = undefined
-    this.error = undefined
     this.unprocessable = undefined
 
     try {
@@ -52,7 +46,6 @@ export class Form<T extends Values> {
       await action(values)
     } catch (error) {
       if (!(error instanceof Error)) throw error
-      this.error = error
       if (error instanceof HttpError) {
         if (error.response.status === 422) {
           this.unprocessable = await error.response.json()

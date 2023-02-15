@@ -1,3 +1,5 @@
+[npm script] `check:watch` vue-tsc restor on error
+
 refactor `components/form/Form` -- use reactive object instead of class
 
 `reactives/useGlobalToken`
