@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Form } from '../../models/Form'
+import { Form } from './Form'
 
 defineProps<{
   form: Form<any>

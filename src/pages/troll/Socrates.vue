@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="mx-3 flex h-full flex-col divide-y-2 divide-stone-400 overflow-auto border-y-2 border-stone-400"
+    class="mx-3 flex h-full flex-col divide-y divide-black overflow-auto border-y border-black"
   >
     <slot></slot>
   </div>

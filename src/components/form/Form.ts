@@ -1,4 +1,4 @@
-import { HttpError } from '../errors/HttpError'
+import { HttpError } from './HttpError'
 
 export type Values = Record<string, string | boolean>
 
