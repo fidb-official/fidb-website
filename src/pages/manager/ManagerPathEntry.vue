@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import Lang from '../../components/Lang.vue'
 import { PathEntry } from './PathEntry'
 import { State } from './State'
 import { stateDeleteDirectory } from './stateDeleteDirectory'
@@ -8,6 +10,8 @@ const props = defineProps<{
   state: State
   pathEntry: PathEntry
 }>()
+
+const isChildrenLoading = ref(false)
 
 async function deleteDirectory(state: State, directory: string) {
   const message = `[deleteDirectory] directory: ${directory}`
@@ -28,7 +32,9 @@ async function onclick() {
   } else if (isSelected()) {
     props.pathEntry.isOpen = !props.pathEntry.isOpen
     if (props.pathEntry.isOpen) {
+      isChildrenLoading.value = true
       await stateLoadPathEntryChildren(props.state, props.pathEntry)
+      isChildrenLoading.value = false
     }
   }
 }
@@ -61,7 +67,16 @@ async function onclick() {
       </button>
     </div>
 
-    <div v-if="pathEntry.isOpen" class="pl-2">
+    <div v-if="pathEntry.isOpen && isChildrenLoading" class="pl-2">
+      <Lang
+        class="scrollbar-hide overflow-x-auto whitespace-nowrap border border-yellow-600 text-yellow-600"
+      >
+        <template #zh> 加载中…… </template>
+        <template #en> Loading... </template>
+      </Lang>
+    </div>
+
+    <div v-if="pathEntry.isOpen && !isChildrenLoading" class="pl-2">
       <ManagerPathEntry
         v-for="child of pathEntry.children"
         :key="child.path"
