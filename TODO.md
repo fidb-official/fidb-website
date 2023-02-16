@@ -1,6 +1,6 @@
 # manager
 
-[manager] `ManagerPathEntryList` -- suppurt subdirectories
+[manager] `ManagerPathEntryList` -- loading
 [manager] `ManagerPathEntryList` -- subdirectories page by page api
 
 # troll

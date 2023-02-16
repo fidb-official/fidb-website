@@ -4,12 +4,11 @@ import { stateUpdateDataset } from './stateUpdateDataset'
 
 export function stateReactivelyUpdateDataset(state: State): void {
   watch(
-    () => state.currentPathEntry,
+    () => state.currentPathEntry?.path,
     async () => {
       await stateUpdateDataset(state)
     },
     {
-      deep: true,
       immediate: true,
     },
   )
