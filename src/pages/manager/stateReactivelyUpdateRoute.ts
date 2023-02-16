@@ -9,7 +9,7 @@ function currentQuery() {
   return query
 }
 
-function currentPathname() {
+function currentUrlPathname() {
   const url = new URL(window.location.href)
   const pathname = url.pathname
   return pathname
@@ -20,7 +20,7 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
     () => state.currentPathEntry,
     (value) => {
       router.replace({
-        path: currentPathname(),
+        path: currentUrlPathname(),
         query: {
           currentPath: value?.path,
         },
@@ -36,7 +36,7 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
     () => state.page,
     (value) => {
       router.replace({
-        path: currentPathname(),
+        path: currentUrlPathname(),
         query: {
           ...currentQuery(),
           page: value,
@@ -52,7 +52,7 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
     () => state.currentRowIndex,
     (value) => {
       router.replace({
-        path: currentPathname(),
+        path: currentUrlPathname(),
         query: {
           ...currentQuery(),
           currentRowIndex: value,
@@ -68,7 +68,7 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
     () => state.currentRowIsOpen,
     (value) => {
       router.replace({
-        path: currentPathname(),
+        path: currentUrlPathname(),
         query: {
           ...currentQuery(),
           currentRowIsOpen: value ? 'true' : undefined,
@@ -84,7 +84,7 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
     () => state.currentCellIndex,
     (value) => {
       router.replace({
-        path: currentPathname(),
+        path: currentUrlPathname(),
         query: {
           ...currentQuery(),
           currentCellIndex: value,
@@ -100,7 +100,7 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
     () => state.currentCellColumnName,
     (value) => {
       router.replace({
-        path: currentPathname(),
+        path: currentUrlPathname(),
         query: {
           ...currentQuery(),
           currentCellColumnName: value,
@@ -116,7 +116,7 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
     () => state.currentCellIsOpen,
     (value) => {
       router.replace({
-        path: currentPathname(),
+        path: currentUrlPathname(),
         query: {
           ...currentQuery(),
           currentCellIsOpen: value ? 'true' : undefined,
