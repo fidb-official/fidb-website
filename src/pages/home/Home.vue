@@ -15,7 +15,7 @@ import PageLayout from '../../layouts/page-layout/PageLayout.vue'
         </Lang>
 
         <div>
-          <Link class="underline decoration-2" href="/troll">
+          <Link class="underline decoration-2" href="/talks">
             <Lang>
               <template #zh> 我不知道。来试试看！ </template>
               <template #en> I don't know. Let's find out! </template>

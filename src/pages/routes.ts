@@ -4,11 +4,11 @@ import PageNotFound from './errors/PageNotFound.vue'
 import Home from './home/Home.vue'
 import Manager from './manager/Manager.vue'
 import ManagerLogin from './manager/ManagerLogin.vue'
-import Troll from './troll/Troll.vue'
+import Talks from './talks/Talks.vue'
 
 export const routes: Array<RouteRecordRaw> = [
   { path: '/', component: Home },
-  { path: '/troll', component: Troll },
+  { path: '/talks', component: Talks },
   { path: '/docs', component: Docs },
   { path: '/manager', component: ManagerLogin },
   { path: '/manager/:url(.*)', component: Manager },
