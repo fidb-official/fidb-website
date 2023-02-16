@@ -17,16 +17,19 @@ function currentPathname() {
 
 export function stateReactivelyUpdateRoute(state: State, router: Router): void {
   watch(
-    () => state.currentDirectory,
+    () => state.currentPathEntry,
     (value) => {
       router.replace({
         path: currentPathname(),
         query: {
-          currentDirectory: value,
+          currentDirectory: value?.path,
         },
       })
     },
-    { immediate: true },
+    {
+      deep: true,
+      immediate: true,
+    },
   )
 
   watch(
@@ -40,7 +43,9 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
         },
       })
     },
-    { immediate: true },
+    {
+      immediate: true,
+    },
   )
 
   watch(
@@ -54,7 +59,9 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
         },
       })
     },
-    { immediate: true },
+    {
+      immediate: true,
+    },
   )
 
   watch(
@@ -68,7 +75,9 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
         },
       })
     },
-    { immediate: true },
+    {
+      immediate: true,
+    },
   )
 
   watch(
@@ -82,7 +91,9 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
         },
       })
     },
-    { immediate: true },
+    {
+      immediate: true,
+    },
   )
 
   watch(
@@ -96,7 +107,9 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
         },
       })
     },
-    { immediate: true },
+    {
+      immediate: true,
+    },
   )
 
   watch(
@@ -110,6 +123,8 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
         },
       })
     },
-    { immediate: true },
+    {
+      immediate: true,
+    },
   )
 }

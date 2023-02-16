@@ -1,5 +1,6 @@
 import qs from 'qs'
 import { useGlobalToken } from '../../reactives/useGlobalToken'
+import { createPathEntry, PathEntry } from './PathEntry'
 import { createState, State } from './State'
 
 export type LoadStateOptions = {
@@ -28,17 +29,26 @@ export async function loadState(options: LoadStateOptions): Promise<State> {
 
     const { directories } = await response.json()
 
+    const pathEntries = directories.map((path: string) =>
+      createPathEntry({
+        path,
+        isDirectory: true,
+        isFile: false,
+      }),
+    )
+
     const query = qs.parse(new URL(window.location.href).search, {
       ignoreQueryPrefix: true,
     })
 
+    const currentPathEntry = pathEntries.find(
+      (pathEntry: PathEntry) => pathEntry.path === query.currentDirectory,
+    )
+
     return createState({
       url: options.url,
-      directories,
-      currentDirectory:
-        query.currentDirectory === undefined
-          ? undefined
-          : String(query.currentDirectory),
+      pathEntries,
+      currentPathEntry,
       page: Number.isNaN(Number.parseInt(String(query.page)))
         ? 1
         : Number.parseInt(String(query.page)),

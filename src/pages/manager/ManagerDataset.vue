@@ -10,10 +10,10 @@ defineProps<{ state: State }>()
 
 <template>
   <div class="flex h-full w-full flex-col overflow-auto border-r border-black">
-    <div v-if="state.currentDirectory === undefined" class="px-1">
+    <div v-if="state.currentPathEntry === undefined" class="px-1">
       <Lang>
-        <template #zh> 请选择件夹。 </template>
-        <template #en> Please choose directory. </template>
+        <template #zh> 请选择路径。 </template>
+        <template #en> Please choose a path. </template>
       </Lang>
     </div>
 

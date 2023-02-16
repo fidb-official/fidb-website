@@ -36,8 +36,8 @@ async function createDirectory(state: State) {
       </button>
     </div>
 
-    <div v-for="directory of state.directories" :key="directory">
-      <ManagerPathEntry :state="state" :directory="directory" />
+    <div v-for="pathEntry of state.pathEntries" :key="pathEntry.path">
+      <ManagerPathEntry :state="state" :pathEntry="pathEntry" />
     </div>
   </div>
 </template>

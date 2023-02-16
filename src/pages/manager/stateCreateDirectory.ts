@@ -1,4 +1,5 @@
 import { useGlobalToken } from '../../reactives/useGlobalToken'
+import { createPathEntry } from './PathEntry'
 import { State } from './State'
 import {
   stateStatusError,
@@ -14,7 +15,11 @@ export async function stateCreateDirectory(
 
   stateStatusRunning(state, { who, message: 'creating' })
 
-  if (state.directories.includes(directory)) {
+  if (
+    state.pathEntries.find(
+      (pathEntry) => pathEntry.isDirectory && pathEntry.path === directory,
+    )
+  ) {
     stateStatusOk(state, {
       who,
       message: 'directory already exists',
@@ -31,8 +36,14 @@ export async function stateCreateDirectory(
   })
 
   if (response.ok) {
-    state.directories.push(directory)
-    state.currentDirectory = directory
+    const pathEntry = createPathEntry({
+      path: directory,
+      isDirectory: true,
+      isFile: false,
+    })
+
+    state.pathEntries.push(pathEntry)
+    state.currentPathEntry = pathEntry
     stateStatusOk(state, {
       who,
       message: 'created directory',

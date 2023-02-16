@@ -14,7 +14,11 @@ export async function stateDeleteDirectory(
 
   stateStatusRunning(state, { who, message: 'deleting' })
 
-  if (!state.directories.includes(directory)) {
+  if (
+    !state.pathEntries.find(
+      (pathEntry) => pathEntry.isDirectory && pathEntry.path === directory,
+    )
+  ) {
     stateStatusOk(state, {
       who,
       message: 'directory does not exist',
@@ -31,13 +35,15 @@ export async function stateDeleteDirectory(
   })
 
   if (response.ok) {
-    const index = state.directories.indexOf(directory)
+    const index = state.pathEntries.findIndex(
+      (pathEntry) => pathEntry.isDirectory && pathEntry.path === directory,
+    )
     if (index !== -1) {
-      state.directories.splice(index, 1)
+      state.pathEntries.splice(index, 1)
     }
 
-    if (state.currentDirectory == directory) {
-      state.currentDirectory = state.directories[0]
+    if (state.currentPathEntry?.path === directory) {
+      state.currentPathEntry = state.pathEntries[0]
     }
 
     stateStatusOk(state, {

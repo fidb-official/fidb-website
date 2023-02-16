@@ -1,11 +1,12 @@
 import { Cell } from './Cell'
+import { PathEntry } from './PathEntry'
 import { createTable, Table } from './Table'
 
 export type StateOptions = {
   url: string
   page: number
-  directories: Array<string>
-  currentDirectory?: string
+  pathEntries: Array<PathEntry>
+  currentPathEntry?: PathEntry
   currentRowIndex?: number
   currentRowIsOpen?: boolean
   currentCellIndex?: number
@@ -27,8 +28,8 @@ export type State = StateOptions & {
 export function createState(options: StateOptions): State {
   const {
     url,
-    currentDirectory,
-    directories,
+    pathEntries,
+    currentPathEntry,
     page,
     currentRowIsOpen,
     currentRowIndex,
@@ -39,8 +40,8 @@ export function createState(options: StateOptions): State {
 
   return {
     url,
-    directories,
-    currentDirectory: currentDirectory || directories[0],
+    pathEntries,
+    currentPathEntry: currentPathEntry || pathEntries[0],
     page,
     size: 50,
     dataset: [],

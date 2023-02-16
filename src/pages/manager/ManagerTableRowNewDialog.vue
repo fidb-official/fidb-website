@@ -34,7 +34,7 @@ async function create(state: State) {
     return
   }
 
-  if (!state.currentDirectory) {
+  if (!state.currentPathEntry) {
     stateStatusError(state, {
       message: 'no current directory',
     })
@@ -52,7 +52,7 @@ async function create(state: State) {
   }
 
   await stateCreateRowFromTexts(state, {
-    '@path': `"${state.currentDirectory}/${id.value}"`,
+    '@path': `"${state.currentPathEntry.path}/${id.value}"`,
     ...texts.value,
   })
 
@@ -116,7 +116,7 @@ function createProperty(state: State) {
             </div>
 
             <div class="overflow-auto whitespace-nowrap pb-1 font-bold">
-              <span>{{ state.currentDirectory }}/</span>
+              <span>{{ state.currentPathEntry?.path }}/</span>
             </div>
 
             <div class="flex items-baseline space-x-1">

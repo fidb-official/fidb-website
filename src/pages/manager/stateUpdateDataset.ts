@@ -8,10 +8,16 @@ import {
 } from './stateStatus'
 
 export async function stateUpdateDataset(state: State) {
-  const directory = state.currentDirectory
-  if (directory === undefined) {
+  const pathEntry = state.currentPathEntry
+  if (pathEntry === undefined) {
     return
   }
+
+  if (!pathEntry.isDirectory) {
+    return
+  }
+
+  const directory = pathEntry.path
 
   const who = 'stateUpdateDataset'
 
