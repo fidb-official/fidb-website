@@ -42,7 +42,7 @@ export async function loadState(options: LoadStateOptions): Promise<State> {
     })
 
     const currentPathEntry = pathEntries.find(
-      (pathEntry: PathEntry) => pathEntry.path === query.currentDirectory,
+      (pathEntry: PathEntry) => pathEntry.path === query.currentPath,
     )
 
     return createState({
