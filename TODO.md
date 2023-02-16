@@ -1,9 +1,15 @@
 # manager
 
-[manager] `currentPathEntry` -- open `ManagerPathList` on initial
-[manager] `ManagerPathEntry` create subdirectory
-[manager] `Manager` -- support view file
 [manager] `ManagerTableCellId` -- click change `currentPathEntry`
+
+[manager] `stateOpenPathEntry`
+[manager] `stateReactivelyOpenCurrentPathEntry`
+[manager] `currentPathEntry` -- open `ManagerPathList` on initial
+
+[manager] `Manager` -- support view file
+
+[manager] `ManagerPathEntry` create subdirectory and subfile
+
 [manager] `ManagerPathEntryList` -- subdirectories page by page api
 
 # talks

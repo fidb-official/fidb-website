@@ -13,7 +13,7 @@ function pathEntries(): Array<PathEntry> {
 
   const basenames = currentPathEntry.path.split('/')
 
-  const prefix = []
+  const prefix: Array<string> = []
 
   return basenames.map((basename, index) => {
     const path = [...prefix, basename].join('/')

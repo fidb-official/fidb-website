@@ -47,6 +47,7 @@ export async function loadState(options: LoadStateOptions): Promise<State> {
       : createPathEntry({
           kind: String(query.currentPathKind) as any,
           path: String(query.currentPath),
+          isOpen: true,
         })
 
     return createState({

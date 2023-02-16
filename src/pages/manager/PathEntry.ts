@@ -5,6 +5,7 @@ export type PathEntryKind = 'File' | 'Directory'
 export type PathEntryOptions = {
   kind: PathEntryKind
   path: string
+  isOpen?: boolean
 }
 
 export type PathEntry = PathEntryOptions & {
@@ -14,7 +15,7 @@ export type PathEntry = PathEntryOptions & {
 }
 
 export function createPathEntry(options: PathEntryOptions): PathEntry {
-  const { kind, path } = options
+  const { kind, path, isOpen } = options
 
   return {
     kind,
@@ -23,6 +24,6 @@ export function createPathEntry(options: PathEntryOptions): PathEntry {
       return basename(this.path)
     },
     children: [],
-    isOpen: false,
+    isOpen: isOpen || false,
   }
 }
