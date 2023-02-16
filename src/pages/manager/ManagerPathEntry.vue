@@ -69,7 +69,7 @@ async function onclick() {
 
     <div v-if="pathEntry.isOpen && isChildrenLoading" class="pl-2">
       <Lang
-        class="scrollbar-hide overflow-x-auto whitespace-nowrap border border-yellow-600 text-yellow-600"
+        class="scrollbar-hide overflow-x-auto whitespace-nowrap border border-yellow-600 px-2 text-yellow-600"
       >
         <template #zh> 加载中…… </template>
         <template #en> Loading... </template>
@@ -78,6 +78,7 @@ async function onclick() {
 
     <div v-if="pathEntry.isOpen && !isChildrenLoading" class="pl-2">
       <ManagerPathEntry
+        class="border-l border-black"
         v-for="child of pathEntry.children"
         :key="child.path"
         :state="state"
