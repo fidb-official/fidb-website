@@ -1,6 +1,6 @@
 import qs from 'qs'
 import { useGlobalToken } from '../../reactives/useGlobalToken'
-import { createPathEntry, PathEntry } from './PathEntry'
+import { createPathEntry } from './PathEntry'
 import { createState, State } from './State'
 
 export type LoadStateOptions = {
@@ -40,9 +40,14 @@ export async function loadState(options: LoadStateOptions): Promise<State> {
       ignoreQueryPrefix: true,
     })
 
-    const currentPathEntry = pathEntries.find(
-      (pathEntry: PathEntry) => pathEntry.path === query.currentPath,
-    )
+    const currentPathEntry = !query.currentPathKind
+      ? undefined
+      : !query.currentPath
+      ? undefined
+      : createPathEntry({
+          kind: String(query.currentPathKind) as any,
+          path: String(query.currentPath),
+        })
 
     return createState({
       url: options.url,
