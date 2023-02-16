@@ -1,6 +1,5 @@
 # manager
 
-[manager] extract `ManagerPathEntry`
 [manager] `state.pathEntries` & `state.currentPathEntry`
 [manager] `ManagerPathEntryList` -- suppurt subdirectories
 [manager] `ManagerPathEntryList` -- subdirectories page by page api

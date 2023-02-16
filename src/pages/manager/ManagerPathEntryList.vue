@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import Lang from '../../components/Lang.vue'
+import ManagerPathEntry from './ManagerPathEntry.vue'
 import { State } from './State'
 import { stateCreateDirectory } from './stateCreateDirectory'
-import { stateDeleteDirectory } from './stateDeleteDirectory'
 
 defineProps<{ state: State }>()
 
@@ -13,15 +13,6 @@ async function createDirectory(state: State) {
   }
 
   await stateCreateDirectory(state, directory)
-}
-
-async function deleteDirectory(state: State, directory: string) {
-  const message = `[deleteDirectory] directory: ${directory}`
-  if (!window.confirm(message)) {
-    return
-  }
-
-  await stateDeleteDirectory(state, directory)
 }
 </script>
 
@@ -46,40 +37,7 @@ async function deleteDirectory(state: State, directory: string) {
     </div>
 
     <div v-for="directory of state.directories" :key="directory">
-      <div
-        v-if="directory === state.currentDirectory"
-        class="flex justify-between"
-      >
-        <button
-          class="scrollbar-hide w-full overflow-x-auto whitespace-nowrap bg-black px-2 text-left text-white"
-          @click="state.currentDirectory = directory"
-        >
-          {{ directory }}
-        </button>
-
-        <button
-          class="bg-black px-2 font-bold text-white hover:ring-2 hover:ring-inset hover:ring-white"
-          @click="deleteDirectory(state, directory)"
-        >
-          <span class="px-0.5"> - </span>
-        </button>
-      </div>
-
-      <div v-else class="flex justify-between hover:bg-stone-200">
-        <button
-          class="scrollbar-hide w-full overflow-x-auto whitespace-nowrap px-2 text-left"
-          @click="state.currentDirectory = directory"
-        >
-          {{ directory }}
-        </button>
-
-        <button
-          class="px-2 font-bold hover:ring-2 hover:ring-inset hover:ring-black"
-          @click="deleteDirectory(state, directory)"
-        >
-          <span class="px-0.5"> - </span>
-        </button>
-      </div>
+      <ManagerPathEntry :state="state" :directory="directory" />
     </div>
   </div>
 </template>
