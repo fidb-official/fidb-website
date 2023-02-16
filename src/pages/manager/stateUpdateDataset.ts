@@ -13,7 +13,7 @@ export async function stateUpdateDataset(state: State) {
     return
   }
 
-  if (!pathEntry.isDirectory) {
+  if (pathEntry.kind !== 'Directory') {
     return
   }
 

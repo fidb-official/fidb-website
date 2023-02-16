@@ -8,7 +8,7 @@ export async function stateLoadPathEntryChildren(
   state: State,
   pathEntry: PathEntry,
 ): Promise<void> {
-  if (!pathEntry.isDirectory) {
+  if (pathEntry.kind !== 'Directory') {
     return
   }
 
@@ -37,9 +37,8 @@ export async function stateLoadPathEntryChildren(
 
   const pathEntries = directories.map((path: string) =>
     createPathEntry({
+      kind: 'Directory',
       path: join(pathEntry.path, path),
-      isDirectory: true,
-      isFile: false,
     }),
   )
 

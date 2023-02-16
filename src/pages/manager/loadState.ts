@@ -31,9 +31,8 @@ export async function loadState(options: LoadStateOptions): Promise<State> {
 
     const pathEntries = directories.map((path: string) =>
       createPathEntry({
+        kind: 'Directory',
         path,
-        isDirectory: true,
-        isFile: false,
       }),
     )
 

@@ -17,7 +17,8 @@ export async function stateCreateDirectory(
 
   if (
     state.pathEntries.find(
-      (pathEntry) => pathEntry.isDirectory && pathEntry.path === directory,
+      (pathEntry) =>
+        pathEntry.kind === 'Directory' && pathEntry.path === directory,
     )
   ) {
     stateStatusOk(state, {
@@ -37,9 +38,8 @@ export async function stateCreateDirectory(
 
   if (response.ok) {
     const pathEntry = createPathEntry({
+      kind: 'Directory',
       path: directory,
-      isDirectory: true,
-      isFile: false,
     })
 
     state.pathEntries.push(pathEntry)

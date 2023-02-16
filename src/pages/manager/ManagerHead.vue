@@ -14,14 +14,17 @@ function pathEntries(): Array<PathEntry> {
   let dirname = ''
   const basenames = currentPathEntry.path.split('/')
 
-  return basenames.map((basename) => {
+  return basenames.map((basename, index) => {
     const path = [dirname, basename].join('/')
+
     dirname = path
 
+    const kind =
+      index === basenames.length - 1 ? currentPathEntry.kind : 'Directory'
+
     return createPathEntry({
+      kind,
       path,
-      isDirectory: currentPathEntry.isDirectory,
-      isFile: currentPathEntry.isFile,
     })
   })
 }
@@ -48,8 +51,10 @@ function lastEntry(): PathEntry | undefined {
       <span class="whitespace-pre">/</span>
     </div>
     <div v-if="lastEntry()" class="hover:underline">
-      <span class="whitespace-pre">{{ lastEntry().basename }}</span>
-      <span v-if="state.currentPathEntry?.isDirectory" class="whitespace-pre"
+      <span class="whitespace-pre">{{ lastEntry()?.basename }}</span>
+      <span
+        v-if="state.currentPathEntry?.kind === 'Directory'"
+        class="whitespace-pre"
         >/</span
       >
     </div>

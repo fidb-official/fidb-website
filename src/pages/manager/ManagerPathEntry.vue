@@ -52,7 +52,7 @@ async function onclick() {
         @click="onclick"
       >
         <span>{{ pathEntry.basename }}</span>
-        <span v-if="pathEntry.isDirectory">/</span>
+        <span v-if="pathEntry.kind === 'Directory'">/</span>
       </button>
 
       <button

@@ -16,7 +16,8 @@ export async function stateDeleteDirectory(
 
   if (
     !state.pathEntries.find(
-      (pathEntry) => pathEntry.isDirectory && pathEntry.path === directory,
+      (pathEntry) =>
+        pathEntry.kind === 'Directory' && pathEntry.path === directory,
     )
   ) {
     stateStatusOk(state, {
@@ -36,7 +37,8 @@ export async function stateDeleteDirectory(
 
   if (response.ok) {
     const index = state.pathEntries.findIndex(
-      (pathEntry) => pathEntry.isDirectory && pathEntry.path === directory,
+      (pathEntry) =>
+        pathEntry.kind === 'Directory' && pathEntry.path === directory,
     )
     if (index !== -1) {
       state.pathEntries.splice(index, 1)

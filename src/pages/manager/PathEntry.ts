@@ -1,9 +1,10 @@
 import { basename } from 'path-browserify'
 
+export type PathEntryKind = 'File' | 'Directory'
+
 export type PathEntryOptions = {
+  kind: PathEntryKind
   path: string
-  isFile: boolean
-  isDirectory: boolean
 }
 
 export type PathEntry = PathEntryOptions & {
@@ -13,16 +14,15 @@ export type PathEntry = PathEntryOptions & {
 }
 
 export function createPathEntry(options: PathEntryOptions): PathEntry {
-  const { path, isFile, isDirectory } = options
+  const { kind, path } = options
 
   return {
+    kind,
     path,
     get basename() {
       return basename(this.path)
     },
     children: [],
-    isFile,
-    isDirectory,
     isOpen: false,
   }
 }
