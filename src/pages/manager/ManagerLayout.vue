@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Pane, Splitpanes } from 'splitpanes'
 import { useRouter } from 'vue-router'
 import ManagerDataset from './ManagerDataset.vue'
 import ManagerDirectoryList from './ManagerDirectoryList.vue'
@@ -21,18 +22,17 @@ stateReactivelyUpdateRoute(state, router)
 <template>
   <div class="flex h-full flex-col overflow-auto px-3">
     <div class="flex h-full flex-col overflow-auto border-y border-black">
-      <div class="flex h-full overflow-auto">
-        <ManagerDirectoryList
-          class="w-24 border-r border-black sm:w-32 md:w-80"
-          :state="state"
-        />
-        <ManagerDataset class="overflow-auto" :state="state" />
-      </div>
-
+      <Splitpanes class="overflow-auto">
+        <Pane class="border-r border-black" size="24">
+          <ManagerDirectoryList :state="state" />
+        </Pane>
+        <Pane>
+          <ManagerDataset :state="state" />
+        </Pane>
+      </Splitpanes>
       <ManagerStatusBar :state="state" />
       <ManagerMessageBar :state="state" />
     </div>
-
     <ManagerFoot :state="state" />
   </div>
 </template>
