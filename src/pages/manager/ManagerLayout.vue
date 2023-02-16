@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLocalStorage } from '@vueuse/core'
 import { Pane, Splitpanes } from 'splitpanes'
 import { useRouter } from 'vue-router'
 import ManagerDataset from './ManagerDataset.vue'
@@ -17,13 +18,18 @@ const state = stateReactive(props.state)
 const router = useRouter()
 
 stateReactivelyUpdateRoute(state, router)
+
+const splitpanesSize = useLocalStorage('ManagerLayout.splitpanesSize', 24)
 </script>
 
 <template>
   <div class="flex h-full flex-col overflow-auto px-3">
     <div class="flex h-full flex-col overflow-auto border-y border-black">
-      <Splitpanes class="overflow-auto">
-        <Pane class="border-r border-black" size="24">
+      <Splitpanes
+        class="overflow-auto"
+        @resized="splitpanesSize = $event[0].size"
+      >
+        <Pane class="border-r border-black" :size="splitpanesSize">
           <ManagerDirectoryList :state="state" />
         </Pane>
         <Pane>
