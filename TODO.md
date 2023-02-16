@@ -1,6 +1,8 @@
 # manager
 
-[manager] suppurt subdirectory
+extract `ManagerPathEntry`
+[manager] `ManagerPathList` -- suppurt subdirectories
+[manager] `ManagerPathList` -- subdirectories page by page api
 
 # troll
 

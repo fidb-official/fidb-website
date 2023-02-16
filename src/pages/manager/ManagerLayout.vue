@@ -3,9 +3,9 @@ import { useLocalStorage } from '@vueuse/core'
 import { Pane, Splitpanes } from 'splitpanes'
 import { useRouter } from 'vue-router'
 import ManagerDataset from './ManagerDataset.vue'
-import ManagerDirectoryList from './ManagerDirectoryList.vue'
 import ManagerFoot from './ManagerFoot.vue'
 import ManagerMessageBar from './ManagerMessageBar.vue'
+import ManagerPathList from './ManagerPathList.vue'
 import ManagerStatusBar from './ManagerStatusBar.vue'
 import { State } from './State'
 import { stateReactive } from './stateReactive'
@@ -30,7 +30,7 @@ const splitpanesSize = useLocalStorage('ManagerLayout.splitpanesSize', 24)
         @resized="splitpanesSize = $event[0].size"
       >
         <Pane class="border-r border-black" :size="splitpanesSize">
-          <ManagerDirectoryList :state="state" />
+          <ManagerPathList :state="state" />
         </Pane>
         <Pane>
           <ManagerDataset :state="state" />
