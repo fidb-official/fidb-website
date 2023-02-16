@@ -4,6 +4,7 @@ import { Pane, Splitpanes } from 'splitpanes'
 import { useRouter } from 'vue-router'
 import ManagerDataset from './ManagerDataset.vue'
 import ManagerFoot from './ManagerFoot.vue'
+import ManagerHead from './ManagerHead.vue'
 import ManagerMessageBar from './ManagerMessageBar.vue'
 import ManagerPathEntryList from './ManagerPathEntryList.vue'
 import ManagerStatusBar from './ManagerStatusBar.vue'
@@ -24,6 +25,8 @@ const splitpanesSize = useLocalStorage('ManagerLayout.splitpanesSize', 24)
 
 <template>
   <div class="flex h-full flex-col overflow-auto px-3">
+    <ManagerHead :state="state" />
+
     <div class="flex h-full flex-col overflow-auto border-y border-black">
       <Splitpanes
         class="overflow-auto"

@@ -1,10 +1,10 @@
 # manager
 
-[manager] `ManagerHead` -- show `currentPathEntry`
 [manager] `ManagerHead` -- click part of path to navigate
+[manager] `ManagerPathEntry` create subdirectory
+[manager] fix initial `currentPathEntry` for `currentPath` in route
 [manager] `Manager` -- support view file
 [manager] `ManagerTableCellId` -- click change `currentPathEntry`
-[manager] fix initial `currentPathEntry` for `currentPath` in route
 [manager] `ManagerPathEntryList` -- subdirectories page by page api
 
 # talks

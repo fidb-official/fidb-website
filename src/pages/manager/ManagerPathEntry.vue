@@ -51,7 +51,8 @@ async function onclick() {
         :class="[isSelected() && 'bg-black text-white']"
         @click="onclick"
       >
-        {{ pathEntry.basename }}
+        <span>{{ pathEntry.basename }}</span>
+        <span v-if="pathEntry.isDirectory">/</span>
       </button>
 
       <button
