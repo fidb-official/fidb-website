@@ -1,27 +1,53 @@
 <script setup lang="ts">
+import { createPathEntry, PathEntry } from './PathEntry'
 import { State } from './State'
 
 const props = defineProps<{ state: State }>()
 
-function pathParts(): Array<string> {
-  return props.state.currentPathEntry
-    ? props.state.currentPathEntry.path.split('/')
-    : []
+function pathEntries(): Array<PathEntry> {
+  const currentPathEntry = props.state.currentPathEntry
+
+  if (currentPathEntry === undefined) {
+    return []
+  }
+
+  const basenames = currentPathEntry.path.split('/')
+
+  return basenames.map((basename) =>
+    createPathEntry({
+      path: basename,
+      isDirectory: currentPathEntry.isDirectory,
+      isFile: currentPathEntry.isFile,
+    }),
+  )
+}
+
+function prefixEntries(): Array<PathEntry> {
+  const entries = pathEntries()
+  return entries.slice(0, entries.length - 1)
+}
+
+function lastEntry(): PathEntry | undefined {
+  const entries = pathEntries()
+  return entries[entries.length - 1]
 }
 </script>
 
 <template>
-  <div
-    v-if="state.currentPathEntry"
-    class="flex overflow-x-auto whitespace-pre pb-1"
-  >
-    <span
-      v-for="(part, index) of pathParts()"
+  <div v-if="state.currentPathEntry" class="flex overflow-x-auto pb-1">
+    <div
+      v-for="(entry, index) of prefixEntries()"
       :key="index"
-      class="hover:underline"
+      class="whitespace-pre hover:underline"
     >
-      {{ part }}
-    </span>
-    <span v-if="state.currentPathEntry?.isDirectory">/</span>
+      <span class="whitespace-pre">{{ entry.basename }}</span>
+      <span class="whitespace-pre">/</span>
+    </div>
+    <div v-if="lastEntry()" class="hover:underline">
+      <span class="whitespace-pre">{{ lastEntry().basename }}</span>
+      <span v-if="state.currentPathEntry?.isDirectory" class="whitespace-pre"
+        >/</span
+      >
+    </div>
   </div>
 </template>
