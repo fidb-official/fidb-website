@@ -11,15 +11,19 @@ function pathEntries(): Array<PathEntry> {
     return []
   }
 
+  let dirname = ''
   const basenames = currentPathEntry.path.split('/')
 
-  return basenames.map((basename) =>
-    createPathEntry({
-      path: basename,
+  return basenames.map((basename) => {
+    const path = [dirname, basename].join('/')
+    dirname = path
+
+    return createPathEntry({
+      path,
       isDirectory: currentPathEntry.isDirectory,
       isFile: currentPathEntry.isFile,
-    }),
-  )
+    })
+  })
 }
 
 function prefixEntries(): Array<PathEntry> {
