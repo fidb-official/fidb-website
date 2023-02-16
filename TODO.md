@@ -1,6 +1,6 @@
 # manager
 
-[manager] `ManagerHead` -- click part of path to navigate
+[manager] `currentPathEntry` -- open `ManagerPathList` on initial
 [manager] `ManagerPathEntry` create subdirectory
 [manager] `Manager` -- support view file
 [manager] `ManagerTableCellId` -- click change `currentPathEntry`

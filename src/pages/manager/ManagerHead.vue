@@ -11,13 +11,14 @@ function pathEntries(): Array<PathEntry> {
     return []
   }
 
-  let dirname = ''
   const basenames = currentPathEntry.path.split('/')
 
-  return basenames.map((basename, index) => {
-    const path = [dirname, basename].join('/')
+  const prefix = []
 
-    dirname = path
+  return basenames.map((basename, index) => {
+    const path = [...prefix, basename].join('/')
+
+    prefix.push(basename)
 
     const kind =
       index === basenames.length - 1 ? currentPathEntry.kind : 'Directory'
@@ -42,21 +43,22 @@ function lastEntry(): PathEntry | undefined {
 
 <template>
   <div v-if="state.currentPathEntry" class="flex overflow-x-auto pb-1">
-    <div
+    <button
       v-for="(entry, index) of prefixEntries()"
       :key="index"
       class="whitespace-pre hover:underline"
+      @click="state.currentPathEntry = entry"
     >
       <span class="whitespace-pre">{{ entry.basename }}</span>
       <span class="whitespace-pre">/</span>
-    </div>
-    <div v-if="lastEntry()" class="hover:underline">
+    </button>
+    <button v-if="lastEntry()" disabled>
       <span class="whitespace-pre">{{ lastEntry()?.basename }}</span>
       <span
         v-if="state.currentPathEntry?.kind === 'Directory'"
         class="whitespace-pre"
         >/</span
       >
-    </div>
+    </button>
   </div>
 </template>
