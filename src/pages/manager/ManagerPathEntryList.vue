@@ -17,7 +17,7 @@ async function createDirectory(state: State) {
 </script>
 
 <template>
-  <div class="flex h-full flex-col border-l border-black">
+  <div class="flex h-full flex-col overflow-y-auto border-l border-black">
     <div class="flex w-full justify-between border-b border-black">
       <div
         class="scrollbar-hide overflow-x-auto whitespace-nowrap px-2 font-bold"
