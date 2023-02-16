@@ -17,31 +17,18 @@ function currentUrlPathname() {
 
 export function stateReactivelyUpdateRoute(state: State, router: Router): void {
   watch(
-    () => state.currentPathEntry?.path,
+    () => state.currentPathEntry,
     (value) => {
       router.replace({
         path: currentUrlPathname(),
         query: {
-          currentPath: value,
+          currentPath: value?.path,
+          currentPathKind: value?.kind,
         },
       })
     },
     {
-      immediate: true,
-    },
-  )
-
-  watch(
-    () => state.currentPathEntry?.kind,
-    (value) => {
-      router.replace({
-        path: currentUrlPathname(),
-        query: {
-          currentPathKind: value,
-        },
-      })
-    },
-    {
+      deep: true,
       immediate: true,
     },
   )
