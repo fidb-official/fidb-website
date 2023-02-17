@@ -2,6 +2,7 @@
 
 [manager] `Manager` -- support view file
 
+[manager] `ManagerPathEntry` show state about `isOpen`
 [manager] `ManagerPathEntry` create subdirectory and subfile
 
 [manager] `ManagerPathEntryList` -- subdirectories page by page api
