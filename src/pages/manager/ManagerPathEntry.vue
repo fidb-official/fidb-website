@@ -31,6 +31,7 @@ async function onclick() {
     props.state.currentPathEntry = props.pathEntry
   } else if (isSelected()) {
     props.pathEntry.isOpen = !props.pathEntry.isOpen
+    props.state.currentPathEntry.isOpen = props.pathEntry.isOpen
     if (props.pathEntry.isOpen) {
       isChildrenLoading.value = true
       await stateLoadPathEntryChildren(props.state, props.pathEntry)

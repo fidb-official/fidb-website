@@ -48,7 +48,7 @@ function parseCurrentQueryString() {
     : createPathEntry({
         kind: String(query.currentPathKind) as any,
         path: String(query.currentPath),
-        isOpen: true,
+        isOpen: query.currentPathIsOpen === undefined ? undefined : true,
       })
 
   return {
@@ -75,12 +75,19 @@ function parseCurrentQueryString() {
 }
 
 async function stateOpenCurrentPathEntry(state: State): Promise<void> {
-  const pathEntry = state.currentPathEntry
-  if (pathEntry === undefined) {
+  const currentPathEntry = state.currentPathEntry
+  if (currentPathEntry === undefined) {
     return
   }
 
-  const pathEntries = pathEntryPartialSummation(pathEntry)
+  const pathEntries = pathEntryPartialSummation(currentPathEntry)
+
+  for (const pathEntry of pathEntries) {
+    if (pathEntry.path === currentPathEntry.path) {
+      pathEntry.isOpen = currentPathEntry.isOpen
+    }
+  }
+
   await openPathEntries(state.url, pathEntries)
 
   const parentPathEntry = pathEntries[0]

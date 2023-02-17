@@ -1,7 +1,5 @@
 # manager
 
-[manager] `state.currentPathIsOpen`
-
 [manager] `Manager` -- support view file
 
 [manager] `ManagerPathEntry` create subdirectory and subfile
