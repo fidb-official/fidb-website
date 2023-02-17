@@ -1,6 +1,6 @@
 # manager
 
-[manager] `ManagerTableCellId` -- click change `currentPathEntry`
+[manager] re-assign state options on route change
 
 [manager] `stateOpenPathEntry`
 [manager] `stateReactivelyOpenCurrentPathEntry`

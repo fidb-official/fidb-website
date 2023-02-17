@@ -19,7 +19,7 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
   watch(
     () => state.currentPathEntry,
     (value) => {
-      router.replace({
+      router.push({
         path: currentUrlPathname(),
         query: {
           currentPath: value?.path,
@@ -36,7 +36,7 @@ export function stateReactivelyUpdateRoute(state: State, router: Router): void {
   watch(
     () => state.page,
     (value) => {
-      router.replace({
+      router.push({
         path: currentUrlPathname(),
         query: {
           ...currentQuery(),
