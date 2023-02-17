@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { useLocalStorage } from '@vueuse/core'
 import { Pane, Splitpanes } from 'splitpanes'
-import { useRouter } from 'vue-router'
+import { watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { parseCurrentQueryString } from './loadState'
 import ManagerDataset from './ManagerDataset.vue'
 import ManagerFoot from './ManagerFoot.vue'
 import ManagerHead from './ManagerHead.vue'
@@ -16,11 +18,19 @@ const props = defineProps<{ state: State }>()
 
 const state = stateReactive(props.state)
 
+const route = useRoute()
 const router = useRouter()
 
 stateReactivelyUpdateRoute(state, router)
 
 const splitpanesSize = useLocalStorage('ManagerLayout.splitpanesSize', 24)
+
+watch(
+  () => route.fullPath,
+  () => {
+    Object.assign(state, parseCurrentQueryString())
+  },
+)
 </script>
 
 <template>

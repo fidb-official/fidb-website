@@ -1,7 +1,5 @@
 # manager
 
-[manager] re-assign state options on route change
-
 [manager] `stateOpenPathEntry`
 [manager] `stateReactivelyOpenCurrentPathEntry`
 [manager] `currentPathEntry` -- open `ManagerPathList` on initial

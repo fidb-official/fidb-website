@@ -36,43 +36,10 @@ export async function loadState(options: LoadStateOptions): Promise<State> {
       }),
     )
 
-    const query = qs.parse(new URL(window.location.href).search, {
-      ignoreQueryPrefix: true,
-    })
-
-    const currentPathEntry = !query.currentPathKind
-      ? undefined
-      : !query.currentPath
-      ? undefined
-      : createPathEntry({
-          kind: String(query.currentPathKind) as any,
-          path: String(query.currentPath),
-          isOpen: true,
-        })
-
     return createState({
       url: options.url,
       pathEntries,
-      currentPathEntry,
-      page: Number.isNaN(Number.parseInt(String(query.page)))
-        ? 1
-        : Number.parseInt(String(query.page)),
-      currentRowIndex: Number.isNaN(
-        Number.parseInt(String(query.currentRowIndex)),
-      )
-        ? undefined
-        : Number.parseInt(String(query.currentRowIndex)),
-      currentRowIsOpen: query.currentRowIsOpen === undefined ? undefined : true,
-      currentCellIndex: Number.isNaN(
-        Number.parseInt(String(query.currentCellIndex)),
-      )
-        ? undefined
-        : Number.parseInt(String(query.currentCellIndex)),
-      currentCellColumnName: query.currentCellColumnName
-        ? String(query.currentCellColumnName)
-        : undefined,
-      currentCellIsOpen:
-        query.currentCellIsOpen === undefined ? undefined : true,
+      ...parseCurrentQueryString(),
     })
   } catch (error) {
     if (error instanceof Error) {
@@ -82,5 +49,43 @@ export async function loadState(options: LoadStateOptions): Promise<State> {
     }
 
     throw error
+  }
+}
+
+export function parseCurrentQueryString() {
+  const query = qs.parse(new URL(window.location.href).search, {
+    ignoreQueryPrefix: true,
+  })
+
+  const currentPathEntry = !query.currentPathKind
+    ? undefined
+    : !query.currentPath
+    ? undefined
+    : createPathEntry({
+        kind: String(query.currentPathKind) as any,
+        path: String(query.currentPath),
+        isOpen: true,
+      })
+
+  return {
+    currentPathEntry,
+    page: Number.isNaN(Number.parseInt(String(query.page)))
+      ? 1
+      : Number.parseInt(String(query.page)),
+    currentRowIndex: Number.isNaN(
+      Number.parseInt(String(query.currentRowIndex)),
+    )
+      ? undefined
+      : Number.parseInt(String(query.currentRowIndex)),
+    currentRowIsOpen: query.currentRowIsOpen === undefined ? undefined : true,
+    currentCellIndex: Number.isNaN(
+      Number.parseInt(String(query.currentCellIndex)),
+    )
+      ? undefined
+      : Number.parseInt(String(query.currentCellIndex)),
+    currentCellColumnName: query.currentCellColumnName
+      ? String(query.currentCellColumnName)
+      : undefined,
+    currentCellIsOpen: query.currentCellIsOpen === undefined ? undefined : true,
   }
 }
