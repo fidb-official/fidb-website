@@ -52,7 +52,7 @@ export async function loadState(options: LoadStateOptions): Promise<State> {
   }
 }
 
-export function parseCurrentQueryString() {
+function parseCurrentQueryString() {
   const query = qs.parse(new URL(window.location.href).search, {
     ignoreQueryPrefix: true,
   })
