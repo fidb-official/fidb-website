@@ -4,6 +4,8 @@ import PageLayout from '../../layouts/page-layout/PageLayout.vue'
 
 <template>
   <PageLayout>
-    <div class="flex h-full flex-col items-center justify-center">TODO</div>
+    <div class="flex h-full flex-col items-center justify-center">
+      <span>TODO</span>
+    </div>
   </PageLayout>
 </template>
