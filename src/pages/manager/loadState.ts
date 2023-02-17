@@ -1,4 +1,3 @@
-import { join } from 'path-browserify'
 import qs from 'qs'
 import { useGlobalToken } from '../../reactives/useGlobalToken'
 import {
@@ -161,12 +160,7 @@ export async function listPathEntries(
     )
   }
 
-  const { directories } = await response.json()
+  const { results } = await response.json()
 
-  return directories.map((subPath: string) =>
-    createPathEntry({
-      kind: 'Directory',
-      path: join(path, subPath),
-    }),
-  )
+  return results.map(createPathEntry)
 }

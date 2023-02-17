@@ -1,4 +1,3 @@
-import { join } from 'path-browserify'
 import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { createPathEntry, PathEntry } from './PathEntry'
 import { State } from './State'
@@ -34,14 +33,7 @@ export async function stateLoadPathEntryChildren(
     })
   }
 
-  const { directories } = await response.json()
+  const { results } = await response.json()
 
-  const pathEntries = directories.map((path: string) =>
-    createPathEntry({
-      kind: 'Directory',
-      path: join(pathEntry.path, path),
-    }),
-  )
-
-  pathEntry.children = pathEntries
+  pathEntry.children = results.map(createPathEntry)
 }
