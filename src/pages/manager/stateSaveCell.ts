@@ -62,6 +62,7 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
       const response = await fetch(`${state.url}/${data['@path']}`, {
         method: 'GET',
         headers: {
+          'content-type': 'application/json',
           authorization: useGlobalToken().authorization,
         },
       })

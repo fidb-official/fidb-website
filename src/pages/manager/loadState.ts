@@ -144,6 +144,7 @@ export async function listPathEntries(
   const response = await fetch(`${url}/${path}?kind=list`, {
     method: 'GET',
     headers: {
+      'content-type': 'application/json',
       authorization: useGlobalToken().authorization,
     },
   })

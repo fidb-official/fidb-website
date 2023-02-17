@@ -19,6 +19,7 @@ export async function stateLoadPathEntryChildren(
   const response = await fetch(`${state.url}/${directory}?kind=list`, {
     method: 'GET',
     headers: {
+      'content-type': 'application/json',
       authorization: useGlobalToken().authorization,
     },
   })
