@@ -41,6 +41,7 @@ export async function stateDeleteDirectory(
       (pathEntry) =>
         pathEntry.kind === 'Directory' && pathEntry.path === directory,
     )
+
     if (index !== -1) {
       state.pathEntries.splice(index, 1)
     }

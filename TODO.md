@@ -1,6 +1,6 @@
 # manager
 
-[manager] `Manager` -- support view file
+[manager] `ManagerFile` -- support view file
 
 [manager] `ManagerPathEntry` show state about `isOpen`
 [manager] `ManagerPathEntry` create subdirectory and subfile

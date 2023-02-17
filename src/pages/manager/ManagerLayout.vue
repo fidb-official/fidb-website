@@ -2,7 +2,9 @@
 import { useLocalStorage } from '@vueuse/core'
 import { Pane, Splitpanes } from 'splitpanes'
 import { useRouter } from 'vue-router'
+import Lang from '../../components/Lang.vue'
 import ManagerDataset from './ManagerDataset.vue'
+import ManagerFile from './ManagerFile.vue'
 import ManagerFoot from './ManagerFoot.vue'
 import ManagerHead from './ManagerHead.vue'
 import ManagerMessageBar from './ManagerMessageBar.vue'
@@ -36,7 +38,30 @@ const splitpanesSize = useLocalStorage('ManagerLayout.splitpanesSize', 24)
           <ManagerPathEntryList :state="state" />
         </Pane>
         <Pane>
-          <ManagerDataset :state="state" />
+          <div v-if="state.currentPathEntry === undefined" class="px-1">
+            <Lang>
+              <template #zh> 请选择路径。 </template>
+              <template #en> Please choose a path. </template>
+            </Lang>
+          </div>
+          <ManagerDataset
+            v-else-if="state.currentPathEntry.kind === 'Directory'"
+            :state="state"
+          />
+          <ManagerFile
+            v-else-if="state.currentPathEntry.kind === 'File'"
+            :state="state"
+          />
+          <div v-else>
+            <Lang>
+              <template #zh>
+                未知的路径类型：{{ state.currentPathEntry.kind }}。
+              </template>
+              <template #en>
+                Unknown path kind: {{ state.currentPathEntry.kind }}.
+              </template>
+            </Lang>
+          </div>
         </Pane>
       </Splitpanes>
       <ManagerStatusBar :state="state" />

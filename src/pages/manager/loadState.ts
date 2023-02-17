@@ -125,7 +125,7 @@ async function openPathEntries(
     first.children.splice(index, 1, second)
   }
 
-  openPathEntries(url, [second, ...rest])
+  await openPathEntries(url, [second, ...rest])
 }
 
 async function openPathEntry(url: string, pathEntry: PathEntry): Promise<void> {
