@@ -1,6 +1,6 @@
 # manager
 
-[manager] `stateOpenPathEntry`
+[manager] `state.currentPathIsOpen`
 
 [manager] `Manager` -- support view file
 

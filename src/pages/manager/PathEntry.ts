@@ -27,3 +27,28 @@ export function createPathEntry(options: PathEntryOptions): PathEntry {
     isOpen: isOpen || false,
   }
 }
+
+export function pathEntryPartialSummation(
+  pathEntry: PathEntry,
+): Array<PathEntry> {
+  if (pathEntry === undefined) {
+    return []
+  }
+
+  const basenames = pathEntry.path.split('/')
+
+  const prefix: Array<string> = []
+
+  return basenames.map((basename, index) => {
+    const path = [...prefix, basename].join('/')
+
+    prefix.push(basename)
+
+    const kind = index === basenames.length - 1 ? pathEntry.kind : 'Directory'
+
+    return createPathEntry({
+      kind,
+      path,
+    })
+  })
+}

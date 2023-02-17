@@ -1,42 +1,24 @@
 <script setup lang="ts">
-import { createPathEntry, PathEntry } from './PathEntry'
+import { PathEntry, pathEntryPartialSummation } from './PathEntry'
 import { State } from './State'
 
 const props = defineProps<{ state: State }>()
 
-function pathEntries(): Array<PathEntry> {
-  const currentPathEntry = props.state.currentPathEntry
-
-  if (currentPathEntry === undefined) {
+function prefixEntries(): Array<PathEntry> {
+  if (props.state.currentPathEntry === undefined) {
     return []
   }
 
-  const basenames = currentPathEntry.path.split('/')
-
-  const prefix: Array<string> = []
-
-  return basenames.map((basename, index) => {
-    const path = [...prefix, basename].join('/')
-
-    prefix.push(basename)
-
-    const kind =
-      index === basenames.length - 1 ? currentPathEntry.kind : 'Directory'
-
-    return createPathEntry({
-      kind,
-      path,
-    })
-  })
-}
-
-function prefixEntries(): Array<PathEntry> {
-  const entries = pathEntries()
+  const entries = pathEntryPartialSummation(props.state.currentPathEntry)
   return entries.slice(0, entries.length - 1)
 }
 
 function lastEntry(): PathEntry | undefined {
-  const entries = pathEntries()
+  if (props.state.currentPathEntry === undefined) {
+    return undefined
+  }
+
+  const entries = pathEntryPartialSummation(props.state.currentPathEntry)
   return entries[entries.length - 1]
 }
 </script>

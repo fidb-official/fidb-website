@@ -1,6 +1,11 @@
+import { join } from 'path-browserify'
 import qs from 'qs'
 import { useGlobalToken } from '../../reactives/useGlobalToken'
-import { createPathEntry } from './PathEntry'
+import {
+  createPathEntry,
+  PathEntry,
+  pathEntryPartialSummation,
+} from './PathEntry'
 import { createState, State } from './State'
 
 export type LoadStateOptions = {
@@ -9,38 +14,17 @@ export type LoadStateOptions = {
 
 export async function loadState(options: LoadStateOptions): Promise<State> {
   try {
-    const response = await fetch(`${options.url}?kind=list`, {
-      method: 'GET',
-      headers: {
-        authorization: useGlobalToken().authorization,
-      },
-    })
+    const pathEntries = await listPathEntries(options.url, '')
 
-    if (!response.ok) {
-      throw new Error(
-        [
-          `[loadState] fail to fetch url`,
-          `  url: ${options.url}`,
-          `  status.code: ${response.status}`,
-          `  status.message: ${response.statusText}`,
-        ].join('\n'),
-      )
-    }
-
-    const { directories } = await response.json()
-
-    const pathEntries = directories.map((path: string) =>
-      createPathEntry({
-        kind: 'Directory',
-        path,
-      }),
-    )
-
-    return createState({
+    const state = createState({
       url: options.url,
       pathEntries,
       ...parseCurrentQueryString(),
     })
+
+    await stateOpenCurrentPathEntry(state)
+
+    return state
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(
@@ -88,4 +72,93 @@ function parseCurrentQueryString() {
       : undefined,
     currentCellIsOpen: query.currentCellIsOpen === undefined ? undefined : true,
   }
+}
+
+async function stateOpenCurrentPathEntry(state: State): Promise<void> {
+  const pathEntry = state.currentPathEntry
+  if (pathEntry === undefined) {
+    return
+  }
+
+  const pathEntries = pathEntryPartialSummation(pathEntry)
+  await openPathEntries(state.url, pathEntries)
+
+  const parentPathEntry = pathEntries[0]
+
+  const index = state.pathEntries.findIndex(
+    (pathEntry) => pathEntry.path === parentPathEntry.path,
+  )
+
+  if (index === -1) {
+    state.pathEntries.push(parentPathEntry)
+  } else {
+    state.pathEntries.splice(index, 1, parentPathEntry)
+  }
+}
+
+async function openPathEntries(
+  url: string,
+  pathEntries: Array<PathEntry>,
+): Promise<void> {
+  const [first, second, ...rest] = pathEntries
+
+  if (second === undefined) {
+    if (first.isOpen) {
+      await openPathEntry(url, first)
+    }
+    return
+  }
+
+  await openPathEntry(url, first)
+
+  const index = first.children.findIndex((child) => child.path === second.path)
+
+  if (index === -1) {
+    first.children.push(second)
+  } else {
+    first.children.splice(index, 1, second)
+  }
+
+  openPathEntries(url, [second, ...rest])
+}
+
+async function openPathEntry(url: string, pathEntry: PathEntry): Promise<void> {
+  pathEntry.isOpen = true
+
+  if (pathEntry.kind === 'Directory') {
+    pathEntry.children = await listPathEntries(url, pathEntry.path)
+  }
+}
+
+export async function listPathEntries(
+  url: string,
+  path: string,
+): Promise<Array<PathEntry>> {
+  const response = await fetch(`${url}/${path}?kind=list`, {
+    method: 'GET',
+    headers: {
+      authorization: useGlobalToken().authorization,
+    },
+  })
+
+  if (!response.ok) {
+    throw new Error(
+      [
+        `[listPathEntries] fail to fetch list`,
+        `  url: ${url}`,
+        `  path: ${path}`,
+        `  status.code: ${response.status}`,
+        `  status.message: ${response.statusText}`,
+      ].join('\n'),
+    )
+  }
+
+  const { directories } = await response.json()
+
+  return directories.map((subPath: string) =>
+    createPathEntry({
+      kind: 'Directory',
+      path: join(path, subPath),
+    }),
+  )
 }
