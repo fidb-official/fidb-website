@@ -1,8 +1,6 @@
 # manager
 
 [manager] `stateOpenPathEntry`
-[manager] `stateReactivelyOpenCurrentPathEntry`
-[manager] `currentPathEntry` -- open `ManagerPathList` on initial
 
 [manager] `Manager` -- support view file
 
