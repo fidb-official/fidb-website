@@ -1,7 +1,8 @@
 # manager
 
-[manager] `ManagerFileLoading`
 [manager] `ManagerFileError`
+
+[manager] `ManagerFile` dispatch over file extension
 
 [manager] `ManagerFileText`
 [manager] `ManagerFileJson`

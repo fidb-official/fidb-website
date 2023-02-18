@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useGlobalToken } from '../../reactives/useGlobalToken'
+import ManagerFileLoading from './ManagerFileLoading.vue'
 import { State } from './State'
 
 const props = defineProps<{ state: State }>()
 
-const text = ref<string | undefined>(undefined)
+const buffer = ref<ArrayBuffer | undefined>(undefined)
+
+function bufferToText(buffer: ArrayBuffer): string {
+  return new TextDecoder().decode(new Uint8Array(buffer))
+}
 
 onMounted(async () => {
   if (props.state.currentPathEntry === undefined) {
@@ -22,12 +27,13 @@ onMounted(async () => {
     },
   })
 
-  text.value = await response.text()
+  buffer.value = await response.arrayBuffer()
 })
 </script>
 
 <template>
   <div class="flex h-full w-full flex-col overflow-auto border-r border-black">
-    <pre v-if="text" class="p-2">{{ text }}</pre>
+    <ManagerFileLoading v-if="buffer === undefined" :state="state" />
+    <pre v-else class="p-2">{{ bufferToText(buffer) }}</pre>
   </div>
 </template>
