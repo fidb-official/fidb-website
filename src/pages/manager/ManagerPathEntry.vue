@@ -3,6 +3,7 @@ import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/vue/24/outline'
 import { join } from 'path-browserify'
 import { ref } from 'vue'
 import Lang from '../../components/Lang.vue'
+import { stringTrimEnd } from '../../utils/stringTrimEnd'
 import ManagerPathEntry from './ManagerPathEntry.vue'
 import { PathEntry } from './PathEntry'
 import { State } from './State'
@@ -32,7 +33,7 @@ async function createPath(state: State) {
   if (path.endsWith('/')) {
     await stateCreateDirectory(
       state,
-      join(props.pathEntry.path, path),
+      stringTrimEnd(join(props.pathEntry.path, path), '/'),
       props.pathEntry.children,
     )
   } else {

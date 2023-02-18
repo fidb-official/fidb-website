@@ -17,7 +17,7 @@ export async function stateCreateFile(
 
   stateStatusRunning(state, { who, message: 'creating' })
 
-  if (state.pathEntries.find((pathEntry) => pathEntry.path === path)) {
+  if (children.find((pathEntry) => pathEntry.path === path)) {
     stateStatusOk(state, {
       who,
       message: 'path already exists',
