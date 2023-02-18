@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { arrayBufferToText } from '../../utils/arrayBufferToText'
-import { Json } from '../../utils/Json'
+import { arrayBufferToJsonOrError } from '../../utils/arrayBufferToJsonOrError'
 import { State } from './State'
 
 const props = defineProps<{
@@ -14,22 +13,10 @@ const text = ref('')
 onMounted(() => {
   const buffer = props.buffer
   if (!isParsingError(buffer)) {
-    text.value =
-      JSON.stringify(arrayBufferToJsonOrError(buffer), null, 2) + '\n'
+    const json = arrayBufferToJsonOrError(buffer)
+    text.value = JSON.stringify(json, null, 2) + '\n'
   }
 })
-
-function arrayBufferToJsonOrError(buffer: ArrayBuffer): Json | Error {
-  try {
-    return JSON.parse(arrayBufferToText(buffer))
-  } catch (error) {
-    if (error instanceof Error) {
-      return error
-    }
-
-    throw error
-  }
-}
 
 function isParsingError(buffer: ArrayBuffer): boolean {
   return arrayBufferToJsonOrError(buffer) instanceof Error
@@ -40,7 +27,7 @@ function isParsingError(buffer: ArrayBuffer): boolean {
   <pre
     v-if="isParsingError(buffer)"
     class="m-2 border border-red-600 p-2 text-red-600"
-    >{{ arrayBufferToJsonOrError(buffer).message }}</pre
+    >{{ arrayBufferToJsonOrError(buffer) }}</pre
   >
 
   <textarea

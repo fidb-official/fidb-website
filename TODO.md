@@ -1,7 +1,5 @@
 # manager
 
-extract `arrayBufferToJsonOrError`
-
 [manager] `ManagerFileText`
 [manager] `ManagerFileOther`
 
