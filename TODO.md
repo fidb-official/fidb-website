@@ -1,7 +1,5 @@
 # manager
 
-[manager] `ManagerFile` dispatch over file extension
-
 [manager] `ManagerFileText`
 [manager] `ManagerFileJson`
 [manager] `ManagerFileOther`

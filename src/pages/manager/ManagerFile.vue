@@ -1,13 +1,17 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { arrayBufferToText } from '../../utils/arrayBufferToText'
+import { computed, onMounted, ref } from 'vue'
+import ManagerFileJson from './ManagerFileJson.vue'
 import ManagerFileLoading from './ManagerFileLoading.vue'
+import ManagerFileOther from './ManagerFileOther.vue'
+import ManagerFileText from './ManagerFileText.vue'
 import { State } from './State'
 import { stateFetchFile } from './stateFetchFile'
 
 const props = defineProps<{ state: State }>()
 
 const buffer = ref<ArrayBuffer | undefined>(undefined)
+
+const path = computed(() => props.state.currentPathEntry?.path || '')
 
 onMounted(async () => {
   if (props.state.currentPathEntry === undefined) {
@@ -24,6 +28,16 @@ onMounted(async () => {
 <template>
   <div class="flex h-full w-full flex-col overflow-auto border-r border-black">
     <ManagerFileLoading v-if="buffer === undefined" :state="state" />
-    <pre v-else class="p-2">{{ arrayBufferToText(buffer) }}</pre>
+    <ManagerFileJson
+      v-else-if="path.endsWith('.json')"
+      :state="state"
+      :buffer="buffer"
+    />
+    <ManagerFileText
+      v-else-if="path.endsWith('.txt') || path.endsWith('.md')"
+      :state="state"
+      :buffer="buffer"
+    />
+    <ManagerFileOther v-else :state="state" :buffer="buffer" />
   </div>
 </template>
