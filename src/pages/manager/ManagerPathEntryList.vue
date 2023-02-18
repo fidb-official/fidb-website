@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PlusIcon } from '@heroicons/vue/24/outline'
+import { PlusSmallIcon } from '@heroicons/vue/24/outline'
 import Lang from '../../components/Lang.vue'
 import ManagerPathEntry from './ManagerPathEntry.vue'
 import { State } from './State'
@@ -43,7 +43,7 @@ async function createPath(state: State) {
         class="px-1 hover:ring-1 hover:ring-inset hover:ring-black"
         @click="createPath(state)"
       >
-        <PlusIcon class="h-4 w-4" />
+        <PlusSmallIcon class="h-4 w-4" />
       </button>
     </div>
 

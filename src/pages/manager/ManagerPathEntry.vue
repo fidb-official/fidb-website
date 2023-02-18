@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MinusIcon, PlusIcon } from '@heroicons/vue/24/outline'
+import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/vue/24/outline'
 import { join } from 'path-browserify'
 import { ref } from 'vue'
 import Lang from '../../components/Lang.vue'
@@ -101,7 +101,7 @@ async function toggleOpen() {
         ]"
         @click="createPath(state)"
       >
-        <PlusIcon class="h-4 w-4" />
+        <PlusSmallIcon class="h-4 w-4" />
       </button>
 
       <button
@@ -113,7 +113,7 @@ async function toggleOpen() {
         ]"
         @click="deletePath(state, pathEntry.path)"
       >
-        <MinusIcon class="h-4 w-4" />
+        <MinusSmallIcon class="h-4 w-4" />
       </button>
     </div>
 
