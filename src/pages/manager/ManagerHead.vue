@@ -28,7 +28,7 @@ function lastEntry(): PathEntry | undefined {
     <button
       v-for="(entry, index) of prefixEntries()"
       :key="index"
-      class="whitespace-pre hover:underline"
+      class="whitespace-pre font-bold hover:underline"
       @click="state.currentPathEntry = entry"
     >
       <span class="whitespace-pre">{{ entry.basename }}</span>
