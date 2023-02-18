@@ -43,7 +43,7 @@ function close() {
   <!-- prettier-ignore -->
   <div
     class="scrollbar-hide w-full max-w-prose overflow-x-auto whitespace-nowrap"
-    :class="[state.isCurrentCell(cell) && 'ring-2 ring-stone-500']"
+    :class="[state.isCurrentCell(cell) && 'ring-1 ring-stone-500']"
     @mouseover="select()"
   >
     <ManagerTableCellId v-if="cell.columnName === '@path'" v-bind="$props" :isOpen="isOpen" :open="open" :close="close" />

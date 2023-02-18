@@ -57,7 +57,7 @@ async function onclick() {
       </button>
 
       <button
-        class="px-2 font-bold hover:ring-2 hover:ring-inset"
+        class="px-2 font-bold hover:ring-1 hover:ring-inset"
         :class="[
           isSelected()
             ? 'bg-black text-white hover:ring-white'

@@ -1,7 +1,10 @@
 # manager
 
 [manager] `ManagerPathEntry` show state about `isOpen`
-[manager] `ManagerPathEntry` create subdirectory and subfile
+
+[manager] `ManagerPathEntry` create subdirectory
+[manager] `ManagerPathEntry` create subfile
+[manager] `ManagerPathEntry` delete file
 
 [manager] `ManagerPathEntryList` -- subdirectories page by page api
 

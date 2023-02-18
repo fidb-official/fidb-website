@@ -29,7 +29,7 @@ async function createDirectory(state: State) {
       </div>
 
       <button
-        class="px-2 font-bold hover:ring-2 hover:ring-inset hover:ring-black"
+        class="px-2 font-bold hover:ring-1 hover:ring-inset hover:ring-black"
         @click="createDirectory(state)"
       >
         +

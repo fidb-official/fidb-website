@@ -14,7 +14,7 @@ defineProps<{
     <div
       class="flex justify-end space-x-0.5 px-1"
       :class="[
-        state.isCurrentCell(cell) && 'bg-stone-200 ring-2 ring-stone-500',
+        state.isCurrentCell(cell) && 'bg-stone-200 ring-1 ring-stone-500',
       ]"
       @click="
         () => {
