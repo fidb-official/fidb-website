@@ -1,7 +1,5 @@
 # manager
 
-[manager] `ManagerPathEntry` -- delete path
-
 [manager] `ManagerPathEntryList` -- subdirectories page by page api
 
 # talks

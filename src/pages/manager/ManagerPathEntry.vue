@@ -9,6 +9,7 @@ import { State } from './State'
 import { stateCreateDirectory } from './stateCreateDirectory'
 import { stateCreateFile } from './stateCreateFile'
 import { stateDeleteDirectory } from './stateDeleteDirectory'
+import { stateDeleteFile } from './stateDeleteFile'
 import { stateLoadPathEntryChildren } from './stateLoadPathEntryChildren'
 
 const props = defineProps<{
@@ -44,13 +45,19 @@ async function createPath(state: State) {
   }
 }
 
-async function deletePath(state: State, path: string) {
-  const message = `[deleteDirectory] directory: ${path}`
+async function deletePath(state: State) {
+  const message = `[deletePath] path: ${props.pathEntry.path}`
   if (!window.confirm(message)) {
     return
   }
 
-  await stateDeleteDirectory(state, path)
+  if (props.pathEntry.kind === 'Directory') {
+    await stateDeleteDirectory(state, props.pathEntry.path)
+  }
+
+  if (props.pathEntry.kind === 'File') {
+    await stateDeleteFile(state, props.pathEntry.path)
+  }
 }
 
 function isSelected(): boolean {
@@ -111,7 +118,7 @@ async function toggleOpen() {
             ? 'bg-black text-white hover:ring-white'
             : 'hover:ring-black',
         ]"
-        @click="deletePath(state, pathEntry.path)"
+        @click="deletePath(state)"
       >
         <MinusSmallIcon class="h-4 w-4" />
       </button>

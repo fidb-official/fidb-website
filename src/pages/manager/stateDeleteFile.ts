@@ -7,15 +7,15 @@ import {
   stateStatusRunning,
 } from './stateStatus'
 
-export async function stateDeleteDirectory(
+export async function stateDeleteFile(
   state: State,
   path: string,
 ): Promise<void> {
-  const who = 'stateDeleteDirectory'
+  const who = 'stateDeleteFile'
 
   stateStatusRunning(state, { who, message: 'deleting' })
 
-  const response = await fetch(`${state.url}/${path}?kind=directory`, {
+  const response = await fetch(`${state.url}/${path}?kind=file`, {
     method: 'DELETE',
     headers: {
       authorization: useGlobalToken().authorization,
@@ -26,7 +26,7 @@ export async function stateDeleteDirectory(
     stateRemovePathEntry(state, path)
     stateStatusOk(state, {
       who,
-      message: 'directory deleted',
+      message: 'file deleted',
       data: { path },
     })
   } else {
