@@ -3,16 +3,21 @@ import Lang from '../../components/Lang.vue'
 import ManagerPathEntry from './ManagerPathEntry.vue'
 import { State } from './State'
 import { stateCreateDirectory } from './stateCreateDirectory'
+import { stateCreateFile } from './stateCreateFile'
 
 defineProps<{ state: State }>()
 
 async function createDirectory(state: State) {
-  const directory = window.prompt('Directory:')
-  if (!directory) {
+  const path = window.prompt('New path (end a directory with "/"):')
+  if (!path) {
     return
   }
 
-  await stateCreateDirectory(state, directory)
+  if (path.endsWith('/')) {
+    await stateCreateDirectory(state, path)
+  } else {
+    await stateCreateFile(state, path)
+  }
 }
 </script>
 
