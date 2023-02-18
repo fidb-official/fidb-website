@@ -1,6 +1,5 @@
 # manager
 
-[manager] `ManagerFileText`
 [manager] `ManagerFileOther`
 
 [manager] `ManagerPathEntry` show state about `isOpen`

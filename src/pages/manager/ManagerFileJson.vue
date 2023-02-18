@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref, watch } from 'vue'
 import { arrayBufferToJsonOrError } from '../../utils/arrayBufferToJsonOrError'
 import { State } from './State'
 
@@ -10,13 +10,18 @@ const props = defineProps<{
 
 const text = ref('')
 
-onMounted(() => {
-  const buffer = props.buffer
-  if (!isParsingError(buffer)) {
-    const json = arrayBufferToJsonOrError(buffer)
-    text.value = JSON.stringify(json, null, 2) + '\n'
-  }
-})
+watch(
+  () => props.buffer,
+  (buffer) => {
+    if (!isParsingError(buffer)) {
+      const json = arrayBufferToJsonOrError(buffer)
+      text.value = JSON.stringify(json, null, 2) + '\n'
+    }
+  },
+  {
+    immediate: true,
+  },
+)
 
 function isParsingError(buffer: ArrayBuffer): boolean {
   return arrayBufferToJsonOrError(buffer) instanceof Error

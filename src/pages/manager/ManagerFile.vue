@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import ManagerFileJson from './ManagerFileJson.vue'
 import ManagerFileLoading from './ManagerFileLoading.vue'
 import ManagerFileOther from './ManagerFileOther.vue'
@@ -13,16 +13,19 @@ const buffer = ref<ArrayBuffer | undefined>(undefined)
 
 const path = computed(() => props.state.currentPathEntry?.path || '')
 
-onMounted(async () => {
-  if (props.state.currentPathEntry === undefined) {
-    return
-  }
+watch(
+  () => props.state.currentPathEntry?.path,
+  async (path) => {
+    if (path === undefined) {
+      return
+    }
 
-  buffer.value = await stateFetchFile(
-    props.state,
-    props.state.currentPathEntry.path,
-  )
-})
+    buffer.value = await stateFetchFile(props.state, path)
+  },
+  {
+    immediate: true,
+  },
+)
 </script>
 
 <template>
