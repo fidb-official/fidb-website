@@ -3,13 +3,13 @@ import { useLocalStorage } from '@vueuse/core'
 import { Pane, Splitpanes } from 'splitpanes'
 import { useRouter } from 'vue-router'
 import Lang from '../../components/Lang.vue'
-import ManagerDataset from './ManagerDataset.vue'
 import ManagerFile from './ManagerFile.vue'
 import ManagerFoot from './ManagerFoot.vue'
 import ManagerHead from './ManagerHead.vue'
 import ManagerMessageBar from './ManagerMessageBar.vue'
 import ManagerPathEntryList from './ManagerPathEntryList.vue'
 import ManagerStatusBar from './ManagerStatusBar.vue'
+import ManagerTable from './ManagerTable.vue'
 import { State } from './State'
 import { stateReactive } from './stateReactive'
 import { stateReactivelyUpdateRoute } from './stateReactivelyUpdateRoute'
@@ -44,7 +44,7 @@ const splitpanesSize = useLocalStorage('ManagerLayout.splitpanesSize', 24)
               <template #en> Please choose a path. </template>
             </Lang>
           </div>
-          <ManagerDataset
+          <ManagerTable
             v-else-if="state.currentPathEntry.kind === 'Directory'"
             :state="state"
           />
