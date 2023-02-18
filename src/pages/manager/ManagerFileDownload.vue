@@ -14,7 +14,7 @@ defineProps<{
 <template>
   <div class="flex h-full items-center justify-center">
     <div
-      class="mx-6 flex w-full max-w-sm flex-col items-start space-y-2 overflow-x-auto border border-black p-3"
+      class="mx-6 flex w-full max-w-lg flex-col items-start space-y-2 overflow-x-auto border border-black p-3"
     >
       <div>
         <div class="font-bold">
