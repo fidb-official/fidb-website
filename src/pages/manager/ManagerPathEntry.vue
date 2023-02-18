@@ -1,8 +1,12 @@
 <script setup lang="ts">
+import { join } from 'path-browserify'
 import { ref } from 'vue'
 import Lang from '../../components/Lang.vue'
+import ManagerPathEntry from './ManagerPathEntry.vue'
 import { PathEntry } from './PathEntry'
 import { State } from './State'
+import { stateCreateDirectory } from './stateCreateDirectory'
+import { stateCreateFile } from './stateCreateFile'
 import { stateDeleteDirectory } from './stateDeleteDirectory'
 import { stateLoadPathEntryChildren } from './stateLoadPathEntryChildren'
 
@@ -12,6 +16,32 @@ const props = defineProps<{
 }>()
 
 const isChildrenLoading = ref(false)
+
+async function create(state: State) {
+  const message = [
+    `Starting from: ${props.pathEntry.path},`,
+    'create new path (end a directory with "/"):',
+  ].join('\n')
+
+  const path = window.prompt(message)
+  if (!path) {
+    return
+  }
+
+  if (path.endsWith('/')) {
+    await stateCreateDirectory(
+      state,
+      join(props.pathEntry.path, path),
+      props.pathEntry.children,
+    )
+  } else {
+    await stateCreateFile(
+      state,
+      join(props.pathEntry.path, path),
+      props.pathEntry.children,
+    )
+  }
+}
 
 async function deleteDirectory(state: State, directory: string) {
   const message = `[deleteDirectory] directory: ${directory}`
@@ -59,6 +89,18 @@ async function toggleOpen() {
       >
         <span>{{ pathEntry.basename }}</span>
         <span v-if="pathEntry.kind === 'Directory'">/</span>
+      </button>
+
+      <button
+        class="px-2 font-bold hover:ring-1 hover:ring-inset hover:ring-black"
+        :class="[
+          isSelected()
+            ? 'bg-black text-white hover:ring-white'
+            : 'hover:ring-black',
+        ]"
+        @click="create(state)"
+      >
+        +
       </button>
 
       <button

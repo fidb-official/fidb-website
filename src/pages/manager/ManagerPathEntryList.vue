@@ -19,9 +19,9 @@ async function create(state: State) {
   }
 
   if (path.endsWith('/')) {
-    await stateCreateDirectory(state, path)
+    await stateCreateDirectory(state, path, state.pathEntries)
   } else {
-    await stateCreateFile(state, path)
+    await stateCreateFile(state, path, state.pathEntries)
   }
 }
 </script>

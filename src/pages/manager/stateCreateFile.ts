@@ -1,5 +1,5 @@
 import { useGlobalToken } from '../../reactives/useGlobalToken'
-import { createPathEntry } from './PathEntry'
+import { createPathEntry, PathEntry } from './PathEntry'
 import { State } from './State'
 import {
   stateStatusError,
@@ -10,6 +10,7 @@ import {
 export async function stateCreateFile(
   state: State,
   path: string,
+  children: Array<PathEntry>,
 ): Promise<void> {
   const who = 'stateCreateFile'
 
@@ -37,7 +38,7 @@ export async function stateCreateFile(
       path,
     })
 
-    state.pathEntries.push(pathEntry)
+    children.push(pathEntry)
     state.currentPathEntry = pathEntry
     stateStatusOk(state, {
       who,

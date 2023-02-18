@@ -1,8 +1,6 @@
 # manager
 
-[manager] `ManagerPathEntry` -- create directory
-[manager] `ManagerPathEntry` -- create file
-[manager] `ManagerPathEntry` -- delete file
+[manager] `ManagerPathEntry` -- delete path
 
 [manager] `ManagerPathEntryList` -- subdirectories page by page api
 
