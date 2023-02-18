@@ -1,8 +1,10 @@
 # manager
 
-[manager] `ManagerPathEntry` create subdirectory
-[manager] `ManagerPathEntry` create subfile
-[manager] `ManagerPathEntry` delete file
+[manager] `ManagerPathEntryList` -- create file
+
+[manager] `ManagerPathEntry` -- create directory
+[manager] `ManagerPathEntry` -- create file
+[manager] `ManagerPathEntry` -- delete file
 
 [manager] `ManagerPathEntryList` -- subdirectories page by page api
 

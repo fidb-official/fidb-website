@@ -9,27 +9,22 @@ import {
 
 export async function stateCreateDirectory(
   state: State,
-  directory: string,
+  path: string,
 ): Promise<void> {
   const who = 'stateCreateDirectory'
 
   stateStatusRunning(state, { who, message: 'creating' })
 
-  if (
-    state.pathEntries.find(
-      (pathEntry) =>
-        pathEntry.kind === 'Directory' && pathEntry.path === directory,
-    )
-  ) {
+  if (state.pathEntries.find((pathEntry) => pathEntry.path === path)) {
     stateStatusOk(state, {
       who,
-      message: 'directory already exists',
-      data: { directory },
+      message: 'path already exists',
+      data: { path },
     })
     return
   }
 
-  const response = await fetch(`${state.url}/${directory}?kind=directory`, {
+  const response = await fetch(`${state.url}/${path}?kind=directory`, {
     method: 'POST',
     headers: {
       authorization: useGlobalToken().authorization,
@@ -39,7 +34,7 @@ export async function stateCreateDirectory(
   if (response.ok) {
     const pathEntry = createPathEntry({
       kind: 'Directory',
-      path: directory,
+      path,
     })
 
     state.pathEntries.push(pathEntry)
@@ -47,7 +42,7 @@ export async function stateCreateDirectory(
     stateStatusOk(state, {
       who,
       message: 'created directory',
-      data: { directory },
+      data: { path },
     })
   } else {
     stateStatusError(state, {
