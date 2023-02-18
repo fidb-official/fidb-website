@@ -36,7 +36,7 @@ export async function stateUpdateDataset(state: State) {
   }
 
   const response = await fetch(
-    `${state.url}/${directory}?kind=find&${qs.stringify(query)}`,
+    `${state.url}/${directory}?kind=data-find&${qs.stringify(query)}`,
     {
       method: 'GET',
       headers: {

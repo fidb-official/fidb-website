@@ -140,7 +140,7 @@ export async function listPathEntries(
   url: string,
   path: string,
 ): Promise<Array<PathEntry>> {
-  const response = await fetch(`${url}/${path}?kind=list`, {
+  const response = await fetch(`${url}/${path}?kind=directory`, {
     method: 'GET',
     headers: {
       'content-type': 'application/json',

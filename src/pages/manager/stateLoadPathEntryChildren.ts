@@ -15,7 +15,7 @@ export async function stateLoadPathEntryChildren(
 
   const directory = pathEntry.path
 
-  const response = await fetch(`${state.url}/${directory}?kind=list`, {
+  const response = await fetch(`${state.url}/${directory}?kind=directory`, {
     method: 'GET',
     headers: {
       'content-type': 'application/json',
