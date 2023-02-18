@@ -42,6 +42,6 @@ watch(
       :state="state"
       :blob="blob"
     />
-    <ManagerFileDownload v-else :state="state" :blob="blob" />
+    <ManagerFileDownload v-else :state="state" :path="path" :blob="blob" />
   </div>
 </template>

@@ -1,7 +1,5 @@
 # manager
 
-[manager] `ManagerFileDownload`
-
 [manager] `ManagerPathEntry` show state about `isOpen`
 [manager] `ManagerPathEntry` create subdirectory and subfile
 
