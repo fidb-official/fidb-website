@@ -8,8 +8,7 @@ import { PathEntry } from './PathEntry'
 import { State } from './State'
 import { stateCreateDirectory } from './stateCreateDirectory'
 import { stateCreateFile } from './stateCreateFile'
-import { stateDeleteDirectory } from './stateDeleteDirectory'
-import { stateDeleteFile } from './stateDeleteFile'
+import { stateDeletePathEntry } from './stateDeletePathEntry'
 import { stateLoadPathEntryChildren } from './stateLoadPathEntryChildren'
 
 const props = defineProps<{
@@ -51,13 +50,7 @@ async function deletePath(state: State) {
     return
   }
 
-  if (props.pathEntry.kind === 'Directory') {
-    await stateDeleteDirectory(state, props.pathEntry.path)
-  }
-
-  if (props.pathEntry.kind === 'File') {
-    await stateDeleteFile(state, props.pathEntry.path)
-  }
+  await stateDeletePathEntry(state, props.pathEntry)
 }
 
 function isSelected(): boolean {
