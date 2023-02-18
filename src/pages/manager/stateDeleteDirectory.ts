@@ -31,7 +31,6 @@ export async function stateDeleteDirectory(
   const response = await fetch(`${state.url}/${directory}?kind=directory`, {
     method: 'DELETE',
     headers: {
-      'content-type': 'application/json',
       authorization: useGlobalToken().authorization,
     },
   })

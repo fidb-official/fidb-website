@@ -40,7 +40,6 @@ export async function stateUpdateDataset(state: State) {
     {
       method: 'GET',
       headers: {
-        'content-type': 'application/json',
         authorization: useGlobalToken().authorization,
       },
     },

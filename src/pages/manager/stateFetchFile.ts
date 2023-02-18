@@ -9,7 +9,6 @@ export async function stateFetchFile(
   const response = await fetch(`${state.url}/${path}`, {
     method: 'GET',
     headers: {
-      'content-type': 'text/plain',
       authorization: useGlobalToken().authorization,
     },
   })
