@@ -5,7 +5,7 @@ import { stateStatusError } from './stateStatus'
 export async function stateFetchFile(
   state: State,
   path: string,
-): Promise<ArrayBuffer | undefined> {
+): Promise<Blob | undefined> {
   const response = await fetch(`${state.url}/${path}`, {
     method: 'GET',
     headers: {
@@ -15,7 +15,7 @@ export async function stateFetchFile(
   })
 
   if (response.ok) {
-    return await response.arrayBuffer()
+    return await response.blob()
   } else {
     stateStatusError(state, {
       who: 'stateFetchFile',

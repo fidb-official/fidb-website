@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
+import ManagerFileDownload from './ManagerFileDownload.vue'
 import ManagerFileJson from './ManagerFileJson.vue'
 import ManagerFileLoading from './ManagerFileLoading.vue'
-import ManagerFileOther from './ManagerFileOther.vue'
 import ManagerFileText from './ManagerFileText.vue'
 import { State } from './State'
 import { stateFetchFile } from './stateFetchFile'
 
 const props = defineProps<{ state: State }>()
 
-const buffer = ref<ArrayBuffer | undefined>(undefined)
+const blob = ref<Blob | undefined>(undefined)
 
 const path = computed(() => props.state.currentPathEntry?.path || '')
 
@@ -20,7 +20,8 @@ watch(
       return
     }
 
-    buffer.value = await stateFetchFile(props.state, path)
+    blob.value = undefined
+    blob.value = await stateFetchFile(props.state, path)
   },
   {
     immediate: true,
@@ -30,17 +31,17 @@ watch(
 
 <template>
   <div class="flex h-full w-full flex-col overflow-auto border-r border-black">
-    <ManagerFileLoading v-if="buffer === undefined" :state="state" />
+    <ManagerFileLoading v-if="blob === undefined" :state="state" />
     <ManagerFileJson
       v-else-if="path.endsWith('.json')"
       :state="state"
-      :buffer="buffer"
+      :blob="blob"
     />
     <ManagerFileText
       v-else-if="path.endsWith('.txt') || path.endsWith('.md')"
       :state="state"
-      :buffer="buffer"
+      :blob="blob"
     />
-    <ManagerFileOther v-else :state="state" :buffer="buffer" />
+    <ManagerFileDownload v-else :state="state" :blob="blob" />
   </div>
 </template>

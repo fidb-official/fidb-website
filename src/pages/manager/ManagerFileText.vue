@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { arrayBufferToText } from '../../utils/arrayBufferToText'
 import { State } from './State'
 
 const props = defineProps<{
   state: State
-  buffer: ArrayBuffer
+  blob: Blob
 }>()
 
 const text = ref('')
 
 watch(
-  () => props.buffer,
-  (value) => {
-    text.value = arrayBufferToText(value)
+  () => props.blob,
+  async (blob) => {
+    text.value = await blob.text()
   },
   {
     immediate: true,
