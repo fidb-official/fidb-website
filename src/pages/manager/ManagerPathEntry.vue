@@ -84,13 +84,21 @@ async function toggleOpen() {
     </div>
 
     <div v-if="pathEntry.isOpen && !isChildrenLoading" class="pl-2">
-      <ManagerPathEntry
-        class="border-l border-black"
-        v-for="child of pathEntry.children"
-        :key="child.path"
-        :state="state"
-        :pathEntry="child"
-      />
+      <template v-if="pathEntry.children.length === 0">
+        <Lang class="border-l border-black pl-2 text-stone-400">
+          <template #zh> 空 </template>
+          <template #en> empty </template>
+        </Lang>
+      </template>
+      <template v-else>
+        <ManagerPathEntry
+          class="border-l border-black"
+          v-for="child of pathEntry.children"
+          :key="child.path"
+          :state="state"
+          :pathEntry="child"
+        />
+      </template>
     </div>
   </div>
 </template>
