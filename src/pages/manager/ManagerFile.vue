@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { arrayBufferToText } from '../../utils/arrayBufferToText'
 import ManagerFileLoading from './ManagerFileLoading.vue'
 import { State } from './State'
-import { stateStatusError } from './stateStatus'
+import { stateFetchFile } from './stateFetchFile'
 
 const props = defineProps<{ state: State }>()
 
@@ -20,29 +19,6 @@ onMounted(async () => {
     props.state.currentPathEntry.path,
   )
 })
-
-async function stateFetchFile(
-  state: State,
-  path: string,
-): Promise<ArrayBuffer | undefined> {
-  const response = await fetch(`${state.url}/${path}`, {
-    method: 'GET',
-    headers: {
-      'content-type': 'text/plain',
-      authorization: useGlobalToken().authorization,
-    },
-  })
-
-  if (response.ok) {
-    return await response.arrayBuffer()
-  } else {
-    stateStatusError(state, {
-      who: 'stateFetchFile',
-      message: response.statusText,
-      data: { path },
-    })
-  }
-}
 </script>
 
 <template>
