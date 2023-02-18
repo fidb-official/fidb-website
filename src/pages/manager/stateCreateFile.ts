@@ -7,11 +7,11 @@ import {
   stateStatusRunning,
 } from './stateStatus'
 
-export async function stateCreateDirectory(
+export async function stateCreateFile(
   state: State,
   path: string,
 ): Promise<void> {
-  const who = 'stateCreateDirectory'
+  const who = 'stateCreateFile'
 
   stateStatusRunning(state, { who, message: 'creating' })
 
@@ -24,7 +24,7 @@ export async function stateCreateDirectory(
     return
   }
 
-  const response = await fetch(`${state.url}/${path}?kind=directory`, {
+  const response = await fetch(`${state.url}/${path}?kind=file`, {
     method: 'POST',
     headers: {
       authorization: useGlobalToken().authorization,
@@ -33,7 +33,7 @@ export async function stateCreateDirectory(
 
   if (response.ok) {
     const pathEntry = createPathEntry({
-      kind: 'Directory',
+      kind: 'File',
       path,
     })
 
@@ -41,7 +41,7 @@ export async function stateCreateDirectory(
     state.currentPathEntry = pathEntry
     stateStatusOk(state, {
       who,
-      message: 'directory created',
+      message: 'file created',
       data: { path },
     })
   } else {
