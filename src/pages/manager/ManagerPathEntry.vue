@@ -93,6 +93,7 @@ async function toggleOpen() {
       </button>
 
       <button
+        v-if="pathEntry.kind === 'Directory'"
         class="px-1 hover:ring-1 hover:ring-inset hover:ring-black"
         :class="[
           isSelected()

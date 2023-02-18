@@ -1,6 +1,7 @@
 import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { createPathEntry, PathEntry } from './PathEntry'
 import { State } from './State'
+import { stateOpenCurrentPathEntry } from './stateOpenCurrentPathEntry'
 import {
   stateStatusError,
   stateStatusOk,
@@ -40,6 +41,7 @@ export async function stateCreateDirectory(
 
     children.push(pathEntry)
     state.currentPathEntry = pathEntry
+    await stateOpenCurrentPathEntry(state)
     stateStatusOk(state, {
       who,
       message: 'directory created',
