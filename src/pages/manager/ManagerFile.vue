@@ -1,21 +1,33 @@
 <script setup lang="ts">
-import Lang from '../../components/Lang.vue'
+import { onMounted, ref } from 'vue'
+import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { State } from './State'
 
-defineProps<{ state: State }>()
+const props = defineProps<{ state: State }>()
+
+const text = ref<string | undefined>(undefined)
+
+onMounted(async () => {
+  if (props.state.currentPathEntry === undefined) {
+    return
+  }
+
+  const path = props.state.currentPathEntry.path
+
+  const response = await fetch(`${props.state.url}/${path}`, {
+    method: 'GET',
+    headers: {
+      'content-type': 'text/plain',
+      authorization: useGlobalToken().authorization,
+    },
+  })
+
+  text.value = await response.text()
+})
 </script>
 
 <template>
   <div class="flex h-full w-full flex-col overflow-auto border-r border-black">
-    <div v-if="state.currentPathEntry === undefined" class="px-1">
-      <Lang>
-        <template #zh> 请选择路径。 </template>
-        <template #en> Please choose a path. </template>
-      </Lang>
-    </div>
-
-    <div v-else>
-      <div>TODO</div>
-    </div>
+    <pre v-if="text" class="p-2">{{ text }}</pre>
   </div>
 </template>

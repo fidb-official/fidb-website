@@ -1,6 +1,13 @@
 # manager
 
-[manager] `ManagerFile` -- support view file
+[manager] `ManagerFileLoading`
+[manager] `ManagerFileError`
+
+[manager] `ManagerFileText`
+[manager] `ManagerFileJson`
+[manager] `ManagerFileOther`
+
+[manager] use `ManagerTable` instead of `ManagerDataset`
 
 [manager] `ManagerPathEntry` show state about `isOpen`
 [manager] `ManagerPathEntry` create subdirectory and subfile
