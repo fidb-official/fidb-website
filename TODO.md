@@ -1,7 +1,8 @@
 # manager
 
+extract `arrayBufferToJsonOrError`
+
 [manager] `ManagerFileText`
-[manager] `ManagerFileJson`
 [manager] `ManagerFileOther`
 
 [manager] `ManagerPathEntry` show state about `isOpen`
