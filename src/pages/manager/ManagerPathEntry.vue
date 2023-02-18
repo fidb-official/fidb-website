@@ -26,31 +26,36 @@ function isSelected(): boolean {
   return props.pathEntry.path === props.state.currentPathEntry?.path
 }
 
-async function onclick() {
+async function select() {
   if (props.state.currentPathEntry?.path !== props.pathEntry.path) {
     props.state.currentPathEntry = props.pathEntry
-  } else if (isSelected()) {
-    props.pathEntry.isOpen = !props.pathEntry.isOpen
+  } else if (isSelected() && props.pathEntry.kind === 'Directory') {
+    await toggleOpen()
+  }
+}
+
+async function toggleOpen() {
+  props.pathEntry.isOpen = !props.pathEntry.isOpen
+
+  if (props.state.currentPathEntry !== undefined) {
     props.state.currentPathEntry.isOpen = props.pathEntry.isOpen
-    if (props.pathEntry.isOpen) {
-      isChildrenLoading.value = true
-      await stateLoadPathEntryChildren(props.state, props.pathEntry)
-      isChildrenLoading.value = false
-    }
+  }
+
+  if (props.pathEntry.isOpen) {
+    isChildrenLoading.value = true
+    await stateLoadPathEntryChildren(props.state, props.pathEntry)
+    isChildrenLoading.value = false
   }
 }
 </script>
 
 <template>
   <div class="flex flex-col">
-    <div
-      class="flex justify-between"
-      :class="[isSelected() ? 'hover:bg-black' : 'hover:bg-stone-200']"
-    >
+    <div class="flex justify-between hover:bg-stone-200">
       <button
         class="scrollbar-hide w-full overflow-x-auto whitespace-nowrap px-2 text-left"
         :class="[isSelected() && 'bg-black text-white']"
-        @click="onclick"
+        @click="select()"
       >
         <span>{{ pathEntry.basename }}</span>
         <span v-if="pathEntry.kind === 'Directory'">/</span>
