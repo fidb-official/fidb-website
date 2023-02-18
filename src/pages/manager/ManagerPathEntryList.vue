@@ -23,8 +23,8 @@ async function createDirectory(state: State) {
         class="scrollbar-hide overflow-x-auto whitespace-nowrap px-2 font-bold"
       >
         <Lang>
-          <template #zh> 文件夹： </template>
-          <template #en> Directories: </template>
+          <template #zh> 根目录 </template>
+          <template #en> Root </template>
         </Lang>
       </div>
 
