@@ -7,6 +7,7 @@ const props = defineProps<{
   blob: Blob
 }>()
 
+const jsonText = ref('')
 const text = ref('')
 const error = ref<unknown | undefined>(undefined)
 
@@ -15,9 +16,11 @@ watch(
   async (blob) => {
     try {
       text.value = ''
+      jsonText.value = ''
       error.value = undefined
-      const json = JSON.parse(await blob.text())
-      text.value = JSON.stringify(json, null, 2) + '\n'
+      text.value = await blob.text()
+      const json = JSON.parse(text.value)
+      jsonText.value = JSON.stringify(json, null, 2) + '\n'
     } catch (errorValue) {
       error.value = errorValue
     }
@@ -29,16 +32,19 @@ watch(
 </script>
 
 <template>
-  <div
-    v-if="error"
-    class="m-2 whitespace-pre-wrap border border-red-600 p-2 text-red-600"
-  >
-    {{ error }}
+  <div v-if="error" class="flex h-full w-full flex-col">
+    <div class="whitespace-pre-wrap border border-red-600 p-2 text-red-600">
+      {{ error }}
+    </div>
+    <textarea
+      class="h-full resize-none overflow-auto border border-black p-2 font-mono focus:outline-none"
+      v-model="text"
+    ></textarea>
   </div>
 
   <textarea
     v-else
     class="h-full resize-none overflow-auto border border-black p-2 font-mono focus:outline-none"
-    v-model="text"
+    v-model="jsonText"
   ></textarea>
 </template>
