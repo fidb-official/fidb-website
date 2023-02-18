@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { MinusIcon, PlusIcon } from '@heroicons/vue/24/outline'
 import { join } from 'path-browserify'
 import { ref } from 'vue'
 import Lang from '../../components/Lang.vue'
@@ -92,7 +93,7 @@ async function toggleOpen() {
       </button>
 
       <button
-        class="px-2 font-bold hover:ring-1 hover:ring-inset hover:ring-black"
+        class="px-1 hover:ring-1 hover:ring-inset hover:ring-black"
         :class="[
           isSelected()
             ? 'bg-black text-white hover:ring-white'
@@ -100,11 +101,11 @@ async function toggleOpen() {
         ]"
         @click="createPath(state)"
       >
-        +
+        <PlusIcon class="h-4 w-4" />
       </button>
 
       <button
-        class="px-2 font-bold hover:ring-1 hover:ring-inset"
+        class="px-1 hover:ring-1 hover:ring-inset"
         :class="[
           isSelected()
             ? 'bg-black text-white hover:ring-white'
@@ -112,7 +113,7 @@ async function toggleOpen() {
         ]"
         @click="deletePath(state, pathEntry.path)"
       >
-        <span class="px-0.5"> - </span>
+        <MinusIcon class="h-4 w-4" />
       </button>
     </div>
 
