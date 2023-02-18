@@ -7,7 +7,7 @@ import { stateCreateFile } from './stateCreateFile'
 
 defineProps<{ state: State }>()
 
-async function create(state: State) {
+async function createPath(state: State) {
   const message = [
     `Starting from root,`,
     'create new path (end a directory with "/"):',
@@ -40,7 +40,7 @@ async function create(state: State) {
 
       <button
         class="px-2 font-bold hover:ring-1 hover:ring-inset hover:ring-black"
-        @click="create(state)"
+        @click="createPath(state)"
       >
         +
       </button>

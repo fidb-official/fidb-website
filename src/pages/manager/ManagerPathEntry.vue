@@ -17,7 +17,7 @@ const props = defineProps<{
 
 const isChildrenLoading = ref(false)
 
-async function create(state: State) {
+async function createPath(state: State) {
   const message = [
     `Starting from: ${props.pathEntry.path},`,
     'create new path (end a directory with "/"):',
@@ -43,13 +43,13 @@ async function create(state: State) {
   }
 }
 
-async function deleteDirectory(state: State, directory: string) {
-  const message = `[deleteDirectory] directory: ${directory}`
+async function deletePath(state: State, path: string) {
+  const message = `[deleteDirectory] directory: ${path}`
   if (!window.confirm(message)) {
     return
   }
 
-  await stateDeleteDirectory(state, directory)
+  await stateDeleteDirectory(state, path)
 }
 
 function isSelected(): boolean {
@@ -98,7 +98,7 @@ async function toggleOpen() {
             ? 'bg-black text-white hover:ring-white'
             : 'hover:ring-black',
         ]"
-        @click="create(state)"
+        @click="createPath(state)"
       >
         +
       </button>
@@ -110,7 +110,7 @@ async function toggleOpen() {
             ? 'bg-black text-white hover:ring-white'
             : 'hover:ring-black',
         ]"
-        @click="deleteDirectory(state, pathEntry.path)"
+        @click="deletePath(state, pathEntry.path)"
       >
         <span class="px-0.5"> - </span>
       </button>
