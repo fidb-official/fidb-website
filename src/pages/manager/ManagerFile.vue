@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue'
 import { useGlobalToken } from '../../reactives/useGlobalToken'
 import ManagerFileLoading from './ManagerFileLoading.vue'
 import { State } from './State'
+import { stateStatusError } from './stateStatus'
 
 const props = defineProps<{ state: State }>()
 
@@ -17,9 +18,17 @@ onMounted(async () => {
     return
   }
 
-  const path = props.state.currentPathEntry.path
+  buffer.value = await stateFetchFile(
+    props.state,
+    props.state.currentPathEntry.path,
+  )
+})
 
-  const response = await fetch(`${props.state.url}/${path}`, {
+async function stateFetchFile(
+  state: State,
+  path: string,
+): Promise<ArrayBuffer | undefined> {
+  const response = await fetch(`${state.url}/${path}`, {
     method: 'GET',
     headers: {
       'content-type': 'text/plain',
@@ -27,8 +36,16 @@ onMounted(async () => {
     },
   })
 
-  buffer.value = await response.arrayBuffer()
-})
+  if (response.ok) {
+    return await response.arrayBuffer()
+  } else {
+    stateStatusError(state, {
+      who: 'stateFetchFile',
+      message: response.statusText,
+      data: { path },
+    })
+  }
+}
 </script>
 
 <template>

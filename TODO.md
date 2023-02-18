@@ -1,7 +1,5 @@
 # manager
 
-[manager] `ManagerFileError`
-
 [manager] `ManagerFile` dispatch over file extension
 
 [manager] `ManagerFileText`
