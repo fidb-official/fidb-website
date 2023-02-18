@@ -1,5 +1,7 @@
 # manager
 
+[manager] `stateFetchFile`
+
 [manager] `ManagerFile` dispatch over file extension
 
 [manager] `ManagerFileText`

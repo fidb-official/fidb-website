@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useGlobalToken } from '../../reactives/useGlobalToken'
+import { arrayBufferToText } from '../../utils/arrayBufferToText'
 import ManagerFileLoading from './ManagerFileLoading.vue'
 import { State } from './State'
 import { stateStatusError } from './stateStatus'
@@ -8,10 +9,6 @@ import { stateStatusError } from './stateStatus'
 const props = defineProps<{ state: State }>()
 
 const buffer = ref<ArrayBuffer | undefined>(undefined)
-
-function bufferToText(buffer: ArrayBuffer): string {
-  return new TextDecoder().decode(new Uint8Array(buffer))
-}
 
 onMounted(async () => {
   if (props.state.currentPathEntry === undefined) {
@@ -51,6 +48,6 @@ async function stateFetchFile(
 <template>
   <div class="flex h-full w-full flex-col overflow-auto border-r border-black">
     <ManagerFileLoading v-if="buffer === undefined" :state="state" />
-    <pre v-else class="p-2">{{ bufferToText(buffer) }}</pre>
+    <pre v-else class="p-2">{{ arrayBufferToText(buffer) }}</pre>
   </div>
 </template>
