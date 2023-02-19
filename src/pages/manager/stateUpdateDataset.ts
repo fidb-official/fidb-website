@@ -46,7 +46,7 @@ export async function stateUpdateDataset(state: State) {
   )
 
   if (response.ok) {
-    const { results } = await response.json()
+    const results = await response.json()
 
     state.dataset = results
     state.datasetIsLoading = false

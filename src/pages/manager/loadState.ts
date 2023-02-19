@@ -91,7 +91,7 @@ export async function listPathEntries(
     )
   }
 
-  const { results } = await response.json()
+  const results = await response.json()
 
   return results.map(createPathEntry)
 }

@@ -32,7 +32,7 @@ export async function stateLoadPathEntryChildren(
     })
   }
 
-  const { results } = await response.json()
+  const results = await response.json()
 
   pathEntry.children = results.map(createPathEntry)
 }
