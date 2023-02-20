@@ -2,9 +2,8 @@
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/vue/24/outline'
 import { join } from 'path-browserify'
 import { ref } from 'vue'
-import Lang from '../../components/Lang.vue'
 import { stringTrimEnd } from '../../utils/stringTrimEnd'
-import ManagerPathEntry from './ManagerPathEntry.vue'
+import ManagerPathEntryChildren from './ManagerPathEntryChildren.vue'
 import { PathEntry } from './PathEntry'
 import { State } from './State'
 import { stateCreateDirectory } from './stateCreateDirectory'
@@ -119,31 +118,10 @@ async function toggleOpen() {
       </button>
     </div>
 
-    <div v-if="pathEntry.isOpen && isChildrenLoading" class="pl-2">
-      <Lang
-        class="scrollbar-hide overflow-x-auto whitespace-nowrap border border-yellow-600 px-2 text-yellow-600"
-      >
-        <template #zh> 加载中…… </template>
-        <template #en> Loading... </template>
-      </Lang>
-    </div>
-
-    <div v-if="pathEntry.isOpen && !isChildrenLoading" class="pl-2">
-      <template v-if="pathEntry.children.length === 0">
-        <Lang class="border-l border-black pl-2 text-stone-400">
-          <template #zh> 空 </template>
-          <template #en> empty </template>
-        </Lang>
-      </template>
-      <template v-else>
-        <ManagerPathEntry
-          class="border-l border-black"
-          v-for="child of pathEntry.children"
-          :key="child.path"
-          :state="state"
-          :pathEntry="child"
-        />
-      </template>
-    </div>
+    <ManagerPathEntryChildren
+      :state="state"
+      :pathEntry="pathEntry"
+      :isLoading="isChildrenLoading"
+    />
   </div>
 </template>
