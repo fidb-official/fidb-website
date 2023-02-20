@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import Hyperlink from '../../components/Hyperlink.vue'
 import Lang from '../../components/Lang.vue'
-import Link from '../../components/Link.vue'
 import PageLayout from '../../layouts/page-layout/PageLayout.vue'
 </script>
 
@@ -15,12 +15,12 @@ import PageLayout from '../../layouts/page-layout/PageLayout.vue'
         </Lang>
 
         <div>
-          <Link class="underline decoration-2" href="/talks">
+          <Hyperlink class="underline decoration-2" href="/talks">
             <Lang>
               <template #zh> 我不知道。来试试看！ </template>
               <template #en> I don't know. Let's find out! </template>
             </Lang>
-          </Link>
+          </Hyperlink>
         </div>
 
         <div class="py-16"></div>
