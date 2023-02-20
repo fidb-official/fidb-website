@@ -24,23 +24,27 @@ function lastEntry(): PathEntry | undefined {
 </script>
 
 <template>
-  <div v-if="state.currentPathEntry" class="flex overflow-x-auto pb-1">
-    <button
-      v-for="(entry, index) of prefixEntries()"
-      :key="index"
-      class="whitespace-pre font-bold hover:underline"
-      @click="state.currentPathEntry = entry"
-    >
-      <span class="whitespace-pre">{{ entry.basename }}</span>
-      <span class="whitespace-pre">/</span>
-    </button>
-    <button v-if="lastEntry()" disabled>
-      <span class="whitespace-pre">{{ lastEntry()?.basename }}</span>
-      <span
-        v-if="state.currentPathEntry?.kind === 'Directory'"
-        class="whitespace-pre"
-        >/</span
+  <div class="flex pb-1">
+    <div>{{ state.url }}/</div>
+
+    <div v-if="state.currentPathEntry" class="flex overflow-x-auto">
+      <button
+        v-for="(entry, index) of prefixEntries()"
+        :key="index"
+        class="whitespace-pre hover:underline"
+        @click="state.currentPathEntry = entry"
       >
-    </button>
+        <span class="whitespace-pre">{{ entry.basename }}</span>
+        <span class="whitespace-pre">/</span>
+      </button>
+      <button v-if="lastEntry()" disabled>
+        <span class="whitespace-pre">{{ lastEntry()?.basename }}</span>
+        <span
+          v-if="state.currentPathEntry?.kind === 'Directory'"
+          class="whitespace-pre"
+          >/</span
+        >
+      </button>
+    </div>
   </div>
 </template>
