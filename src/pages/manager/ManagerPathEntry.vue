@@ -1,14 +1,9 @@
 <script setup lang="ts">
-import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/vue/24/outline'
-import { join } from 'path-browserify'
 import { ref } from 'vue'
-import { stringTrimEnd } from '../../utils/stringTrimEnd'
 import ManagerPathEntryChildren from './ManagerPathEntryChildren.vue'
+import ManagerPathEntryControl from './ManagerPathEntryControl.vue'
 import { PathEntry } from './PathEntry'
 import { State } from './State'
-import { stateCreateDirectory } from './stateCreateDirectory'
-import { stateCreateFile } from './stateCreateFile'
-import { stateDeletePathEntry } from './stateDeletePathEntry'
 import { stateLoadPathEntryChildren } from './stateLoadPathEntryChildren'
 
 const props = defineProps<{
@@ -17,41 +12,6 @@ const props = defineProps<{
 }>()
 
 const isChildrenLoading = ref(false)
-
-async function createPath(state: State) {
-  const message = [
-    `Starting from: ${props.pathEntry.path},`,
-    'create new path (end a directory with "/"):',
-  ].join('\n')
-
-  const path = window.prompt(message)
-  if (!path) {
-    return
-  }
-
-  if (path.endsWith('/')) {
-    await stateCreateDirectory(
-      state,
-      stringTrimEnd(join(props.pathEntry.path, path), '/'),
-      props.pathEntry.children,
-    )
-  } else {
-    await stateCreateFile(
-      state,
-      join(props.pathEntry.path, path),
-      props.pathEntry.children,
-    )
-  }
-}
-
-async function deletePath(state: State) {
-  const message = `[deletePath] path: ${props.pathEntry.path}`
-  if (!window.confirm(message)) {
-    return
-  }
-
-  await stateDeletePathEntry(state, props.pathEntry)
-}
 
 function isSelected(): boolean {
   return props.pathEntry.path === props.state.currentPathEntry?.path
@@ -92,30 +52,11 @@ async function toggleOpen() {
         <span v-if="pathEntry.kind === 'Directory'">/</span>
       </button>
 
-      <button
-        v-if="pathEntry.kind === 'Directory'"
-        class="px-1 hover:ring-1 hover:ring-inset hover:ring-black"
-        :class="[
-          isSelected()
-            ? 'bg-black text-white hover:ring-white'
-            : 'hover:ring-black',
-        ]"
-        @click="createPath(state)"
-      >
-        <PlusSmallIcon class="h-4 w-4" />
-      </button>
-
-      <button
-        class="px-1 hover:ring-1 hover:ring-inset"
-        :class="[
-          isSelected()
-            ? 'bg-black text-white hover:ring-white'
-            : 'hover:ring-black',
-        ]"
-        @click="deletePath(state)"
-      >
-        <MinusSmallIcon class="h-4 w-4" />
-      </button>
+      <ManagerPathEntryControl
+        :state="state"
+        :pathEntry="pathEntry"
+        :isSelected="isSelected()"
+      />
     </div>
 
     <ManagerPathEntryChildren
