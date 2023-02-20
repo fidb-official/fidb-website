@@ -57,7 +57,13 @@ function submit(event: Event) {
           </template>
         </FormInput>
 
-        <FormInput :form="form" name="token" type="password" required>
+        <FormInput
+          :form="form"
+          name="token"
+          type="password"
+          autocomplete="current-password"
+          required
+        >
           <template #label>
             <Lang>
               <template #zh>令牌</template>
