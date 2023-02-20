@@ -34,9 +34,10 @@ const splitpanesSize = useLocalStorage('ManagerLayout.splitpanesSize', 24)
         class="overflow-auto"
         @resized="splitpanesSize = $event[0].size"
       >
-        <Pane class="border-r border-black" :size="splitpanesSize">
+        <Pane class="border-r border-black" min-size="8" :size="splitpanesSize">
           <ManagerPathEntryList :state="state" />
         </Pane>
+
         <Pane>
           <div v-if="state.currentPathEntry === undefined" class="px-1">
             <Lang>
@@ -67,6 +68,7 @@ const splitpanesSize = useLocalStorage('ManagerLayout.splitpanesSize', 24)
       <ManagerStatusBar :state="state" />
       <ManagerMessageBar :state="state" />
     </div>
+
     <ManagerFoot :state="state" />
   </div>
 </template>
