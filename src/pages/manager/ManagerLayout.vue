@@ -7,7 +7,7 @@ import ManagerFile from './ManagerFile.vue'
 import ManagerFoot from './ManagerFoot.vue'
 import ManagerHead from './ManagerHead.vue'
 import ManagerMessageBar from './ManagerMessageBar.vue'
-import ManagerPathEntryList from './ManagerPathEntryList.vue'
+import ManagerPathEntryRoot from './ManagerPathEntryRoot.vue'
 import ManagerStatusBar from './ManagerStatusBar.vue'
 import ManagerTable from './ManagerTable.vue'
 import { State } from './State'
@@ -35,7 +35,7 @@ const splitpanesSize = useLocalStorage('ManagerLayout.splitpanesSize', 24)
         @resized="splitpanesSize = $event[0].size"
       >
         <Pane class="border-r border-black" min-size="8" :size="splitpanesSize">
-          <ManagerPathEntryList :state="state" />
+          <ManagerPathEntryRoot :state="state" />
         </Pane>
 
         <Pane>
