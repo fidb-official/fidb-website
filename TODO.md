@@ -1,5 +1,6 @@
 # manager
 
+[manager] `ManagerLayout` min width for `ManagerLayoutPathEntryList`
 [manager] `ManagerPathEntryList` -- subdirectories page by page api
 
 # talks
