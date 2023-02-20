@@ -24,14 +24,42 @@
   opacity: 1;
 }
 
-.splitpanes--vertical > .splitpanes__splitter:before {
-  left: -2.5px;
-  right: -2.5px;
-  height: 100%;
-}
+@tailwind components;
 
-.splitpanes--horizontal > .splitpanes__splitter:before {
-  top: -2.5px;
-  bottom: -2.5px;
-  width: 100%;
+@layer components {
+  .splitter-1 > .splitpanes__splitter:before {
+    left: -1px;
+    right: -1px;
+    height: 100%;
+  }
+
+  .splitter-2 > .splitpanes__splitter:before {
+    left: -2px;
+    right: -2px;
+    height: 100%;
+  }
+
+  .splitter-3 > .splitpanes__splitter:before {
+    left: -3px;
+    right: -3px;
+    height: 100%;
+  }
+
+  .splitter-4 > .splitpanes__splitter:before {
+    left: -4px;
+    right: -4px;
+    height: 100%;
+  }
+
+  .splitter-5 > .splitpanes__splitter:before {
+    left: -5px;
+    right: -5px;
+    height: 100%;
+  }
+
+  .splitter-6 > .splitpanes__splitter:before {
+    left: -6px;
+    right: -6px;
+    height: 100%;
+  }
 }

@@ -31,7 +31,7 @@ const splitpanesSize = useLocalStorage('ManagerLayout.splitpanesSize', 24)
 
     <div class="flex h-full flex-col overflow-auto border-y border-black">
       <Splitpanes
-        class="overflow-auto"
+        class="splitter-6 md:splitter-3 overflow-auto"
         @resized="splitpanesSize = $event[0].size"
       >
         <Pane class="border-r border-black" min-size="8" :size="splitpanesSize">
