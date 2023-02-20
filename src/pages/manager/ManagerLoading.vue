@@ -23,7 +23,7 @@ defineProps<{
       <template #en> Options: </template>
     </Lang>
 
-    <div class="whitespace-pre font-mono">
+    <div class="overflow-x-auto whitespace-pre font-mono">
       {{ options }}
     </div>
   </div>
