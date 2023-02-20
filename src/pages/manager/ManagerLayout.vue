@@ -26,7 +26,7 @@ const splitpanesSize = useLocalStorage('ManagerLayout.splitpanesSize', 24)
 </script>
 
 <template>
-  <div class="flex h-full flex-col overflow-auto px-3">
+  <div class="flex h-screen w-screen flex-col overflow-auto px-3">
     <ManagerHead :state="state" />
 
     <div class="flex h-full flex-col overflow-auto border-y border-black">

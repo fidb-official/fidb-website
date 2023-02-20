@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Hyperlink from '../../components/Hyperlink.vue'
 import { PathEntry, pathEntryPartialSummation } from './PathEntry'
 import { State } from './State'
 
@@ -24,7 +25,13 @@ function lastEntry(): PathEntry | undefined {
 </script>
 
 <template>
-  <div class="flex pb-1">
+  <div class="flex pt-2 pb-1">
+    <div class="font-bold">
+      <Hyperlink class="hover:underline" href="/">fidb</Hyperlink>
+    </div>
+
+    <div>+</div>
+
     <div>{{ state.url }}/</div>
 
     <div v-if="state.currentPathEntry" class="flex overflow-x-auto">

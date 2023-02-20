@@ -30,9 +30,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <PageLayout>
-    <ManagerLayout v-if="state" :state="state" />
-    <ManagerLoadingError v-else-if="error" :error="error" />
+  <ManagerLayout v-if="state" :state="state" />
+  <PageLayout v-else>
+    <ManagerLoadingError v-if="error" :error="error" />
     <ManagerLoading v-else :options="options" />
   </PageLayout>
 </template>
