@@ -18,8 +18,5 @@ export function stateReactivelyUpdateDataset(state: State): void {
     async () => {
       await stateUpdateDataset(state)
     },
-    {
-      immediate: true,
-    },
   )
 }
