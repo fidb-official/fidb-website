@@ -26,9 +26,13 @@ async function select() {
 }
 
 async function toggleOpen() {
+  if (props.pathEntry.kind !== 'Directory') {
+    return
+  }
+
   props.pathEntry.isOpen = !props.pathEntry.isOpen
 
-  if (props.state.currentPathEntry !== undefined) {
+  if (props.state.currentPathEntry?.kind === 'Directory') {
     props.state.currentPathEntry.isOpen = props.pathEntry.isOpen
   }
 

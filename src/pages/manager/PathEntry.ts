@@ -8,7 +8,17 @@ export type PathEntryOptions = {
   isOpen?: boolean
 }
 
-export type PathEntry = PathEntryOptions & {
+export type PathEntry = PathEntryFile | PathEntryDirectory
+
+export type PathEntryFile = {
+  kind: 'File'
+  path: string
+  basename: string
+}
+
+export type PathEntryDirectory = {
+  kind: 'Directory'
+  path: string
   basename: string
   children: Array<PathEntry>
   isOpen: boolean
@@ -17,15 +27,33 @@ export type PathEntry = PathEntryOptions & {
 export function createPathEntry(options: PathEntryOptions): PathEntry {
   const { kind, path, isOpen } = options
 
-  return {
-    kind,
-    path,
-    get basename() {
-      return basename(this.path)
-    },
-    children: [],
-    isOpen: isOpen || false,
+  switch (kind) {
+    case 'File': {
+      return {
+        kind,
+        path,
+        get basename() {
+          return basename(this.path)
+        },
+      }
+    }
+
+    case 'Directory': {
+      return {
+        kind,
+        path,
+        get basename() {
+          return basename(this.path)
+        },
+        children: [],
+        isOpen: isOpen || false,
+      }
+    }
   }
+}
+
+export function pathEntryBasename(pathEntry: PathEntry): string {
+  return basename(pathEntry.path)
 }
 
 export function pathEntryPartialSummation(

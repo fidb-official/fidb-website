@@ -53,16 +53,6 @@ const splitpanesSize = useLocalStorage('ManagerLayout.splitpanesSize', 24)
             v-else-if="state.currentPathEntry.kind === 'File'"
             :state="state"
           />
-          <div v-else>
-            <Lang>
-              <template #zh>
-                未知的路径类型：{{ state.currentPathEntry.kind }}。
-              </template>
-              <template #en>
-                Unknown path kind: {{ state.currentPathEntry.kind }}.
-              </template>
-            </Lang>
-          </div>
         </Pane>
       </Splitpanes>
       <ManagerStatusBar :state="state" />

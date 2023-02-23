@@ -25,6 +25,10 @@ async function createPath(state: State) {
     return
   }
 
+  if (props.pathEntry.kind !== 'Directory') {
+    return
+  }
+
   if (path.endsWith('/')) {
     await stateCreateDirectory(
       state,

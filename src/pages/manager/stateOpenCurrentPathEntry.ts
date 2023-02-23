@@ -11,7 +11,11 @@ export async function stateOpenCurrentPathEntry(state: State): Promise<void> {
   const pathEntries = pathEntryPartialSummation(currentPathEntry)
 
   for (const pathEntry of pathEntries) {
-    if (pathEntry.path === currentPathEntry.path) {
+    if (
+      pathEntry.path === currentPathEntry.path &&
+      pathEntry.kind === 'Directory' &&
+      currentPathEntry.kind === 'Directory'
+    ) {
       pathEntry.isOpen = currentPathEntry.isOpen
     }
   }
@@ -38,29 +42,35 @@ async function openPathEntries(
   const [first, second, ...rest] = pathEntries
 
   if (second === undefined) {
-    if (first.isOpen) {
+    if (first.kind === 'Directory' && first.isOpen) {
       await openPathEntry(url, first)
     }
+
     return
   }
 
   await openPathEntry(url, first)
 
-  const index = first.children.findIndex((child) => child.path === second.path)
+  if (first.kind === 'Directory') {
+    const index = first.children.findIndex(
+      (child) => child.path === second.path,
+    )
 
-  if (index === -1) {
-    first.children.push(second)
-  } else {
-    first.children.splice(index, 1, second)
+    if (index === -1) {
+      first.children.push(second)
+    } else {
+      first.children.splice(index, 1, second)
+    }
   }
 
   await openPathEntries(url, [second, ...rest])
 }
 
 async function openPathEntry(url: string, pathEntry: PathEntry): Promise<void> {
-  pathEntry.isOpen = true
-
-  if (pathEntry.kind === 'Directory') {
-    pathEntry.children = await listPathEntries(url, pathEntry.path)
+  if (pathEntry.kind !== 'Directory') {
+    return
   }
+
+  pathEntry.isOpen = true
+  pathEntry.children = await listPathEntries(url, pathEntry.path)
 }

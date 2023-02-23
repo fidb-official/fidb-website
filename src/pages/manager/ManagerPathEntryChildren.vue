@@ -12,7 +12,7 @@ defineProps<{
 </script>
 
 <template>
-  <div v-if="pathEntry.isOpen" class="pl-2">
+  <div v-if="pathEntry.kind === 'Directory' && pathEntry.isOpen" class="pl-2">
     <template v-if="isLoading">
       <Lang
         class="scrollbar-hide overflow-x-auto whitespace-nowrap border border-yellow-600 px-2 text-yellow-600"

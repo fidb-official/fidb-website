@@ -61,6 +61,8 @@ function removePathEntry(path: string, pathEntries: Array<PathEntry>): void {
   }
 
   for (const pathEntry of pathEntries) {
-    removePathEntry(path, pathEntry.children)
+    if (pathEntry.kind === 'Directory') {
+      removePathEntry(path, pathEntry.children)
+    }
   }
 }
