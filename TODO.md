@@ -1,6 +1,5 @@
 # manager
 
-extract `ManagerStatusBarPagination`
 extract `ManagerPathEntryChildrenPagination`
 
 [manager] `PathEntryDirectory` has `isChildrenLoading`
