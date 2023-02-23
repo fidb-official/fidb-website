@@ -1,7 +1,9 @@
 # manager
 
-[manager] `ManagerPathEntryChildren` -- page by page
+extract `ManagerStatusBarPagination`
+extract `ManagerPathEntryChildrenPagination`
 
+[manager] `PathEntryDirectory` has `isChildrenLoading`
 [manager] `ManagerFile` -- should not download unknown file extension -- maybe big
 
 # talks

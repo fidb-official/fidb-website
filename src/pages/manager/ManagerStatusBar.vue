@@ -7,7 +7,7 @@ defineProps<{ state: State }>()
 
 <template>
   <div
-    class="flex items-center justify-between overflow-x-auto overflow-y-hidden whitespace-nowrap px-1 text-sm font-bold"
+    class="flex items-center justify-between overflow-x-auto overflow-y-hidden whitespace-nowrap px-1 text-sm"
     :class="[
       'transition duration-150',
       'border-x',

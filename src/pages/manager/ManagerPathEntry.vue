@@ -64,6 +64,7 @@ async function toggleOpen() {
     </div>
 
     <ManagerPathEntryChildren
+      v-if="pathEntry.kind === 'Directory'"
       :state="state"
       :pathEntry="pathEntry"
       :isLoading="isChildrenLoading"
