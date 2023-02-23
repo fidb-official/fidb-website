@@ -27,15 +27,15 @@ const lastEntry = computed(() => {
 
 <template>
   <div class="flex overflow-x-auto pt-2 pb-1">
-    <div class="font-bold">
+    <span class="font-bold">
       <Hyperlink class="hover:underline" href="/">fidb</Hyperlink>
-    </div>
+    </span>
 
-    <div>+</div>
+    <span>+</span>
 
-    <div>{{ state.url }}/</div>
+    <span>{{ state.url }}/</span>
 
-    <div v-if="state.currentPathEntry" class="flex">
+    <span v-if="state.currentPathEntry" class="flex">
       <button
         v-for="(entry, index) of prefixEntries"
         :key="index"
@@ -53,6 +53,6 @@ const lastEntry = computed(() => {
           >/</span
         >
       </button>
-    </div>
+    </span>
   </div>
 </template>
