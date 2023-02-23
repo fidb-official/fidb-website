@@ -6,7 +6,7 @@ export async function stateFetchFile(
   state: State,
   path: string,
 ): Promise<Blob | undefined> {
-  const response = await fetch(`${state.url}/${path}`, {
+  const response = await fetch(`${state.url}/${path}?kind=file`, {
     method: 'GET',
     headers: {
       authorization: useGlobalToken().authorization,
