@@ -35,7 +35,7 @@ defineProps<{
       :class="[
         'transition duration-150',
         pathEntry.isChildrenLoading
-          ? 'bg-yellow-500 text-yellow-500'
+          ? 'bg-yellow-500 text-yellow-100'
           : 'bg-black text-white',
       ]"
       :state="state"
