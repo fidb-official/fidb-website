@@ -1,6 +1,6 @@
 import qs from 'qs'
 import { useGlobalToken } from '../../reactives/useGlobalToken'
-import { createPathEntry, PathEntry } from './PathEntry'
+import { createPathEntry } from './PathEntry'
 import { createState, State } from './State'
 import { stateOpenCurrentPathEntry } from './stateOpenCurrentPathEntry'
 
@@ -10,7 +10,31 @@ export type LoadStateOptions = {
 
 export async function loadState(options: LoadStateOptions): Promise<State> {
   try {
-    const pathEntries = await listPathEntries(options.url, '')
+    const response = await fetch(
+      `${options.url}/?kind=directory&page=1&size=10000`,
+      {
+        method: 'GET',
+        headers: {
+          authorization: useGlobalToken().authorization,
+        },
+      },
+    )
+
+    if (!response.ok) {
+      throw new Error(
+        [
+          `[loadState] fail to fetch directory list`,
+          `  url: ${options.url}`,
+          `  status.code: ${response.status}`,
+          `  status.message: ${response.statusText}`,
+        ].join('\n'),
+      )
+    }
+
+    const results = await response.json()
+
+    const pathEntries = results.map(createPathEntry)
+
     const state = createState({
       url: options.url,
       pathEntries,
@@ -66,32 +90,4 @@ function parseCurrentQueryString() {
       : undefined,
     currentCellIsOpen: query.currentCellIsOpen === undefined ? undefined : true,
   }
-}
-
-export async function listPathEntries(
-  url: string,
-  path: string,
-): Promise<Array<PathEntry>> {
-  const response = await fetch(`${url}/${path}?kind=directory`, {
-    method: 'GET',
-    headers: {
-      authorization: useGlobalToken().authorization,
-    },
-  })
-
-  if (!response.ok) {
-    throw new Error(
-      [
-        `[listPathEntries] fail to fetch list`,
-        `  url: ${url}`,
-        `  path: ${path}`,
-        `  status.code: ${response.status}`,
-        `  status.message: ${response.statusText}`,
-      ].join('\n'),
-    )
-  }
-
-  const results = await response.json()
-
-  return results.map(createPathEntry)
 }

@@ -1,6 +1,11 @@
-import { listPathEntries } from './loadState'
-import { PathEntry, pathEntryPartialSummation } from './PathEntry'
+import { useGlobalToken } from '../../reactives/useGlobalToken'
+import {
+  createPathEntry,
+  PathEntry,
+  pathEntryPartialSummation,
+} from './PathEntry'
 import { State } from './State'
+import { stateStatusError } from './stateStatus'
 
 export async function stateOpenCurrentPathEntry(state: State): Promise<void> {
   const currentPathEntry = state.currentPathEntry
@@ -20,7 +25,7 @@ export async function stateOpenCurrentPathEntry(state: State): Promise<void> {
     }
   }
 
-  await openPathEntries(state.url, pathEntries)
+  await openPathEntries(state, pathEntries)
 
   const parentPathEntry = pathEntries[0]
 
@@ -36,20 +41,20 @@ export async function stateOpenCurrentPathEntry(state: State): Promise<void> {
 }
 
 async function openPathEntries(
-  url: string,
+  state: State,
   pathEntries: Array<PathEntry>,
 ): Promise<void> {
   const [first, second, ...rest] = pathEntries
 
   if (second === undefined) {
     if (first.kind === 'Directory' && first.isOpen) {
-      await openPathEntry(url, first)
+      await openPathEntry(state, first)
     }
 
     return
   }
 
-  await openPathEntry(url, first)
+  await openPathEntry(state, first)
 
   if (first.kind === 'Directory') {
     const index = first.children.findIndex(
@@ -63,14 +68,40 @@ async function openPathEntries(
     }
   }
 
-  await openPathEntries(url, [second, ...rest])
+  await openPathEntries(state, [second, ...rest])
 }
 
-async function openPathEntry(url: string, pathEntry: PathEntry): Promise<void> {
+async function openPathEntry(
+  state: State,
+  pathEntry: PathEntry,
+): Promise<void> {
   if (pathEntry.kind !== 'Directory') {
     return
   }
 
   pathEntry.isOpen = true
-  pathEntry.children = await listPathEntries(url, pathEntry.path)
+
+  const response = await fetch(
+    `${state.url}/${pathEntry.path}?kind=directory&page=${pathEntry.page}&size=${pathEntry.size}`,
+    {
+      method: 'GET',
+      headers: {
+        authorization: useGlobalToken().authorization,
+      },
+    },
+  )
+
+  if (response.ok) {
+    const results = await response.json()
+    pathEntry.children = results.map(createPathEntry)
+  } else {
+    stateStatusError(state, {
+      who: 'stateOpenCurrentPathEntry / openPathEntry',
+      message: response.statusText,
+      data: {
+        url: state.url,
+        pathEntry,
+      },
+    })
+  }
 }

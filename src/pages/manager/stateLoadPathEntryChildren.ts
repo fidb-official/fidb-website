@@ -15,12 +15,15 @@ export async function stateLoadPathEntryChildren(
 
   const directory = pathEntry.path
 
-  const response = await fetch(`${state.url}/${directory}?kind=directory`, {
-    method: 'GET',
-    headers: {
-      authorization: useGlobalToken().authorization,
+  const response = await fetch(
+    `${state.url}/${directory}?kind=directory&page=${pathEntry.page}&size=${pathEntry.size}`,
+    {
+      method: 'GET',
+      headers: {
+        authorization: useGlobalToken().authorization,
+      },
     },
-  })
+  )
 
   if (!response.ok) {
     stateStatusError(state, {

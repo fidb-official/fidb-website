@@ -20,6 +20,8 @@ export type PathEntryDirectory = {
   path: string
   children: Array<PathEntry>
   isOpen: boolean
+  page: number
+  size: number
 }
 
 export function createPathEntry(options: PathEntryOptions): PathEntry {
@@ -39,6 +41,8 @@ export function createPathEntry(options: PathEntryOptions): PathEntry {
         path,
         children: [],
         isOpen: isOpen || false,
+        page: 1,
+        size: 30,
       }
     }
   }
