@@ -6,7 +6,7 @@ defineProps<{ state: State }>()
 </script>
 
 <template>
-  <div class="flex">
+  <div class="flex justify-between">
     <div></div>
     <div class="flex">
       <button
