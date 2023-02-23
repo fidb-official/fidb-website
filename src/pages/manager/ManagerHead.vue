@@ -1,23 +1,19 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import Hyperlink from '../../components/Hyperlink.vue'
-import {
-  PathEntry,
-  pathEntryBasename,
-  pathEntryPartialSummation,
-} from './PathEntry'
+import { pathEntryBasename, pathEntryPartialSummation } from './PathEntry'
 import { State } from './State'
 
 const props = defineProps<{ state: State }>()
 
-function prefixEntries(): Array<PathEntry> {
+const prefixEntries = computed(() => {
   if (props.state.currentPathEntry === undefined) {
     return []
   }
 
   const entries = pathEntryPartialSummation(props.state.currentPathEntry)
   return entries.slice(0, entries.length - 1)
-}
+})
 
 const lastEntry = computed(() => {
   if (props.state.currentPathEntry === undefined) {
@@ -41,7 +37,7 @@ const lastEntry = computed(() => {
 
     <div v-if="state.currentPathEntry" class="flex overflow-x-auto">
       <button
-        v-for="(entry, index) of prefixEntries()"
+        v-for="(entry, index) of prefixEntries"
         :key="index"
         class="whitespace-pre hover:underline"
         @click="state.currentPathEntry = entry"
