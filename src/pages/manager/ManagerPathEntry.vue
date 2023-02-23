@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import ManagerPathEntryChildren from './ManagerPathEntryChildren.vue'
 import ManagerPathEntryControl from './ManagerPathEntryControl.vue'
 import { PathEntry, pathEntryBasename } from './PathEntry'
@@ -10,8 +9,6 @@ const props = defineProps<{
   state: State
   pathEntry: PathEntry
 }>()
-
-const isChildrenLoading = ref(false)
 
 function isSelected(): boolean {
   return props.pathEntry.path === props.state.currentPathEntry?.path
@@ -37,9 +34,9 @@ async function toggleOpen() {
   }
 
   if (props.pathEntry.isOpen) {
-    isChildrenLoading.value = true
+    props.pathEntry.isChildrenLoading = true
     await stateLoadPathEntryChildren(props.state, props.pathEntry)
-    isChildrenLoading.value = false
+    props.pathEntry.isChildrenLoading = false
   }
 }
 </script>
@@ -67,7 +64,6 @@ async function toggleOpen() {
       v-if="pathEntry.kind === 'Directory'"
       :state="state"
       :pathEntry="pathEntry"
-      :isLoading="isChildrenLoading"
     />
   </div>
 </template>

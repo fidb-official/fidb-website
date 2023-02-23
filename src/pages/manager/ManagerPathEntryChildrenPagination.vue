@@ -4,10 +4,16 @@ import { PathEntryDirectory } from './PathEntry'
 import { State } from './State'
 import { stateLoadPathEntryChildren } from './stateLoadPathEntryChildren'
 
-defineProps<{
+const props = defineProps<{
   state: State
   pathEntry: PathEntryDirectory
 }>()
+
+async function reload() {
+  props.pathEntry.isChildrenLoading = true
+  await stateLoadPathEntryChildren(props.state, props.pathEntry)
+  props.pathEntry.isChildrenLoading = false
+}
 </script>
 
 <template>
@@ -15,9 +21,7 @@ defineProps<{
     <div></div>
     <div class="flex">
       <button
-        @click="
-          pathEntry.page-- && stateLoadPathEntryChildren(state, pathEntry)
-        "
+        @click="pathEntry.page-- && reload()"
         :disabled="pathEntry.page === 1"
         class="px-0.5"
         :class="[pathEntry.page !== 1 && 'hover:ring-1 hover:ring-white']"
@@ -26,9 +30,7 @@ defineProps<{
       </button>
       <div class="px-2">{{ pathEntry.page }}</div>
       <button
-        @click="
-          pathEntry.page++ && stateLoadPathEntryChildren(state, pathEntry)
-        "
+        @click="pathEntry.page++ && reload()"
         :disabled="pathEntry.children.length < pathEntry.size"
         class="px-0.5"
         :class="[

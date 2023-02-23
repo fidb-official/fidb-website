@@ -1,6 +1,5 @@
 # manager
 
-[manager] `PathEntryDirectory` has `isChildrenLoading`
 [manager] `ManagerFile` -- should not download unknown file extension -- maybe big
 
 # talks
