@@ -24,7 +24,7 @@ async function reload() {
         @click="pathEntry.page-- && reload()"
         :disabled="pathEntry.page === 1"
         class="px-0.5"
-        :class="[pathEntry.page !== 1 && 'hover:ring-1 hover:ring-white']"
+        :class="[pathEntry.page !== 1 && 'hover:ring-1 hover:ring-black']"
       >
         <ChevronLeftIcon class="h-4 w-4" />
       </button>
@@ -35,7 +35,7 @@ async function reload() {
         class="px-0.5"
         :class="[
           pathEntry.children.length >= pathEntry.size &&
-            'hover:ring-1 hover:ring-white',
+            'hover:ring-1 hover:ring-black',
         ]"
       >
         <ChevronRightIcon class="h-4 w-4" />

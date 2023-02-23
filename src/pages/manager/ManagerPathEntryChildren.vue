@@ -31,12 +31,12 @@ defineProps<{
     </template>
 
     <div
-      class="flex justify-center text-sm"
+      class="flex justify-center border text-sm"
       :class="[
         'transition duration-150',
         pathEntry.isChildrenLoading
-          ? 'bg-yellow-500 text-yellow-100'
-          : 'bg-black text-white',
+          ? 'border-yellow-900 bg-yellow-300 text-yellow-900'
+          : 'border-black text-black',
       ]"
     >
       <ManagerPathEntryChildrenPagination
