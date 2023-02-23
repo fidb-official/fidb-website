@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { basename } from 'path-browserify'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import Lang from '../../components/Lang.vue'
 import { downloadBlob } from '../../utils/downloadBlob'
+import ManagerFileLoading from './ManagerFileLoading.vue'
 import { State } from './State'
 import { stateFetchFile } from './stateFetchFile'
+import { FileMetadata, stateFetchFileMetadata } from './stateFetchFileMetadata'
 import { stateStatusOk, stateStatusRunning } from './stateStatus'
 
 const props = defineProps<{
@@ -13,7 +15,18 @@ const props = defineProps<{
 }>()
 
 const blob = ref<Blob | undefined>(undefined)
+const metadata = ref<FileMetadata | undefined>(undefined)
 const isFetchingFile = ref(false)
+
+watch(
+  () => props.path,
+  async (path) => {
+    metadata.value = await stateFetchFileMetadata(props.state, path)
+  },
+  {
+    immediate: true,
+  },
+)
 
 async function download() {
   isFetchingFile.value = true
@@ -44,7 +57,8 @@ async function download() {
 
 <template>
   <div class="flex h-full w-full flex-col overflow-auto border-r border-black">
-    <div class="flex h-full items-center justify-center">
+    <ManagerFileLoading v-if="metadata === undefined" :state="state" />
+    <div v-else class="flex h-full items-center justify-center">
       <div
         class="mx-6 flex w-full max-w-lg flex-col items-start space-y-2 overflow-x-auto border border-black p-3"
       >
@@ -58,14 +72,14 @@ async function download() {
           <div>{{ path }}</div>
         </div>
 
-        <div v-if="blob !== undefined">
+        <div>
           <div class="font-bold">
             <Lang>
               <template #zh> 大小 </template>
               <template #en> size </template>
             </Lang>
           </div>
-          <div>{{ blob.size }} bytes</div>
+          <div>{{ metadata.size }} bytes</div>
         </div>
 
         <div class="w-full border-t border-black py-0.5"></div>

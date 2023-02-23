@@ -1,5 +1,3 @@
-[manager] `ManagerFileDownload` -- show file size before download
-
 # talks
 
 [talks] `Talks` -- chinese
