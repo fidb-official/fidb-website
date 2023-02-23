@@ -76,7 +76,7 @@ function submit(event: Event) {
 
         <FormButton :disabled="form.processing">
           <Lang>
-            <template #zh>签入</template>
+            <template #zh>登录</template>
             <template #en>Sign In</template>
           </Lang>
         </FormButton>
