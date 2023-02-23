@@ -1,6 +1,4 @@
-# manager
-
-[manager] `ManagerFile` -- should not download unknown file extension -- maybe big
+[manager] `ManagerFileDownload` -- show file size before download
 
 # talks
 
