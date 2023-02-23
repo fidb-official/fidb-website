@@ -44,7 +44,7 @@ export function createPathEntry(options: PathEntryOptions): PathEntry {
         isChildrenLoading: false,
         isOpen: isOpen || false,
         page: 1,
-        size: 30,
+        size: 15,
       }
     }
   }

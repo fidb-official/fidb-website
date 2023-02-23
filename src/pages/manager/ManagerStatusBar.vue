@@ -7,7 +7,7 @@ defineProps<{ state: State }>()
 
 <template>
   <div
-    class="flex items-center justify-center overflow-x-auto overflow-y-hidden px-1 text-sm"
+    class="flex justify-center text-sm"
     :class="[
       'transition duration-150',
       state.status === 'ok' && 'bg-black text-white',

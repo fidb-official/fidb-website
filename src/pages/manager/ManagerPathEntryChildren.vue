@@ -30,16 +30,19 @@ defineProps<{
       />
     </template>
 
-    <ManagerPathEntryChildrenPagination
-      class="text-sm"
+    <div
+      class="flex justify-center text-sm"
       :class="[
         'transition duration-150',
         pathEntry.isChildrenLoading
           ? 'bg-yellow-500 text-yellow-100'
           : 'bg-black text-white',
       ]"
-      :state="state"
-      :pathEntry="pathEntry"
-    />
+    >
+      <ManagerPathEntryChildrenPagination
+        :state="state"
+        :pathEntry="pathEntry"
+      />
+    </div>
   </div>
 </template>
