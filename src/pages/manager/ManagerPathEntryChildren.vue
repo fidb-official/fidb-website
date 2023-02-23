@@ -31,8 +31,13 @@ defineProps<{
     </template>
 
     <ManagerPathEntryChildrenPagination
-      class="bg-black text-sm text-white"
-      :class="[pathEntry.isChildrenLoading && 'bg-yellow-600 text-yellow-600']"
+      class="text-sm"
+      :class="[
+        'transition duration-150',
+        pathEntry.isChildrenLoading
+          ? 'bg-yellow-500 text-yellow-500'
+          : 'bg-black text-white',
+      ]"
       :state="state"
       :pathEntry="pathEntry"
     />
