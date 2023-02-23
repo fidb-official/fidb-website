@@ -13,13 +13,11 @@ export type PathEntry = PathEntryFile | PathEntryDirectory
 export type PathEntryFile = {
   kind: 'File'
   path: string
-  basename: string
 }
 
 export type PathEntryDirectory = {
   kind: 'Directory'
   path: string
-  basename: string
   children: Array<PathEntry>
   isOpen: boolean
 }
@@ -32,9 +30,6 @@ export function createPathEntry(options: PathEntryOptions): PathEntry {
       return {
         kind,
         path,
-        get basename() {
-          return basename(this.path)
-        },
       }
     }
 
@@ -42,9 +37,6 @@ export function createPathEntry(options: PathEntryOptions): PathEntry {
       return {
         kind,
         path,
-        get basename() {
-          return basename(this.path)
-        },
         children: [],
         isOpen: isOpen || false,
       }

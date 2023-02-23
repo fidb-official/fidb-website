@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import ManagerPathEntryChildren from './ManagerPathEntryChildren.vue'
 import ManagerPathEntryControl from './ManagerPathEntryControl.vue'
-import { PathEntry } from './PathEntry'
+import { PathEntry, pathEntryBasename } from './PathEntry'
 import { State } from './State'
 import { stateLoadPathEntryChildren } from './stateLoadPathEntryChildren'
 
@@ -52,7 +52,7 @@ async function toggleOpen() {
         :class="[isSelected() && 'bg-black text-white']"
         @click="select()"
       >
-        <span>{{ pathEntry.basename }}</span>
+        <span>{{ pathEntryBasename(pathEntry) }}</span>
         <span v-if="pathEntry.kind === 'Directory'">/</span>
       </button>
 
