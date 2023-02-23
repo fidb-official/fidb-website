@@ -30,19 +30,21 @@ defineProps<{
       />
     </template>
 
-    <div
-      class="flex justify-center border text-sm"
-      :class="[
-        'transition duration-150',
-        pathEntry.isChildrenLoading
-          ? 'border-yellow-300 bg-yellow-200 text-yellow-900'
-          : 'border-black text-black',
-      ]"
-    >
-      <ManagerPathEntryChildrenPagination
-        :state="state"
-        :pathEntry="pathEntry"
-      />
+    <div class="border-l border-black">
+      <div
+        class="flex justify-center border-t border-dotted text-sm"
+        :class="[
+          'transition duration-150',
+          pathEntry.isChildrenLoading
+            ? 'border-yellow-300 bg-yellow-200 text-yellow-900'
+            : 'border-black text-black',
+        ]"
+      >
+        <ManagerPathEntryChildrenPagination
+          :state="state"
+          :pathEntry="pathEntry"
+        />
+      </div>
     </div>
   </div>
 </template>
