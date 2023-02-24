@@ -24,9 +24,7 @@
   opacity: 1;
 }
 
-@tailwind components;
-
-@layer components {
+@layer utilities {
   .splitter-1 > .splitpanes__splitter:before {
     left: -1px;
     right: -1px;

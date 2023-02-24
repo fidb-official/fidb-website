@@ -3,10 +3,9 @@ import FloatingVue from 'floating-vue'
 import 'floating-vue/dist/style.css'
 import { createApp } from 'vue'
 import App from './App.vue'
-import './assets/fonts/index.css'
-import './assets/styles/index.css'
 import * as Directives from './directives'
 import router from './router'
+import './styles/index.css'
 
 const app = createApp(App)
 
