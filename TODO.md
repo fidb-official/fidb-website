@@ -1,3 +1,5 @@
+[manager] one token one database
+
 # talks
 
 [talks] `Talks` -- chinese
