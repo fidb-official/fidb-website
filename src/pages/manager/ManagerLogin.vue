@@ -9,6 +9,7 @@ import Lang from '../../components/Lang.vue'
 import PageLayout from '../../layouts/page-layout/PageLayout.vue'
 import { useGlobalLang } from '../../reactives/useGlobalLang'
 import { useGlobalToken } from '../../reactives/useGlobalToken'
+import { stringTrimEnd } from '../../utils/stringTrimEnd'
 
 const router = useRouter()
 
@@ -23,7 +24,7 @@ const form = useForm({
 function submit(event: Event) {
   formSubmit(form, event, async (values) => {
     token.name = values.token
-    router.push(`/manager/${values.url}`)
+    router.push(`/manager/${stringTrimEnd(values.url, '/')}`)
   })
 }
 </script>

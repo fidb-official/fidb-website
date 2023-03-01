@@ -11,6 +11,7 @@ export const routes: Array<RouteRecordRaw> = [
   { path: '/talks', component: Talks },
   { path: '/docs', component: Docs },
   { path: '/manager', component: ManagerLogin },
+  { path: '/manager/', component: ManagerLogin },
   { path: '/manager/:url(.*)', component: Manager },
   { path: '/:pathMatch(.*)', component: PageNotFound },
 ]
