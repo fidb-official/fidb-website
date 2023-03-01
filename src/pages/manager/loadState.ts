@@ -6,6 +6,7 @@ import { stateOpenCurrentPathEntry } from './stateOpenCurrentPathEntry'
 
 export type LoadStateOptions = {
   url: string
+  // token: string
 }
 
 export async function loadState(options: LoadStateOptions): Promise<State> {

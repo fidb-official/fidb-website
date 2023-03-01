@@ -1,4 +1,5 @@
 import { reactive, watch } from 'vue'
+import { formatAuthorizationHeader } from '../utils/formatAuthorizationHeader'
 
 type Token = {
   name: string
@@ -8,7 +9,7 @@ type Token = {
 const globalToken: Token = reactive({
   name: '',
   get authorization() {
-    return `token ${this.name}`
+    return formatAuthorizationHeader(this.name)
   },
 })
 
