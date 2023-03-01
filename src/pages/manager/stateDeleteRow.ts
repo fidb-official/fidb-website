@@ -1,5 +1,5 @@
-import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { State } from './State'
+import { stateHeaders } from './stateHeaders'
 import {
   stateStatusError,
   stateStatusOk,
@@ -28,7 +28,7 @@ export async function stateDeleteRow(
     method: 'DELETE',
     headers: {
       'content-type': 'application/json',
-      authorization: useGlobalToken().authorization,
+      ...stateHeaders(state),
     },
     body: JSON.stringify({
       '@revision': data['@revision'],

@@ -1,10 +1,10 @@
-import { useGlobalToken } from '../../reactives/useGlobalToken'
 import {
   createPathEntry,
   PathEntry,
   pathEntryPartialSummation,
 } from './PathEntry'
 import { State } from './State'
+import { stateHeaders } from './stateHeaders'
 import { stateStatusError } from './stateStatus'
 
 export async function stateOpenCurrentPathEntry(state: State): Promise<void> {
@@ -86,7 +86,7 @@ async function openPathEntry(
     {
       method: 'GET',
       headers: {
-        authorization: useGlobalToken().authorization,
+        ...stateHeaders(state),
       },
     },
   )

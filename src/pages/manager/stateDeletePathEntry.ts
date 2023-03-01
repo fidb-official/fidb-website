@@ -1,6 +1,6 @@
-import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { PathEntry } from './PathEntry'
 import { State } from './State'
+import { stateHeaders } from './stateHeaders'
 import {
   stateStatusError,
   stateStatusOk,
@@ -24,7 +24,7 @@ export async function stateDeletePathEntry(
     {
       method: 'DELETE',
       headers: {
-        authorization: useGlobalToken().authorization,
+        ...stateHeaders(state),
       },
     },
   )

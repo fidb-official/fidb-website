@@ -1,6 +1,6 @@
-import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { createPathEntry, PathEntry } from './PathEntry'
 import { State } from './State'
+import { stateHeaders } from './stateHeaders'
 import { stateStatusError } from './stateStatus'
 
 export async function stateLoadPathEntryChildren(
@@ -20,7 +20,7 @@ export async function stateLoadPathEntryChildren(
     {
       method: 'GET',
       headers: {
-        authorization: useGlobalToken().authorization,
+        ...stateHeaders(state),
       },
     },
   )

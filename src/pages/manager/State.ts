@@ -4,6 +4,7 @@ import { createTable, Table } from './Table'
 
 export type StateOptions = {
   url: string
+  token: string
   page: number
   pathEntries: Array<PathEntry>
   currentPathEntry?: PathEntry
@@ -28,6 +29,7 @@ export type State = StateOptions & {
 export function createState(options: StateOptions): State {
   const {
     url,
+    token,
     pathEntries,
     currentPathEntry,
     page,
@@ -40,6 +42,7 @@ export function createState(options: StateOptions): State {
 
   return {
     url,
+    token,
     pathEntries,
     currentPathEntry: currentPathEntry || pathEntries[0],
     page,

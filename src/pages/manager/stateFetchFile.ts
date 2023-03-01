@@ -1,5 +1,5 @@
-import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { State } from './State'
+import { stateHeaders } from './stateHeaders'
 import { stateStatusError } from './stateStatus'
 
 export async function stateFetchFile(
@@ -9,7 +9,7 @@ export async function stateFetchFile(
   const response = await fetch(`${state.url}/${path}?kind=file`, {
     method: 'GET',
     headers: {
-      authorization: useGlobalToken().authorization,
+      ...stateHeaders(state),
     },
   })
 

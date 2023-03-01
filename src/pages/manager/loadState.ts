@@ -1,12 +1,12 @@
 import qs from 'qs'
-import { useGlobalToken } from '../../reactives/useGlobalToken'
+import { formatAuthorizationHeader } from '../../utils/formatAuthorizationHeader'
 import { createPathEntry } from './PathEntry'
 import { createState, State } from './State'
 import { stateOpenCurrentPathEntry } from './stateOpenCurrentPathEntry'
 
 export type LoadStateOptions = {
   url: string
-  // token: string
+  token: string
 }
 
 export async function loadState(options: LoadStateOptions): Promise<State> {
@@ -16,7 +16,7 @@ export async function loadState(options: LoadStateOptions): Promise<State> {
       {
         method: 'GET',
         headers: {
-          authorization: useGlobalToken().authorization,
+          authorization: formatAuthorizationHeader(options.token),
         },
       },
     )
@@ -38,6 +38,7 @@ export async function loadState(options: LoadStateOptions): Promise<State> {
 
     const state = createState({
       url: options.url,
+      token: options.token,
       pathEntries,
       ...parseCurrentQueryString(),
     })

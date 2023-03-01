@@ -1,6 +1,6 @@
 import qs from 'qs'
-import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { State } from './State'
+import { stateHeaders } from './stateHeaders'
 import {
   stateStatusError,
   stateStatusOk,
@@ -40,7 +40,7 @@ export async function stateUpdateDataset(state: State) {
     {
       method: 'GET',
       headers: {
-        authorization: useGlobalToken().authorization,
+        ...stateHeaders(state),
       },
     },
   )

@@ -1,5 +1,5 @@
-import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { State } from './State'
+import { stateHeaders } from './stateHeaders'
 import { stateStatusError } from './stateStatus'
 
 export type FileMetadata = {
@@ -13,7 +13,7 @@ export async function stateFetchFileMetadata(
   const response = await fetch(`${state.url}/${path}?kind=file-metadata`, {
     method: 'GET',
     headers: {
-      authorization: useGlobalToken().authorization,
+      ...stateHeaders(state),
     },
   })
 

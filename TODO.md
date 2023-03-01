@@ -1,7 +1,4 @@
-[manager] `manager/State` has `token` -- instead of using `useGlobalToken`
-
-- because one url has one token
-- with `stateHeaders`
+[manager] `manager/Manager` -- redirect on no `token`
 
 # talks
 

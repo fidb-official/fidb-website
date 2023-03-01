@@ -1,6 +1,6 @@
-import { useGlobalToken } from '../../reactives/useGlobalToken'
 import { createPathEntry, PathEntry } from './PathEntry'
 import { State } from './State'
+import { stateHeaders } from './stateHeaders'
 import { stateOpenCurrentPathEntry } from './stateOpenCurrentPathEntry'
 import {
   stateStatusError,
@@ -29,7 +29,7 @@ export async function stateCreateFile(
   const response = await fetch(`${state.url}/${path}?kind=file`, {
     method: 'POST',
     headers: {
-      authorization: useGlobalToken().authorization,
+      ...stateHeaders(state),
     },
   })
 
