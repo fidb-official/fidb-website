@@ -26,7 +26,7 @@ function close() {
   >
     <td class="sticky left-0 border border-black ring-1 ring-black">
       <!-- negative margin for chrome (must use div) -->
-      <div class="-m-0.5 border-r border-black px-1 text-center font-bold">
+      <div class="-m-0.5 border-r border-black px-3 text-right font-bold">
         +
       </div>
     </td>
