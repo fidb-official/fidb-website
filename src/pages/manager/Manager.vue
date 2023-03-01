@@ -19,6 +19,10 @@ const options: LoadStateOptions = { url, token }
 
 onMounted(async () => {
   try {
+    if (!token) {
+      throw new Error(`No token for url: ${url}`)
+    }
+
     state.value = await loadState(options)
   } catch (errorValue) {
     if (errorValue instanceof Error) {
