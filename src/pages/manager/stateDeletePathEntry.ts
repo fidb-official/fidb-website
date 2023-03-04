@@ -20,7 +20,7 @@ export async function stateDeletePathEntry(
   })
 
   const response = await fetch(
-    `${state.url}/${pathEntry.path}?kind=${pathEntry.kind}`,
+    new URL(`/${pathEntry.path}?kind=${pathEntry.kind}`, state.url),
     {
       method: 'DELETE',
       headers: {

@@ -82,7 +82,10 @@ async function openPathEntry(
   pathEntry.isOpen = true
 
   const response = await fetch(
-    `${state.url}/${pathEntry.path}?kind=directory&page=${pathEntry.page}&size=${pathEntry.size}`,
+    new URL(
+      `/${pathEntry.path}?kind=directory&page=${pathEntry.page}&size=${pathEntry.size}`,
+      state.url,
+    ),
     {
       method: 'GET',
       headers: {

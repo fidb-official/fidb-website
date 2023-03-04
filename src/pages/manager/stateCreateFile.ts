@@ -26,7 +26,7 @@ export async function stateCreateFile(
     return
   }
 
-  const response = await fetch(`${state.url}/${path}?kind=file`, {
+  const response = await fetch(new URL(`/${path}?kind=file`, state.url), {
     method: 'POST',
     headers: {
       ...stateHeaders(state),

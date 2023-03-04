@@ -26,7 +26,7 @@ export async function stateCreateDirectory(
     return
   }
 
-  const response = await fetch(`${state.url}/${path}?kind=directory`, {
+  const response = await fetch(new URL(`/${path}?kind=directory`, state.url), {
     method: 'POST',
     headers: {
       ...stateHeaders(state),

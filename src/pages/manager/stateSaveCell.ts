@@ -26,7 +26,7 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
 
   stateStatusRunning(state, { who, message: 'saving' })
 
-  const response = await fetch(`${state.url}/${data['@path']}`, {
+  const response = await fetch(new URL(`/${data['@path']}`, state.url), {
     method: 'PATCH',
     headers: {
       'content-type': 'application/json',
@@ -59,7 +59,7 @@ export async function stateSaveCell(state: State, cell: Cell): Promise<void> {
     })
 
     if (response.status === 409) {
-      const response = await fetch(`${state.url}/${data['@path']}`, {
+      const response = await fetch(new URL(`/${data['@path']}`, state.url), {
         method: 'GET',
         headers: {
           ...stateHeaders(state),

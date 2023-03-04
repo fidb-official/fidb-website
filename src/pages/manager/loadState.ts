@@ -12,7 +12,7 @@ export type LoadStateOptions = {
 export async function loadState(options: LoadStateOptions): Promise<State> {
   try {
     const response = await fetch(
-      `${options.url}/?kind=directory&page=1&size=10000`,
+      new URL(`/?kind=directory&page=1&size=10000`, options.url),
       {
         method: 'GET',
         headers: {
